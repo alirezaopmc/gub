@@ -1,0 +1,144 @@
+/* Shared Skull King setup layout — semantic tokens from theme-base. */
+
+.section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.title {
+  font-family: var(--font-headline);
+  font-size: 1.875rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--primary);
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+/** Crew / inline fields: no card chrome; sits under section header. */
+.sectionFields {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.textInput {
+  min-height: 2.5rem;
+  min-width: 0;
+  flex: 1 1 auto;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--input);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.25;
+  color: var(--foreground);
+  box-shadow: var(--shadow-sk-inset);
+  outline: none;
+  transition:
+    color 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+}
+
+.textInput::placeholder {
+  color: color-mix(in srgb, var(--muted-foreground), transparent 40%);
+}
+
+.textInput:focus-visible {
+  border-color: var(--ring);
+  box-shadow:
+    var(--shadow-sk-inset),
+    0 0 0 2px color-mix(in srgb, var(--ring), transparent 60%);
+}
+
+.textInput[data-invalid] {
+  border-color: color-mix(in srgb, var(--destructive), transparent 20%);
+}
+
+.textInput[data-invalid]:focus-visible {
+  border-color: var(--destructive);
+  box-shadow:
+    var(--shadow-sk-inset),
+    0 0 0 2px color-mix(in srgb, var(--destructive), transparent 70%);
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.schemaPresets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid color-mix(in srgb, var(--border), transparent 55%);
+}
+
+.schemaPresetRow {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 0.625rem 0.875rem;
+  align-items: center;
+}
+
+.schemaPresetButtonSlot {
+  display: flex;
+  width: 100%;
+}
+
+.schemaPresetButtonSlot > [data-slot="button"] {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.schemaPresetValuesHint {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.01em;
+  text-align: end;
+  color: color-mix(in srgb, var(--muted-foreground), transparent 25%);
+  overflow-wrap: anywhere;
+}

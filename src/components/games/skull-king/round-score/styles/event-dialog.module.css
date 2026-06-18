@@ -1,0 +1,154 @@
+/* Add-event hub layout + bid/won scroll body — shared with ui/dialog.tsx chrome. */
+
+/* Wrap body + footer so implicit form submit (Enter in inputs) works; no layout box. */
+.formSubmitDisplayContents {
+  display: contents;
+}
+
+/* Bid / won dialog body scroll region. */
+.body {
+  flex: 0 1 auto;
+  max-height: min(68dvh, 30rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 0.55rem;
+}
+
+.modalStack {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  max-height: min(68dvh, 32rem);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.logSection {
+  flex: 0 1 auto;
+  max-height: min(28dvh, 12rem);
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.35rem 0.55rem 0.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border), transparent 35%);
+}
+
+.bottomSection {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 0.55rem 0.35rem;
+}
+
+.kindToolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  justify-content: stretch;
+}
+
+.kindPlaceholder {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  border: 1px dashed color-mix(in srgb, var(--border), transparent 15%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--muted) 55%, var(--background) 45%) 0%,
+    color-mix(in srgb, var(--primary) 12%, var(--background) 88%) 100%
+  );
+}
+
+.kindTileLabel {
+  max-width: 100%;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+.playerGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.emptyMsg {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.eventList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.eventListItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--border), transparent 25%);
+  background: color-mix(in srgb, var(--muted) 40%, var(--background) 60%);
+  padding: 0.45rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: var(--foreground);
+}
+
+.eventListTitle {
+  flex: 1;
+  min-width: 0;
+}
+
+.kicker {
+  font-family: var(--font-label);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.valueRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/** Full-width stack (e.g. capture count 1…N). */
+.valueColumn {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.valueColumn > :global([data-slot="button"]) {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.suitRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}

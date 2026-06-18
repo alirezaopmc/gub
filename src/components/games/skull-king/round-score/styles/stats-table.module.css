@@ -1,0 +1,89 @@
+/* Voyage stats modal — #, Name, Score; rows ordered by score descending. */
+
+.empty {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.tableScroll {
+  max-height: min(64dvh, 28rem);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.statsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+}
+
+.thPlain {
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+  font-family: var(--font-label);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted-foreground), var(--primary) 22%);
+  border-bottom: 1px solid color-mix(in srgb, var(--primary), transparent 55%);
+  vertical-align: bottom;
+}
+
+.thCenter {
+  text-align: center;
+}
+
+.tdRank {
+  width: 2.25rem;
+  padding: 0.45rem 0.35rem 0.5rem;
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid color-mix(in srgb, var(--muted-foreground), transparent 78%);
+}
+
+.tdRankMedal {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.tdName {
+  min-width: 0;
+  max-width: 14rem;
+  padding: 0.45rem 0.65rem 0.5rem 0.35rem;
+  vertical-align: middle;
+  font-weight: 600;
+  color: var(--foreground);
+  border-bottom: 1px solid color-mix(in srgb, var(--muted-foreground), transparent 78%);
+}
+
+.nameStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.nameLine {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+.tdScore {
+  min-width: 3.75rem;
+  padding: 0.45rem 0.35rem;
+  text-align: center;
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--foreground);
+  border-bottom: 1px solid color-mix(in srgb, var(--muted-foreground), transparent 78%);
+}

@@ -1,0 +1,145 @@
+/* Global dialog motion — overlay: `.gub-dialog-overlay`; panel: `.gub-dialog-content`.
+ * Exit animations cooperate with Radix Presence (no `forceMount`; avoids stuck body pointer-events). */
+
+@keyframes gub-dialog-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gub-dialog-overlay-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes gub-dialog-content-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 0.5rem)) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes gub-dialog-content-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 0.45rem)) scale(0.97);
+  }
+}
+
+.gub-dialog-overlay[data-state="open"] {
+  animation: gub-dialog-overlay-in var(--motion-duration-modal) var(--motion-ease-out) both;
+}
+
+.gub-dialog-overlay[data-state="closed"] {
+  /* Overlay impl sets inline `pointer-events: auto`; beat it while faded so the page stays usable. */
+  pointer-events: none !important;
+  animation: gub-dialog-overlay-out var(--motion-duration-modal) var(--motion-ease-in) both;
+}
+
+.gub-dialog-content[data-state="open"] {
+  animation: gub-dialog-content-in var(--motion-duration-modal) var(--motion-ease-out) both;
+}
+
+.gub-dialog-content[data-state="closed"] {
+  pointer-events: none;
+  animation: gub-dialog-content-out var(--motion-duration-modal) var(--motion-ease-in) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gub-dialog-overlay[data-state="open"],
+  .gub-dialog-content[data-state="open"],
+  .gub-dialog-overlay[data-state="closed"],
+  .gub-dialog-content[data-state="closed"] {
+    animation: none;
+  }
+
+  .gub-dialog-overlay[data-state="open"] {
+    opacity: 1;
+  }
+
+  .gub-dialog-content[data-state="open"] {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+  }
+
+  .gub-dialog-overlay[data-state="closed"],
+  .gub-dialog-content[data-state="closed"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .gub-dialog-content[data-state="closed"] {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Ephemeral toast — inner panel `.gub-ephemeral-toast-panel`; phase via `data-gub-toast-phase`. */
+
+@keyframes gub-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gub-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+}
+
+.gub-ephemeral-toast-panel[data-gub-toast-phase="open"] {
+  animation: gub-toast-in var(--motion-duration-short) var(--motion-ease-out) both;
+}
+
+.gub-ephemeral-toast-panel[data-gub-toast-phase="closing"] {
+  animation: gub-toast-out var(--motion-duration-short) var(--motion-ease-in) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gub-ephemeral-toast-panel[data-gub-toast-phase="open"],
+  .gub-ephemeral-toast-panel[data-gub-toast-phase="closing"] {
+    animation: none;
+  }
+
+  .gub-ephemeral-toast-panel[data-gub-toast-phase="open"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .gub-ephemeral-toast-panel[data-gub-toast-phase="closing"] {
+    opacity: 0;
+    transform: none;
+  }
+}

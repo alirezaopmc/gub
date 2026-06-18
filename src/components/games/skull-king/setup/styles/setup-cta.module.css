@@ -1,0 +1,53 @@
+/*
+ * Branded primary CTA for Skull King setup (not `components/ui/button`).
+ * Styling uses theme tokens only; elevation uses --shadow-sk-cta* from theme-base.
+ */
+
+/* Standalone footer (e.g. start page): safe-area + secondary link below primary. */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: max(0.125rem, env(safe-area-inset-bottom, 0px));
+  text-align: left;
+  width: 100%;
+}
+
+.subline {
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-headline);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* Blocked: line-level notice (no card) so “why Start is off” reads as a plain error. */
+.sublineUnready {
+  display: flex;
+  width: 100%;
+  margin-inline: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.4em;
+  color: var(--destructive);
+}
+
+.hintUnreadyText {
+  min-width: 0;
+  text-align: left;
+}
+
+.errorStar {
+  flex-shrink: 0;
+  line-height: inherit;
+  font-size: 0.8em;
+  opacity: 0.9;
+  transform: translateY(0.08em);
+}

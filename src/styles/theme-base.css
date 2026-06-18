@@ -1,0 +1,195 @@
+/* Design tokens (dark-first). */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Default + .dark share the same product skin so `dark:` utilities match the base theme. */
+:root,
+.dark {
+  --radius: 1rem;
+
+  /* Neutral shell */
+  --background: #121619;
+  --foreground: #f4ebd0;
+  --card: #1a1a1a;
+  --card-foreground: #f4ebd0;
+  --popover: #1a1a1a;
+  --popover-foreground: #f4ebd0;
+
+  /* Brand */
+  --primary: #d4af37;
+  --primary-foreground: #000000;
+  --secondary: #0e3b43;
+  --secondary-foreground: #ffffff;
+
+  --muted: #262626;
+  --muted-foreground: #a8a29e;
+
+  /* Cream highlight surfaces (subtle lift from card) */
+  --accent: #2a2420;
+  --accent-foreground: #f4ebd0;
+
+  --destructive: #e07a7a;
+  --destructive-foreground: #1a0a0a;
+
+  /* Semantic feedback (toasts, badges); warm amber sits beside gold primary */
+  --warning: #d8a85c;
+  --warning-foreground: #1a1410;
+  --success: var(--sk-score-up);
+  --success-foreground: #f4ebd0;
+
+  --border: rgb(244 235 208 / 14%);
+  --input: #262626;
+  --ring: #d4af37;
+
+  /* Viewport chrome outside the app shell (e.g. “device on desk”) */
+  --canvas: #09090b;
+
+  /* Elevation — use in CSS modules; tweak once for whole product skin */
+  --shadow-sk-row: 0 1px 2px rgb(0 0 0 / 10%);
+  --shadow-sk-cta: 0 2px 8px rgb(0 0 0 / 35%);
+  --shadow-sk-cta-active: 0 1px 4px rgb(0 0 0 / 28%);
+  --shadow-sk-inset: inset 0 1px 2px rgb(0 0 0 / 18%);
+
+  /* Skull King round score (muted, readable on dark cream text) */
+  --sk-score-up: #8fb393;
+  --sk-score-down: #c09090;
+
+  /* Button inverted surface (.light swaps) */
+  --inverted: #ffffff;
+  --inverted-foreground: #000000;
+
+  /* 14-bonus suit chips + event badges (tokenized from prior Tail palette) */
+  --sk-suit-green-fg: #d1fae5;
+  --sk-suit-green-bg: #052e16;
+  --sk-suit-green-border: #34d399;
+  --sk-suit-yellow-fg: #fef3c7;
+  --sk-suit-yellow-bg: #451a03;
+  --sk-suit-yellow-border: #fcd34d;
+  --sk-suit-purple-fg: #ede9fe;
+  --sk-suit-purple-bg: #2e1065;
+  --sk-suit-purple-border: #a78bfa;
+  --sk-suit-black-fg: #f4f4f5;
+  --sk-suit-black-bg: #09090b;
+  --sk-suit-black-border: #a1a1aa;
+  --sk-event-capture-fg: #fbbf24;
+  --sk-event-capture-border: #f59e0b;
+  --sk-event-fourteen-fg: #6ee7b7;
+  --sk-event-fourteen-border: #34d399;
+
+  /* Motion — ui-motion.css + round-score surfaces */
+  --motion-duration-short: 200ms;
+  --motion-duration-modal: 220ms;
+  --motion-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --motion-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+}
+
+/* Light mode reserved for future; mirrors cream-forward surfaces if enabled via `.light` */
+.light {
+  --radius: 1rem;
+  --background: #f4ebd0;
+  --foreground: #121619;
+  --card: #ffffff;
+  --card-foreground: #121619;
+  --popover: #ffffff;
+  --popover-foreground: #121619;
+  --primary: #d4af37;
+  --primary-foreground: #000000;
+  --secondary: #0e3b43;
+  --secondary-foreground: #ffffff;
+  --muted: #e7dcc4;
+  --muted-foreground: #57534e;
+  --accent: #e7dcc4;
+  --accent-foreground: #121619;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --warning: #c2410c;
+  --warning-foreground: #fffbeb;
+  --success: var(--sk-score-up);
+  --success-foreground: #14532d;
+  --border: rgb(18 22 25 / 12%);
+  --input: #e7dcc4;
+  --ring: #d4af37;
+  --canvas: #e7dcc4;
+
+  --shadow-sk-row: 0 1px 2px rgb(18 22 25 / 6%);
+  --shadow-sk-cta: 0 2px 10px rgb(18 22 25 / 12%);
+  --shadow-sk-cta-active: 0 1px 4px rgb(18 22 25 / 10%);
+  --shadow-sk-inset: inset 0 1px 2px rgb(18 22 25 / 8%);
+
+  --sk-score-up: #2d6a3e;
+  --sk-score-down: #b91c1c;
+
+  --inverted: #000000;
+  --inverted-foreground: #ffffff;
+
+  --sk-suit-green-fg: #14532d;
+  --sk-suit-green-bg: #ecfdf5;
+  --sk-suit-green-border: #059669;
+  --sk-suit-yellow-fg: #78350f;
+  --sk-suit-yellow-bg: #fffbeb;
+  --sk-suit-yellow-border: #d97706;
+  --sk-suit-purple-fg: #581c87;
+  --sk-suit-purple-bg: #f5f3ff;
+  --sk-suit-purple-border: #7c3aed;
+  --sk-suit-black-fg: #18181b;
+  --sk-suit-black-bg: #f4f4f5;
+  --sk-suit-black-border: #71717a;
+  --sk-event-capture-fg: #92400e;
+  --sk-event-capture-border: #b45309;
+  --sk-event-fourteen-fg: #047857;
+  --sk-event-fourteen-border: #059669;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-canvas: var(--canvas);
+  --color-inverted: var(--inverted);
+  --color-inverted-foreground: var(--inverted-foreground);
+
+  --width-app-shell: min(1080px, 100%);
+
+  /* Vertical rhythm for long-form setup pages (Skull King host, etc.) */
+  --spacing-setup-stack: 3rem;
+  --spacing-setup-page-y: 4rem;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-headline: var(--font-epilogue), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space-grotesk), ui-monospace, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  .dark,
+  .light {
+    --motion-duration-short: 1ms;
+    --motion-duration-modal: 1ms;
+  }
+}

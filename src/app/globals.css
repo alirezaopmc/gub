@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "../styles/theme-base.css";
+@import "../styles/ui-motion.css";
+@import "../styles/button-liquid.css";
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}

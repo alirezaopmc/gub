@@ -1,0 +1,841 @@
+/* Skull King round score — semantic tokens only. */
+
+.page {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+}
+
+.navigator {
+  position: relative;
+  z-index: 40;
+  flex-shrink: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--primary), transparent 55%);
+  background: var(--background);
+  padding: 0.75rem 0.75rem 0.625rem;
+}
+
+.navigatorInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.navigatorLabel {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-align: center;
+}
+
+.handSizeGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* Hand size (cards per player) is the round’s primary affordance; round index is meta. */
+.handSizeValue {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-size: clamp(1.875rem, 5.5vw, 2.625rem);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+}
+
+.handSizeCaption {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted-foreground), var(--primary) 22%);
+}
+
+.navigatorDivider {
+  width: min(9.5rem, 88%);
+  height: 0;
+  margin: 0.4rem 0 0.35rem;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--primary), transparent 50%);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.roundMeta {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.tableScroll {
+  flex: 1 1 0;
+  min-height: 0;
+  /* Flex column children default to min-width:auto and clip overflowing grids; allow horizontal scroll. */
+  min-width: 0;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  /* At least viewport-wide, but grow with grid min tracks so narrow phones can scroll sideways. */
+  width: 100%;
+  min-width: max-content;
+}
+
+/* # | Running total + name (min ~10ch for name text after prefix) | Bid | Won | (optional Events) */
+.tableGridStats .headerRow,
+.tableGridStats .row {
+  grid-template-columns:
+    1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem);
+}
+
+.tableGridStatsBidOnly .headerRow,
+.tableGridStatsBidOnly .row {
+  grid-template-columns:
+    1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem);
+}
+
+/* Same as stats grids + Round score column after Bid | Won */
+.tableGridStatsWithScore .headerRow,
+.tableGridStatsWithScore .row {
+  grid-template-columns:
+    1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem) minmax(2.35rem, 3rem);
+}
+
+.tableGridStatsWithScoreBidOnly .headerRow,
+.tableGridStatsWithScoreBidOnly .row {
+  grid-template-columns:
+    1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem) minmax(2.35rem, 3rem);
+}
+
+.tableGridWithEvents .headerRow,
+.tableGridWithEvents .row {
+  grid-template-columns:
+    1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem) minmax(7.5rem, 1fr);
+}
+
+/* Like `.tableGridStatsBidOnly` but with an Events column (score phase: tricks not known yet). */
+.tableGridWithEventsBidOnly .headerRow,
+.tableGridWithEventsBidOnly .row {
+  grid-template-columns:
+    1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem) minmax(7.5rem, 1fr);
+}
+
+/** Voyage: # | Name | Bid | round score | total points | Events */
+.tableGridVoyage .headerRow,
+.tableGridVoyage .row {
+  grid-template-columns:
+    1.35rem
+    minmax(18ch, 1fr)
+    minmax(2.75rem, 4rem)
+    minmax(2.35rem, 3rem)
+    minmax(3.5rem, 1fr)
+    minmax(7.5rem, 1fr);
+}
+
+.headerCellVoyagePts {
+  min-width: 0;
+  text-align: center;
+}
+
+.headerCellRoundScore {
+  min-width: 0;
+  text-align: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.voyageTotalHdrDesktop {
+  display: block;
+}
+
+.voyageTotalHdrMobile {
+  display: none;
+  white-space: nowrap;
+}
+
+.roundScoreCell {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.1rem 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.roundScoreSegment {
+  font-variant-numeric: tabular-nums;
+}
+
+.roundScoreUp {
+  color: var(--sk-score-up);
+}
+
+.roundScoreDown {
+  color: var(--sk-score-down);
+}
+
+.roundScoreZero {
+  color: var(--muted-foreground);
+}
+
+.voyagePtsHeaderName {
+  display: block;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+.voyagePtsCell {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.headerRow {
+  display: grid;
+  align-items: center;
+  gap: 0.375rem 0.5rem;
+  padding: 0.5rem 0.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  /* Muted bar: not `--card` or the first zebra stripe (also `card`) would match the header. */
+  background: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.headerCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  font-family: var(--font-label);
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--muted-foreground);
+}
+
+.headerCellRank {
+  text-align: center;
+}
+
+.headerCellBidWon {
+  text-align: center;
+}
+
+/** Matches `.bidWonCellSplit`: pipe centered in the column with bid / won in each half. */
+.headerBidWonSplit {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 0.18rem;
+  row-gap: 0;
+  justify-items: center;
+  align-items: center;
+  align-self: stretch;
+  text-align: center;
+}
+
+.headerBidWonSplit .bidWonSep {
+  font-family: var(--font-label);
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+.headerCellEvents {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  font-family: var(--font-label);
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  text-align: left;
+}
+
+.row {
+  display: grid;
+  align-items: center;
+  gap: 0.375rem 0.5rem;
+  padding: 0.625rem 0.75rem;
+}
+
+/*
+ * Zebra: `nth-child` counts all `.table` children; header is first, so data rows
+ * are 2, 3, 4… — never use plain `--background` on a row or the first line matches the page.
+ */
+.table > .row:nth-child(2n) {
+  background: var(--card);
+}
+
+.table > .row:nth-child(2n + 1) {
+  background: var(--accent);
+}
+
+/* Round starter only — left accent matches the ★ “goes first” row (see player-round-stats-row). */
+.rowRoundStarter {
+  box-shadow: inset 5px 0 0 0 var(--primary);
+}
+
+.rank {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-align: center;
+}
+
+.nameBlock {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+/* Left: NAME + ★ (star hugs name). Right: voyage total flush to column edge with PTS suffix. */
+.nameLine {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/** Expands so the points block stays on the right; name truncates inside. */
+.nameLabelCluster {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+/** Right edge of name column: {n} PTS */
+.nameColumnVoyagePts {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.runningTotalPtsLabel {
+  flex-shrink: 0;
+  font-family: var(--font-label);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.runningTotalSuffix {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  color: var(--primary);
+}
+
+.playerName {
+  display: block;
+  overflow: hidden;
+  min-width: 0;
+  flex: 0 1 auto;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--foreground);
+}
+
+.roundStarterTrigger {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: color-mix(in srgb, var(--primary), var(--muted-foreground) 35%);
+  cursor: help;
+  line-height: 0;
+}
+
+.roundStarterTrigger:hover {
+  color: var(--primary);
+}
+
+.roundStarterTrigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ring), transparent 45%);
+  outline-offset: 1px;
+}
+
+.roundStarterIcon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.roundStarterTooltipContent {
+  z-index: 70;
+  max-width: min(90vw, 280px);
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--foreground), transparent 88%);
+  background-color: color-mix(in srgb, var(--muted), transparent 8%);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--foreground);
+  box-shadow:
+    0 2px 12px color-mix(in srgb, var(--foreground), transparent 92%),
+    0 0 0 1px color-mix(in srgb, var(--foreground), transparent 94%);
+}
+
+.roundStarterTooltipArrow {
+  fill: color-mix(in srgb, var(--muted), transparent 8%);
+}
+
+.scoreLine {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.trickCell {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--foreground);
+}
+
+.trickCellMismatch {
+  color: var(--destructive);
+}
+
+.trickCellMismatch .trickCell {
+  color: var(--destructive);
+}
+
+.trickCellMismatch .trickInput {
+  color: var(--destructive);
+  border-color: color-mix(in srgb, var(--destructive), transparent 45%);
+}
+
+.trickCellMismatch .bidHarryDelta {
+  color: var(--destructive);
+}
+
+.trickWithSuffix {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+}
+
+.trickWithSuffix .trickInput {
+  width: auto;
+  min-width: 2.25rem;
+  flex: 0 1 auto;
+}
+
+.bidHarryDelta {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--primary);
+}
+
+.bidWonCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.bidWonCellSplit {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 0.18rem;
+  row-gap: 0;
+  align-items: center;
+  justify-items: stretch;
+}
+
+.bidWonSide {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.bidWonCellSplit .bidWonSide {
+  width: 100%;
+}
+
+.bidWonSep {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+.trickInput {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--background);
+  padding: 0.25rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--foreground);
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.trickInput::-webkit-outer-spin-button,
+.trickInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Bid | Won: compact field, no spinner gutter; breathing room from the pipe */
+.bidWonCellSplit .bidWonSide .trickInput {
+  width: auto;
+  max-width: 5.7rem;
+  min-width: 3.1rem;
+  margin-inline: auto;
+  padding-inline: 0.38rem;
+}
+
+.trickInput:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary), transparent 35%);
+  outline-offset: 1px;
+}
+
+.trickInput:disabled {
+  cursor: default;
+  border-color: transparent;
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bidWon {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--foreground);
+}
+
+.bidWonMismatch {
+  color: var(--destructive);
+}
+
+.eventsCell {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.25rem;
+}
+
+.eventsEmpty {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.footer {
+  position: relative;
+  z-index: 40;
+  flex-shrink: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--background);
+  padding: 0.75rem 0.75rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+}
+
+/** Two controls (e.g. Add + Tricks, or Events + Stats). */
+.footerGroup {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footerAction {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding-inline: 0.125rem;
+}
+
+.footerLabel {
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  font-family: var(--font-label);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/** Primary CTA nested row + kicker (colors inherit from `Button`). */
+.footerPrimaryCtaRow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footerPrimaryCtaKicker {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/** Center column for round/score (between side actions) — fills space, no card. */
+.footerActionMain {
+  display: flex;
+  min-width: 0;
+  flex: 1.25;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* ——— Narrow phones: tighter tracks + padding so more fits; overflow scroll still available ——— */
+@media (max-width: 520px) {
+  .navigator {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .headerRow,
+  .row {
+    gap: 0.25rem 0.35rem;
+    padding-left: 0.45rem;
+    padding-right: 0.45rem;
+  }
+
+  .headerCell {
+    font-size: 0.5625rem;
+    letter-spacing: 0.08em;
+  }
+
+  .voyageTotalHdrDesktop {
+    display: none;
+  }
+
+  .voyageTotalHdrMobile {
+    display: block;
+  }
+
+  .tableGridStats .headerRow,
+  .tableGridStats .row {
+    grid-template-columns:
+      1.25rem minmax(15ch, 1fr) minmax(5.25rem, 6.25rem);
+  }
+
+  .tableGridStatsBidOnly .headerRow,
+  .tableGridStatsBidOnly .row {
+    grid-template-columns:
+      1.25rem minmax(15ch, 1fr) minmax(2.5rem, 3.75rem);
+  }
+
+  .tableGridStatsWithScore .headerRow,
+  .tableGridStatsWithScore .row {
+    grid-template-columns:
+      1.25rem minmax(15ch, 1fr) minmax(5.25rem, 6.25rem) minmax(2rem, 2.75rem);
+  }
+
+  .tableGridStatsWithScoreBidOnly .headerRow,
+  .tableGridStatsWithScoreBidOnly .row {
+    grid-template-columns:
+      1.25rem minmax(15ch, 1fr) minmax(2.5rem, 3.75rem) minmax(2rem, 2.75rem);
+  }
+
+  .tableGridWithEvents .headerRow,
+  .tableGridWithEvents .row {
+    grid-template-columns:
+      1.25rem minmax(14ch, 1fr) minmax(5.25rem, 6.25rem) minmax(6rem, 1fr);
+  }
+
+  .tableGridWithEventsBidOnly .headerRow,
+  .tableGridWithEventsBidOnly .row {
+    grid-template-columns:
+      1.25rem minmax(14ch, 1fr) minmax(2.5rem, 3.75rem) minmax(6rem, 1fr);
+  }
+
+  .tableGridVoyage .headerRow,
+  .tableGridVoyage .row {
+    grid-template-columns:
+      1.25rem
+      minmax(14ch, 1fr)
+      minmax(2.5rem, 3.5rem)
+      minmax(2rem, 2.65rem)
+      minmax(3rem, 1fr)
+      minmax(5.5rem, 1fr);
+  }
+
+  .headerBidWonSplit {
+    column-gap: 0.14rem;
+  }
+
+  .bidWonCellSplit {
+    column-gap: 0.14rem;
+  }
+
+  .bidWonCellSplit .bidWonSide .trickInput {
+    min-width: 2.65rem;
+    max-width: 4.25rem;
+    padding-inline: 0.3rem;
+  }
+
+  .bidWonSep {
+    font-size: 0.75rem;
+  }
+}
+
+/* Round body transition when navigating rounds (keyed shell). */
+.roundBodyMotionOuter {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.roundBodyMotionInner {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.roundBodyEnterIdle {
+  opacity: 1;
+}
+
+@keyframes sk-round-enter-next {
+  from {
+    opacity: 0;
+    transform: translateX(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sk-round-enter-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.roundBodyEnterNext {
+  animation: sk-round-enter-next var(--motion-duration-short) var(--motion-ease-out) both;
+}
+
+.roundBodyEnterPrev {
+  animation: sk-round-enter-prev var(--motion-duration-short) var(--motion-ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roundBodyEnterNext,
+  .roundBodyEnterPrev {
+    animation: none;
+  }
+
+  .roundBodyMotionInner.roundBodyEnterNext,
+  .roundBodyMotionInner.roundBodyEnterPrev {
+    opacity: 1;
+    transform: none;
+  }
+}

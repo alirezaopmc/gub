@@ -1,0 +1,227 @@
+/* Filled and outline/ghost button surfaces (static — no pointer-driven variables). */
+
+[data-slot="button"][data-variant="default"] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--primary-foreground);
+  text-shadow: 0 1px 0 color-mix(in srgb, #000 18%, transparent);
+  background-color: var(--primary);
+  background-image: linear-gradient(
+    118deg,
+    color-mix(in srgb, var(--primary) 65%, var(--secondary) 35%) 0%,
+    var(--primary) 45%,
+    color-mix(in srgb, var(--primary) 80%, #000 9%) 100%
+  );
+  background-size: 250% 250%;
+  background-position: 48% 44%;
+  transition: background-position 0.6s cubic-bezier(0.18, 0.88, 0.22, 1);
+}
+
+[data-slot="button"][data-variant="default"]:hover,
+[data-slot="button"][data-variant="default"]:active,
+[data-slot="button"][data-variant="default"]:focus-visible {
+  background-image:
+    radial-gradient(
+      circle 5rem at 50% 50%,
+      color-mix(in srgb, #fff 20%, var(--primary)) 0%,
+      transparent 46%
+    ),
+    linear-gradient(
+      118deg,
+      color-mix(in srgb, var(--primary) 65%, var(--secondary) 35%) 0%,
+      var(--primary) 45%,
+      color-mix(in srgb, var(--primary) 80%, #000 9%) 100%
+    );
+  background-size: 100% 100%, 250% 250%;
+  background-position: 0 0, 50% 40%;
+  filter: brightness(1.05);
+  box-shadow: 0 0 18px -4px color-mix(in srgb, var(--primary), transparent 55%);
+}
+
+[data-slot="button"][data-variant="secondary"] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--secondary-foreground);
+  background-color: var(--secondary);
+  background-image: linear-gradient(
+    132deg,
+    color-mix(in srgb, var(--secondary) 88%, var(--primary) 12%) 0%,
+    var(--secondary) 50%,
+    color-mix(in srgb, var(--secondary) 78%, #000 16%) 100%
+  );
+  background-size: 240% 240%;
+  background-position: 44% 48%;
+  transition: background-position 0.6s cubic-bezier(0.18, 0.88, 0.22, 1);
+}
+
+[data-slot="button"][data-variant="secondary"]:hover,
+[data-slot="button"][data-variant="secondary"]:active,
+[data-slot="button"][data-variant="secondary"]:focus-visible {
+  background-image:
+    radial-gradient(
+      circle 4.75rem at 50% 50%,
+      color-mix(in srgb, #fff 12%, var(--secondary)) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      132deg,
+      color-mix(in srgb, var(--secondary) 88%, var(--primary) 12%) 0%,
+      var(--secondary) 50%,
+      color-mix(in srgb, var(--secondary) 78%, #000 16%) 100%
+    );
+  background-size: 100% 100%, 240% 240%;
+  background-position: 0 0, 50% 44%;
+  filter: brightness(1.06);
+  box-shadow:
+    0 4px 14px -6px color-mix(in srgb, #000, transparent 45%),
+    0 0 16px -2px color-mix(in srgb, var(--secondary), transparent 42%);
+}
+
+[data-slot="button"][data-variant="outline"] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow:
+    0 3px 10px -2px color-mix(in srgb, #000, transparent 62%),
+    0 0 0.75rem -0.35rem color-mix(in srgb, var(--primary), transparent 70%);
+  transition: border-color 0.15s ease, box-shadow 0.2s ease;
+}
+
+[data-slot="button"][data-variant="outline"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle 2.125rem at 50% 50%,
+      color-mix(in srgb, var(--primary) 34%, transparent) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle 37.5% at 50% 50%,
+      color-mix(in srgb, var(--primary) 14%, transparent) 0%,
+      transparent 78%
+    );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+[data-slot="button"][data-variant="outline"]:hover,
+[data-slot="button"][data-variant="outline"]:active,
+[data-slot="button"][data-variant="outline"]:focus-visible {
+  box-shadow:
+    0 5px 16px -4px color-mix(in srgb, #000, transparent 54%),
+    0 0 18px -1px color-mix(in srgb, var(--primary), transparent 45%);
+}
+
+[data-slot="button"][data-variant="outline"]:hover::before,
+[data-slot="button"][data-variant="outline"]:active::before,
+[data-slot="button"][data-variant="outline"]:focus-visible::before {
+  opacity: 1;
+}
+
+[data-slot="button"][data-variant="ghost"] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+[data-slot="button"][data-variant="ghost"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle 2rem at 50% 50%,
+      color-mix(in srgb, var(--primary) 18%, transparent) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle 37.5% at 50% 50%,
+      color-mix(in srgb, var(--primary) 7%, transparent) 0%,
+      transparent 78%
+    );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+[data-slot="button"][data-variant="ghost"]:hover,
+[data-slot="button"][data-variant="ghost"]:active,
+[data-slot="button"][data-variant="ghost"]:focus-visible {
+  box-shadow:
+    0 3px 12px -5px color-mix(in srgb, #000, transparent 58%),
+    0 0 12px -1px color-mix(in srgb, var(--primary), transparent 54%);
+}
+
+[data-slot="button"][data-variant="ghost"]:hover::before,
+[data-slot="button"][data-variant="ghost"]:active::before,
+[data-slot="button"][data-variant="ghost"]:focus-visible::before {
+  opacity: 1;
+}
+
+/* Tier B: explicit muted disabled surfaces (no global opacity wash) */
+[data-slot="button"][data-variant="default"]:disabled {
+  background-image: none;
+  background-color: color-mix(in srgb, var(--muted), transparent 12%);
+  background-size: auto;
+  background-position: 0 0;
+  color: var(--muted-foreground);
+  text-shadow: none;
+  filter: none;
+  box-shadow: none;
+  transition: none;
+}
+
+[data-slot="button"][data-variant="secondary"]:disabled {
+  background-image: none;
+  background-color: color-mix(in srgb, var(--muted), transparent 18%);
+  background-size: auto;
+  background-position: 0 0;
+  color: var(--muted-foreground);
+  filter: none;
+  box-shadow: none;
+  transition: none;
+}
+
+[data-slot="button"][data-variant="outline"]:disabled {
+  box-shadow: none;
+  border-color: color-mix(in srgb, var(--foreground), transparent 78%);
+  background-color: color-mix(in srgb, var(--muted), transparent 88%);
+  color: var(--muted-foreground);
+}
+
+[data-slot="button"][data-variant="outline"]:disabled::before {
+  opacity: 0;
+}
+
+[data-slot="button"][data-variant="ghost"]:disabled {
+  box-shadow: none;
+  color: var(--muted-foreground);
+  background-color: transparent;
+}
+
+[data-slot="button"][data-variant="ghost"]:disabled::before {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="button"][data-variant="default"],
+  [data-slot="button"][data-variant="secondary"] {
+    background-image: none;
+    transition: none;
+  }
+
+  [data-slot="button"][data-variant="outline"]::before,
+  [data-slot="button"][data-variant="ghost"]::before {
+    display: none;
+  }
+}

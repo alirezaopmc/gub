@@ -1,0 +1,8 @@
+/* Voyage stats dialog — body chrome only (shell is `@/components/ui/dialog`). */
+
+.body {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: min(68dvh, 32rem);
+  padding: 0.25rem 0.55rem 0.5rem;
+}
