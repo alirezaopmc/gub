@@ -4,7 +4,7 @@ const games = [
   {
     href: "/games/skull-king",
     title: "Skull King",
-    description: "Trick-taking pirate card game — score tracking and rounds.",
+    description: "Trick-taking pirate card game — play live, score, or read rules.",
     imageSrc: "/games/skull-king/cover.png",
     imageAlt: "Skull King game cover art",
   },

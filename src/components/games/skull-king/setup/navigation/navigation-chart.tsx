@@ -20,13 +20,30 @@ const HINT_ID = "navigation-chart-schema-hint"
 const INPUT_ID = "navigation-chart-round-schema"
 const HEADING_ID = "navigation-chart-heading"
 
-const ROUND_SCHEMA_PRESET_ORDER: RoundsSchemaPresetId[] = ["default", "odds", "evens", "rich"]
+const ROUND_SCHEMA_PRESET_ORDER: RoundsSchemaPresetId[] = [
+  "default",
+  "evenKeeled",
+  "whirlpool",
+  "swiftSkirmish",
+  "skipToBrawl",
+  "broadside",
+  "pastBedtime",
+  "odds",
+  "evens",
+  "rich",
+]
 
 const ROUND_SCHEMA_PRESET_LABEL: Record<RoundsSchemaPresetId, string> = {
   default: "Default",
   odds: "Odds",
   evens: "Evens",
   rich: "Rich",
+  evenKeeled: "Even Keeled",
+  skipToBrawl: "Skip to Brawl",
+  swiftSkirmish: "Swift Skirmish",
+  broadside: "Broadside",
+  whirlpool: "Whirlpool",
+  pastBedtime: "Past Bedtime",
 }
 
 export function NavigationChart() {

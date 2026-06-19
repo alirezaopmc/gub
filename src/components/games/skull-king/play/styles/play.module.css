@@ -1,0 +1,86 @@
+.card {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cardClickable:hover {
+  transform: translateY(-6px);
+}
+
+.cardClickable:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.cardImage {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 5.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.35);
+}
+
+.cardSmall .cardImage {
+  max-width: 3.5rem;
+}
+
+.cardPlayable {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+  animation: cardPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes cardPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.statusBanner {
+  border-color: color-mix(in oklab, var(--border) 80%, var(--primary) 20%);
+  background: color-mix(in oklab, var(--background) 90%, var(--primary) 10%);
+  color: var(--foreground);
+}
+
+.statusYourTurn {
+  border-color: var(--primary);
+  background: color-mix(in oklab, var(--background) 75%, var(--primary) 25%);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.activePlayer {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.handRow {
+  padding: 1rem 0;
+}
+
+.trickArea {
+  min-height: 5rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: color-mix(in oklab, var(--background) 85%, var(--primary) 15%);
+}
+
+.provisionalScore {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.scoreDelta {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}

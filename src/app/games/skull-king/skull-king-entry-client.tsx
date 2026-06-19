@@ -161,7 +161,7 @@ export function SkullKingEntryClient() {
   React.useEffect(() => {
     const entry = getSkullKingEntryState()
     if (entry.kind === "fresh") {
-      router.replace("/games/skull-king/setup")
+      router.replace("/games/skull-king/calculator/setup")
       return
     }
     setView({ status: "ready", entry })
@@ -175,7 +175,7 @@ export function SkullKingEntryClient() {
 
   const onConfirmStartFresh = () => {
     wipeSkullKingLocalGame()
-    router.replace("/games/skull-king/setup")
+    router.replace("/games/skull-king/calculator/setup")
   }
 
   if (view.status === "loading") {
@@ -191,7 +191,7 @@ export function SkullKingEntryClient() {
   const config = loadGameConfig()
   const persistedRound = isOngoing ? loadRoundData() : null
 
-  const primaryHref = isOngoing ? "/games/skull-king/round" : "/games/skull-king/setup?step=4"
+  const primaryHref = isOngoing ? "/games/skull-king/calculator/round" : "/games/skull-king/calculator/setup?step=4"
   const primaryTitle = isOngoing ? "Continue voyage" : "Review and start"
   const primaryAria = isOngoing
     ? `${primaryTitle}. Round ${entry.currentRoundIndex + 1} of ${entry.roundCount}${

@@ -187,7 +187,7 @@ function SkullKingSetupWizardInner() {
         return
       }
       if (!beginSkullKingVoyageFromSetupIfReady()) return
-      router.push("/games/skull-king/round")
+      router.push("/games/skull-king/calculator/round")
     },
     [step, goNext, router],
   )
@@ -210,7 +210,7 @@ function SkullKingSetupWizardInner() {
       if (step === 4) {
         if (!beginSkullKingVoyageFromSetupIfReady()) return
         e.preventDefault()
-        router.push("/games/skull-king/round")
+        router.push("/games/skull-king/calculator/round")
       }
     }
 
@@ -236,7 +236,7 @@ function SkullKingSetupWizardInner() {
   const onConfirmRound = () => {
     if (!confirmReady) return
     if (!beginSkullKingVoyageFromSetupIfReady()) return
-    router.push("/games/skull-king/round")
+    router.push("/games/skull-king/calculator/round")
   }
 
   const showWizardFooter = footerLayoutMode !== "hidden"

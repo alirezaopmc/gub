@@ -9,6 +9,18 @@ export const ROUNDS_SCHEMA_PRESETS = {
   odds: [1, 3, 5, 7, 9],
   evens: [2, 4, 6, 8, 10],
   rich: [6, 7, 8, 9, 10],
+  /** Rulebook p.14 — Even Keeled */
+  evenKeeled: [2, 4, 6, 8, 10],
+  /** Rulebook p.14 — Skip to the Brawl */
+  skipToBrawl: [6, 7, 8, 9, 10],
+  /** Rulebook p.14 — Swift-n-Salty Skirmish */
+  swiftSkirmish: [5, 5, 5, 5, 5],
+  /** Rulebook p.14 — Broadside Barrage */
+  broadside: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+  /** Rulebook p.14 — Whirlpool */
+  whirlpool: [9, 9, 7, 7, 5, 5, 3, 3, 1, 1],
+  /** Rulebook p.14 — Past Your Bedtime */
+  pastBedtime: [1],
 } as const
 
 export type RoundsSchemaPresetId = keyof typeof ROUNDS_SCHEMA_PRESETS

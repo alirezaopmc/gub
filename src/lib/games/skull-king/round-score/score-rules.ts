@@ -119,15 +119,21 @@ export function scoreRascal(
   return s
 }
 
+function madeBid(handSize: number, player: PlayerRoundData): boolean {
+  const eff = effectiveTricksBid(handSize, player.bid, player.harryGiantBidDelta)
+  return eff !== null && player.won !== null && eff === player.won
+}
+
 export function computeRoundScoreBreakdown(ctx: ScoreBreakdownContext): RoundScoreBreakdown {
   const { handSize, playerIndex, player, roundPlayers } = ctx
   const eff = effectiveTricksBid(handSize, player.bid, player.harryGiantBidDelta)
   const main = scoreBidWon(handSize, eff, player.won)
-  const bonus =
-    scoreFourteenBonus(player.events) +
-    scoreHeroCaptures(player.events) +
-    scoreAlliance(playerIndex, player, roundPlayers, handSize) +
-    scoreRascal(player.events, playerIndex, eff, player.won)
+  const bonus = madeBid(handSize, player)
+    ? scoreFourteenBonus(player.events) +
+      scoreHeroCaptures(player.events) +
+      scoreAlliance(playerIndex, player, roundPlayers, handSize) +
+      scoreRascal(player.events, playerIndex, eff, player.won)
+    : 0
   return { main, bonus, total: main + bonus }
 }
 

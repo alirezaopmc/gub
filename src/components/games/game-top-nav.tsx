@@ -57,7 +57,7 @@ export function GameTopNav() {
               className="-mr-1 shrink-0 px-2 font-label text-xs font-semibold uppercase tracking-wide text-muted-foreground hover:text-primary"
               asChild
             >
-              <Link href="/games/skull-king" aria-label="Skull King hub — continue voyage or start fresh">
+              <Link href="/games/skull-king" aria-label="Skull King hub">
                 New
               </Link>
             </Button>
