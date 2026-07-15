@@ -48,12 +48,15 @@ export function buildGameDocSearchIndex(gameId: string): DocSearchEntry[] {
       headings: headings.map((h) => ({ id: h.id, text: h.text })),
     })
 
+    const pageArtifacts = frontmatter.artifacts
+
     entries.push({
       id: `page:${relativePath}`,
       kind: "page",
       title: frontmatter.title,
       subtitle: frontmatter.description,
       href,
+      artifacts: pageArtifacts,
       keywords: [frontmatter.section ?? "", frontmatter.title, frontmatter.description].filter(
         Boolean,
       ),
@@ -66,6 +69,7 @@ export function buildGameDocSearchIndex(gameId: string): DocSearchEntry[] {
         title: heading.text,
         subtitle: frontmatter.title,
         href: `${href}#${heading.id}`,
+        artifacts: pageArtifacts,
         keywords: [heading.text, frontmatter.title],
       })
     }

@@ -36,4 +36,16 @@ describe("buildGameDocNav", () => {
     const play = nav.groups.find((g) => g.section === "app")?.items.find((i) => i.title.includes("Play"))
     expect(play?.href).toBe("/games/skull-king/docs/play")
   })
+
+  it("includes artifacts from frontmatter on gated pages", () => {
+    const rules = buildGameDocNav("skull-king").groups.find((g) => g.section === "rules")
+    const advanced = rules?.items.find((i) => i.title === "Advanced cards")
+    expect(advanced?.artifacts).toEqual(["Kraken", "Whale", "Loot"])
+
+    const pirate = rules?.items.find((i) => i.title === "Pirate abilities")
+    expect(pirate?.artifacts).toEqual(["PirateAbilities"])
+
+    const overview = rules?.items.find((i) => i.title === "Overview")
+    expect(overview?.artifacts).toBeUndefined()
+  })
 })

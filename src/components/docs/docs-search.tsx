@@ -6,6 +6,8 @@ import { Search } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Dialog } from "@/components/ui/dialog"
+import { useDocsArtifacts } from "@/components/docs/docs-artifact-context"
+import { isDocVisibleForArtifacts } from "@/lib/docs/doc-artifact-visibility"
 import { loadDocsSearchIndex } from "@/lib/docs/load-docs-search-index"
 import { searchDocs } from "@/lib/docs/search-docs"
 import type { DocSearchEntry, DocSearchKind } from "@/lib/docs/types"
@@ -26,6 +28,7 @@ const KIND_LABELS: Record<DocSearchKind, string> = {
 
 export function DocsSearch({ gameId, className }: DocsSearchProps) {
   const router = useRouter()
+  const { options } = useDocsArtifacts()
   const listId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -37,8 +40,10 @@ export function DocsSearch({ gameId, className }: DocsSearchProps) {
 
   const results = useMemo(() => {
     if (!entries) return []
-    return searchDocs(entries, query)
-  }, [entries, query])
+    return searchDocs(entries, query).filter((entry) =>
+      isDocVisibleForArtifacts(entry.artifacts, options),
+    )
+  }, [entries, query, options])
 
   const selectedIndex = Math.min(activeIndex, Math.max(results.length - 1, 0))
 

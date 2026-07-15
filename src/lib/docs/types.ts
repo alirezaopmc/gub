@@ -21,6 +21,7 @@ export type LoadedDoc = {
 export type DocNavItem = {
   title: string
   href: string
+  artifacts?: string[]
 }
 
 export type DocNavGroup = {
@@ -46,6 +47,7 @@ export type DocSearchEntry = {
   subtitle?: string
   href: string
   keywords?: string[]
+  artifacts?: string[]
 }
 
 export type DocHeading = {

@@ -64,11 +64,12 @@ function buildGroup(gameId: string, section: string): DocNavGroup | null {
         title: frontmatter.title,
         href,
         order: frontmatter.order ?? 999,
+        ...(frontmatter.artifacts?.length ? { artifacts: frontmatter.artifacts } : {}),
       }
     })
-    .filter((item): item is DocNavItem & { order: number } => item !== null)
+    .filter((item) => item !== null)
     .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title))
-    .map(({ title, href }) => ({ title, href }))
+    .map(({ title, href, artifacts }) => ({ title, href, artifacts }))
 
   if (items.length === 0) return null
 

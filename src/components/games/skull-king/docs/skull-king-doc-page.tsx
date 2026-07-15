@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { DocsArtifactGate } from "@/components/docs/docs-artifact-gate"
 import { DocsMdxContent } from "@/components/docs/docs-mdx-content"
 import { SkullKingDocsShell } from "@/components/games/skull-king/docs/skull-king-docs-shell"
 import { buildDocBreadcrumbs } from "@/lib/docs/build-doc-breadcrumbs"
@@ -30,7 +31,9 @@ export async function SkullKingDocPage({ relativePath }: SkullKingDocPageProps) 
       breadcrumbs={buildDocBreadcrumbs(GAME_ID, frontmatter)}
       headings={headings}
     >
-      <DocsMdxContent relativePath={relativePath} />
+      <DocsArtifactGate required={frontmatter.artifacts} gameId={GAME_ID}>
+        <DocsMdxContent relativePath={relativePath} />
+      </DocsArtifactGate>
     </SkullKingDocsShell>
   )
 }
