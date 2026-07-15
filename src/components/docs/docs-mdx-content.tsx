@@ -7,12 +7,12 @@ type DocsMdxContentProps = {
 }
 
 export async function DocsMdxContent({ relativePath }: DocsMdxContentProps) {
-  const { Content } = await renderDoc(relativePath)
+  const { Content, components } = await renderDoc(relativePath)
 
   return (
     <DocsLinkProvider fromPath={relativePath}>
       <DocsProse>
-        <Content />
+        <Content components={components} />
       </DocsProse>
     </DocsLinkProvider>
   )

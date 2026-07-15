@@ -35,6 +35,9 @@ describe("resolveDocHref", () => {
   })
 
   it("maps sibling rules links", () => {
+    expect(resolveDocHref(fromRules, "./01-setup-deck.md")).toBe(
+      "/games/skull-king/docs/rules/01-setup-deck",
+    )
     expect(resolveDocHref(fromRules, "./06-scoring.md")).toBe(
       "/games/skull-king/docs/rules/06-scoring",
     )

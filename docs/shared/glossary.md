@@ -1,3 +1,9 @@
+---
+title: Glossary
+description: Shared terms across GUB documentation and Skull King rules.
+audience: player
+---
+
 # Glossary
 
 Shared terms across GUB documentation and Skull King rules.
