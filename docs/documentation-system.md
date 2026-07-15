@@ -42,7 +42,7 @@ source: src/lib/games/skull-king/round-score/score-rules.ts  # when tied to code
 ---
 ```
 
-3. **Scoring and presets** must match code — cite `source:` in frontmatter; future CI (issue #24) will enforce.
+3. **Scoring and presets** must match code — cite `source:` in frontmatter; CI enforces scoring alignment via `score-rules-docs-drift.test.ts` (issue #24).
 4. **Artifact tags** — mark sections that only apply when an artifact is enabled (see [artifacts-matrix](./games/skull-king/reference/artifacts-matrix.md)).
 
 ## Layout (future in-app shell)

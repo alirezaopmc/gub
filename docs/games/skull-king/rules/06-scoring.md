@@ -72,7 +72,7 @@ Requires **Loot** artifact.
 Rascal ability: side bet of **10 or 20** points.
 
 - Made bid → **+wager**
-- Missed bid → **−wager**
+- Missed bid → wager **forfeited** (same as other Part 2 bonuses)
 
 Requires **PirateAbilities** artifact.
 
