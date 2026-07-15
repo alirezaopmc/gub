@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { buildGameDocNav } from "@/lib/docs/build-game-doc-nav"
+import { buildGameDocNav, listGameDocSlugs } from "@/lib/docs/build-game-doc-nav"
 
 describe("buildGameDocNav", () => {
   it("builds skull-king nav with three groups", () => {
@@ -17,6 +17,13 @@ describe("buildGameDocNav", () => {
     const rules = buildGameDocNav("skull-king").groups.find((g) => g.section === "rules")
     expect(rules?.items[0].href).toBe("/games/skull-king/docs/rules/00-overview")
     expect(rules?.items[rules.items.length - 1].href).toBe("/games/skull-king/docs/rules/10-faq")
+  })
+
+  it("lists slugs per section for static params", () => {
+    expect(listGameDocSlugs("skull-king", "rules").length).toBe(11)
+    expect(listGameDocSlugs("skull-king", "reference").length).toBe(3)
+    expect(listGameDocSlugs("skull-king", "app")).toContain("play")
+    expect(listGameDocSlugs("skull-king", "app")).toContain("hub")
   })
 
   it("maps hrefs to app routes", () => {

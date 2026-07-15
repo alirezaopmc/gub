@@ -29,6 +29,13 @@ function titleFromGameId(gameId: string): string {
   )
 }
 
+/** Slugs (filename without extension) for generateStaticParams. */
+export function listGameDocSlugs(gameId: string, section: string): string[] {
+  return listMarkdownInSection(gameId, section).map((relativePath) =>
+    path.basename(relativePath, path.extname(relativePath)),
+  )
+}
+
 function listMarkdownInSection(gameId: string, section: string): string[] {
   const sectionDir = path.join(DOCS_ROOT, "games", gameId, section)
   if (!fs.existsSync(sectionDir)) return []
