@@ -15,12 +15,7 @@ export function SkullKingDocsShell({
   headings = [],
   children,
 }: SkullKingDocsShellProps) {
-  const config: ReturnType<typeof buildGameDocNav> = {
-    ...buildGameDocNav("skull-king"),
-    activePathAliases: {
-      "/games/skull-king/docs": "/games/skull-king/docs/rules/00-overview",
-    },
-  }
+  const config = buildGameDocNav("skull-king")
 
   return (
     <DocsLayout config={config} breadcrumbs={breadcrumbs} headings={headings}>
