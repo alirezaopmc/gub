@@ -1,39 +1,36 @@
-# Skull King
+# DEPRECATED
 
-## 1. Setup Page
-In this page the host will provide the game configs and paramaters for the game.
+This file is a **deprecated** early planning stub from before the Skull King implementation.
 
-* Players Count
-    * Names
-* Rounds Schema (Text field, comma-separated: "1,2,2,5,5")
-* Feature Flag
-    * Pirate Abilities
-    * Hero Capture
-    * Whale
-    * Kraken
-    * Coin
-    * 14-Bonus
-* (Optional) Scoring System
-    * Skull King
-    * Rascal
-    * Fool
+**Use instead:** [games/skull-king/index.md](./games/skull-king/index.md)
 
-There is a submit button at the end of the page.
+The current documentation lives under:
 
-## 2. Rounds Score (Table???)
+- [games/skull-king/rules/](./games/skull-king/rules/) — player rules
+- [games/skull-king/app/](./games/skull-king/app/) — Play and Calculator guides
+- [games/skull-king/reference/](./games/skull-king/reference/) — quick references
 
-A header demonstrate Round with two left/right (prev/next) arrow buttons.
+In-app rules (until markdown rendering ships in M4): `src/components/games/skull-king/docs/skull-king-docs-view.tsx`
 
-Table of scores:
-* Players
-* Guess/Actual (Editable: Taha)
-* Event Logs (Hero, Coin, Bonus, etc)
-* New Event Buttons
-    * Coin: source/destination player
-    * Pirate Abilities: pirate kind and action value
-    * 14-Bonus: color
-    * Hero Capture: hero tyep
-* Point Edit (Alireza)
-* Finish
+---
 
-## 3. Scoreboard
+## Archived content (historical)
+
+The notes below described an early setup/scoreboard wireframe and do not reflect the shipped app.
+
+### 1. Setup Page
+
+Host provides game configs:
+
+- Players count and names
+- Rounds schema (comma-separated)
+- Feature flags: Pirate Abilities, Hero Capture, Whale, Kraken, Coin, 14-Bonus
+- Optional scoring systems
+
+### 2. Rounds Score
+
+Table UI for bid/actual, event logs, finish round.
+
+### 3. Scoreboard
+
+(Not implemented in this stub.)

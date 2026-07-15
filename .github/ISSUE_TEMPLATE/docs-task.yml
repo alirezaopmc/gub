@@ -1,0 +1,43 @@
+name: Documentation task
+description: Add or update GUB markdown documentation
+title: "docs: "
+labels: ["docs"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See [docs/documentation-system.md](../blob/main/docs/documentation-system.md) for conventions.
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Milestone area
+      options:
+        - M1 Foundation & Research
+        - M2 Skull King Content
+        - M3 Contributor Docs
+        - M4 Docs Platform (App)
+    validations:
+      required: true
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Deliverable path(s)
+      description: Which file(s) under docs/ will this change?
+      placeholder: "docs/games/skull-king/rules/06-scoring.md"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should this doc change accomplish?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Quality checklist
+      options:
+        - label: Frontmatter includes title and description
+        - label: Scoring claims match score-rules.ts (if applicable)
+        - label: Artifact tags set for optional rules (if applicable)
