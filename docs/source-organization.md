@@ -2,6 +2,19 @@
 
 How feature code is split between `src/components`, `src/lib`, and styles. This complements the visual rules in [design-system.md](./design-system.md).
 
+## Documentation (`docs/`)
+
+Markdown under `docs/` is the **source of truth** for player rules and contributor guides. Conventions (frontmatter, IA, future in-app mapping) live in [documentation-system.md](./documentation-system.md).
+
+| Path | Purpose |
+|------|---------|
+| `docs/games/<game>/` | Per-game rules, app guides, reference |
+| `docs/shared/` | Templates, glossary |
+| `docs/contributing/` | Local dev, adding games |
+| `docs/research/` | Competitive analysis |
+
+Game code mirrors doc structure: `src/components/games/<game>/`, `src/lib/games/<game>/`, `src/app/games/<game>/`.
+
 ## Layers
 
 | Area | Path | Use for |

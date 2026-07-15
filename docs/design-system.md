@@ -2,6 +2,8 @@
 
 Dark-first application shell: **charcoal background**, **gold primary**, **teal secondary**, **cream type**, rounded UI. Product and feature code should use **semantic tokens**, not raw hex values.
 
+For documentation layout, typography in prose pages, motion, and future in-app docs shell, see [documentation-system.md](./documentation-system.md).
+
 ## Brand palette (reference)
 
 | Role | Hex | Tailwind (semantic) |

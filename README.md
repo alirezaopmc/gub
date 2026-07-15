@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GUB
 
-## Getting Started
+**GUB** (Game hub) is a Next.js app for board and card game tooling. The first title is [**Skull King**](https://github.com/alirezaopmc/gub/tree/main/docs/games/skull-king) — live play, tableside scoring, and rules.
 
-First, run the development server:
+## Features
+
+| Mode | Route | Description |
+|------|-------|-------------|
+| Hub | `/games/skull-king` | Play, Calculator, or Rules |
+| Play | `/games/skull-king/play` | 3–8 player live matches (2-letter join codes) |
+| Calculator | `/games/skull-king/calculator` | Single-device voyage scoring |
+| Docs | `/games/skull-king/docs` | Rules reference (in-app; markdown source in `docs/`) |
+
+## Quick start
 
 ```bash
+git clone git@github.com:alirezaopmc/gub.git
+cd gub
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Doc | Purpose |
+|-----|---------|
+| [docs/README.md](./docs/README.md) | Documentation hub |
+| [docs/games/skull-king/](./docs/games/skull-king/) | Skull King rules and guides |
+| [docs/contributing/](./docs/contributing/) | Development and adding games |
+| [docs/design-system.md](./docs/design-system.md) | UI tokens and conventions |
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS v4, Radix UI (shadcn-style)
+- Zustand, Vitest
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev        # development
+npm run build      # production build
+npm run test:run   # unit tests
+npm run lint       # ESLint
+```
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See [docs/contributing/README.md](./docs/contributing/README.md). Work is tracked in [GitHub Issues](https://github.com/alirezaopmc/gub/issues) under milestones M1–M4.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+Private project (`"private": true` in package.json). Contact the repository owner for use terms.
