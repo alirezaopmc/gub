@@ -17,13 +17,11 @@ const sections = [
 
 export function SkullKingDocsView() {
   return (
-    <article className="prose prose-invert max-w-none">
-      <h1 className="font-headline text-3xl font-semibold text-primary">Skull King rules</h1>
+    <article className="prose prose-gub max-w-none prose-headings:font-headline prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
+      <h1>Skull King rules</h1>
       <p className="text-muted-foreground">
         Based on the Grandpa Beck&apos;s rulebook.{" "}
-        <a href="https://en.doc.boardgamearena.com/Gamehelpskullking" className="text-secondary">
-          BGA FAQ
-        </a>{" "}
+        <a href="https://en.doc.boardgamearena.com/Gamehelpskullking">BGA FAQ</a>{" "}
         aligned where noted.
       </p>
 

@@ -95,7 +95,7 @@ Align with [design-system.md](./design-system.md):
 | Code | 13–14px monospace | system mono stack |
 | Nav items | 14px | `text-sm` |
 
-Install `@tailwindcss/typography` before UI work (issue #18). Wrap body in `prose prose-invert max-w-none` inside `DocsProse`.
+Install `@tailwindcss/typography` before UI work (issue #18). Wrap body in `prose prose-gub max-w-none` inside `DocsProse` (replaces generic `prose-invert` on the dark-first shell).
 
 ## Motion
 
