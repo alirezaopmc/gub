@@ -17,3 +17,32 @@ export type LoadedDoc = {
   filePath: string
   relativePath: string
 }
+
+export type DocNavItem = {
+  title: string
+  href: string
+}
+
+export type DocNavGroup = {
+  label: string
+  section: string
+  items: DocNavItem[]
+}
+
+export type DocNavConfig = {
+  gameTitle: string
+  groups: DocNavGroup[]
+  /** Map a pathname to the nav href that should show as active (legacy routes until #21). */
+  activePathAliases?: Record<string, string>
+}
+
+export type DocHeading = {
+  id: string
+  text: string
+  level: 2 | 3
+}
+
+export type DocBreadcrumb = {
+  label: string
+  href?: string
+}

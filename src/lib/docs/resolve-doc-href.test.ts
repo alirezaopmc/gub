@@ -1,6 +1,26 @@
 import { describe, expect, it } from "vitest"
 
-import { resolveDocHref } from "@/lib/docs/resolve-doc-href"
+import { docsRelativePathToRoute, resolveDocHref } from "@/lib/docs/resolve-doc-href"
+
+describe("docsRelativePathToRoute", () => {
+  it("maps rules paths", () => {
+    expect(docsRelativePathToRoute("games/skull-king/rules/06-scoring.md")).toBe(
+      "/games/skull-king/docs/rules/06-scoring",
+    )
+  })
+
+  it("maps app paths", () => {
+    expect(docsRelativePathToRoute("games/skull-king/app/play.md")).toBe(
+      "/games/skull-king/docs/play",
+    )
+  })
+
+  it("maps reference paths", () => {
+    expect(docsRelativePathToRoute("games/skull-king/reference/scoring-quick-ref.md")).toBe(
+      "/games/skull-king/docs/reference/scoring-quick-ref",
+    )
+  })
+})
 
 describe("resolveDocHref", () => {
   const fromRules = "games/skull-king/rules/00-overview.md"

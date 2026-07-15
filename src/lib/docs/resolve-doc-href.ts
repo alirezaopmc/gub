@@ -9,6 +9,11 @@ function isExternalHref(href: string): boolean {
   )
 }
 
+/** Map a docs-relative path (e.g. games/skull-king/rules/06-scoring.md) to an app route. */
+export function docsRelativePathToRoute(relativePath: string): string | null {
+  return docPathToRoute(relativePath)
+}
+
 function docPathToRoute(resolvedPath: string): string | null {
   const withoutExt = resolvedPath.replace(/\.mdx?$/, "")
 
