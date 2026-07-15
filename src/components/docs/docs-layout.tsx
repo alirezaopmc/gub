@@ -14,6 +14,7 @@ type DocsLayoutProps = {
   headings?: DocHeading[]
   children: ReactNode
   className?: string
+  artifactFilter?: ReactNode
 }
 
 export function DocsLayout({
@@ -22,6 +23,7 @@ export function DocsLayout({
   headings = [],
   children,
   className,
+  artifactFilter,
 }: DocsLayoutProps) {
   return (
     <div className={cn("flex min-h-0 flex-1 flex-col", className)}>
@@ -36,6 +38,7 @@ export function DocsLayout({
       <div className="mx-auto flex w-full min-w-0 flex-1 gap-0 px-4 py-6 lg:grid lg:max-w-none lg:grid-cols-[15rem_minmax(0,1fr)_12.5rem] lg:gap-8 lg:px-6">
         <aside className="hidden lg:block">
           <div className="sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto pr-2">
+            {artifactFilter}
             <DocsNav config={config} />
           </div>
         </aside>

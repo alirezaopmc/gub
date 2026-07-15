@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation"
 import { Collapsible } from "radix-ui"
 import { ChevronDown } from "lucide-react"
 
+import { useDocsArtifacts } from "@/components/docs/docs-artifact-context"
+import { isDocVisibleForArtifacts } from "@/lib/docs/doc-artifact-visibility"
 import type { DocNavConfig } from "@/lib/docs/types"
 import { cn } from "@/lib/utils"
 
@@ -35,13 +37,21 @@ function groupHasActive(pathname: string | null, config: DocNavConfig, section: 
 
 export function DocsNav({ config, className, onNavigate }: DocsNavProps) {
   const pathname = usePathname()
+  const { options } = useDocsArtifacts()
+
+  const visibleGroups = config.groups
+    .map((group) => ({
+      ...group,
+      items: group.items.filter((item) => isDocVisibleForArtifacts(item.artifacts, options)),
+    }))
+    .filter((group) => group.items.length > 0)
 
   return (
     <nav aria-label="Documentation" className={cn("flex flex-col gap-4", className)}>
       <p className="px-2 font-headline text-xs font-bold uppercase tracking-wider text-primary">
         {config.gameTitle}
       </p>
-      {config.groups.map((group) => {
+      {visibleGroups.map((group) => {
         const defaultOpen = groupHasActive(pathname, config, group.section)
 
         return (

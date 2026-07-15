@@ -26,4 +26,14 @@ describe("buildGameDocSearchIndex", () => {
     const scoring = index.find((e) => e.kind === "page" && e.title === "Scoring")
     expect(scoring?.href).toBe("/games/skull-king/docs/rules/06-scoring")
   })
+
+  it("carries artifacts on page and heading entries", () => {
+    const advanced = index.find((e) => e.kind === "page" && e.title === "Advanced cards")
+    expect(advanced?.artifacts).toEqual(["Kraken", "Whale", "Loot"])
+
+    const krakenHeading = index.find(
+      (e) => e.kind === "heading" && e.title === "Kraken" && e.subtitle === "Advanced cards",
+    )
+    expect(krakenHeading?.artifacts).toEqual(["Kraken", "Whale", "Loot"])
+  })
 })

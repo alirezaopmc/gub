@@ -5,6 +5,7 @@ import { Menu } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Sheet } from "@/components/ui/sheet"
+import { ArtifactFilter } from "@/components/docs/artifact-filter"
 import { DocsNav } from "@/components/docs/docs-nav"
 import type { DocNavConfig } from "@/lib/docs/types"
 
@@ -41,6 +42,7 @@ export function DocsMobileNav({ config }: DocsMobileNavProps) {
         <Sheet.Overlay />
         <Sheet.Content aria-describedby={undefined}>
           <Sheet.Title>Documentation</Sheet.Title>
+          <ArtifactFilter />
           <DocsNav config={config} onNavigate={() => setOpen(false)} />
         </Sheet.Content>
       </Sheet.Portal>
