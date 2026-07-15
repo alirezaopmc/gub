@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run generate:docs-search && next dev",
+    "build": "npm run generate:docs-search && next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "generate:docs-search": "vitest run src/lib/docs/generate-search-index.test.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -24,6 +25,7 @@
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.21.0",
+    "mermaid": "^11.16.0",
     "next": "^16.2.9",
     "radix-ui": "^1.6.0",
     "react": "19.2.7",

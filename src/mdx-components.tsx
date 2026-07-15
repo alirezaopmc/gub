@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types"
 import type { ComponentPropsWithoutRef } from "react"
 
 import { DocsAnchor } from "@/components/docs/docs-anchor"
+import { DocsPre } from "@/components/docs/docs-pre"
 
 const components = {
   h1: ({ children, ...props }: ComponentPropsWithoutRef<"h1">) => (
@@ -20,6 +21,7 @@ const components = {
     </h3>
   ),
   a: DocsAnchor,
+  pre: DocsPre,
 } satisfies MDXComponents
 
 export const mdxComponents: MDXComponents = components

@@ -16,6 +16,7 @@
 # next.js
 /.next/
 /out/
+/public/games/*/docs-search.json
 
 # production
 /build

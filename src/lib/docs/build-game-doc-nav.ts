@@ -15,6 +15,11 @@ const SECTION_LABELS: Record<string, string> = {
 
 const SECTION_ORDER = ["rules", "reference", "app"] as const
 
+/** All markdown paths under docs/games/<gameId>/. */
+export function listGameDocPaths(gameId: string): string[] {
+  return SECTION_ORDER.flatMap((section) => listMarkdownInSection(gameId, section))
+}
+
 const GAME_TITLES: Record<string, string> = {
   "skull-king": "Skull King",
 }
@@ -81,6 +86,7 @@ export function buildGameDocNav(gameId: string): DocNavConfig {
   )
 
   return {
+    gameId,
     gameTitle: titleFromGameId(gameId),
     groups,
   }

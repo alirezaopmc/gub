@@ -30,10 +30,22 @@ export type DocNavGroup = {
 }
 
 export type DocNavConfig = {
+  gameId?: string
   gameTitle: string
   groups: DocNavGroup[]
   /** Map a pathname to the nav href that should show as active (legacy routes until #21). */
   activePathAliases?: Record<string, string>
+}
+
+export type DocSearchKind = "page" | "heading" | "glossary"
+
+export type DocSearchEntry = {
+  id: string
+  kind: DocSearchKind
+  title: string
+  subtitle?: string
+  href: string
+  keywords?: string[]
 }
 
 export type DocHeading = {

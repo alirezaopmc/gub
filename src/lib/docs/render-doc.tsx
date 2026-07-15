@@ -9,9 +9,10 @@ import { remarkPlugins, rehypePlugins } from "@/lib/docs/mdx-plugins"
 import type { DocFrontmatter } from "@/lib/docs/types"
 
 export type RenderedDoc = {
-  Content: ComponentType
+  Content: ComponentType<{ components?: MDXComponents }>
   frontmatter: DocFrontmatter
   relativePath: string
+  components: MDXComponents
 }
 
 export async function renderDoc(
@@ -19,6 +20,7 @@ export async function renderDoc(
   componentOverrides: MDXComponents = {},
 ): Promise<RenderedDoc> {
   const { content, frontmatter, relativePath: path } = loadDoc(relativePath)
+  const components = { ...mdxComponents, ...componentOverrides }
 
   const compiled = await compile(content, {
     outputFormat: "function-body",
@@ -28,9 +30,8 @@ export async function renderDoc(
 
   const { default: Content } = await run(compiled, {
     ...runtime,
-    ...mdxComponents,
-    ...componentOverrides,
+    ...components,
   })
 
-  return { Content, frontmatter, relativePath: path }
+  return { Content, frontmatter, relativePath: path, components }
 }
