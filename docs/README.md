@@ -33,7 +33,13 @@ docs/
 
 ## Roadmap
 
-Work is tracked in GitHub milestones M1–M4 ([issues](https://github.com/alirezaopmc/gub/issues)). This repo phase is **markdown only**; rendering inside the Next.js app is milestone M4.
+| Milestone | Focus |
+|-----------|--------|
+| M1–M3 | Foundation, Skull King content, contributor guides |
+| M4 | In-app docs shell (layout, routes, search, artifact filter) — **shipped** |
+| M5 | Visual UX — card art, illustrated glossary, scannable scoring ([spec](./documentation-system.md#m5-docs-visual-ux-planned)) |
+
+Track work in [GitHub issues](https://github.com/alirezaopmc/gub/issues).
 
 ## Legacy
 

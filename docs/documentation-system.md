@@ -111,17 +111,17 @@ Match [`src/styles/ui-motion.css`](../src/styles/ui-motion.css):
 
 **Accessibility:** wrap animations in `@media (prefers-reduced-motion: no-preference)`. When reduced motion is requested, skip slide/scale; use instant show/hide.
 
-## Search (future)
+## Search
 
-- Cmd+K / Ctrl+K command palette
+- Cmd+K / Ctrl+K command palette (`DocsSearch`)
 - Fuzzy index over titles, headings, glossary terms
-- Lazy-load search index; keep docs shell &lt; 200KB JS gzipped
+- Lazy-loaded JSON index at build time
 
-## Artifact filter (future)
+## Artifact filter
 
-GamersPaper-style: user toggles artifacts (Kraken, Loot, Pirate Abilities, …) matching [`artifacts.ts`](../src/lib/games/skull-king/artifacts.ts). Pages/sections with `artifacts:` frontmatter hide when none match.
+GamersPaper-style: user toggles artifacts (Kraken, Loot, Pirate Abilities, …) matching [`artifacts.ts`](../src/lib/games/skull-king/artifacts.ts). Pages with `artifacts:` frontmatter hide from nav, search, and body when none match (`ArtifactFilter`).
 
-## Shared components (future — do not build in doc-only phase)
+## Shared components
 
 | Component | Path | Role |
 |-----------|------|------|
@@ -134,14 +134,56 @@ GamersPaper-style: user toggles artifacts (Kraken, Loot, Pirate Abilities, …) 
 
 Game wrappers stay thin: `src/components/games/skull-king/docs/` imports shared shell + nav config only.
 
-### In-app route mapping (future)
+### In-app route mapping
 
 | Route | Markdown source |
 |-------|-----------------|
-| `/games/skull-king/docs` | `rules/*` composed |
+| `/games/skull-king/docs/rules/*` | `rules/*.md` |
 | `/games/skull-king/docs/play` | `app/play.md` |
 | `/games/skull-king/docs/calculator` | `app/calculator.md` |
-| `/games/skull-king/docs/reference/scoring` | `reference/scoring-quick-ref.md` |
+| `/games/skull-king/docs/reference/*` | `reference/*.md` |
+| `/games/skull-king/docs/glossary` | `shared/glossary.md` |
+
+## M5: Docs visual UX (planned)
+
+M4 shipped a readable text shell. M5 treats docs like a **product surface**, not a markdown dump — players should recognize cards and flows at a glance without reading every paragraph.
+
+### Design principles
+
+| Principle | Intent |
+|-----------|--------|
+| Show, then tell | Lead with card art, suit color, or a one-glance diagram; prose supports, not replaces |
+| Scannable hierarchy | Hero callouts, icon rows, and comparison cards beat long tables on mobile |
+| Game-native chrome | Reuse Skull King card frames, suit tokens, and artifact icons from Play/Calculator |
+| Progressive depth | Overview = visuals + one-liners; detail pages expand; glossary = thumb + term |
+| Accessible contrast | Illustrations get text labels; decorative art is `aria-hidden` |
+
+### Planned enhancements
+
+| Area | Direction |
+|------|-----------|
+| **Card reference** | Inline card thumbnails (Pirate, Mermaid, Skull King, Kraken, Whale, Loot, Escape) in rules pages — same assets as setup/calculator |
+| **Suit & trump** | Small suit swatches beside “black beats green/yellow/purple” copy |
+| **Scoring** | Visual score chips (+10×bid, zero-bid pill, capture ladder) instead of raw markdown tables where possible |
+| **Glossary** | Two-column desktop: term + definition; optional card thumb per term; mobile stacks |
+| **Flow diagrams** | Mermaid kept for logic; add illustrated “round loop” hero on Overview |
+| **Artifact matrix** | Toggle-aware grid with icons per artifact row; highlight active preset |
+| **Related links** | Card-style link tiles with icon, title, one-line description |
+| **Empty / gated pages** | Artifact gate shows muted card silhouettes for missing expansions |
+
+### Asset strategy
+
+1. Reuse existing icons from `src/components/games/skull-king/` (artifacts, suits).
+2. Add a `docs/assets/skull-king/cards/` folder for optimized WebP thumbs (~80×112).
+3. MDX shortcodes: `<CardRef id="kraken" />`, `<SuitSwatch suit="black" />` — rendered by shared docs components.
+
+### Success metrics
+
+- New player identifies Pirates vs Mermaid hierarchy in &lt;10s on Overview (mobile).
+- Glossary term lookup does not require scrolling past a wall of table text.
+- Lighthouse CLS unchanged after images (explicit width/height on thumbs).
+
+Track in GitHub issue [#32](https://github.com/alirezaopmc/gub/issues/32) (milestone **M5: Docs Visual UX**).
 
 ## Quality checklist
 
@@ -158,8 +200,8 @@ Before merging doc PRs:
 
 ## GitHub project management
 
-- **Milestones:** M1 Foundation → M2 Skull King Content → M3 Contributor → M4 Docs Platform (app)
-- **Labels:** `docs`, `skull-king`, `research`, `platform`, `good-first-issue`
+- **Milestones:** M1 Foundation → M2 Skull King Content → M3 Contributor → M4 Docs Platform → **M5 Docs Visual UX**
+- **Labels:** `docs`, `skull-king`, `research`, `platform`, `good-first-issue`, `design`
 - **Project board:** run `gh auth refresh -s project,read:project` then `gh project create --owner alirezaopmc --title "GUB Documentation"`
 
-Issues #1–#24 track the full roadmap on [github.com/alirezaopmc/gub/issues](https://github.com/alirezaopmc/gub/issues).
+Issues #1–#24 cover M1–M4; M5+ tracked separately on [github.com/alirezaopmc/gub/issues](https://github.com/alirezaopmc/gub/issues).

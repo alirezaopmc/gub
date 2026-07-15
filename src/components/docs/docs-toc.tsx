@@ -138,7 +138,7 @@ export function DocsTOC({
 
       {showDesktop ? (
         <aside className="hidden lg:block" aria-label="On this page">
-          <div className="sticky top-20">
+          <div className={styles.docsRailSticky}>
             <p className="mb-3 font-label text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               On this page
             </p>

@@ -48,7 +48,7 @@ npm run lint       # ESLint
 
 ## Contributing
 
-See [docs/contributing/README.md](./docs/contributing/README.md). Work is tracked in [GitHub Issues](https://github.com/alirezaopmc/gub/issues) under milestones M1–M4.
+See [docs/contributing/README.md](./docs/contributing/README.md). Work is tracked in [GitHub Issues](https://github.com/alirezaopmc/gub/issues) under milestones M1–M5.
 
 ## License
 

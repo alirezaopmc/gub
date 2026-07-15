@@ -48,7 +48,9 @@ describe("resolveDocHref", () => {
   })
 
   it("maps shared glossary links", () => {
-    expect(resolveDocHref(fromRules, "../../shared/glossary.md")).toBe("/docs/shared/glossary")
+    expect(resolveDocHref(fromRules, "../../shared/glossary.md")).toBe(
+      "/games/skull-king/docs/glossary",
+    )
   })
 
   it("maps reference links", () => {

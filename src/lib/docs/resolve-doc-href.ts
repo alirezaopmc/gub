@@ -39,6 +39,9 @@ function docPathToRoute(resolvedPath: string): string | null {
 
   const shared = normalized.match(/^shared\/(.+)$/)
   if (shared) {
+    if (shared[1] === "glossary") {
+      return "/games/skull-king/docs/glossary"
+    }
     return `/docs/shared/${shared[1]}`
   }
 

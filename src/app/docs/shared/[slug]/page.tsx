@@ -1,48 +1,17 @@
-import type { Metadata } from "next"
-import { notFound } from "next/navigation"
-
-import { DocsMdxContent } from "@/components/docs/docs-mdx-content"
-import { DocNotFoundError } from "@/lib/docs/errors"
-import { listSharedDocSlugs } from "@/lib/docs/list-shared-doc-slugs"
-import { loadDoc } from "@/lib/docs/load-doc"
+import { redirect } from "next/navigation"
 
 type PageProps = {
   params: Promise<{ slug: string }>
 }
 
-export async function generateStaticParams() {
-  return listSharedDocSlugs().map((slug) => ({ slug }))
-}
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params
-  const relativePath = `shared/${slug}.md`
-
-  try {
-    const { frontmatter } = loadDoc(relativePath)
-    return {
-      title: `${frontmatter.title} · GUB`,
-      description: frontmatter.description,
-    }
-  } catch {
-    return { title: "GUB docs" }
-  }
+/** ponytail: shared docs that belong in a game shell redirect to the game route. */
+const GAME_SHELL_REDIRECTS: Record<string, string> = {
+  glossary: "/games/skull-king/docs/glossary",
 }
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params
-  const relativePath = `shared/${slug}.md`
-
-  try {
-    loadDoc(relativePath)
-  } catch (e) {
-    if (e instanceof DocNotFoundError) notFound()
-    throw e
-  }
-
-  return (
-    <div className="mx-auto w-full max-w-prose px-4 py-8 lg:px-6">
-      <DocsMdxContent relativePath={relativePath} />
-    </div>
-  )
+  const target = GAME_SHELL_REDIRECTS[slug]
+  if (target) redirect(target)
+  redirect("/")
 }

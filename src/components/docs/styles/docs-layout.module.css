@@ -3,6 +3,21 @@
   transition: height 180ms ease-in-out;
 }
 
+.docsShellHeader {
+  position: sticky;
+  top: var(--game-top-nav-height);
+  z-index: 30;
+  background: var(--background);
+}
+
+.docsRailSticky {
+  position: sticky;
+  top: var(--docs-rail-sticky-top);
+  max-height: calc(100dvh - var(--docs-rail-sticky-top) - 1rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .navGroupContent {
     transition: none;

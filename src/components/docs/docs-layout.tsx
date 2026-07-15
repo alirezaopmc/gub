@@ -8,6 +8,8 @@ import { DocsTOC } from "@/components/docs/docs-toc"
 import type { DocBreadcrumb, DocHeading, DocNavConfig } from "@/lib/docs/types"
 import { cn } from "@/lib/utils"
 
+import styles from "./styles/docs-layout.module.css"
+
 type DocsLayoutProps = {
   config: DocNavConfig
   breadcrumbs: DocBreadcrumb[]
@@ -27,7 +29,12 @@ export function DocsLayout({
 }: DocsLayoutProps) {
   return (
     <div className={cn("flex min-h-0 flex-1 flex-col", className)}>
-      <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3 lg:px-6">
+      <div
+        className={cn(
+          "flex items-center justify-between gap-3 border-b border-border px-4 py-3 lg:px-6",
+          styles.docsShellHeader,
+        )}
+      >
         <DocsMobileNav config={config} />
         <p className="truncate font-headline text-sm font-semibold text-primary lg:hidden">
           {config.gameTitle} docs
@@ -37,7 +44,7 @@ export function DocsLayout({
 
       <div className="mx-auto flex w-full min-w-0 flex-1 gap-0 px-4 py-6 lg:grid lg:max-w-none lg:grid-cols-[15rem_minmax(0,1fr)_12.5rem] lg:gap-8 lg:px-6">
         <aside className="hidden lg:block">
-          <div className="sticky top-20 max-h-[calc(100dvh-6rem)] overflow-y-auto pr-2">
+          <div className={cn(styles.docsRailSticky, "pr-2")}>
             {artifactFilter}
             <DocsNav config={config} />
           </div>
