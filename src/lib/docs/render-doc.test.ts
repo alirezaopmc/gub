@@ -17,4 +17,11 @@ describe("renderDoc", () => {
     expect(frontmatter.title).toBe("Scoring")
     expect(typeof Content).toBe("function")
   })
+
+  it("compiles MDX with CardRef shortcode", async () => {
+    const { Content, frontmatter } = await renderDoc("__fixtures__/card-ref.mdx")
+
+    expect(frontmatter.title).toBe("Card ref fixture")
+    expect(typeof Content).toBe("function")
+  })
 })
