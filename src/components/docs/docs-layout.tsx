@@ -3,6 +3,7 @@ import type { ReactNode } from "react"
 import { DocsBreadcrumb } from "@/components/docs/docs-breadcrumb"
 import { DocsMobileNav } from "@/components/docs/docs-mobile-nav"
 import { DocsNav } from "@/components/docs/docs-nav"
+import { DocsSearch } from "@/components/docs/docs-search"
 import { DocsTOC } from "@/components/docs/docs-toc"
 import type { DocBreadcrumb, DocHeading, DocNavConfig } from "@/lib/docs/types"
 import { cn } from "@/lib/utils"
@@ -29,7 +30,7 @@ export function DocsLayout({
         <p className="truncate font-headline text-sm font-semibold text-primary lg:hidden">
           {config.gameTitle} docs
         </p>
-        <div className="w-[4.5rem] lg:hidden" aria-hidden />
+        {config.gameId ? <DocsSearch gameId={config.gameId} /> : null}
       </div>
 
       <div className="mx-auto flex w-full min-w-0 flex-1 gap-0 px-4 py-6 lg:grid lg:max-w-none lg:grid-cols-[15rem_minmax(0,1fr)_12.5rem] lg:gap-8 lg:px-6">
