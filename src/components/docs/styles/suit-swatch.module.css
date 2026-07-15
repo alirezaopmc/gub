@@ -1,0 +1,59 @@
+.swatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.green {
+  border-color: color-mix(in srgb, var(--sk-suit-green-border), transparent 10%);
+  background: var(--sk-suit-green-bg);
+  color: var(--sk-suit-green-fg);
+}
+
+.green .dot {
+  background: var(--sk-suit-green-border);
+}
+
+.yellow {
+  border-color: color-mix(in srgb, var(--sk-suit-yellow-border), transparent 10%);
+  background: var(--sk-suit-yellow-bg);
+  color: var(--sk-suit-yellow-fg);
+}
+
+.yellow .dot {
+  background: var(--sk-suit-yellow-border);
+}
+
+.purple {
+  border-color: color-mix(in srgb, var(--sk-suit-purple-border), transparent 10%);
+  background: var(--sk-suit-purple-bg);
+  color: var(--sk-suit-purple-fg);
+}
+
+.purple .dot {
+  background: var(--sk-suit-purple-border);
+}
+
+.black {
+  border-color: color-mix(in srgb, var(--sk-suit-black-border), transparent 15%);
+  background: var(--sk-suit-black-bg);
+  color: var(--sk-suit-black-fg);
+}
+
+.black .dot {
+  background: var(--sk-suit-black-border);
+}

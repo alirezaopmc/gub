@@ -175,7 +175,7 @@ M4 shipped a readable text shell. M5 treats docs like a **product surface**, not
 
 1. Reuse existing icons from `src/components/games/skull-king/` (artifacts, suits).
 2. Add a `docs/assets/skull-king/cards/` folder for optimized WebP thumbs (~80×112).
-3. MDX shortcodes: `<CardRef id="kraken" />`, `<SuitSwatch suit="black" />` — rendered by shared docs components.
+3. MDX shortcodes: `<CardRef id="kraken" />`, `<SuitSwatch suit="black" />` — rendered by shared docs components (**shipped** in M5 foundation; WebP thumb folder deferred — full PNGs via `cardImagePath` suffice for v1).
 
 ### Success metrics
 

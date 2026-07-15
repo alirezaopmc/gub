@@ -7,6 +7,12 @@ describe("skullKingDocPath", () => {
     expect(skullKingDocPath("rules", "06-scoring")).toBe(
       "games/skull-king/rules/06-scoring.md",
     )
+    expect(skullKingDocPath("rules", "00-overview")).toBe(
+      "games/skull-king/rules/00-overview.mdx",
+    )
+    expect(skullKingDocPath("rules", "07-advanced-cards")).toBe(
+      "games/skull-king/rules/07-advanced-cards.mdx",
+    )
   })
 
   it("maps reference slug to relative path", () => {

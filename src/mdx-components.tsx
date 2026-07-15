@@ -1,8 +1,10 @@
 import type { MDXComponents } from "mdx/types"
 import type { ComponentPropsWithoutRef } from "react"
 
+import { CardRef } from "@/components/docs/card-ref"
 import { DocsAnchor } from "@/components/docs/docs-anchor"
 import { DocsPre } from "@/components/docs/docs-pre"
+import { SuitSwatch } from "@/components/docs/suit-swatch"
 
 const components = {
   h1: ({ children, ...props }: ComponentPropsWithoutRef<"h1">) => (
@@ -22,6 +24,8 @@ const components = {
   ),
   a: DocsAnchor,
   pre: DocsPre,
+  CardRef,
+  SuitSwatch,
 } satisfies MDXComponents
 
 export const mdxComponents: MDXComponents = components
