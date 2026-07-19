@@ -1,6 +1,6 @@
 # gub (Game Hub)
 
-Board and card game tooling hub. First title: **Skull King** (live play, tableside scoring, in-app rules). Public product docs at **https://gub.dfjk.ir**.
+Board and card game tooling hub. First title: **Skull King** (live play, tableside scoring, in-app rules). Public app/docs at **https://gub.manova.space**.
 
 Manova workspace home: `clients/manova/gub`. Platform integration (Orbit auth, gateway, `@manovaspace/ui`) is **deferred** — long-term Manova client product, independent stack for now.
 
@@ -34,7 +34,7 @@ Dev server runs on **port 11003** (see Manova [ports](../../../orbit/orbit-docs/
 
 | Topic | Where |
 | --- | --- |
-| Public product docs | https://gub.dfjk.ir (source: `docs/` in this repo) |
+| Public product docs | https://gub.manova.space (source: `docs/` in this repo) |
 | Staff / ops (private) | `orbit/orbit-docs/content/docs/clients/manova/products/gub/` |
 | Ports | `orbit/orbit-docs/content/docs/clients/manova/ports.mdx` |
 | Docs hub (in-repo) | `docs/README.md` |

@@ -21,7 +21,7 @@ npm install
 npm run dev   # http://localhost:11003
 ```
 
-Open [http://localhost:11003](http://localhost:11003). Public product docs: [gub.dfjk.ir](https://gub.dfjk.ir).
+Open [http://localhost:11003](http://localhost:11003). Production: [gub.manova.space](https://gub.manova.space).
 
 ## Documentation
 
