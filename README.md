@@ -14,13 +14,14 @@
 ## Quick start
 
 ```bash
-git clone git@github.com:alirezaopmc/gub.git
-cd gub
+# Manova workspace (preferred for Manova agents)
+git clone git@github.com:alirezaopmc/gub.git ~/Dev/Manova/clients/manova/gub
+cd ~/Dev/Manova/clients/manova/gub
 npm install
-npm run dev
+npm run dev   # http://localhost:11003
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:11003](http://localhost:11003). Public product docs: [gub.dfjk.ir](https://gub.dfjk.ir).
 
 ## Documentation
 

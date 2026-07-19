@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run generate:docs-search && next dev",
+    "dev": "npm run generate:docs-search && next dev --port 11003",
     "build": "npm run generate:docs-search && next build",
-    "start": "next start",
+    "start": "next start --port 11003",
     "lint": "eslint",
     "test": "vitest",
     "test:run": "vitest run",

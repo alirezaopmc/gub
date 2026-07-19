@@ -27,7 +27,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:11003](http://localhost:11003) (Manova ADR-006 port for GUB).
 
 | Route | Purpose |
 |-------|---------|
