@@ -21,7 +21,7 @@ npm run lint
 npm run test:run
 ```
 
-Dev server runs on **port 11003** (see Manova [ports](../../../orbit/orbit-docs/content/docs/clients/manova/ports.mdx)).
+Dev server runs on **port 11003** (see Manova [ports](../../../handbook/docs/clients/manova/ports.md)).
 
 ## Stack
 
@@ -35,8 +35,8 @@ Dev server runs on **port 11003** (see Manova [ports](../../../orbit/orbit-docs/
 | Topic | Where |
 | --- | --- |
 | Public product docs | https://gub.manova.space (source: `docs/` in this repo) |
-| Staff / ops (private) | `orbit/orbit-docs/content/docs/clients/manova/products/gub/` |
-| Ports | `orbit/orbit-docs/content/docs/clients/manova/ports.mdx` |
+| Staff / ops (private) | `handbook/docs/clients/manova/products/gub/` |
+| Ports | `handbook/docs/clients/manova/ports.md` |
 | Docs hub (in-repo) | `docs/README.md` |
 
 ## Structure
@@ -49,8 +49,8 @@ Dev server runs on **port 11003** (see Manova [ports](../../../orbit/orbit-docs/
 
 ## Do / don't
 
-- Keep **public** docs in this repo / `gub.dfjk.ir` — never move them into private `orbit-docs`
-- Staff facts (ports, Coolify, platform plans) → `orbit-docs` only
+- Keep **public** docs in this repo / `gub.dfjk.ir` — never move them into private `handbook`
+- Staff facts (ports, Coolify, platform plans) → `handbook` only
 - Do not add Orbit auth/gateway/`@manovaspace/ui` until an explicit platform-integration slice
 - No product facts in Orbit architecture pages
 - No commit unless the user asks
