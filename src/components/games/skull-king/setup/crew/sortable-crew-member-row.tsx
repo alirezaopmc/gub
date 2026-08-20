@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { useSortable } from "@dnd-kit/sortable"
-import { CSS } from "@dnd-kit/utilities"
-import { GripVertical } from "lucide-react"
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { GripVertical } from "@manovaspace/ui";
 
-import { CrewMemberField } from "@/components/games/skull-king/setup/crew/crew-member-field"
-import crew from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css"
-import { cn } from "@/lib/utils"
+import { CrewMemberField } from "@/components/games/skull-king/setup/crew/crew-member-field";
+import crew from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css";
+import { cn } from "@/lib/utils";
 
 type SortableCrewMemberRowProps = {
-  id: string
-  index: number
-  name: string
-  isDuplicate: boolean
-  duplicateHintMessage?: string
-  errorsVisible?: boolean
-  onCrewNameBlur?: () => void
-  canRemove: boolean
-  onNameChange: (index: number, name: string) => void
-  onRemove: (index: number) => void
-  onEnterInNameField?: () => void
-}
+  id: string;
+  index: number;
+  name: string;
+  isDuplicate: boolean;
+  duplicateHintMessage?: string;
+  errorsVisible?: boolean;
+  onCrewNameBlur?: () => void;
+  canRemove: boolean;
+  onNameChange: (index: number, name: string) => void;
+  onRemove: (index: number) => void;
+  onEnterInNameField?: () => void;
+};
 
 export function SortableCrewMemberRow({
   id,
@@ -35,12 +35,22 @@ export function SortableCrewMemberRow({
   onRemove,
   onEnterInNameField,
 }: SortableCrewMemberRowProps) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id })
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
 
   return (
     <div
       ref={setNodeRef}
-      className={cn(crew.sortableCrewRow, isDragging && crew.sortableCrewRowDragging)}
+      className={cn(
+        crew.sortableCrewRow,
+        isDragging && crew.sortableCrewRowDragging,
+      )}
       style={{
         transform: CSS.Transform.toString(transform),
         transition,
@@ -66,10 +76,14 @@ export function SortableCrewMemberRow({
             {...listeners}
             tabIndex={-1}
           >
-            <GripVertical aria-hidden className={crew.dragGripIcon} strokeWidth={1.5} />
+            <GripVertical
+              aria-hidden
+              className={crew.dragGripIcon}
+              strokeWidth={1.5}
+            />
           </button>
         }
       />
     </div>
-  )
+  );
 }

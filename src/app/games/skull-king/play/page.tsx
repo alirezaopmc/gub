@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import { PlayHubClient } from "@/components/games/skull-king/play/play-clients"
+import { PlayHubClient } from "@/components/games/skull-king/play/play-clients";
 
 export const metadata: Metadata = {
   title: "Skull King · Play · GUB",
   description: "Create or join a live Skull King match.",
-}
+};
 
 export default function PlayHubPage() {
   return (
@@ -15,5 +15,5 @@ export default function PlayHubPage() {
         <PlayHubClient />
       </main>
     </div>
-  )
+  );
 }

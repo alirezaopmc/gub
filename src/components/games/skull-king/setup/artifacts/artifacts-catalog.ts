@@ -1,6 +1,4 @@
-import type { ComponentType } from "react"
-
-import { Artifacts } from "@/lib/games/skull-king/artifacts"
+import type { ComponentType } from "react";
 import {
   CoinExpansionIcon,
   FourteenBonusIcon,
@@ -8,13 +6,14 @@ import {
   KrakenIcon,
   PirateAbilitiesIcon,
   WhaleIcon,
-} from "@/components/games/skull-king/setup/artifacts/cursed-artifact-icons"
+} from "@/components/games/skull-king/setup/artifacts/cursed-artifact-icons";
+import { Artifacts } from "@/lib/games/skull-king/artifacts";
 
 export type ArtifactRowConfig = {
-  id: Artifacts
-  label: string
-  Icon: ComponentType<{ className?: string }>
-}
+  id: Artifacts;
+  label: string;
+  Icon: ComponentType<{ className?: string }>;
+};
 
 export const ARTIFACT_ROWS: ArtifactRowConfig[] = [
   { id: Artifacts.Loot, label: "Loot", Icon: CoinExpansionIcon },
@@ -22,5 +21,9 @@ export const ARTIFACT_ROWS: ArtifactRowConfig[] = [
   { id: Artifacts.Whale, label: "Whale", Icon: WhaleIcon },
   { id: Artifacts.FourteenBonus, label: "Bonus", Icon: FourteenBonusIcon },
   { id: Artifacts.CharacterCapture, label: "Capture", Icon: HeroCaptureIcon },
-  { id: Artifacts.PirateAbilities, label: "Abilities", Icon: PirateAbilitiesIcon },
-]
+  {
+    id: Artifacts.PirateAbilities,
+    label: "Abilities",
+    Icon: PirateAbilitiesIcon,
+  },
+];

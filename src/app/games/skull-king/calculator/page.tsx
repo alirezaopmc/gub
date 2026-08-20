@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import { SkullKingEntryClient } from "@/app/games/skull-king/skull-king-entry-client"
+import { SkullKingEntryClient } from "@/app/games/skull-king/skull-king-entry-client";
 
 export const metadata: Metadata = {
   title: "Skull King · Score Calculator · GUB",
   description: "Continue a voyage or start a new crew.",
-}
+};
 
 export default function SkullKingCalculatorPage() {
   return (
@@ -15,5 +15,5 @@ export default function SkullKingCalculatorPage() {
         <SkullKingEntryClient />
       </main>
     </div>
-  )
+  );
 }

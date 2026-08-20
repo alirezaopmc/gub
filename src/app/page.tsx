@@ -1,14 +1,15 @@
-import { GameHubCard } from "@/components/games/game-hub-card"
+import { GameHubCard } from "@/components/games/game-hub-card";
 
 const games = [
   {
     href: "/games/skull-king",
     title: "Skull King",
-    description: "Trick-taking pirate card game — play live, score, or read rules.",
+    description:
+      "Trick-taking pirate card game — play live, score, or read rules.",
     imageSrc: "/games/skull-king/cover.png",
     imageAlt: "Skull King game cover art",
   },
-] as const
+] as const;
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
             Game hub
           </h1>
           <p className="max-w-md text-lg leading-8 text-muted-foreground">
-            Pick a game to open its table. More titles will show up here as they ship.
+            Pick a game to open its table. More titles will show up here as they
+            ship.
           </p>
         </div>
         <section className="w-full" aria-labelledby="games-heading">
@@ -37,5 +39,5 @@ export default function Home() {
         </section>
       </main>
     </div>
-  )
+  );
 }

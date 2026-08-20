@@ -1,9 +1,9 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 @import "../styles/theme-base.css";
 @import "../styles/docs-prose.css";
 @import "../styles/ui-motion.css";
 @import "../styles/button-liquid.css";
+@plugin "@tailwindcss/typography";
 
 body {
   background: var(--background);

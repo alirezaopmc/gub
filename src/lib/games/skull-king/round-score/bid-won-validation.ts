@@ -1,12 +1,15 @@
 /**
  * Bid / won are trick counts for the current round; valid range is 0…handSize inclusive.
  */
-export function clampTricksToHand(handSize: number, value: number | null): number | null {
-  if (value === null) return null
-  const max = Math.max(0, Math.floor(handSize))
-  const n = Math.floor(Number(value))
-  if (!Number.isFinite(n)) return null
-  return Math.max(0, Math.min(max, n))
+export function clampTricksToHand(
+  handSize: number,
+  value: number | null,
+): number | null {
+  if (value === null) return null;
+  const max = Math.max(0, Math.floor(handSize));
+  const n = Math.floor(Number(value));
+  if (!Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(max, n));
 }
 
 /**
@@ -18,14 +21,14 @@ export function clampTricksToHand(handSize: number, value: number | null): numbe
 export function effectiveTricksBid(
   handSize: number,
   bid: number | null,
-  harryGiantBidDelta: 1 | -1 | null
+  harryGiantBidDelta: 1 | -1 | null,
 ): number | null {
   if (harryGiantBidDelta === null) {
-    return bid === null ? null : clampTricksToHand(handSize, bid)
+    return bid === null ? null : clampTricksToHand(handSize, bid);
   }
-  const base = bid === null ? 0 : Math.floor(Number(bid))
-  if (bid !== null && !Number.isFinite(base)) return null
-  if (harryGiantBidDelta === 1) return clampTricksToHand(handSize, base + 1)
-  if (harryGiantBidDelta === -1) return clampTricksToHand(handSize, base - 1)
-  return clampTricksToHand(handSize, base)
+  const base = bid === null ? 0 : Math.floor(Number(bid));
+  if (bid !== null && !Number.isFinite(base)) return null;
+  if (harryGiantBidDelta === 1) return clampTricksToHand(handSize, base + 1);
+  if (harryGiantBidDelta === -1) return clampTricksToHand(handSize, base - 1);
+  return clampTricksToHand(handSize, base);
 }

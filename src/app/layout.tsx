@@ -1,36 +1,36 @@
-import type { Metadata } from "next"
-import { Epilogue, Manrope, Space_Grotesk } from "next/font/google"
+import type { Metadata } from "next";
+import { Epilogue, Manrope, Space_Grotesk } from "next/font/google";
 
-import { AppShell } from "@/components/app-shell"
-import "./globals.css"
+import { AppShell } from "@/components/app-shell";
+import "./globals.css";
 
 const fontHeadline = Epilogue({
   variable: "--font-epilogue",
   subsets: ["latin"],
   display: "swap",
-})
+});
 
 const fontBody = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
-})
+});
 
 const fontLabel = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
-})
+});
 
 export const metadata: Metadata = {
   title: "GUB",
   description: "Game hub",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html
@@ -43,5 +43,5 @@ export default function RootLayout({
         </div>
       </body>
     </html>
-  )
+  );
 }

@@ -3,5 +3,5 @@
  * Lucide exposes richer props (`size`, `strokeWidth` …) at call sites when needed.
  */
 export type IconProps = {
-  className?: string
-}
+  className?: string;
+};

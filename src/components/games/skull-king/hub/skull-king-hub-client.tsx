@@ -1,9 +1,14 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@manovaspace/ui";
+import Link from "next/link";
 
 const tiles = [
   {
@@ -21,7 +26,7 @@ const tiles = [
     title: "Rules & Docs",
     description: "Full Skull King rules, scoring, and app notes.",
   },
-] as const
+] as const;
 
 export function SkullKingHubClient() {
   return (
@@ -36,13 +41,16 @@ export function SkullKingHubClient() {
       </header>
       <div className="grid gap-4 sm:grid-cols-2">
         {tiles.map((tile) => (
-          <Card key={tile.href} className="gap-0 overflow-hidden py-0 shadow-sm">
+          <Card
+            key={tile.href}
+            className="gap-0 overflow-hidden py-0 shadow-sm"
+          >
             <CardHeader className="border-b border-border/70 px-5 py-4">
               <CardTitle className="text-base">{tile.title}</CardTitle>
               <CardDescription>{tile.description}</CardDescription>
             </CardHeader>
             <CardContent className="px-5 py-4">
-              <Button variant="branded" className="w-full" asChild>
+              <Button className="w-full" asChild>
                 <Link href={tile.href}>Open</Link>
               </Button>
             </CardContent>
@@ -50,5 +58,5 @@ export function SkullKingHubClient() {
         ))}
       </div>
     </div>
-  )
+  );
 }

@@ -1,81 +1,88 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { EphemeralToast } from "@/components/ui/ephemeral-toast"
-import { CrewList } from "@/components/games/skull-king/shared/crew-list"
-import { HoldToConfirmErase } from "@/components/games/skull-king/entry/hold-to-confirm-erase"
-import { loadGameConfig } from "@/lib/games/skull-king/game-config-storage"
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@manovaspace/ui";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import * as React from "react";
+import { HoldToConfirmErase } from "@/components/games/skull-king/entry/hold-to-confirm-erase";
+import { CrewList } from "@/components/games/skull-king/shared/crew-list";
+import { EphemeralToast } from "@/components/ui/ephemeral-toast";
+import { loadGameConfig } from "@/lib/games/skull-king/game-config-storage";
+import { loadRoundData } from "@/lib/games/skull-king/round-score/round-data-storage";
 import {
   getSkullKingEntryState,
   type SkullKingEntryState,
-} from "@/lib/games/skull-king/skull-king-entry-state"
-import { loadRoundData } from "@/lib/games/skull-king/round-score/round-data-storage"
-import { useSkullKingStore } from "@/lib/games/skull-king/skull-king-store"
-import type { SkullKingGameConfig } from "@/lib/games/skull-king/skull-king-game-config"
-import { wipeSkullKingLocalGame } from "@/lib/games/skull-king/wipe-skull-king-local-game"
+} from "@/lib/games/skull-king/skull-king-entry-state";
+import type { SkullKingGameConfig } from "@/lib/games/skull-king/skull-king-game-config";
+import { useSkullKingStore } from "@/lib/games/skull-king/skull-king-store";
+import { wipeSkullKingLocalGame } from "@/lib/games/skull-king/wipe-skull-king-local-game";
 
 function syncSetupStoreFromStorage() {
-  const saved = loadGameConfig()
-  if (saved) useSkullKingStore.getState().hydrateFromGameConfig(saved)
+  const saved = loadGameConfig();
+  if (saved) useSkullKingStore.getState().hydrateFromGameConfig(saved);
 }
 
-const TOAST_HOLD_HINT = "Press and hold"
+const TOAST_HOLD_HINT = "Press and hold";
 
-const TOAST_MS = 4500
+const TOAST_MS = 4500;
 
-const crewBlockClasses = "flex w-full flex-col gap-2"
+const crewBlockClasses = "flex w-full flex-col gap-2";
 
 const crewHeadRowClasses =
-  "flex w-full flex-row items-baseline justify-between gap-x-4 gap-y-1"
+  "flex w-full flex-row items-baseline justify-between gap-x-4 gap-y-1";
 
 const crewLabelClass =
-  "font-label text-[0.65rem] tracking-[0.12em] text-muted-foreground uppercase shrink-0"
+  "font-label text-[0.65rem] tracking-[0.12em] text-muted-foreground uppercase shrink-0";
 
 function playerCountPhrase(
   namedCount: number,
-  fallbackCount: number | undefined
+  fallbackCount: number | undefined,
 ): string {
   if (namedCount > 0) {
-    return `${namedCount} ${namedCount === 1 ? "player" : "players"}`
+    return `${namedCount} ${namedCount === 1 ? "player" : "players"}`;
   }
   if (fallbackCount != null && fallbackCount > 0) {
-    return `${fallbackCount} ${fallbackCount === 1 ? "player" : "players"}`
+    return `${fallbackCount} ${fallbackCount === 1 ? "player" : "players"}`;
   }
-  return "—"
+  return "—";
 }
 
 type View =
   | { status: "loading" }
-  | { status: "ready"; entry: Exclude<SkullKingEntryState, { kind: "fresh" }> }
+  | { status: "ready"; entry: Exclude<SkullKingEntryState, { kind: "fresh" }> };
 
 function SessionSummary({
   entry,
   config,
 }: {
-  entry: Exclude<SkullKingEntryState, { kind: "fresh" }>
-  config: SkullKingGameConfig | null
+  entry: Exclude<SkullKingEntryState, { kind: "fresh" }>;
+  config: SkullKingGameConfig | null;
 }) {
   if (entry.kind === "ongoing") {
-    const persisted = loadRoundData()
-    const crewCount = persisted?.playerCount ?? "—"
-    const roundValue = `${entry.currentRoundIndex + 1} of ${entry.roundCount}`
-    const crewPlayers = config?.players ?? []
-    const namedCrew = crewPlayers.filter((n) => n.trim() !== "")
+    const persisted = loadRoundData();
+    const crewCount = persisted?.playerCount ?? "—";
+    const roundValue = `${entry.currentRoundIndex + 1} of ${entry.roundCount}`;
+    const crewPlayers = config?.players ?? [];
+    const namedCrew = crewPlayers.filter((n) => n.trim() !== "");
     const countPhrase = playerCountPhrase(
       namedCrew.length,
-      typeof crewCount === "number" ? crewCount : undefined
-    )
+      typeof crewCount === "number" ? crewCount : undefined,
+    );
 
     return (
       <Card className="gap-0 overflow-hidden py-0 shadow-sm">
         <CardHeader className="border-b border-border/70 px-5 py-4 sm:px-6">
           <CardTitle className="text-base">Voyage in progress</CardTitle>
-          <CardDescription>Scoring session saved in this browser</CardDescription>
+          <CardDescription>
+            Scoring session saved in this browser
+          </CardDescription>
         </CardHeader>
         <CardContent className="px-5 py-4 sm:px-6">
           <dl className="flex flex-col gap-4 text-sm">
@@ -101,30 +108,34 @@ function SessionSummary({
           </dl>
         </CardContent>
       </Card>
-    )
+    );
   }
 
-  const c = config
+  const c = config;
   if (!c) {
     return (
       <Card className="py-4 shadow-sm">
         <CardHeader className="px-5 sm:px-6">
           <CardTitle className="text-base">Saved game</CardTitle>
-          <CardDescription>Configuration is stored on this device.</CardDescription>
+          <CardDescription>
+            Configuration is stored on this device.
+          </CardDescription>
         </CardHeader>
       </Card>
-    )
+    );
   }
 
-  const roundsCount = c.roundsSchema.length
-  const namedCrew = c.players.filter((n) => n.trim() !== "")
-  const countPhrase = playerCountPhrase(namedCrew.length, undefined)
+  const roundsCount = c.roundsSchema.length;
+  const namedCrew = c.players.filter((n) => n.trim() !== "");
+  const countPhrase = playerCountPhrase(namedCrew.length, undefined);
 
   return (
     <Card className="gap-0 overflow-hidden py-0 shadow-sm">
       <CardHeader className="border-b border-border/70 px-5 py-4 sm:px-6">
         <CardTitle className="text-base">Game ready</CardTitle>
-        <CardDescription>Crew and voyage chart saved — not started yet</CardDescription>
+        <CardDescription>
+          Crew and voyage chart saved — not started yet
+        </CardDescription>
       </CardHeader>
       <CardContent className="px-5 py-4 sm:px-6">
         <dl className="flex flex-col gap-4 text-sm">
@@ -150,60 +161,62 @@ function SessionSummary({
         </dl>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 export function SkullKingEntryClient() {
-  const router = useRouter()
-  const [view, setView] = React.useState<View>({ status: "loading" })
-  const [toastMessage, setToastMessage] = React.useState<string | null>(null)
+  const router = useRouter();
+  const [view, setView] = React.useState<View>({ status: "loading" });
+  const [toastMessage, setToastMessage] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    const entry = getSkullKingEntryState()
+    const entry = getSkullKingEntryState();
     if (entry.kind === "fresh") {
-      router.replace("/games/skull-king/calculator/setup")
-      return
+      router.replace("/games/skull-king/calculator/setup");
+      return;
     }
-    setView({ status: "ready", entry })
-  }, [router])
+    setView({ status: "ready", entry });
+  }, [router]);
 
   React.useEffect(() => {
-    if (!toastMessage) return
-    const id = window.setTimeout(() => setToastMessage(null), TOAST_MS)
-    return () => window.clearTimeout(id)
-  }, [toastMessage])
+    if (!toastMessage) return;
+    const id = window.setTimeout(() => setToastMessage(null), TOAST_MS);
+    return () => window.clearTimeout(id);
+  }, [toastMessage]);
 
   const onConfirmStartFresh = () => {
-    wipeSkullKingLocalGame()
-    router.replace("/games/skull-king/calculator/setup")
-  }
+    wipeSkullKingLocalGame();
+    router.replace("/games/skull-king/calculator/setup");
+  };
 
   if (view.status === "loading") {
     return (
       <div className="flex flex-1 items-center justify-center py-12">
         <p className="text-muted-foreground">Loading…</p>
       </div>
-    )
+    );
   }
 
-  const { entry } = view
-  const isOngoing = entry.kind === "ongoing"
-  const config = loadGameConfig()
-  const persistedRound = isOngoing ? loadRoundData() : null
+  const { entry } = view;
+  const isOngoing = entry.kind === "ongoing";
+  const config = loadGameConfig();
+  const persistedRound = isOngoing ? loadRoundData() : null;
 
-  const primaryHref = isOngoing ? "/games/skull-king/calculator/round" : "/games/skull-king/calculator/setup?step=4"
-  const primaryTitle = isOngoing ? "Continue voyage" : "Review and start"
+  const primaryHref = isOngoing
+    ? "/games/skull-king/calculator/round"
+    : "/games/skull-king/calculator/setup?step=4";
+  const primaryTitle = isOngoing ? "Continue voyage" : "Review and start";
   const primaryAria = isOngoing
     ? `${primaryTitle}. Round ${entry.currentRoundIndex + 1} of ${entry.roundCount}${
         persistedRound != null ? `, ${persistedRound.playerCount} players` : ""
       }.`
-    : `${primaryTitle}. Saved crew and voyage on this device.`
+    : `${primaryTitle}. Saved crew and voyage on this device.`;
 
-  const headline = isOngoing ? "Continue your voyage" : "Ready to sail"
+  const headline = isOngoing ? "Continue your voyage" : "Ready to sail";
 
   const confirmEraseAria = isOngoing
     ? "Erase all rounds and scores for this voyage on this device. Cannot be undone."
-    : "Erase saved crew, voyage chart, artifacts, and any round data on this device. Cannot be undone."
+    : "Erase saved crew, voyage chart, artifacts, and any round data on this device. Cannot be undone.";
 
   return (
     <div className="relative flex w-full min-w-0 flex-col gap-8 text-left">
@@ -218,7 +231,7 @@ export function SkullKingEntryClient() {
       <SessionSummary entry={entry} config={config} />
 
       <div className="flex w-full flex-col gap-4">
-        <Button variant="branded" size="cta" className="w-full" asChild>
+        <Button size="lg" className="w-full" asChild>
           <Link
             href={primaryHref}
             aria-label={primaryAria}
@@ -239,5 +252,5 @@ export function SkullKingEntryClient() {
         />
       </div>
     </div>
-  )
+  );
 }

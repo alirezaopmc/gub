@@ -1,24 +1,23 @@
-"use client"
+"use client";
 
-import * as React from "react"
-
-import { Button } from "@/components/ui/button"
-import { useSetupInteractionOptional } from "@/components/games/skull-king/setup/setup-interaction-context"
-import { useWizardKeyboardRequestAdvance } from "@/components/games/skull-king/setup/wizard-keyboard-context"
-import { SkullKingSetupSection } from "@/components/games/skull-king/setup/shared/skull-king-setup-section"
-import panel from "@/components/games/skull-king/setup/styles/setup-panel.module.css"
+import { Button } from "@manovaspace/ui";
+import * as React from "react";
+import { useSetupInteractionOptional } from "@/components/games/skull-king/setup/setup-interaction-context";
+import { SkullKingSetupSection } from "@/components/games/skull-king/setup/shared/skull-king-setup-section";
+import panel from "@/components/games/skull-king/setup/styles/setup-panel.module.css";
+import { useWizardKeyboardRequestAdvance } from "@/components/games/skull-king/setup/wizard-keyboard-context";
 import {
   formatRoundsSchema,
   parseRoundsSchemaInput,
   ROUNDS_SCHEMA_PRESETS,
-  roundsSchemasEqual,
   type RoundsSchemaPresetId,
-} from "@/lib/games/skull-king/rounds-schema"
-import { useSkullKingStore } from "@/lib/games/skull-king/skull-king-store"
+  roundsSchemasEqual,
+} from "@/lib/games/skull-king/rounds-schema";
+import { useSkullKingStore } from "@/lib/games/skull-king/skull-king-store";
 
-const HINT_ID = "navigation-chart-schema-hint"
-const INPUT_ID = "navigation-chart-round-schema"
-const HEADING_ID = "navigation-chart-heading"
+const HINT_ID = "navigation-chart-schema-hint";
+const INPUT_ID = "navigation-chart-round-schema";
+const HEADING_ID = "navigation-chart-heading";
 
 const ROUND_SCHEMA_PRESET_ORDER: RoundsSchemaPresetId[] = [
   "default",
@@ -31,7 +30,7 @@ const ROUND_SCHEMA_PRESET_ORDER: RoundsSchemaPresetId[] = [
   "odds",
   "evens",
   "rich",
-]
+];
 
 const ROUND_SCHEMA_PRESET_LABEL: Record<RoundsSchemaPresetId, string> = {
   default: "Default",
@@ -44,30 +43,32 @@ const ROUND_SCHEMA_PRESET_LABEL: Record<RoundsSchemaPresetId, string> = {
   broadside: "Broadside",
   whirlpool: "Whirlpool",
   pastBedtime: "Past Bedtime",
-}
+};
 
 export function NavigationChart() {
-  const requestAdvance = useWizardKeyboardRequestAdvance()
-  const interaction = useSetupInteractionOptional()
-  const markNav = interaction?.markNavInputsTouched
+  const requestAdvance = useWizardKeyboardRequestAdvance();
+  const interaction = useSetupInteractionOptional();
+  const markNav = interaction?.markNavInputsTouched;
 
-  const roundsSchema = useSkullKingStore((s) => s.roundsSchema)
-  const setRoundsSchema = useSkullKingStore((s) => s.setRoundsSchema)
+  const roundsSchema = useSkullKingStore((s) => s.roundsSchema);
+  const setRoundsSchema = useSkullKingStore((s) => s.setRoundsSchema);
 
-  const [text, setText] = React.useState(() => formatRoundsSchema(roundsSchema))
+  const [text, setText] = React.useState(() =>
+    formatRoundsSchema(roundsSchema),
+  );
 
   React.useEffect(() => {
-    setText(formatRoundsSchema(roundsSchema))
-  }, [roundsSchema])
+    setText(formatRoundsSchema(roundsSchema));
+  }, [roundsSchema]);
 
   const commitFromRaw = (raw: string) => {
-    const parsed = parseRoundsSchemaInput(raw)
+    const parsed = parseRoundsSchemaInput(raw);
     if (parsed.length > 0) {
-      setRoundsSchema(parsed)
+      setRoundsSchema(parsed);
     } else {
-      setText(formatRoundsSchema(useSkullKingStore.getState().roundsSchema))
+      setText(formatRoundsSchema(useSkullKingStore.getState().roundsSchema));
     }
-  }
+  };
 
   return (
     <SkullKingSetupSection
@@ -87,23 +88,23 @@ export function NavigationChart() {
             name="roundSchema"
             value={text}
             onChange={(e) => {
-              markNav?.()
-              setText(e.target.value)
+              markNav?.();
+              setText(e.target.value);
             }}
             onFocus={() => markNav?.()}
             onBlur={(e) => {
-              markNav?.()
-              commitFromRaw(e.currentTarget.value)
+              markNav?.();
+              commitFromRaw(e.currentTarget.value);
             }}
             onKeyDown={(e) => {
-              if (e.key !== "Enter" || e.nativeEvent.isComposing) return
-              e.preventDefault()
-              const raw = e.currentTarget.value
-              const parsed = parseRoundsSchemaInput(raw)
-              commitFromRaw(raw)
+              if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
+              e.preventDefault();
+              const raw = e.currentTarget.value;
+              const parsed = parseRoundsSchemaInput(raw);
+              commitFromRaw(raw);
               requestAdvance?.(
                 parsed.length > 0 ? { navigationCommitted: parsed } : undefined,
-              )
+              );
             }}
             autoComplete="off"
             aria-describedby={HINT_ID}
@@ -112,12 +113,16 @@ export function NavigationChart() {
           <p id={HINT_ID} className={panel.hint}>
             Example: &ldquo;1,2,2,5,5&rdquo; for a shortened skirmish.
           </p>
-          <div className={panel.schemaPresets} role="group" aria-label="Round schema presets">
+          <div
+            className={panel.schemaPresets}
+            role="group"
+            aria-label="Round schema presets"
+          >
             {ROUND_SCHEMA_PRESET_ORDER.map((presetId) => {
-              const next = [...ROUNDS_SCHEMA_PRESETS[presetId]]
-              const active = roundsSchemasEqual(roundsSchema, next)
-              const valuesText = formatRoundsSchema(next)
-              const label = ROUND_SCHEMA_PRESET_LABEL[presetId]
+              const next = [...ROUNDS_SCHEMA_PRESETS[presetId]];
+              const active = roundsSchemasEqual(roundsSchema, next);
+              const valuesText = formatRoundsSchema(next);
+              const label = ROUND_SCHEMA_PRESET_LABEL[presetId];
               return (
                 <div key={presetId} className={panel.schemaPresetRow}>
                   <div className={panel.schemaPresetButtonSlot}>
@@ -128,21 +133,23 @@ export function NavigationChart() {
                       aria-pressed={active}
                       aria-label={`${label}: ${valuesText}`}
                       onClick={() => {
-                        markNav?.()
-                        setRoundsSchema(next)
-                        setText(valuesText)
+                        markNav?.();
+                        setRoundsSchema(next);
+                        setText(valuesText);
                       }}
                     >
                       {label}
                     </Button>
                   </div>
-                  <span className={panel.schemaPresetValuesHint}>{valuesText}</span>
+                  <span className={panel.schemaPresetValuesHint}>
+                    {valuesText}
+                  </span>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </SkullKingSetupSection>
-  )
+  );
 }

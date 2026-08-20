@@ -1,13 +1,13 @@
-import { DocsLinkProvider } from "@/components/docs/docs-link-context"
-import { DocsProse } from "@/components/docs/docs-prose"
-import { renderDoc } from "@/lib/docs/render-doc"
+import { DocsLinkProvider } from "@/components/docs/docs-link-context";
+import { DocsProse } from "@/components/docs/docs-prose";
+import { renderDoc } from "@/lib/docs/render-doc";
 
 type DocsMdxContentProps = {
-  relativePath: string
-}
+  relativePath: string;
+};
 
 export async function DocsMdxContent({ relativePath }: DocsMdxContentProps) {
-  const { Content, components } = await renderDoc(relativePath)
+  const { Content, components } = await renderDoc(relativePath);
 
   return (
     <DocsLinkProvider fromPath={relativePath}>
@@ -15,5 +15,5 @@ export async function DocsMdxContent({ relativePath }: DocsMdxContentProps) {
         <Content components={components} />
       </DocsProse>
     </DocsLinkProvider>
-  )
+  );
 }

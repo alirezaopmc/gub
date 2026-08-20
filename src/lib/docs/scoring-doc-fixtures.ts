@@ -1,14 +1,19 @@
-import type { PlayerRoundData } from "@/lib/games/skull-king/round-score/types"
+import type { PlayerRoundData } from "@/lib/games/skull-king/round-score/types";
 
-export const SCORE_RULES_SOURCE = "src/lib/games/skull-king/round-score/score-rules.ts"
+export const SCORE_RULES_SOURCE =
+  "src/lib/games/skull-king/round-score/score-rules.ts";
 
 export const SCORING_DOC_PATHS = [
   "games/skull-king/rules/06-scoring.md",
   "games/skull-king/reference/scoring-quick-ref.md",
-] as const
+] as const;
 
 /** Multipliers documented in both scoring pages. */
-export const SCORING_FORMULA_SNIPPETS = ["+20 × bid", "−10 ×", "+10 ×"] as const
+export const SCORING_FORMULA_SNIPPETS = [
+  "+20 × bid",
+  "−10 ×",
+  "+10 ×",
+] as const;
 
 export const SCORING_BONUS_RATES = {
   fourteenStandard: 10,
@@ -17,25 +22,20 @@ export const SCORING_BONUS_RATES = {
   kingCapturesPirate: 30,
   mermaidCapturesKing: 40,
   alliance: 20,
-} as const
+} as const;
 
 /** Substrings for bonus rates that must appear in both scoring docs. */
-export const SCORING_BONUS_DOC_SNIPPETS = [
-  "+10",
-  "+20",
-  "+30",
-  "+40",
-] as const
+export const SCORING_BONUS_DOC_SNIPPETS = ["+10", "+20", "+30", "+40"] as const;
 
 export type BidWonFixture = {
-  label: string
-  handSize: number
-  bid: number
-  won: number
-  expected: number
+  label: string;
+  handSize: number;
+  bid: number;
+  won: number;
+  expected: number;
   /** Must appear in both scoring markdown files. */
-  docSnippets: readonly string[]
-}
+  docSnippets: readonly string[];
+};
 
 export const BID_WON_FIXTURES: readonly BidWonFixture[] = [
   {
@@ -70,7 +70,7 @@ export const BID_WON_FIXTURES: readonly BidWonFixture[] = [
     expected: -90,
     docSnippets: ["−90"],
   },
-]
+];
 
 /** Worked examples A–D — documented only in scoring-quick-ref.md. */
 export const BID_WON_QUICK_REF_FIXTURES: readonly BidWonFixture[] = [
@@ -106,18 +106,18 @@ export const BID_WON_QUICK_REF_FIXTURES: readonly BidWonFixture[] = [
     expected: -100,
     docSnippets: ["−100"],
   },
-]
+];
 
 export type RoundBreakdownFixture = {
-  label: string
-  handSize: number
-  player: PlayerRoundData
-  roundPlayers: readonly PlayerRoundData[]
-  expectedMain: number
-  expectedBonus: number
-  expectedTotal: number
-  docSnippets: readonly string[]
-}
+  label: string;
+  handSize: number;
+  player: PlayerRoundData;
+  roundPlayers: readonly PlayerRoundData[];
+  expectedMain: number;
+  expectedBonus: number;
+  expectedTotal: number;
+  docSnippets: readonly string[];
+};
 
 const exampleEPlayer: PlayerRoundData = {
   bid: 2,
@@ -125,26 +125,35 @@ const exampleEPlayer: PlayerRoundData = {
   harryGiantBidDelta: null,
   events: [
     { type: "fourteenBonus", playerIndex: 0, suit: "black" },
-    { type: "characterCapture", capturerIndex: 0, capturingCard: "mermaid", count: 1 },
+    {
+      type: "characterCapture",
+      capturerIndex: 0,
+      capturingCard: "mermaid",
+      count: 1,
+    },
   ],
   score: 0,
-}
+};
 
 const rascalMadePlayer: PlayerRoundData = {
   bid: 3,
   won: 3,
   harryGiantBidDelta: null,
-  events: [{ type: "pirateAbility", ownerIndex: 0, pirate: "rascal", wager: 20 }],
+  events: [
+    { type: "pirateAbility", ownerIndex: 0, pirate: "rascal", wager: 20 },
+  ],
   score: 0,
-}
+};
 
 const rascalMissPlayer: PlayerRoundData = {
   bid: 3,
   won: 4,
   harryGiantBidDelta: null,
-  events: [{ type: "pirateAbility", ownerIndex: 0, pirate: "rascal", wager: 20 }],
+  events: [
+    { type: "pirateAbility", ownerIndex: 0, pirate: "rascal", wager: 20 },
+  ],
   score: 0,
-}
+};
 
 export const ROUND_BREAKDOWN_FIXTURES: readonly RoundBreakdownFixture[] = [
   {
@@ -177,7 +186,7 @@ export const ROUND_BREAKDOWN_FIXTURES: readonly RoundBreakdownFixture[] = [
     expectedTotal: -10,
     docSnippets: ["bonuses **forfeited** → **−10**"],
   },
-]
+];
 
 /** Snippets that must appear in both scoring docs (not quick-ref-only). */
-export const SHARED_DOC_SNIPPETS = ["forfeited"] as const
+export const SHARED_DOC_SNIPPETS = ["forfeited"] as const;

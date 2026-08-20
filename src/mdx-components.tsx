@@ -1,10 +1,10 @@
-import type { MDXComponents } from "mdx/types"
-import type { ComponentPropsWithoutRef } from "react"
+import type { MDXComponents } from "mdx/types";
+import type { ComponentPropsWithoutRef } from "react";
 
-import { CardRef } from "@/components/docs/card-ref"
-import { DocsAnchor } from "@/components/docs/docs-anchor"
-import { DocsPre } from "@/components/docs/docs-pre"
-import { SuitSwatch } from "@/components/docs/suit-swatch"
+import { CardRef } from "@/components/docs/card-ref";
+import { DocsAnchor } from "@/components/docs/docs-anchor";
+import { DocsPre } from "@/components/docs/docs-pre";
+import { SuitSwatch } from "@/components/docs/suit-swatch";
 
 const components = {
   h1: ({ children, ...props }: ComponentPropsWithoutRef<"h1">) => (
@@ -26,10 +26,10 @@ const components = {
   pre: DocsPre,
   CardRef,
   SuitSwatch,
-} satisfies MDXComponents
+} satisfies MDXComponents;
 
-export const mdxComponents: MDXComponents = components
+export const mdxComponents: MDXComponents = components;
 
 export function useMDXComponents(overrides: MDXComponents = {}): MDXComponents {
-  return { ...mdxComponents, ...overrides }
+  return { ...mdxComponents, ...overrides };
 }

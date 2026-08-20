@@ -82,7 +82,11 @@
   text-align: center;
   border-radius: var(--radius-md);
   color: inherit;
-  transition: border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    opacity 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .addCrewTrigger:hover .addCrewFauxInput {
@@ -327,7 +331,9 @@
   background: transparent;
   cursor: default;
   color: var(--destructive);
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--destructive), transparent 55%));
+  filter: drop-shadow(
+    0 0 6px color-mix(in srgb, var(--destructive), transparent 55%)
+  );
 }
 
 .inputDupTrigger:focus-visible {

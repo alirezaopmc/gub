@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import * as React from "react";
 
-import { loadGameConfig } from "@/lib/games/skull-king/game-config-storage"
-import { useSkullKingStore } from "@/lib/games/skull-king/skull-king-store"
+import { loadGameConfig } from "@/lib/games/skull-king/game-config-storage";
+import { useSkullKingStore } from "@/lib/games/skull-king/skull-king-store";
 
 function syncSetupStoreFromStorage() {
-  const saved = loadGameConfig()
-  if (saved) useSkullKingStore.getState().hydrateFromGameConfig(saved)
+  const saved = loadGameConfig();
+  if (saved) useSkullKingStore.getState().hydrateFromGameConfig(saved);
 }
 
 /** Legacy `/start` route: redirects into setup wizard step 4 (review & confirm). */
 export function SkullKingStartClient() {
-  const router = useRouter()
-  const [status, setStatus] = React.useState<"loading" | "missing">("loading")
+  const router = useRouter();
+  const [status, setStatus] = React.useState<"loading" | "missing">("loading");
 
   React.useEffect(() => {
-    const config = loadGameConfig()
+    const config = loadGameConfig();
     if (!config) {
-      setStatus("missing")
-      return
+      setStatus("missing");
+      return;
     }
-    syncSetupStoreFromStorage()
-    router.replace("/games/skull-king/setup?step=4")
-  }, [router])
+    syncSetupStoreFromStorage();
+    router.replace("/games/skull-king/setup?step=4");
+  }, [router]);
 
   if (status === "loading") {
-    return <p className="text-muted-foreground">Opening setup…</p>
+    return <p className="text-muted-foreground">Opening setup…</p>;
   }
 
   return (
@@ -44,5 +44,5 @@ export function SkullKingStartClient() {
         Back to setup
       </Link>
     </div>
-  )
+  );
 }

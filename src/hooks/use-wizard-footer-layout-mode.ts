@@ -1,44 +1,44 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
 /** Visual viewport height at or below this: omit bottom navigation (cramped / keyboard overlap). */
-export const WIZARD_FOOTER_HIDE_BELOW_PX = 300
+export const WIZARD_FOOTER_HIDE_BELOW_PX = 300;
 
 /**
  * Visual viewport height at or below this: place footer inside the scroll region so it can be
  * scrolled into view (e.g. mobile software keyboard) instead of docking under the step strip.
  */
-export const WIZARD_FOOTER_IN_FLOW_BELOW_PX = 520
+export const WIZARD_FOOTER_IN_FLOW_BELOW_PX = 520;
 
-export type WizardFooterLayoutMode = "hidden" | "inFlow" | "docked"
+export type WizardFooterLayoutMode = "hidden" | "inFlow" | "docked";
 
 function modeFromVisualHeight(px: number): WizardFooterLayoutMode {
-  if (px <= WIZARD_FOOTER_HIDE_BELOW_PX) return "hidden"
-  if (px <= WIZARD_FOOTER_IN_FLOW_BELOW_PX) return "inFlow"
-  return "docked"
+  if (px <= WIZARD_FOOTER_HIDE_BELOW_PX) return "hidden";
+  if (px <= WIZARD_FOOTER_IN_FLOW_BELOW_PX) return "inFlow";
+  return "docked";
 }
 
 function subscribe(onChange: () => void) {
-  if (typeof window === "undefined") return () => {}
+  if (typeof window === "undefined") return () => {};
 
-  const vv = window.visualViewport
+  const vv = window.visualViewport;
   const onEvt = () => {
-    onChange()
-  }
-  vv?.addEventListener("resize", onEvt)
-  vv?.addEventListener("scroll", onEvt)
-  window.addEventListener("resize", onEvt)
+    onChange();
+  };
+  vv?.addEventListener("resize", onEvt);
+  vv?.addEventListener("scroll", onEvt);
+  window.addEventListener("resize", onEvt);
   return () => {
-    vv?.removeEventListener("resize", onEvt)
-    vv?.removeEventListener("scroll", onEvt)
-    window.removeEventListener("resize", onEvt)
-  }
+    vv?.removeEventListener("resize", onEvt);
+    vv?.removeEventListener("scroll", onEvt);
+    window.removeEventListener("resize", onEvt);
+  };
 }
 
 function getModeSnapshot(): WizardFooterLayoutMode {
-  const h = window.visualViewport?.height ?? window.innerHeight
-  return modeFromVisualHeight(h)
+  const h = window.visualViewport?.height ?? window.innerHeight;
+  return modeFromVisualHeight(h);
 }
 
 /**
@@ -48,5 +48,5 @@ function getModeSnapshot(): WizardFooterLayoutMode {
  * - hidden: footer omitted when the visible viewport is extremely short
  */
 export function useWizardFooterLayoutMode(): WizardFooterLayoutMode {
-  return React.useSyncExternalStore(subscribe, getModeSnapshot, () => "docked")
+  return React.useSyncExternalStore(subscribe, getModeSnapshot, () => "docked");
 }

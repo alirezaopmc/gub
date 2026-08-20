@@ -1,116 +1,141 @@
-"use client"
+"use client";
 
-import * as React from "react"
-
-import { BidWonDialog } from "@/components/games/skull-king/round-score/bid-won-dialog"
-import { EventsDialog } from "@/components/games/skull-king/round-score/events/add-event-dialog"
-import { ReplayRoundConfirmDialog } from "@/components/games/skull-king/round-score/footer/replay-round-confirm-dialog"
-import { Button } from "@/components/ui/button"
-import { SkullKingAnchorIcon } from "@/components/games/skull-king/setup/shared/skull-king-setup-icons"
-import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css"
+import {
+  BarChart3,
+  Button,
+  Menu,
+  PencilLine,
+  RotateCcw,
+  Wrench,
+} from "@manovaspace/ui";
+import * as React from "react";
+import { BidWonDialog } from "@/components/games/skull-king/round-score/bid-won-dialog";
+import { EventsDialog } from "@/components/games/skull-king/round-score/events/add-event-dialog";
+import { ReplayRoundConfirmDialog } from "@/components/games/skull-king/round-score/footer/replay-round-confirm-dialog";
+import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css";
+import { SkullKingAnchorIcon } from "@/components/games/skull-king/setup/shared/skull-king-setup-icons";
 import {
   areAllNamedPlayersBidsSet,
   areAllNamedPlayersWonSet,
-} from "@/lib/games/skull-king/round-score/named-player-inputs-complete"
-import { useRoundScoreStore } from "@/lib/games/skull-king/round-score/round-score-store"
-import { BarChart3, Menu, PencilLine, RotateCcw, Wrench } from "lucide-react"
+} from "@/lib/games/skull-king/round-score/named-player-inputs-complete";
+import { useRoundScoreStore } from "@/lib/games/skull-king/round-score/round-score-store";
 
 export type RoundVoyageFooterProps = {
-  statsDialogOpen: boolean
-  onOpenStats: () => void
-}
+  statsDialogOpen: boolean;
+  onOpenStats: () => void;
+};
 
-export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageFooterProps) {
-  const config = useRoundScoreStore((s) => s.config)
-  const currentRoundIndex = useRoundScoreStore((s) => s.currentRoundIndex)
-  const rounds = useRoundScoreStore((s) => s.rounds)
-  const finalizeCurrentRound = useRoundScoreStore((s) => s.finalizeCurrentRound)
-  const nextRound = useRoundScoreStore((s) => s.nextRound)
-  const replayFromCurrentRound = useRoundScoreStore((s) => s.replayFromCurrentRound)
-  const acknowledgeBidsSheet = useRoundScoreStore((s) => s.acknowledgeBidsSheet)
+export function RoundVoyageFooter({
+  statsDialogOpen,
+  onOpenStats,
+}: RoundVoyageFooterProps) {
+  const config = useRoundScoreStore((s) => s.config);
+  const currentRoundIndex = useRoundScoreStore((s) => s.currentRoundIndex);
+  const rounds = useRoundScoreStore((s) => s.rounds);
+  const finalizeCurrentRound = useRoundScoreStore(
+    (s) => s.finalizeCurrentRound,
+  );
+  const nextRound = useRoundScoreStore((s) => s.nextRound);
+  const replayFromCurrentRound = useRoundScoreStore(
+    (s) => s.replayFromCurrentRound,
+  );
+  const acknowledgeBidsSheet = useRoundScoreStore(
+    (s) => s.acknowledgeBidsSheet,
+  );
 
   /** Tracks rounds we already initialized the bid sheet state for (by index). */
-  const initializedRoundIndexRef = React.useRef<number | null>(null)
+  const initializedRoundIndexRef = React.useRef<number | null>(null);
 
-  const [bidWonOpen, setBidWonOpen] = React.useState(false)
-  const [bidWonEditableBid, setBidWonEditableBid] = React.useState(true)
-  const [bidWonEditableWon, setBidWonEditableWon] = React.useState(false)
-  const [bidWonVariant, setBidWonVariant] = React.useState<"bids" | "tricks" | "full">("bids")
-  const [eventsOpen, setEventsOpen] = React.useState(false)
-  const [replayConfirmOpen, setReplayConfirmOpen] = React.useState(false)
+  const [bidWonOpen, setBidWonOpen] = React.useState(false);
+  const [bidWonEditableBid, setBidWonEditableBid] = React.useState(true);
+  const [bidWonEditableWon, setBidWonEditableWon] = React.useState(false);
+  const [bidWonVariant, setBidWonVariant] = React.useState<
+    "bids" | "tricks" | "full"
+  >("bids");
+  const [eventsOpen, setEventsOpen] = React.useState(false);
+  const [replayConfirmOpen, setReplayConfirmOpen] = React.useState(false);
 
   React.useEffect(() => {
-    const round = rounds[currentRoundIndex]
-    if (!round) return
-    if (initializedRoundIndexRef.current === currentRoundIndex) return
-    initializedRoundIndexRef.current = currentRoundIndex
+    const round = rounds[currentRoundIndex];
+    if (!round) return;
+    if (initializedRoundIndexRef.current === currentRoundIndex) return;
+    initializedRoundIndexRef.current = currentRoundIndex;
 
-    setBidWonEditableBid(true)
-    setBidWonEditableWon(false)
-    setBidWonVariant("bids")
+    setBidWonEditableBid(true);
+    setBidWonEditableWon(false);
+    setBidWonVariant("bids");
     // Do not auto-open the bids sheet at round start; use the Tricks control to edit bids.
-    setBidWonOpen(false)
-  }, [currentRoundIndex, rounds])
+    setBidWonOpen(false);
+  }, [currentRoundIndex, rounds]);
 
-  const currentRound = config && rounds.length > 0 ? rounds[currentRoundIndex] : undefined
+  const currentRound =
+    config && rounds.length > 0 ? rounds[currentRoundIndex] : undefined;
   const allBidsSet =
-    currentRound != null && config != null ? areAllNamedPlayersBidsSet(config, currentRound) : true
+    currentRound != null && config != null
+      ? areAllNamedPlayersBidsSet(config, currentRound)
+      : true;
   const allWonSet =
-    currentRound != null && config != null ? areAllNamedPlayersWonSet(config, currentRound) : true
+    currentRound != null && config != null
+      ? areAllNamedPlayersWonSet(config, currentRound)
+      : true;
 
-  const roundFinalized = currentRound?.finalized === true
-  const atLastRound = config && rounds.length > 0 ? currentRoundIndex >= rounds.length - 1 : false
-  const primaryIsStart = !roundFinalized && !allBidsSet
+  const roundFinalized = currentRound?.finalized === true;
+  const atLastRound =
+    config && rounds.length > 0
+      ? currentRoundIndex >= rounds.length - 1
+      : false;
+  const primaryIsStart = !roundFinalized && !allBidsSet;
   /** Bids and tricks won entered; host must tap Finalize to lock scores and go on. */
-  const readyToFinalize = !roundFinalized && allBidsSet && allWonSet
+  const readyToFinalize = !roundFinalized && allBidsSet && allWonSet;
 
   const onStartSetBids = React.useCallback(() => {
-    setBidWonEditableBid(true)
-    setBidWonEditableWon(false)
-    setBidWonVariant("bids")
-    setBidWonOpen(true)
-  }, [])
+    setBidWonEditableBid(true);
+    setBidWonEditableWon(false);
+    setBidWonVariant("bids");
+    setBidWonOpen(true);
+  }, []);
 
   /** Open tricks won sheet only — no finalize and no auto-advance (host uses Finalize next). */
   const onFinish = React.useCallback(() => {
-    setBidWonEditableBid(true)
-    setBidWonEditableWon(true)
-    setBidWonVariant("tricks")
-    setBidWonOpen(true)
-  }, [])
+    setBidWonEditableBid(true);
+    setBidWonEditableWon(true);
+    setBidWonVariant("tricks");
+    setBidWonOpen(true);
+  }, []);
 
   const onFinalizeAndAdvance = React.useCallback(() => {
-    finalizeCurrentRound()
-    if (atLastRound) return
-    nextRound({ allowUnlock: true })
-  }, [atLastRound, finalizeCurrentRound, nextRound])
+    finalizeCurrentRound();
+    if (atLastRound) return;
+    nextRound({ allowUnlock: true });
+  }, [atLastRound, finalizeCurrentRound, nextRound]);
 
   React.useEffect(() => {
-    if (typeof window === "undefined" || !config || rounds.length === 0) return
-    if (roundFinalized) return
+    if (typeof window === "undefined" || !config || rounds.length === 0) return;
+    if (roundFinalized) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== "Enter" || e.isComposing) return
-      if (bidWonOpen || eventsOpen || statsDialogOpen || replayConfirmOpen) return
-      if (roundFinalized) return
-      const t = e.target
+      if (e.key !== "Enter" || e.isComposing) return;
+      if (bidWonOpen || eventsOpen || statsDialogOpen || replayConfirmOpen)
+        return;
+      if (roundFinalized) return;
+      const t = e.target;
       if (
         t instanceof HTMLInputElement ||
         t instanceof HTMLTextAreaElement ||
         t instanceof HTMLSelectElement
       ) {
-        return
+        return;
       }
-      if (t instanceof HTMLElement && t.isContentEditable) return
-      if (t instanceof HTMLButtonElement) return
-      if (t instanceof HTMLAnchorElement) return
-      e.preventDefault()
-      if (primaryIsStart) onStartSetBids()
-      else if (readyToFinalize) onFinalizeAndAdvance()
-      else onFinish()
-    }
-    window.addEventListener("keydown", onKeyDown)
-    return () => window.removeEventListener("keydown", onKeyDown)
+      if (t instanceof HTMLElement && t.isContentEditable) return;
+      if (t instanceof HTMLButtonElement) return;
+      if (t instanceof HTMLAnchorElement) return;
+      e.preventDefault();
+      if (primaryIsStart) onStartSetBids();
+      else if (readyToFinalize) onFinalizeAndAdvance();
+      else onFinish();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [
     config,
     rounds.length,
@@ -124,15 +149,15 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
     onStartSetBids,
     onFinish,
     onFinalizeAndAdvance,
-  ])
+  ]);
 
-  if (!config || rounds.length === 0) return null
+  if (!config || rounds.length === 0) return null;
 
   const editTricksTitle = roundFinalized
     ? "Edit bids and tricks won (correct mistakes after tally)"
     : !allBidsSet
       ? "Set bids for this round (same as Start)"
-      : "Edit bids only — enter tricks won with Finish"
+      : "Edit bids only — enter tricks won with Finish";
 
   return (
     <footer className={styles.footer}>
@@ -149,7 +174,9 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
                 : "Events log unavailable — set all crew bids to start this round first"
             }
             title={
-              allBidsSet ? "View this round’s event log" : "Set every crew member’s bid (tap Start), then events can be logged"
+              allBidsSet
+                ? "View this round’s event log"
+                : "Set every crew member’s bid (tap Start), then events can be logged"
             }
             onClick={() => setEventsOpen(true)}
           >
@@ -163,20 +190,22 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
             variant="ghost"
             size="icon-sm"
             aria-label={
-              roundFinalized ? "Edit bid and tricks won" : "Edit bids for this round"
+              roundFinalized
+                ? "Edit bid and tricks won"
+                : "Edit bids for this round"
             }
             title={editTricksTitle}
             onClick={() => {
               if (roundFinalized) {
-                setBidWonEditableBid(true)
-                setBidWonEditableWon(true)
-                setBidWonVariant("full")
+                setBidWonEditableBid(true);
+                setBidWonEditableWon(true);
+                setBidWonVariant("full");
               } else {
-                setBidWonEditableBid(true)
-                setBidWonEditableWon(false)
-                setBidWonVariant("bids")
+                setBidWonEditableBid(true);
+                setBidWonEditableWon(false);
+                setBidWonVariant("bids");
               }
-              setBidWonOpen(true)
+              setBidWonOpen(true);
             }}
           >
             <PencilLine className="size-4" aria-hidden strokeWidth={1.5} />
@@ -189,14 +218,18 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
         {roundFinalized ? (
           <Button
             type="button"
-            variant="outlineReplay"
-            size="cta"
-            className="w-full font-headline tracking-[0.06em] font-bold"
+            variant="outline"
+            size="lg"
+            className="w-full h-auto min-h-11 min-w-0 flex-col gap-0.5 rounded-xl px-5 py-2 text-sm font-headline tracking-[0.06em] font-bold border-[color-mix(in_srgb,var(--destructive),transparent_55%)] bg-[color-mix(in_srgb,var(--destructive)_10%,var(--card)_90%)] text-destructive shadow-[var(--shadow-sk-cta)] hover:border-[color-mix(in_srgb,var(--destructive),transparent_35%)] hover:bg-[color-mix(in_srgb,var(--destructive)_18%,var(--card)_82%)] hover:brightness-[1.02] hover:shadow-[var(--shadow-sk-cta)] focus-visible:border-[color-mix(in_srgb,var(--destructive),transparent_25%)] focus-visible:ring-transparent focus-visible:shadow-[0_0_0_2px_color-mix(in_srgb,var(--destructive),transparent_62%),var(--shadow-sk-cta)] [&_*]:text-destructive [&_svg]:text-destructive"
             aria-label={`Redo round ${currentRoundIndex + 1} — clears scores for this deal and later rounds`}
             onClick={() => setReplayConfirmOpen(true)}
           >
             <span className={styles.footerPrimaryCtaRow}>
-              <RotateCcw className="size-4 opacity-95" aria-hidden strokeWidth={1.5} />
+              <RotateCcw
+                className="size-4 opacity-95"
+                aria-hidden
+                strokeWidth={1.5}
+              />
               Redo
             </span>
             <span className={styles.footerPrimaryCtaKicker}>This round</span>
@@ -205,8 +238,8 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
           <Button
             type="button"
             variant="default"
-            size="cta"
-            className="w-full font-headline tracking-[0.06em] font-bold"
+            size="lg"
+            className="w-full h-auto min-h-11 min-w-0 flex-col gap-0.5 rounded-xl px-5 py-2 text-sm font-headline tracking-[0.06em] font-bold"
             aria-label={
               atLastRound
                 ? "Finalize this round and end the voyage"
@@ -226,8 +259,8 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
           <Button
             type="button"
             variant="default"
-            size="cta"
-            className="w-full font-headline tracking-[0.06em] font-bold"
+            size="lg"
+            className="w-full h-auto min-h-11 min-w-0 flex-col gap-0.5 rounded-xl px-5 py-2 text-sm font-headline tracking-[0.06em] font-bold"
             aria-label={
               primaryIsStart
                 ? "Set bid tricks for this hand"
@@ -281,7 +314,7 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
         onDone={
           bidWonVariant === "bids"
             ? () => {
-                acknowledgeBidsSheet()
+                acknowledgeBidsSheet();
               }
             : undefined
         }
@@ -295,12 +328,12 @@ export function RoundVoyageFooter({ statsDialogOpen, onOpenStats }: RoundVoyageF
         onOpenChange={setReplayConfirmOpen}
         roundNumber={currentRoundIndex + 1}
         onConfirm={() => {
-          initializedRoundIndexRef.current = null
-          replayFromCurrentRound()
-          setBidWonOpen(false)
-          setEventsOpen(false)
+          initializedRoundIndexRef.current = null;
+          replayFromCurrentRound();
+          setBidWonOpen(false);
+          setEventsOpen(false);
         }}
       />
     </footer>
-  )
+  );
 }

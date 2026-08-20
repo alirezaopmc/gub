@@ -1,58 +1,74 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Collapsible } from "radix-ui"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown } from "@manovaspace/ui";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Collapsible } from "radix-ui";
 
-import { useDocsArtifacts } from "@/components/docs/docs-artifact-context"
-import { isDocVisibleForArtifacts } from "@/lib/docs/doc-artifact-visibility"
-import type { DocNavConfig } from "@/lib/docs/types"
-import { cn } from "@/lib/utils"
+import { useDocsArtifacts } from "@/components/docs/docs-artifact-context";
+import { isDocVisibleForArtifacts } from "@/lib/docs/doc-artifact-visibility";
+import type { DocNavConfig } from "@/lib/docs/types";
+import { cn } from "@/lib/utils";
 
-import styles from "./styles/docs-layout.module.css"
+import styles from "./styles/docs-layout.module.css";
 
 type DocsNavProps = {
-  config: DocNavConfig
-  className?: string
-  onNavigate?: () => void
+  config: DocNavConfig;
+  className?: string;
+  onNavigate?: () => void;
+};
+
+function resolveActiveHref(
+  pathname: string | null,
+  config: DocNavConfig,
+): string | null {
+  if (!pathname) return null;
+  return config.activePathAliases?.[pathname] ?? pathname;
 }
 
-function resolveActiveHref(pathname: string | null, config: DocNavConfig): string | null {
-  if (!pathname) return null
-  return config.activePathAliases?.[pathname] ?? pathname
+function isActivePath(
+  pathname: string | null,
+  href: string,
+  config: DocNavConfig,
+): boolean {
+  const active = resolveActiveHref(pathname, config);
+  if (!active) return false;
+  return active === href || active.startsWith(`${href}/`);
 }
 
-function isActivePath(pathname: string | null, href: string, config: DocNavConfig): boolean {
-  const active = resolveActiveHref(pathname, config)
-  if (!active) return false
-  return active === href || active.startsWith(`${href}/`)
-}
-
-function groupHasActive(pathname: string | null, config: DocNavConfig, section: string): boolean {
-  const group = config.groups.find((g) => g.section === section)
-  if (!group) return false
-  return group.items.some((item) => isActivePath(pathname, item.href, config))
+function groupHasActive(
+  pathname: string | null,
+  config: DocNavConfig,
+  section: string,
+): boolean {
+  const group = config.groups.find((g) => g.section === section);
+  if (!group) return false;
+  return group.items.some((item) => isActivePath(pathname, item.href, config));
 }
 
 export function DocsNav({ config, className, onNavigate }: DocsNavProps) {
-  const pathname = usePathname()
-  const { options } = useDocsArtifacts()
+  const pathname = usePathname();
+  const { options } = useDocsArtifacts();
 
   const visibleGroups = config.groups
     .map((group) => ({
       ...group,
-      items: group.items.filter((item) => isDocVisibleForArtifacts(item.artifacts, options)),
+      items: group.items.filter((item) =>
+        isDocVisibleForArtifacts(item.artifacts, options),
+      ),
     }))
-    .filter((group) => group.items.length > 0)
+    .filter((group) => group.items.length > 0);
 
   return (
-    <nav aria-label="Documentation" className={cn("flex flex-col gap-4", className)}>
+    <nav
+      aria-label="Documentation"
+      className={cn("flex flex-col gap-4", className)}
+    >
       <p className="px-2 font-headline text-xs font-bold uppercase tracking-wider text-primary">
         {config.gameTitle}
       </p>
       {visibleGroups.map((group) => {
-        const defaultOpen = groupHasActive(pathname, config, group.section)
+        const defaultOpen = groupHasActive(pathname, config, group.section);
 
         return (
           <Collapsible.Root key={group.section} defaultOpen={defaultOpen}>
@@ -66,7 +82,7 @@ export function DocsNav({ config, className, onNavigate }: DocsNavProps) {
             <Collapsible.Content className={styles.navGroupContent}>
               <ul className="mt-1 flex flex-col gap-0.5 pb-1 pl-1">
                 {group.items.map((item) => {
-                  const active = isActivePath(pathname, item.href, config)
+                  const active = isActivePath(pathname, item.href, config);
 
                   return (
                     <li key={item.href}>
@@ -84,13 +100,13 @@ export function DocsNav({ config, className, onNavigate }: DocsNavProps) {
                         {item.title}
                       </Link>
                     </li>
-                  )
+                  );
                 })}
               </ul>
             </Collapsible.Content>
           </Collapsible.Root>
-        )
+        );
       })}
     </nav>
-  )
+  );
 }

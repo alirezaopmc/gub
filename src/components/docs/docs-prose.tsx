@@ -1,9 +1,9 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 type DocsProseProps = {
-  children: ReactNode
-  className?: string
-}
+  children: ReactNode;
+  className?: string;
+};
 
 export function DocsProse({ children, className }: DocsProseProps) {
   return (
@@ -17,5 +17,5 @@ export function DocsProse({ children, className }: DocsProseProps) {
     >
       {children}
     </article>
-  )
+  );
 }

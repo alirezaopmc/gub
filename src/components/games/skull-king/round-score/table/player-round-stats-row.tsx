@@ -1,85 +1,85 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Star } from "lucide-react"
-import { Tooltip } from "radix-ui"
+import { Star } from "@manovaspace/ui";
+import { Tooltip } from "radix-ui";
+import type * as React from "react";
 
-import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css"
+import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css";
 import {
   clampTricksToHand,
   effectiveTricksBid,
-} from "@/lib/games/skull-king/round-score/bid-won-validation"
-import { cn } from "@/lib/utils"
+} from "@/lib/games/skull-king/round-score/bid-won-validation";
+import { cn } from "@/lib/utils";
 
 export type PlayerRoundStatsRowProps = {
-  rank: number
-  playerName: string
+  rank: number;
+  playerName: string;
   /** This crew member leads the round (plays first); icon + hint next to the name. */
-  isRoundStarter?: boolean
-  bid: number | null
-  won: number | null
-  maxTricks: number
-  editableBid: boolean
-  editableWon: boolean
-  onBidChange?: (value: number | null) => void
-  onWonChange?: (value: number | null) => void
+  isRoundStarter?: boolean;
+  bid: number | null;
+  won: number | null;
+  maxTricks: number;
+  editableBid: boolean;
+  editableWon: boolean;
+  onBidChange?: (value: number | null) => void;
+  onWonChange?: (value: number | null) => void;
   /** When set, renders an Events column (use with `.tableGridWithEvents` on the table). */
-  eventsSlot?: React.ReactNode
+  eventsSlot?: React.ReactNode;
   /** Voyage view: this round (empty until tallied) + running total. */
-  voyagePoints?: { thisRound: number | null; total: number } | null
+  voyagePoints?: { thisRound: number | null; total: number } | null;
   /** Running voyage score through the viewed round (finalized sums + live preview when applicable). */
-  runningTotalThroughRound?: number
+  runningTotalThroughRound?: number;
   /** Harry the Giant bid tweak — appends +1 / −1 after the bid (same line, gold). */
-  harryGiantBidDelta?: 1 | -1 | null
+  harryGiantBidDelta?: 1 | -1 | null;
   /** When false, only the bid control is shown (tricks won hidden). */
-  showWon?: boolean
+  showWon?: boolean;
   /** After entering one digit in the bid cell, focus the next row’s bid (if any). */
-  bidFocusNext?: () => void
-  bidInputRef?: React.Ref<HTMLInputElement>
+  bidFocusNext?: () => void;
+  bidInputRef?: React.Ref<HTMLInputElement>;
   /** After entering one digit in the won cell, focus the next row’s won (if any). */
-  wonFocusNext?: () => void
-  wonInputRef?: React.Ref<HTMLInputElement>
+  wonFocusNext?: () => void;
+  wonInputRef?: React.Ref<HTMLInputElement>;
   /**
    * Round page: bid/won main score + bonuses, or live preview of known bonuses only.
    * When omitted, no Round score column cell is rendered (narrow dialogs).
    */
-  roundScore?: RoundScoreCell | null
-}
+  roundScore?: RoundScoreCell | null;
+};
 
 export type RoundScoreCell =
   | { kind: "final"; main: number; bonus: number }
-  | { kind: "preview"; bonus: number }
+  | { kind: "preview"; bonus: number };
 
 function formatPts(n: number): string {
-  const v = Number.isFinite(n) ? n : 0
-  return `${v.toLocaleString("en-US")} PTS`
+  const v = Number.isFinite(n) ? n : 0;
+  return `${v.toLocaleString("en-US")} PTS`;
 }
 
 /** Explicit + / − prefix for round-score segments (0 → +0). */
 function formatSignedTrickPoints(n: number): string {
-  if (!Number.isFinite(n)) return "+0"
-  if (n > 0) return `+${n}`
-  if (n < 0) return `-${Math.abs(n)}`
-  return "+0"
+  if (!Number.isFinite(n)) return "+0";
+  if (n > 0) return `+${n}`;
+  if (n < 0) return `-${Math.abs(n)}`;
+  return "+0";
 }
 
 function segmentToneClass(
   n: number,
   styles: {
-    up: string
-    down: string
-    zero: string
+    up: string;
+    down: string;
+    zero: string;
   },
 ): string {
-  if (!Number.isFinite(n) || n === 0) return styles.zero
-  return n > 0 ? styles.up : styles.down
+  if (!Number.isFinite(n) || n === 0) return styles.zero;
+  return n > 0 ? styles.up : styles.down;
 }
 
 function parseOptionalInt(raw: string): number | null {
-  const t = raw.trim()
-  if (t === "") return null
-  const n = Number.parseInt(t, 10)
-  return Number.isFinite(n) ? n : null
+  const t = raw.trim();
+  if (t === "") return null;
+  const n = Number.parseInt(t, 10);
+  return Number.isFinite(n) ? n : null;
 }
 
 /**
@@ -88,22 +88,22 @@ function parseOptionalInt(raw: string): number | null {
  * and single-digit completion without being a prefix of another valid count (e.g. "1" with max 8).
  */
 function shouldAdvanceTrickInputFocus(raw: string, maxTricks: number): boolean {
-  const t = raw.trim()
-  if (t === "") return false
-  const parsed = Number.parseInt(t, 10)
-  if (!Number.isFinite(parsed)) return false
-  const max = Math.max(0, Math.floor(maxTricks))
-  if (parsed > max) return true
-  const committed = clampTricksToHand(maxTricks, parsed)
-  if (committed === null) return false
-  if (t === String(committed) && t.length > 1) return true
-  if (!/^\d$/.test(t)) return false
-  const d = Number(t)
-  if (!Number.isFinite(d)) return false
+  const t = raw.trim();
+  if (t === "") return false;
+  const parsed = Number.parseInt(t, 10);
+  if (!Number.isFinite(parsed)) return false;
+  const max = Math.max(0, Math.floor(maxTricks));
+  if (parsed > max) return true;
+  const committed = clampTricksToHand(maxTricks, parsed);
+  if (committed === null) return false;
+  if (t === String(committed) && t.length > 1) return true;
+  if (!/^\d$/.test(t)) return false;
+  const d = Number(t);
+  if (!Number.isFinite(d)) return false;
   for (let v = 10; v <= max; v++) {
-    if (String(v).startsWith(t)) return false
+    if (String(v).startsWith(t)) return false;
   }
-  return true
+  return true;
 }
 
 function TrickField({
@@ -116,17 +116,17 @@ function TrickField({
   inputRef,
   focusNextAfterDigit,
 }: {
-  value: number | null
-  maxTricks: number
-  editable: boolean
-  onChange?: (value: number | null) => void
-  ariaLabel: string
-  suffix?: React.ReactNode
-  inputRef?: React.Ref<HTMLInputElement>
+  value: number | null;
+  maxTricks: number;
+  editable: boolean;
+  onChange?: (value: number | null) => void;
+  ariaLabel: string;
+  suffix?: React.ReactNode;
+  inputRef?: React.Ref<HTMLInputElement>;
   /** After a single digit that fully specifies the value, focus the next field (bid entry flow). */
-  focusNextAfterDigit?: () => void
+  focusNextAfterDigit?: () => void;
 }) {
-  const display = value === null ? "?" : String(value)
+  const display = value === null ? "?" : String(value);
 
   const field = !editable ? (
     <div className={styles.trickCell} aria-label={ariaLabel}>
@@ -143,23 +143,26 @@ function TrickField({
       className={styles.trickInput}
       value={value === null ? "" : String(value)}
       onChange={(e) => {
-        const raw = e.target.value
-        onChange?.(parseOptionalInt(raw))
-        if (focusNextAfterDigit && shouldAdvanceTrickInputFocus(raw, maxTricks)) {
-          requestAnimationFrame(() => focusNextAfterDigit())
+        const raw = e.target.value;
+        onChange?.(parseOptionalInt(raw));
+        if (
+          focusNextAfterDigit &&
+          shouldAdvanceTrickInputFocus(raw, maxTricks)
+        ) {
+          requestAnimationFrame(() => focusNextAfterDigit());
         }
       }}
     />
-  )
+  );
 
-  if (suffix === undefined) return field
+  if (suffix === undefined) return field;
 
   return (
     <div className={styles.trickWithSuffix}>
       {field}
       {suffix}
     </div>
-  )
+  );
 }
 
 export function PlayerRoundStatsRow({
@@ -184,16 +187,18 @@ export function PlayerRoundStatsRow({
   roundScore,
   runningTotalThroughRound,
 }: PlayerRoundStatsRowProps) {
-  const effectiveBid = effectiveTricksBid(maxTricks, bid, harryGiantBidDelta ?? null)
+  const effectiveBid = effectiveTricksBid(
+    maxTricks,
+    bid,
+    harryGiantBidDelta ?? null,
+  );
   const mismatch =
-    showWon && effectiveBid !== null && won !== null && effectiveBid !== won
-  const showHarry = harryGiantBidDelta === 1 || harryGiantBidDelta === -1
-  const useVoyagePts = voyagePoints != null
+    showWon && effectiveBid !== null && won !== null && effectiveBid !== won;
+  const showHarry = harryGiantBidDelta === 1 || harryGiantBidDelta === -1;
+  const useVoyagePts = voyagePoints != null;
 
   return (
-    <div
-      className={cn(styles.row, isRoundStarter && styles.rowRoundStarter)}
-    >
+    <div className={cn(styles.row, isRoundStarter && styles.rowRoundStarter)}>
       <div className={styles.rank}>{rank}</div>
       <div className={styles.nameBlock}>
         <div
@@ -232,7 +237,9 @@ export function PlayerRoundStatsRow({
                     sideOffset={6}
                   >
                     Goes first this round.
-                    <Tooltip.Arrow className={styles.roundStarterTooltipArrow} />
+                    <Tooltip.Arrow
+                      className={styles.roundStarterTooltipArrow}
+                    />
                   </Tooltip.Content>
                 </Tooltip.Portal>
               </Tooltip.Root>
@@ -268,7 +275,10 @@ export function PlayerRoundStatsRow({
             inputRef={bidInputRef}
             suffix={
               showHarry ? (
-                <span className={styles.bidHarryDelta} aria-label="Harry the Giant: effective bid ±1">
+                <span
+                  className={styles.bidHarryDelta}
+                  aria-label="Harry the Giant: effective bid ±1"
+                >
                   {harryGiantBidDelta === 1 ? "+1" : "−1"}
                 </span>
               ) : undefined
@@ -367,7 +377,9 @@ export function PlayerRoundStatsRow({
             className={styles.voyagePtsCell}
             aria-label={`${playerName} points this round`}
           >
-            {voyagePoints.thisRound === null ? formatPts(0) : formatPts(voyagePoints.thisRound)}
+            {voyagePoints.thisRound === null
+              ? formatPts(0)
+              : formatPts(voyagePoints.thisRound)}
           </div>
           <div
             className={styles.voyagePtsCell}
@@ -377,7 +389,9 @@ export function PlayerRoundStatsRow({
           </div>
         </>
       ) : null}
-      {eventsSlot !== undefined ? <div className={styles.eventsCell}>{eventsSlot}</div> : null}
+      {eventsSlot !== undefined ? (
+        <div className={styles.eventsCell}>{eventsSlot}</div>
+      ) : null}
     </div>
-  )
+  );
 }

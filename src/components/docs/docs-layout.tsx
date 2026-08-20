@@ -1,23 +1,23 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
-import { DocsBreadcrumb } from "@/components/docs/docs-breadcrumb"
-import { DocsMobileNav } from "@/components/docs/docs-mobile-nav"
-import { DocsNav } from "@/components/docs/docs-nav"
-import { DocsSearch } from "@/components/docs/docs-search"
-import { DocsTOC } from "@/components/docs/docs-toc"
-import type { DocBreadcrumb, DocHeading, DocNavConfig } from "@/lib/docs/types"
-import { cn } from "@/lib/utils"
+import { DocsBreadcrumb } from "@/components/docs/docs-breadcrumb";
+import { DocsMobileNav } from "@/components/docs/docs-mobile-nav";
+import { DocsNav } from "@/components/docs/docs-nav";
+import { DocsSearch } from "@/components/docs/docs-search";
+import { DocsTOC } from "@/components/docs/docs-toc";
+import type { DocBreadcrumb, DocHeading, DocNavConfig } from "@/lib/docs/types";
+import { cn } from "@/lib/utils";
 
-import styles from "./styles/docs-layout.module.css"
+import styles from "./styles/docs-layout.module.css";
 
 type DocsLayoutProps = {
-  config: DocNavConfig
-  breadcrumbs: DocBreadcrumb[]
-  headings?: DocHeading[]
-  children: ReactNode
-  className?: string
-  artifactFilter?: ReactNode
-}
+  config: DocNavConfig;
+  breadcrumbs: DocBreadcrumb[];
+  headings?: DocHeading[];
+  children: ReactNode;
+  className?: string;
+  artifactFilter?: ReactNode;
+};
 
 export function DocsLayout({
   config,
@@ -50,18 +50,29 @@ export function DocsLayout({
           </div>
         </aside>
 
-        <main id="docs-main-content" className="min-w-0 max-w-prose justify-self-center lg:w-full">
+        <main
+          id="docs-main-content"
+          className="min-w-0 max-w-prose justify-self-center lg:w-full"
+        >
           <DocsBreadcrumb items={breadcrumbs} />
           {headings.length > 0 ? (
-            <DocsTOC headings={headings} contentRootId="docs-main-content" variant="mobile" />
+            <DocsTOC
+              headings={headings}
+              contentRootId="docs-main-content"
+              variant="mobile"
+            />
           ) : null}
           {children}
         </main>
 
         {headings.length > 0 ? (
-          <DocsTOC headings={headings} contentRootId="docs-main-content" variant="desktop" />
+          <DocsTOC
+            headings={headings}
+            contentRootId="docs-main-content"
+            variant="desktop"
+          />
         ) : null}
       </div>
     </div>
-  )
+  );
 }

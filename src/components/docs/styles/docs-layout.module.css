@@ -55,7 +55,9 @@
 
 .mobileTocPanel {
   overflow: hidden;
-  transition: max-height 180ms ease-in-out, opacity 180ms ease-in-out;
+  transition:
+    max-height 180ms ease-in-out,
+    opacity 180ms ease-in-out;
 }
 
 .mobileTocPanel[data-open="false"] {

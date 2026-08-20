@@ -1,19 +1,22 @@
-import Image from "next/image"
+import Image from "next/image";
 
-import styles from "@/components/docs/styles/card-ref.module.css"
-import { defaultCardRefLabel, resolveCardRefImagePath } from "@/lib/docs/card-ref-ids"
+import styles from "@/components/docs/styles/card-ref.module.css";
+import {
+  defaultCardRefLabel,
+  resolveCardRefImagePath,
+} from "@/lib/docs/card-ref-ids";
 
-const DOC_CARD_WIDTH = 80
-const DOC_CARD_HEIGHT = 112
+const DOC_CARD_WIDTH = 80;
+const DOC_CARD_HEIGHT = 112;
 
 export type CardRefProps = {
-  id: string
-  label?: string
-}
+  id: string;
+  label?: string;
+};
 
 export function CardRef({ id, label }: CardRefProps) {
-  const src = resolveCardRefImagePath(id)
-  const displayLabel = label ?? defaultCardRefLabel(id)
+  const src = resolveCardRefImagePath(id);
+  const displayLabel = label ?? defaultCardRefLabel(id);
 
   return (
     <span className={styles.cardRef}>
@@ -30,5 +33,5 @@ export function CardRef({ id, label }: CardRefProps) {
       </span>
       <span className={styles.label}>{displayLabel}</span>
     </span>
-  )
+  );
 }

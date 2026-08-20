@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { ARTIFACT_ROWS } from "@/components/games/skull-king/setup/artifacts/artifacts-catalog"
-import { useDocsArtifacts } from "@/components/docs/docs-artifact-context"
-import styles from "@/components/docs/styles/artifact-filter.module.css"
+import { useDocsArtifacts } from "@/components/docs/docs-artifact-context";
+import styles from "@/components/docs/styles/artifact-filter.module.css";
+import { ARTIFACT_ROWS } from "@/components/games/skull-king/setup/artifacts/artifacts-catalog";
 import {
   ARTIFACT_PRESET_IDS,
   type ArtifactPresetId,
   artifactOptionsForPreset,
   matchArtifactPreset,
-} from "@/lib/games/skull-king/artifacts"
-import { cn } from "@/lib/utils"
+} from "@/lib/games/skull-king/artifacts";
+import { cn } from "@/lib/utils";
 
 const PRESET_LABELS: Record<ArtifactPresetId, string> = {
   beginner: "Beginner",
   intermediate: "Intermediate",
   expert: "Expert",
-}
+};
 
 type ArtifactFilterProps = {
-  className?: string
-}
+  className?: string;
+};
 
 export function ArtifactFilter({ className }: ArtifactFilterProps) {
-  const { options, setArtifactOptions, toggleArtifact } = useDocsArtifacts()
-  const activePreset = matchArtifactPreset(options)
+  const { options, setArtifactOptions, toggleArtifact } = useDocsArtifacts();
+  const activePreset = matchArtifactPreset(options);
 
   return (
     <div className={cn("mb-4", className)}>
@@ -31,7 +31,11 @@ export function ArtifactFilter({ className }: ArtifactFilterProps) {
         Artifacts
       </p>
       <div className="px-2">
-        <div className={styles.presetGroup} role="group" aria-label="Artifact presets">
+        <div
+          className={styles.presetGroup}
+          role="group"
+          aria-label="Artifact presets"
+        >
           {ARTIFACT_PRESET_IDS.map((presetId) => (
             <button
               key={presetId}
@@ -39,7 +43,9 @@ export function ArtifactFilter({ className }: ArtifactFilterProps) {
               className={styles.presetTab}
               data-active={activePreset === presetId ? "true" : "false"}
               aria-pressed={activePreset === presetId}
-              onClick={() => setArtifactOptions(artifactOptionsForPreset(presetId))}
+              onClick={() =>
+                setArtifactOptions(artifactOptionsForPreset(presetId))
+              }
             >
               {PRESET_LABELS[presetId]}
             </button>
@@ -68,5 +74,5 @@ export function ArtifactFilter({ className }: ArtifactFilterProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

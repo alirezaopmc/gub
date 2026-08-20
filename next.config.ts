@@ -1,11 +1,12 @@
-import createMDX from "@next/mdx"
-import type { NextConfig } from "next"
+import createMDX from "@next/mdx";
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
   reactCompiler: true,
+  transpilePackages: ["@manovaspace/ui", "@manovaspace/tokens"],
   allowedDevOrigins: ["192.168.34.252", "gub.manova.space"],
-}
+};
 
 // ponytail: string plugin names required for Turbopack serialization; runtime compile uses mdx-plugins.ts
 const withMDX = createMDX({
@@ -13,6 +14,6 @@ const withMDX = createMDX({
     remarkPlugins: ["remark-gfm"],
     rehypePlugins: ["rehype-slug"],
   },
-})
+});
 
-export default withMDX(nextConfig)
+export default withMDX(nextConfig);

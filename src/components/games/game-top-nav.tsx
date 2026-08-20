@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Home } from "lucide-react"
-import { usePathname } from "next/navigation"
-
-import { Button } from "@/components/ui/button"
+import { Button, Home } from "@manovaspace/ui";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function titleFromGamesPath(pathname: string | null): string | null {
-  if (!pathname?.startsWith("/games/")) return null
-  const segment = pathname.slice("/games/".length).split("/")[0] ?? ""
-  if (segment.length === 0) return null
-  if (segment === "skull-king") return "Skull King"
+  if (!pathname?.startsWith("/games/")) return null;
+  const segment = pathname.slice("/games/".length).split("/")[0] ?? "";
+  if (segment.length === 0) return null;
+  if (segment === "skull-king") return "Skull King";
   return segment
     .split("-")
-    .map((p) => p.slice(0, 1).toLocaleUpperCase() + p.slice(1).toLocaleLowerCase())
-    .join(" ")
+    .map(
+      (p) => p.slice(0, 1).toLocaleUpperCase() + p.slice(1).toLocaleLowerCase(),
+    )
+    .join(" ");
 }
 
 export function GameTopNav() {
-  const pathname = usePathname()
-  const activeGameTitle = titleFromGamesPath(pathname)
+  const pathname = usePathname();
+  const activeGameTitle = titleFromGamesPath(pathname);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
@@ -67,5 +67,5 @@ export function GameTopNav() {
         </div>
       </nav>
     </header>
-  )
+  );
 }

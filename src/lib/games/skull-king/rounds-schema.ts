@@ -21,29 +21,34 @@ export const ROUNDS_SCHEMA_PRESETS = {
   whirlpool: [9, 9, 7, 7, 5, 5, 3, 3, 1, 1],
   /** Rulebook p.14 — Past Your Bedtime */
   pastBedtime: [1],
-} as const
+} as const;
 
-export type RoundsSchemaPresetId = keyof typeof ROUNDS_SCHEMA_PRESETS
+export type RoundsSchemaPresetId = keyof typeof ROUNDS_SCHEMA_PRESETS;
 
-export const DEFAULT_ROUNDS_SCHEMA: number[] = [...ROUNDS_SCHEMA_PRESETS.default]
+export const DEFAULT_ROUNDS_SCHEMA: number[] = [
+  ...ROUNDS_SCHEMA_PRESETS.default,
+];
 
-export function roundsSchemasEqual(a: readonly number[], b: readonly number[]): boolean {
-  if (a.length !== b.length) return false
-  return a.every((n, i) => n === b[i])
+export function roundsSchemasEqual(
+  a: readonly number[],
+  b: readonly number[],
+): boolean {
+  if (a.length !== b.length) return false;
+  return a.every((n, i) => n === b[i]);
 }
 
 export function parseRoundsSchemaInput(raw: string): number[] {
-  const parts = raw.split(/[,，]\s*|\s+/)
-  const out: number[] = []
+  const parts = raw.split(/[,，]\s*|\s+/);
+  const out: number[] = [];
   for (const part of parts) {
-    const t = part.trim()
-    if (t === "") continue
-    const n = Number.parseInt(t, 10)
-    if (Number.isFinite(n) && n > 0) out.push(n)
+    const t = part.trim();
+    if (t === "") continue;
+    const n = Number.parseInt(t, 10);
+    if (Number.isFinite(n) && n > 0) out.push(n);
   }
-  return out
+  return out;
 }
 
 export function formatRoundsSchema(rounds: readonly number[]): string {
-  return rounds.join(", ")
+  return rounds.join(", ");
 }

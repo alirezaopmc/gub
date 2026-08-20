@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import { SkullKingHubClient } from "@/components/games/skull-king/hub/skull-king-hub-client"
+import { SkullKingHubClient } from "@/components/games/skull-king/hub/skull-king-hub-client";
 
 export const metadata: Metadata = {
   title: "Skull King · GUB",
   description: "Play live, use the score calculator, or read the rules.",
-}
+};
 
 export default function SkullKingHubPage() {
   return (
@@ -15,5 +15,5 @@ export default function SkullKingHubPage() {
         <SkullKingHubClient />
       </main>
     </div>
-  )
+  );
 }

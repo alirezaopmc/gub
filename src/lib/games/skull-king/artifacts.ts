@@ -8,15 +8,15 @@ export enum Artifacts {
   FourteenBonus = "FourteenBonus",
 }
 
-export const ARTIFACTS_LIST = Object.values(Artifacts) as Artifacts[]
+export const ARTIFACTS_LIST = Object.values(Artifacts) as Artifacts[];
 
-export type ArtifactPresetId = "beginner" | "intermediate" | "expert"
+export type ArtifactPresetId = "beginner" | "intermediate" | "expert";
 
 export const ARTIFACT_PRESET_IDS: readonly ArtifactPresetId[] = [
   "beginner",
   "intermediate",
   "expert",
-] as const
+] as const;
 
 function emptyArtifactOptions(): Record<Artifacts, boolean> {
   return {
@@ -26,21 +26,23 @@ function emptyArtifactOptions(): Record<Artifacts, boolean> {
     [Artifacts.Kraken]: false,
     [Artifacts.Loot]: false,
     [Artifacts.FourteenBonus]: false,
-  }
+  };
 }
 
 /** Bulk preset maps for the Artifacts setup section. */
-export function artifactOptionsForPreset(preset: ArtifactPresetId): Record<Artifacts, boolean> {
+export function artifactOptionsForPreset(
+  preset: ArtifactPresetId,
+): Record<Artifacts, boolean> {
   switch (preset) {
     case "beginner":
-      return emptyArtifactOptions()
+      return emptyArtifactOptions();
     case "intermediate":
       return {
         ...emptyArtifactOptions(),
         [Artifacts.Whale]: true,
         [Artifacts.Kraken]: true,
         [Artifacts.Loot]: true,
-      }
+      };
     case "expert":
       return {
         [Artifacts.PirateAbilities]: true,
@@ -49,7 +51,7 @@ export function artifactOptionsForPreset(preset: ArtifactPresetId): Record<Artif
         [Artifacts.Kraken]: true,
         [Artifacts.Loot]: true,
         [Artifacts.FourteenBonus]: true,
-      }
+      };
   }
 }
 
@@ -59,20 +61,22 @@ export function artifactOptionsForPreset(preset: ArtifactPresetId): Record<Artif
  * so the host’s last choices can apply on the client.
  */
 export function createInitialArtifactOptions(): Record<Artifacts, boolean> {
-  return artifactOptionsForPreset("expert")
+  return artifactOptionsForPreset("expert");
 }
 
 export function artifactOptionsMatchPreset(
   options: Record<Artifacts, boolean>,
-  preset: ArtifactPresetId
+  preset: ArtifactPresetId,
 ): boolean {
-  const target = artifactOptionsForPreset(preset)
-  return ARTIFACTS_LIST.every((k) => options[k] === target[k])
+  const target = artifactOptionsForPreset(preset);
+  return ARTIFACTS_LIST.every((k) => options[k] === target[k]);
 }
 
-export function matchArtifactPreset(options: Record<Artifacts, boolean>): ArtifactPresetId | null {
+export function matchArtifactPreset(
+  options: Record<Artifacts, boolean>,
+): ArtifactPresetId | null {
   for (const id of ARTIFACT_PRESET_IDS) {
-    if (artifactOptionsMatchPreset(options, id)) return id
+    if (artifactOptionsMatchPreset(options, id)) return id;
   }
-  return null
+  return null;
 }

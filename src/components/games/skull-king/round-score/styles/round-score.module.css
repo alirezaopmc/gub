@@ -104,40 +104,46 @@
 /* # | Running total + name (min ~10ch for name text after prefix) | Bid | Won | (optional Events) */
 .tableGridStats .headerRow,
 .tableGridStats .row {
-  grid-template-columns:
-    1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem);
+  grid-template-columns: 1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem);
 }
 
 .tableGridStatsBidOnly .headerRow,
 .tableGridStatsBidOnly .row {
-  grid-template-columns:
-    1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem);
+  grid-template-columns: 1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem);
 }
 
 /* Same as stats grids + Round score column after Bid | Won */
 .tableGridStatsWithScore .headerRow,
 .tableGridStatsWithScore .row {
-  grid-template-columns:
-    1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem) minmax(2.35rem, 3rem);
+  grid-template-columns: 1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem) minmax(
+      2.35rem,
+      3rem
+    );
 }
 
 .tableGridStatsWithScoreBidOnly .headerRow,
 .tableGridStatsWithScoreBidOnly .row {
-  grid-template-columns:
-    1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem) minmax(2.35rem, 3rem);
+  grid-template-columns: 1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem) minmax(
+      2.35rem,
+      3rem
+    );
 }
 
 .tableGridWithEvents .headerRow,
 .tableGridWithEvents .row {
-  grid-template-columns:
-    1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem) minmax(7.5rem, 1fr);
+  grid-template-columns: 1.35rem minmax(18ch, 1fr) minmax(6.75rem, 7.5rem) minmax(
+      7.5rem,
+      1fr
+    );
 }
 
 /* Like `.tableGridStatsBidOnly` but with an Events column (score phase: tricks not known yet). */
 .tableGridWithEventsBidOnly .headerRow,
 .tableGridWithEventsBidOnly .row {
-  grid-template-columns:
-    1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem) minmax(7.5rem, 1fr);
+  grid-template-columns: 1.35rem minmax(18ch, 1fr) minmax(2.75rem, 4rem) minmax(
+      7.5rem,
+      1fr
+    );
 }
 
 /** Voyage: # | Name | Bid | round score | total points | Events */
@@ -710,38 +716,44 @@
 
   .tableGridStats .headerRow,
   .tableGridStats .row {
-    grid-template-columns:
-      1.25rem minmax(15ch, 1fr) minmax(5.25rem, 6.25rem);
+    grid-template-columns: 1.25rem minmax(15ch, 1fr) minmax(5.25rem, 6.25rem);
   }
 
   .tableGridStatsBidOnly .headerRow,
   .tableGridStatsBidOnly .row {
-    grid-template-columns:
-      1.25rem minmax(15ch, 1fr) minmax(2.5rem, 3.75rem);
+    grid-template-columns: 1.25rem minmax(15ch, 1fr) minmax(2.5rem, 3.75rem);
   }
 
   .tableGridStatsWithScore .headerRow,
   .tableGridStatsWithScore .row {
-    grid-template-columns:
-      1.25rem minmax(15ch, 1fr) minmax(5.25rem, 6.25rem) minmax(2rem, 2.75rem);
+    grid-template-columns: 1.25rem minmax(15ch, 1fr) minmax(5.25rem, 6.25rem) minmax(
+        2rem,
+        2.75rem
+      );
   }
 
   .tableGridStatsWithScoreBidOnly .headerRow,
   .tableGridStatsWithScoreBidOnly .row {
-    grid-template-columns:
-      1.25rem minmax(15ch, 1fr) minmax(2.5rem, 3.75rem) minmax(2rem, 2.75rem);
+    grid-template-columns: 1.25rem minmax(15ch, 1fr) minmax(2.5rem, 3.75rem) minmax(
+        2rem,
+        2.75rem
+      );
   }
 
   .tableGridWithEvents .headerRow,
   .tableGridWithEvents .row {
-    grid-template-columns:
-      1.25rem minmax(14ch, 1fr) minmax(5.25rem, 6.25rem) minmax(6rem, 1fr);
+    grid-template-columns: 1.25rem minmax(14ch, 1fr) minmax(5.25rem, 6.25rem) minmax(
+        6rem,
+        1fr
+      );
   }
 
   .tableGridWithEventsBidOnly .headerRow,
   .tableGridWithEventsBidOnly .row {
-    grid-template-columns:
-      1.25rem minmax(14ch, 1fr) minmax(2.5rem, 3.75rem) minmax(6rem, 1fr);
+    grid-template-columns: 1.25rem minmax(14ch, 1fr) minmax(2.5rem, 3.75rem) minmax(
+        6rem,
+        1fr
+      );
   }
 
   .tableGridVoyage .headerRow,
@@ -820,11 +832,13 @@
 }
 
 .roundBodyEnterNext {
-  animation: sk-round-enter-next var(--motion-duration-short) var(--motion-ease-out) both;
+  animation: sk-round-enter-next var(--motion-duration-short)
+    var(--motion-ease-out) both;
 }
 
 .roundBodyEnterPrev {
-  animation: sk-round-enter-prev var(--motion-duration-short) var(--motion-ease-out) both;
+  animation: sk-round-enter-prev var(--motion-duration-short)
+    var(--motion-ease-out) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

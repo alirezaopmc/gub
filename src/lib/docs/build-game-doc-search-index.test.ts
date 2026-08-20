@@ -1,39 +1,46 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from "vitest";
 
-import { buildGameDocSearchIndex } from "@/lib/docs/build-game-doc-search-index"
+import { buildGameDocSearchIndex } from "@/lib/docs/build-game-doc-search-index";
 
 describe("buildGameDocSearchIndex", () => {
-  const index = buildGameDocSearchIndex("skull-king")
+  const index = buildGameDocSearchIndex("skull-king");
 
   it("includes all 17 pages", () => {
-    const pages = index.filter((e) => e.kind === "page")
-    expect(pages).toHaveLength(17)
-  })
+    const pages = index.filter((e) => e.kind === "page");
+    expect(pages).toHaveLength(17);
+  });
 
   it("includes heading entries with hash anchors", () => {
-    const headings = index.filter((e) => e.kind === "heading")
-    expect(headings.length).toBeGreaterThan(0)
-    expect(headings.every((e) => e.href.includes("#"))).toBe(true)
-  })
+    const headings = index.filter((e) => e.kind === "heading");
+    expect(headings.length).toBeGreaterThan(0);
+    expect(headings.every((e) => e.href.includes("#"))).toBe(true);
+  });
 
   it("includes glossary terms", () => {
-    const glossary = index.filter((e) => e.kind === "glossary")
-    expect(glossary.length).toBeGreaterThan(10)
-    expect(glossary.some((e) => e.title === "Zero bid")).toBe(true)
-  })
+    const glossary = index.filter((e) => e.kind === "glossary");
+    expect(glossary.length).toBeGreaterThan(10);
+    expect(glossary.some((e) => e.title === "Zero bid")).toBe(true);
+  });
 
   it("maps scoring page to correct route", () => {
-    const scoring = index.find((e) => e.kind === "page" && e.title === "Scoring")
-    expect(scoring?.href).toBe("/games/skull-king/docs/rules/06-scoring")
-  })
+    const scoring = index.find(
+      (e) => e.kind === "page" && e.title === "Scoring",
+    );
+    expect(scoring?.href).toBe("/games/skull-king/docs/rules/06-scoring");
+  });
 
   it("carries artifacts on page and heading entries", () => {
-    const advanced = index.find((e) => e.kind === "page" && e.title === "Advanced cards")
-    expect(advanced?.artifacts).toEqual(["Kraken", "Whale", "Loot"])
+    const advanced = index.find(
+      (e) => e.kind === "page" && e.title === "Advanced cards",
+    );
+    expect(advanced?.artifacts).toEqual(["Kraken", "Whale", "Loot"]);
 
     const krakenHeading = index.find(
-      (e) => e.kind === "heading" && e.title === "Kraken" && e.subtitle === "Advanced cards",
-    )
-    expect(krakenHeading?.artifacts).toEqual(["Kraken", "Whale", "Loot"])
-  })
-})
+      (e) =>
+        e.kind === "heading" &&
+        e.title === "Kraken" &&
+        e.subtitle === "Advanced cards",
+    );
+    expect(krakenHeading?.artifacts).toEqual(["Kraken", "Whale", "Loot"]);
+  });
+});

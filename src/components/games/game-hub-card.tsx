@@ -1,17 +1,16 @@
-import Image from "next/image"
-import Link from "next/link"
-
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { Card, CardDescription, CardHeader, CardTitle } from "@manovaspace/ui";
+import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export type GameHubCardProps = {
-  href: string
-  title: string
-  description: string
-  imageSrc: string
-  imageAlt: string
-  className?: string
-}
+  href: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  className?: string;
+};
 
 export function GameHubCard({
   href,
@@ -26,7 +25,7 @@ export function GameHubCard({
       href={href}
       className={cn(
         "group block outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        className
+        className,
       )}
     >
       <Card className="h-full gap-0 overflow-hidden py-0 transition-colors hover:border-foreground/30 hover:bg-muted/20">
@@ -47,5 +46,5 @@ export function GameHubCard({
         </CardHeader>
       </Card>
     </Link>
-  )
+  );
 }

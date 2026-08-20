@@ -46,22 +46,26 @@
 }
 
 .gub-dialog-overlay[data-state="open"] {
-  animation: gub-dialog-overlay-in var(--motion-duration-modal) var(--motion-ease-out) both;
+  animation: gub-dialog-overlay-in var(--motion-duration-modal)
+    var(--motion-ease-out) both;
 }
 
 .gub-dialog-overlay[data-state="closed"] {
   /* Overlay impl sets inline `pointer-events: auto`; beat it while faded so the page stays usable. */
   pointer-events: none !important;
-  animation: gub-dialog-overlay-out var(--motion-duration-modal) var(--motion-ease-in) both;
+  animation: gub-dialog-overlay-out var(--motion-duration-modal)
+    var(--motion-ease-in) both;
 }
 
 .gub-dialog-content[data-state="open"] {
-  animation: gub-dialog-content-in var(--motion-duration-modal) var(--motion-ease-out) both;
+  animation: gub-dialog-content-in var(--motion-duration-modal)
+    var(--motion-ease-out) both;
 }
 
 .gub-dialog-content[data-state="closed"] {
   pointer-events: none;
-  animation: gub-dialog-content-out var(--motion-duration-modal) var(--motion-ease-in) both;
+  animation: gub-dialog-content-out var(--motion-duration-modal)
+    var(--motion-ease-in) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -120,11 +124,13 @@
 }
 
 .gub-ephemeral-toast-panel[data-gub-toast-phase="open"] {
-  animation: gub-toast-in var(--motion-duration-short) var(--motion-ease-out) both;
+  animation: gub-toast-in var(--motion-duration-short) var(--motion-ease-out)
+    both;
 }
 
 .gub-ephemeral-toast-panel[data-gub-toast-phase="closing"] {
-  animation: gub-toast-out var(--motion-duration-short) var(--motion-ease-in) both;
+  animation: gub-toast-out var(--motion-duration-short) var(--motion-ease-in)
+    both;
 }
 
 @media (prefers-reduced-motion: reduce) {

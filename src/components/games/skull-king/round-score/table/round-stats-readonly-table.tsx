@@ -1,28 +1,27 @@
-"use client"
+"use client";
 
-import { Tooltip } from "radix-ui"
-
-import { PlayerRoundStatsRow } from "@/components/games/skull-king/round-score/table/player-round-stats-row"
-import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css"
-import { cn } from "@/lib/utils"
+import { Tooltip } from "radix-ui";
+import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css";
+import { PlayerRoundStatsRow } from "@/components/games/skull-king/round-score/table/player-round-stats-row";
+import { cn } from "@/lib/utils";
 
 export type RoundStatsReadOnlyRow = {
-  bid: number | null
-  won: number
-  main: number
-  bonus: number
-  total: number
-  madeBid: boolean
-}
+  bid: number | null;
+  won: number;
+  main: number;
+  bonus: number;
+  total: number;
+  madeBid: boolean;
+};
 
 export type RoundStatsReadOnlyTableProps = {
-  players: readonly string[]
-  results: readonly RoundStatsReadOnlyRow[]
-  leaderIndex: number
-  handSize: number
+  players: readonly string[];
+  results: readonly RoundStatsReadOnlyRow[];
+  leaderIndex: number;
+  handSize: number;
   /** Running voyage total through this round (shown under name). */
-  provisionalTotals?: readonly number[]
-}
+  provisionalTotals?: readonly number[];
+};
 
 export function RoundStatsReadOnlyTable({
   players,
@@ -36,14 +35,21 @@ export function RoundStatsReadOnlyTable({
       <div className={styles.tableScroll}>
         <div className={cn(styles.table, styles.tableGridStatsWithScore)}>
           <div className={styles.headerRow} role="row">
-            <div className={cn(styles.headerCell, styles.headerCellRank)} role="columnheader">
+            <div
+              className={cn(styles.headerCell, styles.headerCellRank)}
+              role="columnheader"
+            >
               #
             </div>
             <div className={styles.headerCell} role="columnheader">
               Name
             </div>
             <div
-              className={cn(styles.headerCell, styles.headerCellBidWon, styles.headerBidWonSplit)}
+              className={cn(
+                styles.headerCell,
+                styles.headerCellBidWon,
+                styles.headerBidWonSplit,
+              )}
               role="columnheader"
             >
               <span>Bid</span>
@@ -61,7 +67,7 @@ export function RoundStatsReadOnlyTable({
             </div>
           </div>
           {results.map((row, i) => {
-            const name = players[i]?.trim() ?? `Player ${i + 1}`
+            const name = players[i]?.trim() ?? `Player ${i + 1}`;
             return (
               <PlayerRoundStatsRow
                 key={i}
@@ -77,10 +83,10 @@ export function RoundStatsReadOnlyTable({
                 runningTotalThroughRound={provisionalTotals?.[i]}
                 roundScore={{ kind: "final", main: row.main, bonus: row.bonus }}
               />
-            )
+            );
           })}
         </div>
       </div>
     </Tooltip.Provider>
-  )
+  );
 }

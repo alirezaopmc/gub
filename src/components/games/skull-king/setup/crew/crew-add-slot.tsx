@@ -1,19 +1,23 @@
-"use client"
+"use client";
 
-import { PlusIcon } from "@/components/games/skull-king/setup/crew/crew-manifesto-icons"
-import crew from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css"
-import { MAX_CREW_PLAYERS } from "@/lib/games/skull-king/setup/crew-manifest-types"
-import { cn } from "@/lib/utils"
+import { PlusIcon } from "@/components/games/skull-king/setup/crew/crew-manifesto-icons";
+import crew from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css";
+import { MAX_CREW_PLAYERS } from "@/lib/games/skull-king/setup/crew-manifest-types";
+import { cn } from "@/lib/utils";
 
 type CrewAddSlotProps = {
-  currentCount: number
-  onAdd: () => void
-  onInteract?: () => void
-}
+  currentCount: number;
+  onAdd: () => void;
+  onInteract?: () => void;
+};
 
 /** Faux blank row: neutral / frosted; click adds another seat and focuses the new field. */
-export function CrewAddSlot({ currentCount, onAdd, onInteract }: CrewAddSlotProps) {
-  if (currentCount >= MAX_CREW_PLAYERS) return null
+export function CrewAddSlot({
+  currentCount,
+  onAdd,
+  onInteract,
+}: CrewAddSlotProps) {
+  if (currentCount >= MAX_CREW_PLAYERS) return null;
 
   return (
     <div className={crew.addCrewRow}>
@@ -22,8 +26,8 @@ export function CrewAddSlot({ currentCount, onAdd, onInteract }: CrewAddSlotProp
           type="button"
           className={cn(crew.addCrewTrigger, crew.addCrewTriggerWide)}
           onClick={() => {
-            onInteract?.()
-            onAdd()
+            onInteract?.();
+            onAdd();
           }}
           aria-label="Add another crew member"
         >
@@ -35,5 +39,5 @@ export function CrewAddSlot({ currentCount, onAdd, onInteract }: CrewAddSlotProp
         <span className={crew.removeSlot} aria-hidden />
       </div>
     </div>
-  )
+  );
 }

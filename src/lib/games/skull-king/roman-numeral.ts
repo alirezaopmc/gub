@@ -14,14 +14,14 @@ export function toRoman(n: number): string {
     [5, "V"],
     [4, "IV"],
     [1, "I"],
-  ]
-  let rest = n
-  let out = ""
+  ];
+  let rest = n;
+  let out = "";
   for (const [value, sym] of digits) {
     while (rest >= value) {
-      out += sym
-      rest -= value
+      out += sym;
+      rest -= value;
     }
   }
-  return out
+  return out;
 }

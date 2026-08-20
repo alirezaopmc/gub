@@ -1,13 +1,19 @@
-import type { ArtifactRowConfig } from "@/components/games/skull-king/setup/artifacts/artifacts-catalog"
-import styles from "@/components/games/skull-king/setup/styles/cursed-artifacts.module.css"
+import type { ArtifactRowConfig } from "@/components/games/skull-king/setup/artifacts/artifacts-catalog";
+import styles from "@/components/games/skull-king/setup/styles/cursed-artifacts.module.css";
 
 export type ArtifactRowProps = ArtifactRowConfig & {
-  on: boolean
-  onToggle: () => void
-}
+  on: boolean;
+  onToggle: () => void;
+};
 
-export function ArtifactRow({ id, label, Icon, on, onToggle }: ArtifactRowProps) {
-  const labelId = `artifact-${id}-label`
+export function ArtifactRow({
+  id,
+  label,
+  Icon,
+  on,
+  onToggle,
+}: ArtifactRowProps) {
+  const labelId = `artifact-${id}-label`;
 
   return (
     <div className={styles.listItem} role="listitem">
@@ -29,5 +35,5 @@ export function ArtifactRow({ id, label, Icon, on, onToggle }: ArtifactRowProps)
         </span>
       </button>
     </div>
-  )
+  );
 }

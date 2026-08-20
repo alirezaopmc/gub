@@ -1,29 +1,37 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Button, ChevronLeft, ChevronRight } from "@manovaspace/ui";
+import * as React from "react";
 
-import { Button } from "@/components/ui/button"
-import { PlayRoundResultsTable, voyageTotalsThroughRound } from "@/components/games/skull-king/play/play-round-results-table"
-import type { PublicMatchView, PublicRoundSummary } from "@/lib/games/skull-king/session/match-store"
+import {
+  PlayRoundResultsTable,
+  voyageTotalsThroughRound,
+} from "@/components/games/skull-king/play/play-round-results-table";
+import type {
+  PublicMatchView,
+  PublicRoundSummary,
+} from "@/lib/games/skull-king/session/match-store";
 
 function playerName(view: PublicMatchView, seat: number): string {
-  return view.players.find((p) => p.seatIndex === seat)?.displayName ?? `Player ${seat + 1}`
+  return (
+    view.players.find((p) => p.seatIndex === seat)?.displayName ??
+    `Player ${seat + 1}`
+  );
 }
 
 export type PlayRoundHistoryProps = {
-  view: PublicMatchView
-}
+  view: PublicMatchView;
+};
 
 export function PlayRoundHistory({ view }: PlayRoundHistoryProps) {
-  const [open, setOpen] = React.useState(false)
-  const [index, setIndex] = React.useState(0)
+  const [open, setOpen] = React.useState(false);
+  const [index, setIndex] = React.useState(0);
 
-  const history = view.roundHistory
-  if (history.length === 0) return null
+  const history = view.roundHistory;
+  if (history.length === 0) return null;
 
-  const safeIndex = Math.min(index, history.length - 1)
-  const summary: PublicRoundSummary = history[safeIndex]!
+  const safeIndex = Math.min(index, history.length - 1);
+  const summary: PublicRoundSummary = history[safeIndex]!;
 
   return (
     <section className="flex flex-col gap-3 border-t border-border pt-4">
@@ -56,7 +64,9 @@ export function PlayRoundHistory({ view }: PlayRoundHistoryProps) {
               size="icon-sm"
               disabled={safeIndex >= history.length - 1}
               aria-label="Next round"
-              onClick={() => setIndex((i) => Math.min(history.length - 1, i + 1))}
+              onClick={() =>
+                setIndex((i) => Math.min(history.length - 1, i + 1))
+              }
             >
               <ChevronRight aria-hidden />
             </Button>
@@ -67,17 +77,20 @@ export function PlayRoundHistory({ view }: PlayRoundHistoryProps) {
       {open ? (
         <div className="flex flex-col gap-2">
           <p className="text-sm text-muted-foreground">
-            {summary.handSize} card{summary.handSize === 1 ? "" : "s"} each · Dealer:{" "}
-            {playerName(view, summary.dealerIndex)} · Led:{" "}
+            {summary.handSize} card{summary.handSize === 1 ? "" : "s"} each ·
+            Dealer: {playerName(view, summary.dealerIndex)} · Led:{" "}
             {playerName(view, summary.leaderIndex)}
           </p>
           <PlayRoundResultsTable
             view={view}
             summary={summary}
-            totalsThroughRound={voyageTotalsThroughRound(view, summary.roundIndex)}
+            totalsThroughRound={voyageTotalsThroughRound(
+              view,
+              summary.roundIndex,
+            )}
           />
         </div>
       ) : null}
     </section>
-  )
+  );
 }

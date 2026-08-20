@@ -1,51 +1,68 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from "vitest";
 
-import { buildGameDocNav, listGameDocSlugs } from "@/lib/docs/build-game-doc-nav"
+import {
+  buildGameDocNav,
+  listGameDocSlugs,
+} from "@/lib/docs/build-game-doc-nav";
 
 describe("buildGameDocNav", () => {
   it("builds skull-king nav with three groups", () => {
-    const nav = buildGameDocNav("skull-king")
+    const nav = buildGameDocNav("skull-king");
 
-    expect(nav.gameTitle).toBe("Skull King")
-    expect(nav.groups.map((g) => g.section)).toEqual(["rules", "reference", "app"])
-    expect(nav.groups[0].label).toBe("Rules")
-    expect(nav.groups[1].label).toBe("Quick reference")
-    expect(nav.groups[2].label).toBe("App guides")
-  })
+    expect(nav.gameTitle).toBe("Skull King");
+    expect(nav.groups.map((g) => g.section)).toEqual([
+      "rules",
+      "reference",
+      "app",
+    ]);
+    expect(nav.groups[0].label).toBe("Rules");
+    expect(nav.groups[1].label).toBe("Quick reference");
+    expect(nav.groups[2].label).toBe("App guides");
+  });
 
   it("sorts rules by order frontmatter", () => {
-    const rules = buildGameDocNav("skull-king").groups.find((g) => g.section === "rules")
-    expect(rules?.items[0].href).toBe("/games/skull-king/docs/rules/00-overview")
-    expect(rules?.items[rules.items.length - 1].href).toBe("/games/skull-king/docs/rules/10-faq")
-  })
+    const rules = buildGameDocNav("skull-king").groups.find(
+      (g) => g.section === "rules",
+    );
+    expect(rules?.items[0].href).toBe(
+      "/games/skull-king/docs/rules/00-overview",
+    );
+    expect(rules?.items[rules.items.length - 1].href).toBe(
+      "/games/skull-king/docs/rules/10-faq",
+    );
+  });
 
   it("lists slugs per section for static params", () => {
-    expect(listGameDocSlugs("skull-king", "rules").length).toBe(11)
-    expect(listGameDocSlugs("skull-king", "reference").length).toBe(3)
-    expect(listGameDocSlugs("skull-king", "app")).toContain("play")
-    expect(listGameDocSlugs("skull-king", "app")).toContain("hub")
-  })
+    expect(listGameDocSlugs("skull-king", "rules").length).toBe(11);
+    expect(listGameDocSlugs("skull-king", "reference").length).toBe(3);
+    expect(listGameDocSlugs("skull-king", "app")).toContain("play");
+    expect(listGameDocSlugs("skull-king", "app")).toContain("hub");
+  });
 
   it("maps hrefs to app routes", () => {
-    const nav = buildGameDocNav("skull-king")
+    const nav = buildGameDocNav("skull-king");
     const scoring = nav.groups
       .find((g) => g.section === "rules")
-      ?.items.find((i) => i.title === "Scoring")
-    expect(scoring?.href).toBe("/games/skull-king/docs/rules/06-scoring")
+      ?.items.find((i) => i.title === "Scoring");
+    expect(scoring?.href).toBe("/games/skull-king/docs/rules/06-scoring");
 
-    const play = nav.groups.find((g) => g.section === "app")?.items.find((i) => i.title.includes("Play"))
-    expect(play?.href).toBe("/games/skull-king/docs/play")
-  })
+    const play = nav.groups
+      .find((g) => g.section === "app")
+      ?.items.find((i) => i.title.includes("Play"));
+    expect(play?.href).toBe("/games/skull-king/docs/play");
+  });
 
   it("includes artifacts from frontmatter on gated pages", () => {
-    const rules = buildGameDocNav("skull-king").groups.find((g) => g.section === "rules")
-    const advanced = rules?.items.find((i) => i.title === "Advanced cards")
-    expect(advanced?.artifacts).toEqual(["Kraken", "Whale", "Loot"])
+    const rules = buildGameDocNav("skull-king").groups.find(
+      (g) => g.section === "rules",
+    );
+    const advanced = rules?.items.find((i) => i.title === "Advanced cards");
+    expect(advanced?.artifacts).toEqual(["Kraken", "Whale", "Loot"]);
 
-    const pirate = rules?.items.find((i) => i.title === "Pirate abilities")
-    expect(pirate?.artifacts).toEqual(["PirateAbilities"])
+    const pirate = rules?.items.find((i) => i.title === "Pirate abilities");
+    expect(pirate?.artifacts).toEqual(["PirateAbilities"]);
 
-    const overview = rules?.items.find((i) => i.title === "Overview")
-    expect(overview?.artifacts).toBeUndefined()
-  })
-})
+    const overview = rules?.items.find((i) => i.title === "Overview");
+    expect(overview?.artifacts).toBeUndefined();
+  });
+});

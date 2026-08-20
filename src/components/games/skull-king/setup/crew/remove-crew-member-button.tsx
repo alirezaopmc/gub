@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@manovaspace/ui";
 
-import { TrashIcon } from "@/components/games/skull-king/setup/crew/crew-manifesto-icons"
-import styles from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css"
+import { TrashIcon } from "@/components/games/skull-king/setup/crew/crew-manifesto-icons";
+import styles from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css";
 
 type RemoveCrewMemberButtonProps = {
-  disabled: boolean
-  title?: string
-  ariaLabel: string
-  onRemove: () => void
-}
+  disabled: boolean;
+  title?: string;
+  ariaLabel: string;
+  onRemove: () => void;
+};
 
 export function RemoveCrewMemberButton({
   disabled,
@@ -29,5 +29,5 @@ export function RemoveCrewMemberButton({
     >
       <TrashIcon className="size-4" />
     </Button>
-  )
+  );
 }

@@ -33,8 +33,12 @@
       var(--primary) 45%,
       color-mix(in srgb, var(--primary) 80%, #000 9%) 100%
     );
-  background-size: 100% 100%, 250% 250%;
-  background-position: 0 0, 50% 40%;
+  background-size:
+    100% 100%,
+    250% 250%;
+  background-position:
+    0 0,
+    50% 40%;
   filter: brightness(1.05);
   box-shadow: 0 0 18px -4px color-mix(in srgb, var(--primary), transparent 55%);
 }
@@ -71,8 +75,12 @@
       var(--secondary) 50%,
       color-mix(in srgb, var(--secondary) 78%, #000 16%) 100%
     );
-  background-size: 100% 100%, 240% 240%;
-  background-position: 0 0, 50% 44%;
+  background-size:
+    100% 100%,
+    240% 240%;
+  background-position:
+    0 0,
+    50% 44%;
   filter: brightness(1.06);
   box-shadow:
     0 4px 14px -6px color-mix(in srgb, #000, transparent 45%),
@@ -86,7 +94,9 @@
   box-shadow:
     0 3px 10px -2px color-mix(in srgb, #000, transparent 62%),
     0 0 0.75rem -0.35rem color-mix(in srgb, var(--primary), transparent 70%);
-  transition: border-color 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
 [data-slot="button"][data-variant="outline"]::before {
@@ -129,7 +139,9 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  transition: background-color 0.12s ease, color 0.12s ease;
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
 }
 
 [data-slot="button"][data-variant="ghost"]::before {

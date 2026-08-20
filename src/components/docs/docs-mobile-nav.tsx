@@ -1,33 +1,38 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Menu } from "lucide-react"
+import {
+  Button,
+  Menu,
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@manovaspace/ui";
+import { useEffect, useState } from "react";
 
-import { Button } from "@/components/ui/button"
-import { Sheet } from "@/components/ui/sheet"
-import { ArtifactFilter } from "@/components/docs/artifact-filter"
-import { DocsNav } from "@/components/docs/docs-nav"
-import type { DocNavConfig } from "@/lib/docs/types"
+import { ArtifactFilter } from "@/components/docs/artifact-filter";
+import { DocsNav } from "@/components/docs/docs-nav";
+import type { DocNavConfig } from "@/lib/docs/types";
 
 type DocsMobileNavProps = {
-  config: DocNavConfig
-}
+  config: DocNavConfig;
+};
 
 export function DocsMobileNav({ config }: DocsMobileNavProps) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!open) return
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false)
-    }
-    window.addEventListener("keydown", onKey)
-    return () => window.removeEventListener("keydown", onKey)
-  }, [open])
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <Sheet.Root open={open} onOpenChange={setOpen}>
-      <Sheet.Trigger asChild>
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
         <Button
           variant="outline"
           size="sm"
@@ -37,15 +42,12 @@ export function DocsMobileNav({ config }: DocsMobileNavProps) {
           <Menu className="size-4" aria-hidden />
           Menu
         </Button>
-      </Sheet.Trigger>
-      <Sheet.Portal>
-        <Sheet.Overlay />
-        <Sheet.Content aria-describedby={undefined}>
-          <Sheet.Title>Documentation</Sheet.Title>
-          <ArtifactFilter />
-          <DocsNav config={config} onNavigate={() => setOpen(false)} />
-        </Sheet.Content>
-      </Sheet.Portal>
-    </Sheet.Root>
-  )
+      </SheetTrigger>
+      <SheetContent aria-describedby={undefined}>
+        <SheetTitle>Documentation</SheetTitle>
+        <ArtifactFilter />
+        <DocsNav config={config} onNavigate={() => setOpen(false)} />
+      </SheetContent>
+    </Sheet>
+  );
 }

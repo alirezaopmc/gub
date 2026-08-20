@@ -1,45 +1,59 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@manovaspace/ui";
 
 import {
   currentRoundSummary,
   PlayRoundResultsTable,
-} from "@/components/games/skull-king/play/play-round-results-table"
-import type { PublicMatchView } from "@/lib/games/skull-king/session/match-store"
+} from "@/components/games/skull-king/play/play-round-results-table";
+import type { PublicMatchView } from "@/lib/games/skull-king/session/match-store";
 
 function playerName(view: PublicMatchView, seat: number): string {
-  return view.players.find((p) => p.seatIndex === seat)?.displayName ?? `Player ${seat + 1}`
+  return (
+    view.players.find((p) => p.seatIndex === seat)?.displayName ??
+    `Player ${seat + 1}`
+  );
 }
 
 function hostName(view: PublicMatchView): string {
-  return view.players.find((p) => p.isHost)?.displayName ?? "Host"
+  return view.players.find((p) => p.isHost)?.displayName ?? "Host";
 }
 
 export type PlayScoringPhaseProps = {
-  view: PublicMatchView
-  dispatch: (action: Record<string, unknown>) => Promise<void>
-  onOpenStandings: () => void
-}
+  view: PublicMatchView;
+  dispatch: (action: Record<string, unknown>) => Promise<void>;
+  onOpenStandings: () => void;
+};
 
-export function PlayScoringPhase({ view, dispatch, onOpenStandings }: PlayScoringPhaseProps) {
-  const round = view.round
-  const summary = currentRoundSummary(view)
-  if (!round || !summary) return null
+export function PlayScoringPhase({
+  view,
+  dispatch,
+  onOpenStandings,
+}: PlayScoringPhaseProps) {
+  const round = view.round;
+  const summary = currentRoundSummary(view);
+  if (!round || !summary) return null;
 
-  const isFinalRound = round.roundIndex + 1 >= round.roundsTotal
+  const isFinalRound = round.roundIndex + 1 >= round.roundsTotal;
   const nextRoundLabel = isFinalRound
     ? "Finish voyage"
-    : `Continue to Round ${round.roundIndex + 2}`
+    : `Continue to Round ${round.roundIndex + 2}`;
 
   return (
-    <section className="flex flex-col gap-4" aria-labelledby="round-complete-heading">
+    <section
+      className="flex flex-col gap-4"
+      aria-labelledby="round-complete-heading"
+    >
       <div>
-        <h3 id="round-complete-heading" className="font-headline text-lg font-semibold text-primary">
+        <h3
+          id="round-complete-heading"
+          className="font-headline text-lg font-semibold text-primary"
+        >
           Round {round.roundIndex + 1} complete
         </h3>
         <p className="text-sm text-muted-foreground">
-          Dealer: {playerName(view, round.dealerIndex)} · Led: {playerName(view, round.leaderIndex)}
+          Dealer: {playerName(view, round.dealerIndex)} · Led:{" "}
+          {playerName(view, round.leaderIndex)}
         </p>
       </div>
 
@@ -48,7 +62,7 @@ export function PlayScoringPhase({ view, dispatch, onOpenStandings }: PlayScorin
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
         {view.viewerIsHost && view.phase !== "game_over" ? (
           <Button
-            variant="branded"
+            variant="default"
             onClick={() =>
               void dispatch({ type: "advance_round", seed: Date.now() })
             }
@@ -65,5 +79,5 @@ export function PlayScoringPhase({ view, dispatch, onOpenStandings }: PlayScorin
         </Button>
       </div>
     </section>
-  )
+  );
 }

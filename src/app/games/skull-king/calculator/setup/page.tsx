@@ -1,15 +1,18 @@
-import type { Metadata } from "next"
-import { Suspense } from "react"
+import type { Metadata } from "next";
+import { Suspense } from "react";
 
-import { SkullKingSetupView } from "@/components/games/skull-king/setup"
+import { SkullKingSetupView } from "@/components/games/skull-king/setup";
 
 export const metadata: Metadata = {
   title: "Skull King · Setup · GUB",
-  description: "Configure crew, voyage chart, artifacts, and confirm before play.",
-}
+  description:
+    "Configure crew, voyage chart, artifacts, and confirm before play.",
+};
 
 function SkullKingSetupFallback() {
-  return <div className="min-h-[min(40vh,24rem)] w-full shrink-0" aria-hidden />
+  return (
+    <div className="min-h-[min(40vh,24rem)] w-full shrink-0" aria-hidden />
+  );
 }
 
 export default function SkullKingCalculatorSetupPage() {
@@ -22,5 +25,5 @@ export default function SkullKingCalculatorSetupPage() {
         </Suspense>
       </main>
     </div>
-  )
+  );
 }

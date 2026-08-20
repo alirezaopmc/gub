@@ -1,69 +1,70 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import Link from "next/link"
-import { ChevronDown } from "lucide-react"
+import { Button, ChevronDown } from "@manovaspace/ui";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
-import { Button } from "@/components/ui/button"
-import type { DocHeading } from "@/lib/docs/types"
-import { cn } from "@/lib/utils"
+import type { DocHeading } from "@/lib/docs/types";
+import { cn } from "@/lib/utils";
 
-import styles from "./styles/docs-layout.module.css"
+import styles from "./styles/docs-layout.module.css";
 
 type DocsTOCProps = {
-  headings: DocHeading[]
-  contentRootId?: string
-  variant?: "mobile" | "desktop" | "both"
-}
+  headings: DocHeading[];
+  contentRootId?: string;
+  variant?: "mobile" | "desktop" | "both";
+};
 
 function useTocSpy(headings: DocHeading[], contentRootId: string) {
-  const [activeId, setActiveId] = useState<string | null>(headings[0]?.id ?? null)
-  const observerRef = useRef<IntersectionObserver | null>(null)
+  const [activeId, setActiveId] = useState<string | null>(
+    headings[0]?.id ?? null,
+  );
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    if (headings.length === 0) return
+    if (headings.length === 0) return;
 
-    const root = document.getElementById(contentRootId)
-    if (!root) return
+    const root = document.getElementById(contentRootId);
+    if (!root) return;
 
-    observerRef.current?.disconnect()
+    observerRef.current?.disconnect();
 
-    const visible = new Map<string, IntersectionObserverEntry>()
+    const visible = new Map<string, IntersectionObserverEntry>();
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          const id = entry.target.id
+          const id = entry.target.id;
           if (entry.isIntersecting) {
-            visible.set(id, entry)
+            visible.set(id, entry);
           } else {
-            visible.delete(id)
+            visible.delete(id);
           }
         }
 
-        if (visible.size === 0) return
+        if (visible.size === 0) return;
 
         const topmost = [...visible.values()].sort(
           (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
-        )[0]
+        )[0];
 
         if (topmost?.target.id) {
-          setActiveId(topmost.target.id)
+          setActiveId(topmost.target.id);
         }
       },
       { root: null, rootMargin: "-80px 0px -60% 0px", threshold: [0, 1] },
-    )
+    );
 
     for (const heading of headings) {
-      const el = root.querySelector(`#${CSS.escape(heading.id)}`)
-      if (el) observer.observe(el)
+      const el = root.querySelector(`#${CSS.escape(heading.id)}`);
+      if (el) observer.observe(el);
     }
 
-    observerRef.current = observer
-    return () => observer.disconnect()
-  }, [contentRootId, headings])
+    observerRef.current = observer;
+    return () => observer.disconnect();
+  }, [contentRootId, headings]);
 
-  return activeId
+  return activeId;
 }
 
 function TocList({
@@ -71,9 +72,9 @@ function TocList({
   activeId,
   className,
 }: {
-  headings: DocHeading[]
-  activeId: string | null
-  className?: string
+  headings: DocHeading[];
+  activeId: string | null;
+  className?: string;
 }) {
   return (
     <ul className={cn("flex flex-col gap-1", className)}>
@@ -92,7 +93,7 @@ function TocList({
         </li>
       ))}
     </ul>
-  )
+  );
 }
 
 export function DocsTOC({
@@ -100,13 +101,13 @@ export function DocsTOC({
   contentRootId = "docs-main-content",
   variant = "both",
 }: DocsTOCProps) {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const activeId = useTocSpy(headings, contentRootId)
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const activeId = useTocSpy(headings, contentRootId);
 
-  if (headings.length === 0) return null
+  if (headings.length === 0) return null;
 
-  const showMobile = variant === "mobile" || variant === "both"
-  const showDesktop = variant === "desktop" || variant === "both"
+  const showMobile = variant === "mobile" || variant === "both";
+  const showDesktop = variant === "desktop" || variant === "both";
 
   return (
     <>
@@ -122,11 +123,17 @@ export function DocsTOC({
           >
             On this page
             <ChevronDown
-              className={cn("size-4 transition-transform", mobileOpen && "rotate-180")}
+              className={cn(
+                "size-4 transition-transform",
+                mobileOpen && "rotate-180",
+              )}
               aria-hidden
             />
           </Button>
-          <div className={styles.mobileTocPanel} data-open={mobileOpen ? "true" : "false"}>
+          <div
+            className={styles.mobileTocPanel}
+            data-open={mobileOpen ? "true" : "false"}
+          >
             <TocList
               headings={headings}
               activeId={activeId}
@@ -147,5 +154,5 @@ export function DocsTOC({
         </aside>
       ) : null}
     </>
-  )
+  );
 }

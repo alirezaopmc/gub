@@ -19,7 +19,11 @@
 }
 
 .green {
-  border-color: color-mix(in srgb, var(--sk-suit-green-border), transparent 10%);
+  border-color: color-mix(
+    in srgb,
+    var(--sk-suit-green-border),
+    transparent 10%
+  );
   background: var(--sk-suit-green-bg);
   color: var(--sk-suit-green-fg);
 }
@@ -29,7 +33,11 @@
 }
 
 .yellow {
-  border-color: color-mix(in srgb, var(--sk-suit-yellow-border), transparent 10%);
+  border-color: color-mix(
+    in srgb,
+    var(--sk-suit-yellow-border),
+    transparent 10%
+  );
   background: var(--sk-suit-yellow-bg);
   color: var(--sk-suit-yellow-fg);
 }
@@ -39,7 +47,11 @@
 }
 
 .purple {
-  border-color: color-mix(in srgb, var(--sk-suit-purple-border), transparent 10%);
+  border-color: color-mix(
+    in srgb,
+    var(--sk-suit-purple-border),
+    transparent 10%
+  );
   background: var(--sk-suit-purple-bg);
   color: var(--sk-suit-purple-fg);
 }
@@ -49,7 +61,11 @@
 }
 
 .black {
-  border-color: color-mix(in srgb, var(--sk-suit-black-border), transparent 15%);
+  border-color: color-mix(
+    in srgb,
+    var(--sk-suit-black-border),
+    transparent 15%
+  );
   background: var(--sk-suit-black-bg);
   color: var(--sk-suit-black-fg);
 }

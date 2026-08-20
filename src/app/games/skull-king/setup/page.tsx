@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation"
+import { redirect } from "next/navigation";
 
 export default function LegacySetupRedirect() {
-  redirect("/games/skull-king/calculator/setup")
+  redirect("/games/skull-king/calculator/setup");
 }
