@@ -17,8 +17,8 @@
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
-    "@manovaspace/tokens": "link:../../../manovaspace/design-system/packages/tokens",
-    "@manovaspace/ui": "link:../../../manovaspace/design-system/packages/ui",
+    "@manovaspace/tokens": "file:../../../manovaspace/design-system/packages/tokens",
+    "@manovaspace/ui": "file:../../../manovaspace/design-system/packages/ui",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/mdx": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
@@ -54,5 +54,6 @@
   "allowScripts": {
     "sharp@0.34.5": true,
     "unrs-resolver@1.12.2": true
-  }
+  },
+  "packageManager": "bun@1.3.14"
 }
