@@ -20,31 +20,31 @@
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off",
-        "noArrayIndexKey": "off",
-        "noShadowRestrictedNames": "off"
-      },
-      "style": {
-        "noNonNullAssertion": "off"
-      },
-      "performance": {
-        "noImgElement": "off"
+        "noArrayIndexKey": "warn",
+        "noShadowRestrictedNames": "off",
+        "useIterableCallbackReturn": "off"
       },
       "complexity": {
         "noImportantStyles": "off"
       },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noDescendingSpecificity": "off"
+      },
       "a11y": {
+        "useFocusableInteractive": "off",
+        "useKeyWithClickEvents": "off",
+        "noAriaHiddenOnFocusable": "off",
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "useSemanticElements": "off",
         "noStaticElementInteractions": "off",
         "useAriaPropsSupportedByRole": "off",
-        "noSvgWithoutTitle": "off",
-        "useSemanticElements": "off",
-        "useFocusableInteractive": "off",
-        "noNoninteractiveElementToInteractiveRole": "off",
-        "useKeyWithClickEvents": "off"
+        "noSvgWithoutTitle": "off"
       },
       "correctness": {
-        "noUnknownPseudoClass": "off",
         "useExhaustiveDependencies": "warn",
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "warn",
+        "noUnknownPseudoClass": "off"
       }
     },
     "domains": {
@@ -54,6 +54,7 @@
   },
   "css": {
     "parser": {
+      "cssModules": true,
       "tailwindDirectives": true
     }
   },
