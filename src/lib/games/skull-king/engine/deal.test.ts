@@ -17,9 +17,7 @@ describe("deal", () => {
     );
     expect(handSize).toBe(3);
     expect(hands).toHaveLength(4);
-    for (const h of hands) {
-      expect(h).toHaveLength(3);
-    }
+    hands.forEach((h) => expect(h).toHaveLength(3));
     expect(undealt).toHaveLength(70 - 12);
   });
 

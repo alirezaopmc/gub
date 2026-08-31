@@ -1,3 +1,5 @@
+import path from "node:path";
+
 function isExternalHref(href: string): boolean {
   return (
     href.startsWith("http://") ||
@@ -5,25 +7,6 @@ function isExternalHref(href: string): boolean {
     href.startsWith("mailto:") ||
     href.startsWith("#")
   );
-}
-
-function normalizeSegments(pathStr: string): string {
-  const parts = pathStr.split("/");
-  const stack: string[] = [];
-  for (const part of parts) {
-    if (!part || part === ".") continue;
-    if (part === "..") {
-      stack.pop();
-    } else {
-      stack.push(part);
-    }
-  }
-  return stack.join("/");
-}
-
-function dirnamePath(p: string): string {
-  const idx = p.lastIndexOf("/");
-  return idx === -1 ? "." : p.slice(0, idx);
 }
 
 /** Map a docs-relative path (e.g. games/skull-king/rules/06-scoring.md) to an app route. */
@@ -77,7 +60,7 @@ export function resolveDocHref(fromPath: string, href: string): string | null {
     return href;
   }
 
-  const fromDir = dirnamePath(fromPath);
-  const resolved = normalizeSegments(`${fromDir}/${href}`);
+  const fromDir = path.dirname(fromPath);
+  const resolved = path.normalize(path.join(fromDir, href));
   return docPathToRoute(resolved);
 }

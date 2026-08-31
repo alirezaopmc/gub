@@ -1,16 +1,10 @@
 "use client";
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogTitle,
-} from "@manovaspace/ui";
 import * as React from "react";
 import addStyles from "@/components/games/skull-king/round-score/styles/event-dialog.module.css";
 import { CrewRoundStatsTable } from "@/components/games/skull-king/round-score/table/crew-round-stats-table";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 import {
   areAllNamedPlayersBidsSet,
   areAllNamedPlayersWonSet,
@@ -125,60 +119,63 @@ export function BidWonDialog({
         .join(" · ");
 
   return (
-    <Dialog open={open} onOpenChange={handleDialogOpenChange}>
-      <DialogContent
-        aria-describedby={idDesc}
-        onOpenAutoFocus={(e) => {
-          if (variant !== "tricks" || !editableWon) return;
-          e.preventDefault();
-        }}
-      >
-        <DialogTitle>{bidWonTitle(variant)}</DialogTitle>
-        <DialogDescription id={idDesc}>
-          {bidWonDescription(variant)}
-        </DialogDescription>
-        <form
-          className={addStyles.formSubmitDisplayContents}
-          onSubmit={(e) => {
+    <Dialog.Root open={open} onOpenChange={handleDialogOpenChange}>
+      <Dialog.Portal>
+        <Dialog.Overlay />
+        <Dialog.Content
+          aria-describedby={idDesc}
+          onOpenAutoFocus={(e) => {
+            if (variant !== "tricks" || !editableWon) return;
             e.preventDefault();
-            if ((editableBid && !allBidsSet) || (editableWon && !allWonSet))
-              return;
-            closedViaDoneRef.current = true;
-            onDone?.();
-            handleDialogOpenChange(false);
           }}
         >
-          <div className={addStyles.body}>
-            <CrewRoundStatsTable
-              editableBid={editableBid}
-              editableWon={editableWon}
-              alwaysShowWonColumn
-              showRoundScoreColumn={false}
-              plainNameColumn
-              autoFocusFirstWon={variant === "tricks"}
-            />
-          </div>
-          <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={() => handleDialogOpenChange(false)}
-            >
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              variant="default"
-              size="sm"
-              disabled={doneDisabled}
-              title={doneDisabledTitle}
-            >
-              Done
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
+          <Dialog.Title>{bidWonTitle(variant)}</Dialog.Title>
+          <Dialog.Description id={idDesc}>
+            {bidWonDescription(variant)}
+          </Dialog.Description>
+          <form
+            className={addStyles.formSubmitDisplayContents}
+            onSubmit={(e) => {
+              e.preventDefault();
+              if ((editableBid && !allBidsSet) || (editableWon && !allWonSet))
+                return;
+              closedViaDoneRef.current = true;
+              onDone?.();
+              handleDialogOpenChange(false);
+            }}
+          >
+            <div className={addStyles.body}>
+              <CrewRoundStatsTable
+                editableBid={editableBid}
+                editableWon={editableWon}
+                alwaysShowWonColumn
+                showRoundScoreColumn={false}
+                plainNameColumn
+                autoFocusFirstWon={variant === "tricks"}
+              />
+            </div>
+            <Dialog.Footer>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => handleDialogOpenChange(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="default"
+                size="sm"
+                disabled={doneDisabled}
+                title={doneDisabledTitle}
+              >
+                Done
+              </Button>
+            </Dialog.Footer>
+          </form>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

@@ -1,8 +1,10 @@
 "use client";
 
-import { Button, Home } from "@manovaspace/ui";
+import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
 
 function titleFromGamesPath(pathname: string | null): string | null {
   if (!pathname?.startsWith("/games/")) return null;

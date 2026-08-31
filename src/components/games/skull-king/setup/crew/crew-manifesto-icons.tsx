@@ -1,4 +1,4 @@
-import { Minus, Plus, Trash2 } from "@manovaspace/ui";
+import { Minus, Plus, Trash2 } from "lucide-react";
 import type { IconProps } from "@/components/icons/icon-props";
 
 const stroke = 1.25 as const;

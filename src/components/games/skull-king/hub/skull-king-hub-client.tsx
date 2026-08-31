@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import {
-  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@manovaspace/ui";
-import Link from "next/link";
+} from "@/components/ui/card";
 
 const tiles = [
   {
@@ -50,7 +51,7 @@ export function SkullKingHubClient() {
               <CardDescription>{tile.description}</CardDescription>
             </CardHeader>
             <CardContent className="px-5 py-4">
-              <Button className="w-full" asChild>
+              <Button variant="branded" className="w-full" asChild>
                 <Link href={tile.href}>Open</Link>
               </Button>
             </CardContent>

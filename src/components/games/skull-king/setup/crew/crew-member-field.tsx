@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle } from "@manovaspace/ui";
+import { AlertTriangle } from "lucide-react";
 import { Tooltip } from "radix-ui";
 import type { ReactNode } from "react";
 

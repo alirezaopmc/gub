@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@manovaspace/ui";
 import * as React from "react";
 import { useSetupInteractionOptional } from "@/components/games/skull-king/setup/setup-interaction-context";
 import { SkullKingSetupSection } from "@/components/games/skull-king/setup/shared/skull-king-setup-section";
 import panel from "@/components/games/skull-king/setup/styles/setup-panel.module.css";
 import { useWizardKeyboardRequestAdvance } from "@/components/games/skull-king/setup/wizard-keyboard-context";
+import { Button } from "@/components/ui/button";
 import {
   formatRoundsSchema,
   parseRoundsSchemaInput,

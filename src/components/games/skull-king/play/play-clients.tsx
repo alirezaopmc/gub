@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@manovaspace/ui";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import * as React from "react";
@@ -15,6 +8,8 @@ import { PlayScoringPhase } from "@/components/games/skull-king/play/play-scorin
 import { PlayVoyageStatsDialog } from "@/components/games/skull-king/play/play-voyage-stats-dialog";
 import styles from "@/components/games/skull-king/play/styles/play.module.css";
 import { RoundScoreBodyMotion } from "@/components/games/skull-king/round-score/round-body-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   CARD_BACK_IMAGE,
   cardImagePath,
@@ -193,7 +188,7 @@ export function PlayHubClient() {
             value={hostName}
             onChange={(e) => setHostName(e.target.value)}
           />
-          <Button variant="default" disabled={loading} onClick={createMatch}>
+          <Button variant="branded" disabled={loading} onClick={createMatch}>
             Create match
           </Button>
         </CardContent>
@@ -438,7 +433,7 @@ function MatchTableInner({
           </ul>
           {view.viewerIsHost ? (
             <Button
-              variant="default"
+              variant="branded"
               disabled={view.players.length < 3}
               onClick={() =>
                 void dispatch({ type: "start_match", seed: Date.now() })
@@ -501,7 +496,7 @@ function MatchTableInner({
                 <Button
                   key={bid}
                   size="sm"
-                  variant={myBid === bid ? "default" : "outline"}
+                  variant={myBid === bid ? "branded" : "outline"}
                   onClick={() => submitBid(bid)}
                 >
                   {bid}

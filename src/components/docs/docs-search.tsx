@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  Search,
-} from "@manovaspace/ui";
+import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import {
   useCallback,
@@ -16,8 +10,9 @@ import {
   useRef,
   useState,
 } from "react";
-
 import { useDocsArtifacts } from "@/components/docs/docs-artifact-context";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 import { isDocVisibleForArtifacts } from "@/lib/docs/doc-artifact-visibility";
 import { loadDocsSearchIndex } from "@/lib/docs/load-docs-search-index";
 import { searchDocs } from "@/lib/docs/search-docs";
@@ -142,65 +137,76 @@ export function DocsSearch({ gameId, className }: DocsSearchProps) {
         </kbd>
       </Button>
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent
-          className={cn(styles.content, "w-[min(100%-1.5rem,32rem)] gap-0")}
-          aria-describedby={undefined}
-          onOpenAutoFocus={(e) => e.preventDefault()}
-        >
-          <DialogTitle className="sr-only">Search documentation</DialogTitle>
-          <input
-            ref={inputRef}
-            type="search"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setActiveIndex(0);
-            }}
-            onKeyDown={onInputKeyDown}
-            placeholder="Search rules, headings, glossary…"
-            className={styles.input}
-            aria-controls={listId}
-            aria-activedescendant={
-              results[selectedIndex] ? `${listId}-${selectedIndex}` : undefined
-            }
-            autoComplete="off"
-            spellCheck={false}
-          />
+      <Dialog.Root open={open} onOpenChange={setOpen} syncHistoryOnOpen={false}>
+        <Dialog.Portal>
+          <Dialog.Overlay className={styles.overlay} />
+          <Dialog.Content
+            className={cn(styles.content, "w-[min(100%-1.5rem,32rem)] gap-0")}
+            aria-describedby={undefined}
+            onOpenAutoFocus={(e) => e.preventDefault()}
+          >
+            <Dialog.Title className="sr-only">
+              Search documentation
+            </Dialog.Title>
+            <input
+              ref={inputRef}
+              type="search"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setActiveIndex(0);
+              }}
+              onKeyDown={onInputKeyDown}
+              placeholder="Search rules, headings, glossary…"
+              className={styles.input}
+              aria-controls={listId}
+              aria-activedescendant={
+                results[selectedIndex]
+                  ? `${listId}-${selectedIndex}`
+                  : undefined
+              }
+              autoComplete="off"
+              spellCheck={false}
+            />
 
-          <ul id={listId} className={styles.results} role="listbox">
-            {loadError ? (
-              <li className={styles.empty}>Could not load search index.</li>
-            ) : !entries ? (
-              <li className={styles.empty}>Loading…</li>
-            ) : query && results.length === 0 ? (
-              <li className={styles.empty}>No results for “{query}”.</li>
-            ) : results.length === 0 ? (
-              <li className={styles.empty}>Type to search documentation.</li>
-            ) : (
-              results.map((entry, index) => (
-                <li
-                  key={entry.id}
-                  id={`${listId}-${index}`}
-                  role="option"
-                  aria-selected={index === selectedIndex}
-                  className={styles.result}
-                  data-active={index === selectedIndex ? "true" : "false"}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => navigateTo(entry)}
-                >
-                  <span className={styles.kind}>{KIND_LABELS[entry.kind]}</span>
-                  <span className={styles.resultTitle}>{entry.title}</span>
-                  {entry.subtitle ? (
-                    <span className={styles.resultMeta}>{entry.subtitle}</span>
-                  ) : null}
-                </li>
-              ))
-            )}
-          </ul>
-        </DialogContent>
-      </Dialog>
+            <ul id={listId} className={styles.results} role="listbox">
+              {loadError ? (
+                <li className={styles.empty}>Could not load search index.</li>
+              ) : !entries ? (
+                <li className={styles.empty}>Loading…</li>
+              ) : query && results.length === 0 ? (
+                <li className={styles.empty}>No results for “{query}”.</li>
+              ) : results.length === 0 ? (
+                <li className={styles.empty}>Type to search documentation.</li>
+              ) : (
+                results.map((entry, index) => (
+                  <li
+                    key={entry.id}
+                    id={`${listId}-${index}`}
+                    role="option"
+                    aria-selected={index === selectedIndex}
+                    className={styles.result}
+                    data-active={index === selectedIndex ? "true" : "false"}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => navigateTo(entry)}
+                  >
+                    <span className={styles.kind}>
+                      {KIND_LABELS[entry.kind]}
+                    </span>
+                    <span className={styles.resultTitle}>{entry.title}</span>
+                    {entry.subtitle ? (
+                      <span className={styles.resultMeta}>
+                        {entry.subtitle}
+                      </span>
+                    ) : null}
+                  </li>
+                ))
+              )}
+            </ul>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </>
   );
 }

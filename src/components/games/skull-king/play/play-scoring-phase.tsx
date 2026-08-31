@@ -1,11 +1,10 @@
 "use client";
 
-import { Button } from "@manovaspace/ui";
-
 import {
   currentRoundSummary,
   PlayRoundResultsTable,
 } from "@/components/games/skull-king/play/play-round-results-table";
+import { Button } from "@/components/ui/button";
 import type { PublicMatchView } from "@/lib/games/skull-king/session/match-store";
 
 function playerName(view: PublicMatchView, seat: number): string {
@@ -62,7 +61,7 @@ export function PlayScoringPhase({
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
         {view.viewerIsHost && view.phase !== "game_over" ? (
           <Button
-            variant="default"
+            variant="branded"
             onClick={() =>
               void dispatch({ type: "advance_round", seed: Date.now() })
             }

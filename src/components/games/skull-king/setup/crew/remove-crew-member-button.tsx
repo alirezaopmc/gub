@@ -1,7 +1,6 @@
-import { Button } from "@manovaspace/ui";
-
 import { TrashIcon } from "@/components/games/skull-king/setup/crew/crew-manifesto-icons";
 import styles from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css";
+import { Button } from "@/components/ui/button";
 
 type RemoveCrewMemberButtonProps = {
   disabled: boolean;

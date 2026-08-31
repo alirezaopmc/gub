@@ -7,7 +7,7 @@ import {
   Spade,
   Star,
   Waves,
-} from "@manovaspace/ui";
+} from "lucide-react";
 
 import type { IconProps } from "@/components/icons/icon-props";
 import { CaptureNetIcon } from "@/components/icons/skull-king/capture-net-icon";

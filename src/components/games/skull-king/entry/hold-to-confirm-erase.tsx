@@ -1,8 +1,9 @@
 "use client";
 
-import { buttonVariants } from "@manovaspace/ui";
 import * as React from "react";
 import { flushSync } from "react-dom";
+
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /** Deliberate hold (~1s) for destructive confirms; matches common product timing without feeling sluggish. */
@@ -123,10 +124,7 @@ export function HoldToConfirmErase({
       <button
         type="button"
         className={cn(
-          buttonVariants({
-            variant: variant === "caution" ? "destructive" : variant,
-            size,
-          }),
+          buttonVariants({ variant, size }),
           "relative w-full touch-none select-none overflow-hidden",
           size === "lg" ? "min-h-12" : "min-h-11",
         )}

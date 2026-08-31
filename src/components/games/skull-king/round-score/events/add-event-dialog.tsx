@@ -1,15 +1,9 @@
 "use client";
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogTitle,
-  DialogTrigger,
-} from "@manovaspace/ui";
 import * as React from "react";
+
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 import {
   type AddableEventKind,
   addableEventLabel,
@@ -285,7 +279,7 @@ export function EventsDialog({
           <Button
             key={index}
             type="button"
-            variant="outline"
+            variant="eventPlayer"
             disabled={d}
             onClick={() => {
               if (d) return;
@@ -327,7 +321,7 @@ export function EventsDialog({
         <div className="flex flex-col gap-2">
           <Button
             type="button"
-            variant="outline"
+            variant="eventOption"
             onClick={() =>
               setStep({ t: "pir_v", owner: step.owner, pirate: "harry" })
             }
@@ -340,7 +334,7 @@ export function EventsDialog({
           </Button>
           <Button
             type="button"
-            variant="outline"
+            variant="eventOption"
             onClick={() =>
               setStep({ t: "pir_v", owner: step.owner, pirate: "rascal" })
             }
@@ -362,7 +356,7 @@ export function EventsDialog({
               <Button
                 key={d}
                 type="button"
-                variant="outline"
+                variant="eventValue"
                 onClick={() => {
                   applyHarryGiantBidDelta(step.owner, d);
                   onOpenChange(false);
@@ -380,7 +374,7 @@ export function EventsDialog({
             <Button
               key={w}
               type="button"
-              variant="outline"
+              variant="eventValue"
               onClick={() =>
                 commit({
                   type: "pirateAbility",
@@ -417,7 +411,7 @@ export function EventsDialog({
             <Button
               key={o.id}
               type="button"
-              variant="outline"
+              variant="eventOption"
               onClick={() => {
                 if (o.id === "mermaid") {
                   commit({
@@ -465,7 +459,7 @@ export function EventsDialog({
             <Button
               key={n}
               type="button"
-              variant="outline"
+              variant="eventValue"
               className="w-full"
               onClick={() =>
                 commit({
@@ -494,7 +488,7 @@ export function EventsDialog({
             <Button
               key={s}
               type="button"
-              variant="outline"
+              variant="eventValue"
               className="capitalize"
               onClick={() =>
                 commit({
@@ -558,7 +552,7 @@ export function EventsDialog({
           <Button
             key={kind}
             type="button"
-            variant="outline"
+            variant="kindTile"
             className="h-auto min-h-0 flex-1"
             disabled={!enabled}
             title={title}
@@ -592,51 +586,58 @@ export function EventsDialog({
   const showBack = hub === "add" && step.t !== "menu";
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       {trigger != null ? (
-        <DialogTrigger asChild>{trigger}</DialogTrigger>
+        <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       ) : null}
-      <DialogContent aria-describedby={describedBy}>
-        <DialogTitle>{dialogTitle}</DialogTitle>
-        {atEventHub ? (
-          <DialogDescription id="events-hub-desc">{listDesc}</DialogDescription>
-        ) : addDesc != null ? (
-          <DialogDescription id="add-event-desc">{addDesc}</DialogDescription>
-        ) : null}
-        <form
-          className={addStyles.formSubmitDisplayContents}
-          onSubmit={(e) => {
-            e.preventDefault();
-            onOpenChange(false);
-          }}
-        >
-          <div className={addStyles.modalStack}>
-            {atEventHub ? (
-              <div className={addStyles.logSection}>{renderEventLog()}</div>
-            ) : null}
-            <div className={addStyles.bottomSection}>
-              {showKindToolbar ? renderKindToolbar() : body()}
+      <Dialog.Portal>
+        <Dialog.Overlay />
+        <Dialog.Content aria-describedby={describedBy}>
+          <Dialog.Title>{dialogTitle}</Dialog.Title>
+          {atEventHub ? (
+            <Dialog.Description id="events-hub-desc">
+              {listDesc}
+            </Dialog.Description>
+          ) : addDesc != null ? (
+            <Dialog.Description id="add-event-desc">
+              {addDesc}
+            </Dialog.Description>
+          ) : null}
+          <form
+            className={addStyles.formSubmitDisplayContents}
+            onSubmit={(e) => {
+              e.preventDefault();
+              onOpenChange(false);
+            }}
+          >
+            <div className={addStyles.modalStack}>
+              {atEventHub ? (
+                <div className={addStyles.logSection}>{renderEventLog()}</div>
+              ) : null}
+              <div className={addStyles.bottomSection}>
+                {showKindToolbar ? renderKindToolbar() : body()}
+              </div>
             </div>
-          </div>
-          <DialogFooter>
-            {showBack ? (
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={handleBack}
-              >
-                Back
+            <Dialog.Footer>
+              {showBack ? (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleBack}
+                >
+                  Back
+                </Button>
+              ) : (
+                <span />
+              )}
+              <Button type="submit" variant="outline" size="sm">
+                Cancel
               </Button>
-            ) : (
-              <span />
-            )}
-            <Button type="submit" variant="outline" size="sm">
-              Cancel
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
+            </Dialog.Footer>
+          </form>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

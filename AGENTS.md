@@ -50,7 +50,7 @@ Dev server runs on **port 11003** (see Manova [ports](../../../handbook/docs/cli
 ## Do / don't
 
 - Keep **public** docs in this repo / `gub.dfjk.ir` — never move them into private `handbook`
-- Staff facts (ports, Coolify, platform plans) → `handbook` only
+- Staff facts (ports, platform plans) → `handbook` only
 - Do not add Orbit auth/gateway/`@manovaspace/ui` until an explicit platform-integration slice
 - No product facts in Orbit architecture pages
 - No commit unless the user asks

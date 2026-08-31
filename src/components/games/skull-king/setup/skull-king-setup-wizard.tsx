@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@manovaspace/ui";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import * as React from "react";
+
 import { ArtifactsSection } from "@/components/games/skull-king/setup/artifacts/artifacts-section";
 import { CrewManifesto } from "@/components/games/skull-king/setup/crew/crew-manifesto";
 import { NavigationChart } from "@/components/games/skull-king/setup/navigation/navigation-chart";
@@ -17,6 +17,7 @@ import {
 } from "@/components/games/skull-king/setup/wizard-keyboard-context";
 import { WIZARD_STEP_FOCUS_ID } from "@/components/games/skull-king/setup/wizard-step-focus-ids";
 import { GameReadyReview } from "@/components/games/skull-king/start/game-ready-review";
+import { Button } from "@/components/ui/button";
 import { useWizardFooterLayoutMode } from "@/hooks/use-wizard-footer-layout-mode";
 import { beginSkullKingVoyageFromSetupIfReady } from "@/lib/games/skull-king/begin-skull-king-voyage-from-setup";
 import { clampCrewPlayerName } from "@/lib/games/skull-king/crew-name-validation";

@@ -1,19 +1,13 @@
 "use client";
 
-import {
-  BarChart3,
-  Button,
-  Menu,
-  PencilLine,
-  RotateCcw,
-  Wrench,
-} from "@manovaspace/ui";
+import { BarChart3, Menu, PencilLine, RotateCcw, Wrench } from "lucide-react";
 import * as React from "react";
 import { BidWonDialog } from "@/components/games/skull-king/round-score/bid-won-dialog";
 import { EventsDialog } from "@/components/games/skull-king/round-score/events/add-event-dialog";
 import { ReplayRoundConfirmDialog } from "@/components/games/skull-king/round-score/footer/replay-round-confirm-dialog";
 import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css";
 import { SkullKingAnchorIcon } from "@/components/games/skull-king/setup/shared/skull-king-setup-icons";
+import { Button } from "@/components/ui/button";
 import {
   areAllNamedPlayersBidsSet,
   areAllNamedPlayersWonSet,
@@ -218,9 +212,9 @@ export function RoundVoyageFooter({
         {roundFinalized ? (
           <Button
             type="button"
-            variant="outline"
-            size="lg"
-            className="w-full h-auto min-h-11 min-w-0 flex-col gap-0.5 rounded-xl px-5 py-2 text-sm font-headline tracking-[0.06em] font-bold border-[color-mix(in_srgb,var(--destructive),transparent_55%)] bg-[color-mix(in_srgb,var(--destructive)_10%,var(--card)_90%)] text-destructive shadow-[var(--shadow-sk-cta)] hover:border-[color-mix(in_srgb,var(--destructive),transparent_35%)] hover:bg-[color-mix(in_srgb,var(--destructive)_18%,var(--card)_82%)] hover:brightness-[1.02] hover:shadow-[var(--shadow-sk-cta)] focus-visible:border-[color-mix(in_srgb,var(--destructive),transparent_25%)] focus-visible:ring-transparent focus-visible:shadow-[0_0_0_2px_color-mix(in_srgb,var(--destructive),transparent_62%),var(--shadow-sk-cta)] [&_*]:text-destructive [&_svg]:text-destructive"
+            variant="outlineReplay"
+            size="cta"
+            className="w-full font-headline tracking-[0.06em] font-bold"
             aria-label={`Redo round ${currentRoundIndex + 1} — clears scores for this deal and later rounds`}
             onClick={() => setReplayConfirmOpen(true)}
           >
@@ -238,8 +232,8 @@ export function RoundVoyageFooter({
           <Button
             type="button"
             variant="default"
-            size="lg"
-            className="w-full h-auto min-h-11 min-w-0 flex-col gap-0.5 rounded-xl px-5 py-2 text-sm font-headline tracking-[0.06em] font-bold"
+            size="cta"
+            className="w-full font-headline tracking-[0.06em] font-bold"
             aria-label={
               atLastRound
                 ? "Finalize this round and end the voyage"
@@ -259,8 +253,8 @@ export function RoundVoyageFooter({
           <Button
             type="button"
             variant="default"
-            size="lg"
-            className="w-full h-auto min-h-11 min-w-0 flex-col gap-0.5 rounded-xl px-5 py-2 text-sm font-headline tracking-[0.06em] font-bold"
+            size="cta"
+            className="w-full font-headline tracking-[0.06em] font-bold"
             aria-label={
               primaryIsStart
                 ? "Set bid tricks for this hand"

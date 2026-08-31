@@ -1,18 +1,18 @@
 "use client";
 
-import {
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@manovaspace/ui";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { HoldToConfirmErase } from "@/components/games/skull-king/entry/hold-to-confirm-erase";
 import { CrewList } from "@/components/games/skull-king/shared/crew-list";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { EphemeralToast } from "@/components/ui/ephemeral-toast";
 import { loadGameConfig } from "@/lib/games/skull-king/game-config-storage";
 import { loadRoundData } from "@/lib/games/skull-king/round-score/round-data-storage";
@@ -231,7 +231,7 @@ export function SkullKingEntryClient() {
       <SessionSummary entry={entry} config={config} />
 
       <div className="flex w-full flex-col gap-4">
-        <Button size="lg" className="w-full" asChild>
+        <Button variant="branded" size="cta" className="w-full" asChild>
           <Link
             href={primaryHref}
             aria-label={primaryAria}

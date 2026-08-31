@@ -1,6 +1,6 @@
 "use client";
 
-import { Star } from "@manovaspace/ui";
+import { Star } from "lucide-react";
 import { Tooltip } from "radix-ui";
 import type * as React from "react";
 

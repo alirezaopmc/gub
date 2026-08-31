@@ -1,12 +1,11 @@
 "use client";
 
-import { Button } from "@manovaspace/ui";
-
 import {
   MinusIcon,
   PlusIcon,
 } from "@/components/games/skull-king/setup/crew/crew-manifesto-icons";
 import crew from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css";
+import { Button } from "@/components/ui/button";
 import {
   MAX_CREW_PLAYERS,
   MIN_CREW_PLAYERS,

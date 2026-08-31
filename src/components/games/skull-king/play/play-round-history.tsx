@@ -1,12 +1,12 @@
 "use client";
 
-import { Button, ChevronLeft, ChevronRight } from "@manovaspace/ui";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
-
 import {
   PlayRoundResultsTable,
   voyageTotalsThroughRound,
 } from "@/components/games/skull-king/play/play-round-results-table";
+import { Button } from "@/components/ui/button";
 import type {
   PublicMatchView,
   PublicRoundSummary,

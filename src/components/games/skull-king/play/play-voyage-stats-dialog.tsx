@@ -1,16 +1,10 @@
 "use client";
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogTitle,
-} from "@manovaspace/ui";
 import * as React from "react";
 import dialogBody from "@/components/games/skull-king/round-score/styles/stats-dialog.module.css";
 import tableStyles from "@/components/games/skull-king/round-score/styles/stats-table.module.css";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 import type { PublicMatchView } from "@/lib/games/skull-king/session/match-store";
 import { cn } from "@/lib/utils";
 
@@ -108,98 +102,109 @@ export function PlayVoyageStatsDialog({
   const rankHeader = variant === "complete" ? "Rank" : "#";
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent aria-describedby={idDesc}>
-        <DialogTitle>
-          {variant === "complete" ? "Voyage complete" : "Voyage standings"}
-        </DialogTitle>
-        <DialogDescription id={idDesc}>
-          {variant === "complete"
-            ? "Final standings — highest total score wins. Ties share rank."
-            : "Running totals for each player, highest score first."}
-        </DialogDescription>
-        <div className={dialogBody.body}>
-          {standings.length === 0 ? (
-            <p className={tableStyles.empty} role="status">
-              No scores yet.
-            </p>
-          ) : (
-            <div className={tableStyles.tableScroll}>
-              <table
-                className={tableStyles.statsTable}
-                aria-label="Voyage standings by total score"
-              >
-                <thead>
-                  <tr>
-                    <th
-                      scope="col"
-                      className={cn(tableStyles.thPlain, tableStyles.thCenter)}
-                    >
-                      {rankHeader}
-                    </th>
-                    <th scope="col" className={tableStyles.thPlain}>
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className={cn(tableStyles.thPlain, tableStyles.thCenter)}
-                    >
-                      Score
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {standings.map((group) => {
-                    const medal =
-                      variant === "complete"
-                        ? medalForPlace(group.place)
-                        : null;
-                    const label = ordinalPlaceLabel(group.place);
-                    return (
-                      <tr key={group.members.map((m) => m.seatIndex).join("-")}>
-                        <td
-                          className={cn(
-                            tableStyles.tdRank,
-                            variant === "complete" &&
-                              medal &&
-                              tableStyles.tdRankMedal,
-                          )}
-                          aria-label={label}
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+      <Dialog.Portal>
+        <Dialog.Overlay />
+        <Dialog.Content aria-describedby={idDesc}>
+          <Dialog.Title>
+            {variant === "complete" ? "Voyage complete" : "Voyage standings"}
+          </Dialog.Title>
+          <Dialog.Description id={idDesc}>
+            {variant === "complete"
+              ? "Final standings — highest total score wins. Ties share rank."
+              : "Running totals for each player, highest score first."}
+          </Dialog.Description>
+          <div className={dialogBody.body}>
+            {standings.length === 0 ? (
+              <p className={tableStyles.empty} role="status">
+                No scores yet.
+              </p>
+            ) : (
+              <div className={tableStyles.tableScroll}>
+                <table
+                  className={tableStyles.statsTable}
+                  aria-label="Voyage standings by total score"
+                >
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        className={cn(
+                          tableStyles.thPlain,
+                          tableStyles.thCenter,
+                        )}
+                      >
+                        {rankHeader}
+                      </th>
+                      <th scope="col" className={tableStyles.thPlain}>
+                        Name
+                      </th>
+                      <th
+                        scope="col"
+                        className={cn(
+                          tableStyles.thPlain,
+                          tableStyles.thCenter,
+                        )}
+                      >
+                        Score
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {standings.map((group) => {
+                      const medal =
+                        variant === "complete"
+                          ? medalForPlace(group.place)
+                          : null;
+                      const label = ordinalPlaceLabel(group.place);
+                      return (
+                        <tr
+                          key={group.members.map((m) => m.seatIndex).join("-")}
                         >
-                          {medal ?? group.place}
-                        </td>
-                        <td className={tableStyles.tdName}>
-                          <div className={tableStyles.nameStack}>
-                            {group.members.map((m) => (
-                              <div
-                                key={m.seatIndex}
-                                className={tableStyles.nameLine}
-                              >
-                                {m.name}
-                              </div>
-                            ))}
-                          </div>
-                        </td>
-                        <td className={tableStyles.tdScore}>{group.score}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-        <DialogFooter className="justify-end">
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={() => onOpenChange(false)}
-          >
-            Close
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+                          <td
+                            className={cn(
+                              tableStyles.tdRank,
+                              variant === "complete" &&
+                                medal &&
+                                tableStyles.tdRankMedal,
+                            )}
+                            aria-label={label}
+                          >
+                            {medal ?? group.place}
+                          </td>
+                          <td className={tableStyles.tdName}>
+                            <div className={tableStyles.nameStack}>
+                              {group.members.map((m) => (
+                                <div
+                                  key={m.seatIndex}
+                                  className={tableStyles.nameLine}
+                                >
+                                  {m.name}
+                                </div>
+                              ))}
+                            </div>
+                          </td>
+                          <td className={tableStyles.tdScore}>{group.score}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+          <Dialog.Footer className="justify-end">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => onOpenChange(false)}
+            >
+              Close
+            </Button>
+          </Dialog.Footer>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

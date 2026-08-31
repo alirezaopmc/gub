@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@manovaspace/ui";
 import styles from "@/components/games/skull-king/round-score/styles/round-score.module.css";
+import { Button } from "@/components/ui/button";
 import { useRoundScoreStore } from "@/lib/games/skull-king/round-score/round-score-store";
 
 function ChevronLeft({ className }: { className?: string }) {

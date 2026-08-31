@@ -4,10 +4,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   reactCompiler: true,
-  transpilePackages: ["@manovaspace/ui", "@manovaspace/tokens"],
-  experimental: {
-    optimizePackageImports: ["@manovaspace/ui", "@manovaspace/tokens"],
-  },
   allowedDevOrigins: ["192.168.34.252", "gub.manova.space"],
 };
 

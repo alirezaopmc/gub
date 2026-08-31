@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "@manovaspace/ui";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Collapsible } from "radix-ui";

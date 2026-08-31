@@ -2,7 +2,7 @@
 
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { GripVertical } from "@manovaspace/ui";
+import { GripVertical } from "lucide-react";
 
 import { CrewMemberField } from "@/components/games/skull-king/setup/crew/crew-member-field";
 import crew from "@/components/games/skull-king/setup/styles/crew-manifesto.module.css";

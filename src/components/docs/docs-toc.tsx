@@ -1,9 +1,10 @@
 "use client";
 
-import { Button, ChevronDown } from "@manovaspace/ui";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import type { DocHeading } from "@/lib/docs/types";
 import { cn } from "@/lib/utils";
 
