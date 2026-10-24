@@ -518,7 +518,11 @@ describe("authentic applyPlayCard game loop", () => {
     state = applyPlayCard(state, 2, green10.id) as MatchState;
     expect(state.currentRound?.completedTricks).toHaveLength(1);
     // Yellow 5 beats Yellow 3 and off-suit Green 10
-    expect(state.currentRound?.completedTricks[0]?.outcome.winnerIndex).toBe(0);
+    const trick0 = state.currentRound?.completedTricks[0];
+    expect(trick0?.outcome.type).toBe("won");
+    if (trick0?.outcome.type === "won") {
+      expect(trick0.outcome.winnerIndex).toBe(0);
+    }
   });
 
   it("supports Tigress played with mode pirate vs escape in authentic trick resolution", () => {
@@ -555,9 +559,11 @@ describe("authentic applyPlayCard game loop", () => {
       "pirate",
     ) as MatchState;
     pirateState = applyPlayCard(pirateState, 1, yellow10.id) as MatchState;
-    expect(
-      pirateState.currentRound?.completedTricks[0]?.outcome.winnerIndex,
-    ).toBe(0);
+    const pirateTrick = pirateState.currentRound?.completedTricks[0];
+    expect(pirateTrick?.outcome.type).toBe("won");
+    if (pirateTrick?.outcome.type === "won") {
+      expect(pirateTrick.outcome.winnerIndex).toBe(0);
+    }
     expect(pirateState.currentRound?.tricksWon).toEqual([1, 0]);
 
     // --- Scenario B: Tigress as escape ---
@@ -568,7 +574,7 @@ describe("authentic applyPlayCard game loop", () => {
       hands: [[tigress], [purple2]],
       undealt: [],
     });
-    let escapeState = { ...state, currentRound: roundB };
+    let escapeState: MatchState = { ...state, currentRound: roundB };
     escapeState = applyBid(escapeState, 0, 0) as MatchState;
     escapeState = applyBid(escapeState, 1, 1) as MatchState;
 
@@ -579,9 +585,11 @@ describe("authentic applyPlayCard game loop", () => {
       "escape",
     ) as MatchState;
     escapeState = applyPlayCard(escapeState, 1, purple2.id) as MatchState;
-    expect(
-      escapeState.currentRound?.completedTricks[0]?.outcome.winnerIndex,
-    ).toBe(1);
+    const escapeTrick = escapeState.currentRound?.completedTricks[0];
+    expect(escapeTrick?.outcome.type).toBe("won");
+    if (escapeTrick?.outcome.type === "won") {
+      expect(escapeTrick.outcome.winnerIndex).toBe(1);
+    }
     expect(escapeState.currentRound?.tricksWon).toEqual([0, 1]);
   });
 

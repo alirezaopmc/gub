@@ -32,7 +32,9 @@ describe("clampCharacterCaptureCount", () => {
       expect(clampCharacterCaptureCount("mermaid", -3)).toBe(1);
       expect(clampCharacterCaptureCount("mermaid", 2.7)).toBe(1);
       expect(clampCharacterCaptureCount("mermaid", Number.NaN)).toBe(1);
-      expect(clampCharacterCaptureCount("mermaid", Number.POSITIVE_INFINITY)).toBe(1);
+      expect(
+        clampCharacterCaptureCount("mermaid", Number.POSITIVE_INFINITY),
+      ).toBe(1);
     });
   });
 
@@ -40,7 +42,9 @@ describe("clampCharacterCaptureCount", () => {
     it("preserves valid counts up to MAX_MERMAIDS_IN_GAME (2)", () => {
       expect(clampCharacterCaptureCount("pirate", 1)).toBe(1);
       expect(clampCharacterCaptureCount("pirate", 2)).toBe(2);
-      expect(clampCharacterCaptureCount("pirate", MAX_MERMAIDS_IN_GAME)).toBe(2);
+      expect(clampCharacterCaptureCount("pirate", MAX_MERMAIDS_IN_GAME)).toBe(
+        2,
+      );
     });
 
     it("clamps counts exceeding MAX_MERMAIDS_IN_GAME to 2", () => {
@@ -54,7 +58,9 @@ describe("clampCharacterCaptureCount", () => {
       expect(clampCharacterCaptureCount("pirate", 2.9)).toBe(2);
       expect(clampCharacterCaptureCount("pirate", 0.8)).toBe(1);
       expect(clampCharacterCaptureCount("pirate", Number.NaN)).toBe(1);
-      expect(clampCharacterCaptureCount("pirate", Number.NEGATIVE_INFINITY)).toBe(1);
+      expect(
+        clampCharacterCaptureCount("pirate", Number.NEGATIVE_INFINITY),
+      ).toBe(1);
     });
   });
 
@@ -78,7 +84,9 @@ describe("clampCharacterCaptureCount", () => {
       expect(clampCharacterCaptureCount("king", -5)).toBe(1);
       expect(clampCharacterCaptureCount("king", 4.6)).toBe(4);
       expect(clampCharacterCaptureCount("king", Number.NaN)).toBe(1);
-      expect(clampCharacterCaptureCount("king", Number.POSITIVE_INFINITY)).toBe(1);
+      expect(clampCharacterCaptureCount("king", Number.POSITIVE_INFINITY)).toBe(
+        1,
+      );
     });
   });
 });
@@ -220,9 +228,7 @@ describe("scoreFourteenBonus", () => {
   it("returns 0 when no fourteenBonus events exist", () => {
     expect(scoreFourteenBonus([])).toBe(0);
     expect(
-      scoreFourteenBonus([
-        { type: "legacy", kind: "coin", label: "+10" },
-      ]),
+      scoreFourteenBonus([{ type: "legacy", kind: "coin", label: "+10" }]),
     ).toBe(0);
   });
 });
@@ -491,7 +497,9 @@ describe("scoreAlliance", () => {
     expect(scoreAlliance(0, player0, [player0, player1], 5)).toBe(0);
 
     const player0WonNull = makePlayer(2, null, [allianceEvent]);
-    expect(scoreAlliance(0, player0WonNull, [player0WonNull, player1], 5)).toBe(0);
+    expect(scoreAlliance(0, player0WonNull, [player0WonNull, player1], 5)).toBe(
+      0,
+    );
 
     const player1BidNull = makePlayer(null, 3, [allianceEvent]);
     expect(scoreAlliance(0, player0, [player0, player1BidNull], 5)).toBe(0);
@@ -515,7 +523,9 @@ describe("scoreAlliance", () => {
 
     // If Player 0 won 1 instead of 2 (missed effective bid 2)
     const player0Missed = makePlayer(1, 1, [allianceEvent], 1);
-    expect(scoreAlliance(0, player0Missed, [player0Missed, player1], 5)).toBe(0);
+    expect(scoreAlliance(0, player0Missed, [player0Missed, player1], 5)).toBe(
+      0,
+    );
   });
 
   it("stacks bonus points (+40) for multiple successful alliance events", () => {
@@ -553,10 +563,7 @@ describe("scoreAlliance", () => {
 });
 
 describe("scoreRascal", () => {
-  const makeRascalEvent = (
-    ownerIndex: number,
-    wager: 10 | 20,
-  ): RoundEvent => ({
+  const makeRascalEvent = (ownerIndex: number, wager: 10 | 20): RoundEvent => ({
     type: "pirateAbility",
     ownerIndex,
     pirate: "rascal",
@@ -844,4 +851,3 @@ describe("computeRoundScoreBreakdown", () => {
     expect(breakdown.total).toBe(0);
   });
 });
-

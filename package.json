@@ -6,6 +6,7 @@
     "dev": "bun run generate:docs-search && next dev --port 11003",
     "build": "bun run generate:docs-search && next build",
     "start": "next start --port 11003",
+    "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome format --write .",
     "test": "vitest",
