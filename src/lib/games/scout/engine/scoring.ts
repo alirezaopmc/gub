@@ -1,8 +1,4 @@
-import type {
-  PlayerHand,
-  ScoutRoundScoreBreakdown,
-  ScoutRoundState,
-} from "./types";
+import type { ScoutRoundScoreBreakdown, ScoutRoundState } from "./types";
 
 /**
  * Calculates the score breakdown for each player in a finished Scout round.

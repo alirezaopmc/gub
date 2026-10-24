@@ -14,8 +14,13 @@ test.describe("GUB Home Page", () => {
     await expect(skullKingCard).toHaveAttribute("href", "/games/skull-king");
 
     // Verify Scout card
-    const scoutCard = page.getByRole("link", { name: /Scout/i });
+    const scoutCard = page.getByRole("link", { name: /^Scout/i });
     await expect(scoutCard).toBeVisible();
     await expect(scoutCard).toHaveAttribute("href", "/games/scout");
+
+    // Verify Sea Salt & Paper card
+    const seaSaltCard = page.getByRole("link", { name: /Sea Salt & Paper/i });
+    await expect(seaSaltCard).toBeVisible();
+    await expect(seaSaltCard).toHaveAttribute("href", "/games/sea-salt-paper");
   });
 });

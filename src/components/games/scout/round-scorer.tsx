@@ -15,6 +15,7 @@ import { useState } from "react";
 import { calculateInstantScore } from "@/lib/games/scout/engine/scoring";
 
 export type PlayerRoundInput = {
+  id: string;
   name: string;
   cardsCollected: number;
   scoutChips: number;
@@ -41,6 +42,7 @@ export function ScoutRoundScorer() {
   // Current round inputs
   const [roundInputs, setRoundInputs] = useState<PlayerRoundInput[]>([
     {
+      id: "player-1",
       name: "Player 1",
       cardsCollected: 0,
       scoutChips: 0,
@@ -48,6 +50,7 @@ export function ScoutRoundScorer() {
       isOwnerExempt: false,
     },
     {
+      id: "player-2",
       name: "Player 2",
       cardsCollected: 0,
       scoutChips: 0,
@@ -55,6 +58,7 @@ export function ScoutRoundScorer() {
       isOwnerExempt: false,
     },
     {
+      id: "player-3",
       name: "Player 3",
       cardsCollected: 0,
       scoutChips: 0,
@@ -72,6 +76,7 @@ export function ScoutRoundScorer() {
     setPlayerNames(names);
     setRoundInputs(
       Array.from({ length: count }, (_, i) => ({
+        id: `player-${i + 1}`,
         name: names[i] ?? `Player ${i + 1}`,
         cardsCollected: 0,
         scoutChips: 0,
@@ -85,7 +90,7 @@ export function ScoutRoundScorer() {
 
   const updateInput = (
     index: number,
-    field: keyof Omit<PlayerRoundInput, "name">,
+    field: keyof Omit<PlayerRoundInput, "id" | "name">,
     value: number | boolean,
   ) => {
     setRoundInputs((prev) =>
@@ -122,6 +127,7 @@ export function ScoutRoundScorer() {
     // Reset inputs for next round
     setRoundInputs(
       Array.from({ length: playerCount }, (_, i) => ({
+        id: `player-${i + 1}`,
         name: playerNames[i] ?? `Player ${i + 1}`,
         cardsCollected: 0,
         scoutChips: 0,
@@ -262,7 +268,7 @@ export function ScoutRoundScorer() {
 
             return (
               <Card
-                key={idx}
+                key={input.id}
                 className="p-4 flex flex-col gap-3 bg-card/80 border-border"
               >
                 {/* Player Name and Subtotal preview */}

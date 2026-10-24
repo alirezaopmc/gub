@@ -17,6 +17,14 @@ const games = [
     imageSrc: "/games/scout/cover.svg",
     imageAlt: "Scout game cover art",
   },
+  {
+    href: "/games/sea-salt-paper",
+    title: "Sea Salt & Paper",
+    description:
+      "Origami card collecting & betting — tableside companion, hand calculator & rules.",
+    imageSrc: "/games/sea-salt-paper/cover.svg",
+    imageAlt: "Sea Salt & Paper game cover art",
+  },
 ] as const;
 
 export default function Home() {

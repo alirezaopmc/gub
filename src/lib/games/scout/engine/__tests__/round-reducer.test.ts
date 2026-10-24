@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createScoutCard } from "../deck";
 import { applyScoutAction, createScoutRound } from "../round-reducer";
-import type { ScoutCard, ScoutRoundState } from "../types";
+import type { ScoutRoundState } from "../types";
 
 describe("Scout Round Reducer Engine", () => {
   it("initializes a clean scout round", () => {
