@@ -85,7 +85,7 @@ export function BidWonDialog({
     const { rounds: r, currentRoundIndex: ri } = useRoundScoreStore.getState();
     const round = r[ri];
     snapshotRef.current = round ? createBidWonModalSnapshot(round) : null;
-  }, [open, currentRoundIndex]);
+  }, [open]);
 
   const handleDialogOpenChange = (next: boolean) => {
     if (!next && !closedViaDoneRef.current && snapshotRef.current) {

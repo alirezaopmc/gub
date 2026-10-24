@@ -40,7 +40,7 @@ function RoundSchemaTable({
             {roundsSchema.map((_, i) => {
               const n = i + 1;
               return (
-                <td key={i} className={roundSchemaDataCell}>
+                <td key={`round-num-${n}`} className={roundSchemaDataCell}>
                   {n}
                 </td>
               );
@@ -51,7 +51,10 @@ function RoundSchemaTable({
               Cards
             </th>
             {roundsSchema.map((cards, i) => (
-              <td key={i} className={roundSchemaDataCellLastRow}>
+              <td
+                key={`round-cards-${i + 1}`}
+                className={roundSchemaDataCellLastRow}
+              >
                 {cards}
               </td>
             ))}
