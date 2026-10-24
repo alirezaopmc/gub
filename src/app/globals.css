@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@manovaspace/tokens/tokens.css";
+@import "@manovaspace/ui/styles.css";
 @import "../styles/theme-base.css";
 @import "../styles/docs-prose.css";
 @import "../styles/ui-motion.css";
