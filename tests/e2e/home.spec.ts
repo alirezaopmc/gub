@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("GUB Home Page", () => {
-  test("loads game hub with Skull King and Scout cards", async ({ page }) => {
+  test("loads game hub with Skull King card", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/GUB/);
 
@@ -13,14 +13,10 @@ test.describe("GUB Home Page", () => {
     await expect(skullKingCard).toBeVisible();
     await expect(skullKingCard).toHaveAttribute("href", "/games/skull-king");
 
-    // Verify Scout card
-    const scoutCard = page.getByRole("link", { name: /^Scout/i });
-    await expect(scoutCard).toBeVisible();
-    await expect(scoutCard).toHaveAttribute("href", "/games/scout");
-
-    // Verify Sea Salt & Paper card
-    const seaSaltCard = page.getByRole("link", { name: /Sea Salt & Paper/i });
-    await expect(seaSaltCard).toBeVisible();
-    await expect(seaSaltCard).toHaveAttribute("href", "/games/sea-salt-paper");
+    // Verify Scout and Sea Salt are not present
+    await expect(page.getByRole("link", { name: /^Scout/i })).not.toBeVisible();
+    await expect(
+      page.getByRole("link", { name: /Sea Salt & Paper/i }),
+    ).not.toBeVisible();
   });
 });

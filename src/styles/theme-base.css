@@ -1,128 +1,132 @@
-/* Design tokens (dark-first). */
+/* Design tokens: Deep Midnight Navy & Vibrant Amber (High-Contrast, Game-Friendly) */
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Default + .dark share the same product skin so `dark:` utilities match the base theme. */
+/* Default + .dark share the same vibrant tabletop product skin */
 :root,
 .dark {
   --radius: 1rem;
 
-  /* Neutral shell */
-  --background: #121619;
-  --foreground: #f4ebd0;
-  --card: #1a1a1a;
-  --card-foreground: #f4ebd0;
-  --popover: #1a1a1a;
-  --popover-foreground: #f4ebd0;
+  /* Neutral shell: Deep Midnight Navy & Crisp Slate */
+  --background: #0b111e;
+  --foreground: #f8fafc;
+  --card: #131d2e;
+  --card-foreground: #f8fafc;
+  --popover: #131d2e;
+  --popover-foreground: #f8fafc;
 
-  /* Brand */
-  --primary: #d4af37;
-  --primary-foreground: #000000;
-  --secondary: #0e3b43;
-  --secondary-foreground: #ffffff;
+  /* Brand: Energetic Pirate Warm Amber/Gold */
+  --primary: #f59e0b;
+  --primary-foreground: #0b111e;
+  --secondary: #1e293b;
+  --secondary-foreground: #f1f5f9;
 
-  --muted: #262626;
-  --muted-foreground: #a8a29e;
+  --muted: #182234;
+  --muted-foreground: #94a3b8;
 
-  /* Cream highlight surfaces (subtle lift from card) */
-  --accent: #2a2420;
-  --accent-foreground: #f4ebd0;
+  /* Accent highlight surfaces */
+  --accent: #1c283f;
+  --accent-foreground: #f8fafc;
 
-  --destructive: #e07a7a;
-  --destructive-foreground: #1a0a0a;
+  --destructive: #f43f5e;
+  --destructive-foreground: #ffffff;
 
-  /* Semantic feedback (toasts, badges); warm amber sits beside gold primary */
-  --warning: #d8a85c;
-  --warning-foreground: #1a1410;
+  /* Semantic feedback (toasts, badges) */
+  --warning: #f59e0b;
+  --warning-foreground: #0b111e;
   --success: var(--sk-score-up);
-  --success-foreground: #f4ebd0;
+  --success-foreground: #ffffff;
 
-  --border: rgb(244 235 208 / 14%);
-  --input: #262626;
-  --ring: #d4af37;
+  --border: #22324d;
+  --input: #182234;
+  --ring: #f59e0b;
 
-  /* Viewport chrome outside the app shell (e.g. “device on desk”) */
-  --canvas: #09090b;
+  /* Viewport desktop chrome outside the app shell */
+  --canvas: #060911;
 
-  /* Elevation — use in CSS modules; tweak once for whole product skin */
-  --shadow-sk-row: 0 1px 2px rgb(0 0 0 / 10%);
-  --shadow-sk-cta: 0 2px 8px rgb(0 0 0 / 35%);
-  --shadow-sk-cta-active: 0 1px 4px rgb(0 0 0 / 28%);
-  --shadow-sk-inset: inset 0 1px 2px rgb(0 0 0 / 18%);
+  /* Elevation & Cards */
+  --shadow-card:
+    0 4px 20px -2px rgba(0, 0, 0, 0.45), 0 2px 6px -1px rgba(0, 0, 0, 0.25);
+  --shadow-sk-row: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-sk-cta:
+    0 4px 14px rgba(245, 158, 11, 0.28), 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-sk-cta-active: 0 1px 4px rgba(245, 158, 11, 0.22);
+  --shadow-sk-inset: inset 0 1px 2px rgba(0, 0, 0, 0.35);
 
-  /* Skull King round score (muted, readable on dark cream text) */
-  --sk-score-up: #8fb393;
-  --sk-score-down: #c09090;
+  /* Skull King round score (High contrast, vibrant) */
+  --sk-score-up: #10b981;
+  --sk-score-down: #f43f5e;
 
-  /* Button inverted surface (.light swaps) */
-  --inverted: #ffffff;
-  --inverted-foreground: #000000;
+  /* Button inverted surface */
+  --inverted: #f8fafc;
+  --inverted-foreground: #0b111e;
 
-  /* 14-bonus suit chips + event badges (tokenized from prior Tail palette) */
+  /* 14-bonus suit chips + event badges (Vivid, friendly, game-like) */
   --sk-suit-green-fg: #d1fae5;
-  --sk-suit-green-bg: #052e16;
-  --sk-suit-green-border: #34d399;
+  --sk-suit-green-bg: #064e3b;
+  --sk-suit-green-border: #10b981;
   --sk-suit-yellow-fg: #fef3c7;
   --sk-suit-yellow-bg: #451a03;
-  --sk-suit-yellow-border: #fcd34d;
+  --sk-suit-yellow-border: #f59e0b;
   --sk-suit-purple-fg: #ede9fe;
-  --sk-suit-purple-bg: #2e1065;
-  --sk-suit-purple-border: #a78bfa;
-  --sk-suit-black-fg: #f4f4f5;
-  --sk-suit-black-bg: #09090b;
-  --sk-suit-black-border: #a1a1aa;
-  --sk-event-capture-fg: #fbbf24;
+  --sk-suit-purple-bg: #3b0764;
+  --sk-suit-purple-border: #a855f7;
+  --sk-suit-black-fg: #f8fafc;
+  --sk-suit-black-bg: #0f172a;
+  --sk-suit-black-border: #64748b;
+  --sk-event-capture-fg: #fef3c7;
   --sk-event-capture-border: #f59e0b;
-  --sk-event-fourteen-fg: #6ee7b7;
-  --sk-event-fourteen-border: #34d399;
+  --sk-event-fourteen-fg: #d1fae5;
+  --sk-event-fourteen-border: #10b981;
 
-  /* Motion — ui-motion.css + round-score surfaces */
-  --motion-duration-short: 200ms;
+  /* Motion */
+  --motion-duration-short: 180ms;
   --motion-duration-modal: 220ms;
-  --motion-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
 }
 
-/* Light mode reserved for future; mirrors cream-forward surfaces if enabled via `.light` */
+/* Light mode for clean tabletop day mode */
 .light {
   --radius: 1rem;
-  --background: #f4ebd0;
-  --foreground: #121619;
+  --background: #f8fafc;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #121619;
+  --card-foreground: #0f172a;
   --popover: #ffffff;
-  --popover-foreground: #121619;
-  --primary: #d4af37;
-  --primary-foreground: #000000;
-  --secondary: #0e3b43;
-  --secondary-foreground: #ffffff;
-  --muted: #e7dcc4;
-  --muted-foreground: #57534e;
-  --accent: #e7dcc4;
-  --accent-foreground: #121619;
-  --destructive: #dc2626;
+  --popover-foreground: #0f172a;
+  --primary: #d97706;
+  --primary-foreground: #ffffff;
+  --secondary: #e2e8f0;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #e11d48;
   --destructive-foreground: #ffffff;
-  --warning: #c2410c;
-  --warning-foreground: #fffbeb;
-  --success: var(--sk-score-up);
-  --success-foreground: #14532d;
-  --border: rgb(18 22 25 / 12%);
-  --input: #e7dcc4;
-  --ring: #d4af37;
-  --canvas: #e7dcc4;
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --success: #059669;
+  --success-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #d97706;
+  --canvas: #e2e8f0;
 
-  --shadow-sk-row: 0 1px 2px rgb(18 22 25 / 6%);
-  --shadow-sk-cta: 0 2px 10px rgb(18 22 25 / 12%);
-  --shadow-sk-cta-active: 0 1px 4px rgb(18 22 25 / 10%);
-  --shadow-sk-inset: inset 0 1px 2px rgb(18 22 25 / 8%);
+  --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-sk-row: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-sk-cta: 0 2px 10px rgba(217, 119, 6, 0.25);
+  --shadow-sk-cta-active: 0 1px 4px rgba(217, 119, 6, 0.2);
+  --shadow-sk-inset: inset 0 1px 2px rgba(15, 23, 42, 0.08);
 
-  --sk-score-up: #2d6a3e;
-  --sk-score-down: #b91c1c;
+  --sk-score-up: #059669;
+  --sk-score-down: #e11d48;
 
-  --inverted: #000000;
+  --inverted: #0f172a;
   --inverted-foreground: #ffffff;
 
-  --sk-suit-green-fg: #14532d;
+  --sk-suit-green-fg: #064e3b;
   --sk-suit-green-bg: #ecfdf5;
   --sk-suit-green-border: #059669;
   --sk-suit-yellow-fg: #78350f;
@@ -131,9 +135,9 @@
   --sk-suit-purple-fg: #581c87;
   --sk-suit-purple-bg: #f5f3ff;
   --sk-suit-purple-border: #7c3aed;
-  --sk-suit-black-fg: #18181b;
-  --sk-suit-black-bg: #f4f4f5;
-  --sk-suit-black-border: #71717a;
+  --sk-suit-black-fg: #0f172a;
+  --sk-suit-black-bg: #f1f5f9;
+  --sk-suit-black-border: #64748b;
   --sk-event-capture-fg: #92400e;
   --sk-event-capture-border: #b45309;
   --sk-event-fourteen-fg: #047857;
@@ -175,7 +179,7 @@
 
   --width-app-shell: min(1080px, 100%);
 
-  /* Vertical rhythm for long-form setup pages (Skull King host, etc.) */
+  /* Vertical rhythm for long-form setup pages */
   --spacing-setup-stack: 3rem;
   --spacing-setup-page-y: 4rem;
 

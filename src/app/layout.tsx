@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Epilogue, Manrope, Space_Grotesk } from "next/font/google";
-import { Providers } from "@/app/providers";
 import { AppShell } from "@/components/app-shell";
 import "./globals.css";
 
@@ -38,11 +37,9 @@ export default function RootLayout({
       className={`${fontHeadline.variable} ${fontBody.variable} ${fontLabel.variable} dark h-full antialiased`}
     >
       <body className="flex min-h-dvh flex-col font-sans">
-        <Providers>
-          <div className="relative z-10 flex min-h-dvh flex-1 flex-col">
-            <AppShell>{children}</AppShell>
-          </div>
-        </Providers>
+        <div className="relative z-10 flex min-h-dvh flex-1 flex-col">
+          <AppShell>{children}</AppShell>
+        </div>
       </body>
     </html>
   );

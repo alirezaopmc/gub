@@ -24,8 +24,6 @@ export function listGameDocPaths(gameId: string): string[] {
 
 const GAME_TITLES: Record<string, string> = {
   "skull-king": "Skull King",
-  scout: "Scout",
-  "sea-salt-paper": "Sea Salt & Paper",
 };
 
 function titleFromGameId(gameId: string): string {

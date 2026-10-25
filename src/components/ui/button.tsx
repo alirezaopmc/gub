@@ -9,26 +9,27 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-primary-foreground",
+        default:
+          "bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-sm active:scale-[0.98]",
         outline:
-          "border border-foreground/25 bg-transparent text-foreground hover:bg-muted/50 hover:border-foreground/40 aria-expanded:bg-muted/50",
+          "border border-border bg-card/50 text-foreground hover:bg-muted hover:border-border/90 active:scale-[0.98] aria-expanded:bg-muted",
         /** Footer “Redo round” — destructive tinted chip with elevation. */
         outlineReplay:
-          "border-[color-mix(in_srgb,var(--destructive),transparent_55%)] bg-[color-mix(in_srgb,var(--destructive)_10%,var(--card)_90%)] text-destructive shadow-[var(--shadow-sk-cta)] hover:border-[color-mix(in_srgb,var(--destructive),transparent_35%)] hover:bg-[color-mix(in_srgb,var(--destructive)_18%,var(--card)_82%)] hover:brightness-[1.02] hover:shadow-[var(--shadow-sk-cta)] focus-visible:border-[color-mix(in_srgb,var(--destructive),transparent_25%)] focus-visible:ring-transparent focus-visible:shadow-[0_0_0_2px_color-mix(in_srgb,var(--destructive),transparent_62%),var(--shadow-sk-cta)] [&_*]:text-destructive [&_svg]:text-destructive disabled:border-border disabled:bg-muted/50 disabled:text-muted-foreground disabled:shadow-none disabled:[&_*]:text-muted-foreground",
+          "border-destructive/40 bg-destructive/10 text-destructive shadow-[var(--shadow-sk-cta)] hover:border-destructive/70 hover:bg-destructive/20 hover:brightness-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-destructive/30 disabled:border-border disabled:bg-muted/50 disabled:text-muted-foreground",
         secondary:
-          "text-secondary-foreground aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 active:scale-[0.98] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         inverted:
-          "bg-inverted text-inverted-foreground hover:bg-inverted/90 hover:shadow-[0_0_18px_0_color-mix(in_srgb,var(--primary),transparent_40%)] aria-expanded:bg-inverted aria-expanded:text-inverted-foreground disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none disabled:hover:bg-muted",
-        /** Skull King gold gradient CTA (setup / entry). */
+          "bg-inverted text-inverted-foreground hover:bg-inverted/90 hover:shadow-md active:scale-[0.98] aria-expanded:bg-inverted aria-expanded:text-inverted-foreground disabled:bg-muted disabled:text-muted-foreground",
+        /** Skull King vibrant pirate gold CTA (setup / entry). */
         branded:
-          "border-0 bg-[linear-gradient(90deg,var(--primary)_0%,color-mix(in_srgb,var(--primary),var(--foreground)_24%)_50%,color-mix(in_srgb,var(--primary),var(--foreground)_10%)_100%)] font-headline text-sm font-bold tracking-[0.02em] text-primary-foreground shadow-[0_1px_0_color-mix(in_srgb,var(--foreground),transparent_78%),var(--shadow-sk-cta)] transition-[filter,transform,box-shadow] duration-150 ease-out hover:brightness-105 hover:shadow-[0_1px_0_color-mix(in_srgb,var(--foreground),transparent_78%),var(--shadow-sk-cta),0_0_28px_-2px_color-mix(in_srgb,var(--primary),transparent_38%)] active:translate-y-px active:shadow-[var(--shadow-sk-cta-active),0_0_14px_-2px_color-mix(in_srgb,var(--primary),transparent_45%)] focus-visible:outline-none focus-visible:shadow-[0_1px_0_color-mix(in_srgb,var(--foreground),transparent_78%),var(--shadow-sk-cta),0_0_0_2px_color-mix(in_srgb,var(--ring),transparent_45%)] disabled:opacity-45 disabled:grayscale-[0.2] disabled:shadow-[var(--shadow-sk-cta)] disabled:hover:grayscale-[0.2]",
+          "border border-amber-400/40 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 font-headline text-sm font-bold tracking-[0.02em] text-slate-950 shadow-[var(--shadow-sk-cta)] transition-all duration-150 ease-out hover:brightness-105 hover:shadow-[0_4px_16px_rgba(245,158,11,0.35)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 disabled:opacity-45 disabled:pointer-events-none",
         ghost:
-          "hover:bg-muted/60 hover:text-foreground aria-expanded:bg-muted/60 aria-expanded:text-foreground",
+          "text-muted-foreground hover:bg-muted hover:text-foreground active:scale-[0.98] aria-expanded:bg-muted aria-expanded:text-foreground",
         destructive:
-          "bg-destructive/15 text-destructive hover:bg-destructive/25 hover:shadow-[0_0_16px_0_color-mix(in_srgb,var(--destructive),transparent_50%)] focus-visible:border-destructive focus-visible:ring-destructive/30 disabled:border-transparent disabled:bg-muted/90 disabled:text-muted-foreground disabled:shadow-none disabled:hover:bg-muted/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-destructive/30 disabled:bg-muted disabled:text-muted-foreground",
         /** Outlined / tinted destructive — irreversible or data-loss actions (confirm in UI copy). */
         caution:
-          "border border-destructive/45 bg-destructive/[0.08] text-destructive hover:bg-destructive/18 hover:border-destructive/65 hover:shadow-[0_0_22px_-6px_color-mix(in_srgb,var(--destructive),transparent_35%)] focus-visible:border-destructive focus-visible:ring-destructive/25 aria-expanded:bg-destructive/15 aria-expanded:ring-2 aria-expanded:ring-destructive/30 disabled:border-border disabled:bg-muted/50 disabled:text-muted-foreground disabled:shadow-none disabled:hover:border-border disabled:hover:bg-muted/50",
+          "border border-destructive/50 bg-destructive/10 text-destructive hover:bg-destructive/20 hover:border-destructive active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-destructive/30 disabled:border-border disabled:bg-muted/50 disabled:text-muted-foreground",
         link: "text-primary underline-offset-4 shadow-none hover:underline disabled:text-muted-foreground disabled:no-underline",
         /** Skull King add-event toolbar tile. */
         kindTile:
