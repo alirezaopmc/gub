@@ -1,4 +1,4 @@
-import { cardId, createCard } from "./cards";
+import { createCard } from "./cards";
 import type { Card, MermaidId, PirateId } from "./types";
 
 export type DeckConfig = {

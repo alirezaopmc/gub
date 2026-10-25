@@ -22,7 +22,7 @@ export function DocsBreadcrumb({ items, className }: DocsBreadcrumbProps) {
 
           return (
             <li
-              key={`${item.label}-${index}`}
+              key={item.href ?? item.label}
               className="flex items-center gap-1.5"
             >
               {index > 0 ? (

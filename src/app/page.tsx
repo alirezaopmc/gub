@@ -5,9 +5,25 @@ const games = [
     href: "/games/skull-king",
     title: "Skull King",
     description:
-      "Trick-taking pirate card game — play live, score, or read rules.",
-    imageSrc: "/games/skull-king/cover.png",
+      "Trick-taking pirate card game — play live, score tableside, or read rules.",
+    imageSrc: "/games/skull-king/cover.svg",
     imageAlt: "Skull King game cover art",
+  },
+  {
+    href: "/games/scout",
+    title: "Scout",
+    description:
+      "Circus card ladder climbing game — tableside scoring, quick calculator & rules.",
+    imageSrc: "/games/scout/cover.svg",
+    imageAlt: "Scout game cover art",
+  },
+  {
+    href: "/games/sea-salt-paper",
+    title: "Sea Salt & Paper",
+    description:
+      "Origami card collecting & betting — tableside companion, hand calculator & rules.",
+    imageSrc: "/games/sea-salt-paper/cover.svg",
+    imageAlt: "Sea Salt & Paper game cover art",
   },
 ] as const;
 

@@ -70,7 +70,7 @@ export function RoundStatsReadOnlyTable({
             const name = players[i]?.trim() ?? `Player ${i + 1}`;
             return (
               <PlayerRoundStatsRow
-                key={i}
+                key={`player-${name}-${i}`}
                 rank={i + 1}
                 playerName={name}
                 isRoundStarter={leaderIndex === i}

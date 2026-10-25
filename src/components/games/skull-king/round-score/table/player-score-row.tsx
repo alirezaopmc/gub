@@ -36,7 +36,7 @@ export function PlayerScoreRow({
         const d = getRoundEventDisplay(e, allPlayerNames, playerIndex);
         return (
           <EventBadge
-            key={i}
+            key={`${d.badgeKind}-${d.label}-${i}`}
             badgeKind={d.badgeKind}
             label={d.label}
             title={d.title}

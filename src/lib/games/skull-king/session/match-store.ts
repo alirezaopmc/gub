@@ -39,7 +39,13 @@ export type StoredMatch = {
 
 const MATCH_TTL_MS = 4 * 60 * 60 * 1000;
 
-const matches = new Map<string, StoredMatch>();
+const globalForMatches = globalThis as unknown as {
+  skullKingMatches?: Map<string, StoredMatch>;
+};
+
+const matches =
+  globalForMatches.skullKingMatches ?? new Map<string, StoredMatch>();
+globalForMatches.skullKingMatches = matches;
 
 function pruneExpired(): void {
   const now = Date.now();

@@ -1,4 +1,5 @@
 {
+  "root": true,
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": {
     "enabled": true,
@@ -7,7 +8,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    "includes": ["**", "!**/node_modules", "!**/.next", "!**/dist", "!**/build"]
   },
   "formatter": {
     "enabled": true,
@@ -17,7 +18,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "suspicious": {
         "noUnknownAtRules": "off",
         "noArrayIndexKey": "warn",

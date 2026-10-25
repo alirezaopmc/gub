@@ -186,7 +186,7 @@ function snapshotRoundToHistory(
 
 export function confirmRound(state: MatchState): MatchState {
   const round = state.currentRound;
-  if (!round || round.phase !== "scoring") return state;
+  if (round?.phase !== "scoring") return state;
 
   const scored = round.roundScores
     ? round

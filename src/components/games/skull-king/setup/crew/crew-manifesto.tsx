@@ -15,7 +15,6 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { Tooltip } from "radix-ui";
-import * as React from "react";
 import { CrewAddSlot } from "@/components/games/skull-king/setup/crew/crew-add-slot";
 import { CrewSizeCounter } from "@/components/games/skull-king/setup/crew/crew-size-counter";
 import { SortableCrewMemberRow } from "@/components/games/skull-king/setup/crew/sortable-crew-member-row";

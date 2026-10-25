@@ -494,7 +494,7 @@ function MatchTableInner({
             <div className="flex flex-wrap gap-2">
               {Array.from({ length: round.handSize + 1 }, (_, bid) => (
                 <Button
-                  key={bid}
+                  key={`bid-option-${bid}`}
                   size="sm"
                   variant={myBid === bid ? "branded" : "outline"}
                   onClick={() => submitBid(bid)}
