@@ -1,0 +1,4 @@
+[install]
+# Keep packages in node_modules. bun's global store links them to a cache outside the
+# repo, and Turbopack panics on module paths outside the project root.
+globalStore = false
