@@ -23,7 +23,7 @@ jobs:
           bun-version: "1.4.0"
 
       - run: bun install --frozen-lockfile
-      # ponytail: full lint has legacy react-hooks debt; lint docs paths until follow-up
-      - run: bunx eslint src/lib/docs
+      # ponytail: full-repo lint still has legacy debt; lint only the docs path until follow-up
+      - run: bunx biome check src/lib/docs
       - run: bun run test:run
       - run: bun run build
