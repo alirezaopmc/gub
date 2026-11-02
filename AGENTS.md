@@ -1,3 +1,10 @@
+---
+read_with:
+  - handbook/docs/clients/manova/overview.md
+  - handbook/docs/clients/manova/ports.md
+  - handbook/docs/clients/manova/products/gub/overview.md
+---
+
 # gub (Game Hub)
 
 Board and card game tooling hub. First title: **Skull King** (live play, tableside scoring, in-app rules). Public app/docs at **https://gub.manova.space**.
