@@ -1,19 +1,19 @@
 # syntax=docker/dockerfile:1
 # Build context: clients/manova/gub
 
-FROM oven/bun:1.4.0-alpine AS deps
+FROM oven/bun:1.4.4-alpine AS deps
 WORKDIR /app
 COPY package.json bun.lock bunfig.toml ./
 RUN bun install --frozen-lockfile
 
-FROM oven/bun:1.4.0-alpine AS builder
+FROM oven/bun:1.4.4-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN bun run build
 
-FROM node:24-alpine AS runner
+FROM node:26.13.0-alpine AS runner
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000

@@ -20,6 +20,10 @@ export function DocsMermaid({ chart }: DocsMermaidProps) {
       mermaid.initialize({
         startOnLoad: false,
         theme: "dark",
+        // Mermaid 12 defaults to the neo look and the ELK layout; keep the
+        // rendering these docs had before the upgrade.
+        look: "classic",
+        layout: "dagre",
         securityLevel: "strict",
         fontFamily: "var(--font-sans)",
       });
