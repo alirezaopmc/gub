@@ -210,8 +210,13 @@ export function computeRoundScoreBreakdown(
       player.won,
       player.ammoChoice ?? "grapeshot",
     );
+    const rascalPenalty =
+      eff !== null && player.won !== null && eff !== player.won
+        ? scoreRascal(player.events, playerIndex, eff, player.won)
+        : 0;
+
     if (multiplier === 0) {
-      return { main, bonus: 0, total: main };
+      return { main, bonus: rascalPenalty, total: main + rascalPenalty };
     }
     const rawFourteen = scoreFourteenBonus(player.events);
     const rawCaptures = scoreHeroCaptures(player.events);
@@ -227,7 +232,7 @@ export function computeRoundScoreBreakdown(
         ? Math.max(0, scoreRascal(player.events, playerIndex, eff, player.won))
         : 0;
     const rawBonus = rawFourteen + rawCaptures + rawAlliance + rawRascal;
-    const bonus = Math.floor(rawBonus * multiplier);
+    const bonus = Math.floor(rawBonus * multiplier) + rascalPenalty;
     return { main, bonus, total: main + bonus };
   }
 

@@ -1135,4 +1135,65 @@ describe("Rascal's Scoring (rulebook pp. 18-20)", () => {
     expect(missScore.bonus).toBe(0);
     expect(missScore.total).toBe(0);
   });
+
+  it("penalises rascal wager on missed bid in rascal scoring", () => {
+    const handSize = 4;
+    const rascalEvent = {
+      type: "pirateAbility" as const,
+      pirate: "rascal" as const,
+      ownerIndex: 0,
+      wager: 20 as const,
+    };
+
+    const direct = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: {
+        bid: 2,
+        won: 2,
+        harryGiantBidDelta: null,
+        score: 0,
+        events: [rascalEvent],
+      },
+      roundPlayers: [],
+      scoringSystem: "rascal",
+    });
+    expect(direct.main).toBe(40);
+    expect(direct.bonus).toBe(20);
+    expect(direct.total).toBe(60);
+
+    const glancing = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: {
+        bid: 2,
+        won: 3,
+        harryGiantBidDelta: null,
+        score: 0,
+        events: [rascalEvent],
+      },
+      roundPlayers: [],
+      scoringSystem: "rascal",
+    });
+    expect(glancing.main).toBe(20);
+    expect(glancing.bonus).toBe(-20);
+    expect(glancing.total).toBe(0);
+
+    const miss = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: {
+        bid: 2,
+        won: 0,
+        harryGiantBidDelta: null,
+        score: 0,
+        events: [rascalEvent],
+      },
+      roundPlayers: [],
+      scoringSystem: "rascal",
+    });
+    expect(miss.main).toBe(0);
+    expect(miss.bonus).toBe(-20);
+    expect(miss.total).toBe(-20);
+  });
 });

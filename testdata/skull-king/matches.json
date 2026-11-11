@@ -1,0 +1,3566 @@
+[
+  {
+    "matchId": "match_seed_101_p2_classic",
+    "seed": 101,
+    "playerCount": 2,
+    "roundsSchema": [1, 2, 3],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "pirate:rascal"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:8"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "pirate:rosie"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:4"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "tigress",
+        "tigressMode": "escape"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:5"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "skull_king"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:10"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:14"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:4"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:2"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:8"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [-40, 60],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 2,
+            "main": -30,
+            "bonus": 0,
+            "total": -30
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_202_p3_classic",
+    "seed": 202,
+    "playerCount": 3,
+    "roundsSchema": [1, 2, 3, 4],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:13"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:14"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:3"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:8"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:2"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "escape:3"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:5"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "pirate:rosie"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:13"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:7"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "yellow:14"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:6"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:8"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:4"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "pirate:harry"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:6"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:5"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "escape:2"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "pirate:rosie"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "escape:4"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:2"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:10"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:juanita"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:rascal"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:8"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:9"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:11"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "pirate:bendt"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "escape:1"
+      },
+      {
+        "roundIndex": 3,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [-40, -10, 0],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 1,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 1,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": -30,
+            "bonus": 0,
+            "total": -30
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 2,
+            "main": 40,
+            "bonus": 0,
+            "total": 40
+          }
+        ]
+      },
+      {
+        "roundIndex": 3,
+        "handSize": 4,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 2,
+            "main": -40,
+            "bonus": 0,
+            "total": -40
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 2,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_303_p3_rascal",
+    "seed": 303,
+    "playerCount": 3,
+    "roundsSchema": [1, 2, 3, 4],
+    "scoringSystem": "rascal",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:12"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:4"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:14"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:8"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:11"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "pirate:juanita"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:9"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:rascal"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:2"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:8"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "tigress",
+        "tigressMode": "escape"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:14"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:13"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "escape:3"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:1"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:6"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:10"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:12"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:8"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:9"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:6"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:2"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:3"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:9"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:5"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:5"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "escape:4"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:8"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:4"
+      },
+      {
+        "roundIndex": 3,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [35, 50, 70],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": 5,
+            "bonus": 5,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": 5,
+            "bonus": 0,
+            "total": 5
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 1,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": 15,
+            "bonus": 0,
+            "total": 15
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": 15,
+            "bonus": 0,
+            "total": 15
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 2,
+            "main": 30,
+            "bonus": 20,
+            "total": 50
+          }
+        ]
+      },
+      {
+        "roundIndex": 3,
+        "handSize": 4,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 2,
+            "main": 0,
+            "bonus": 0,
+            "total": 0
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 2,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": 0,
+            "bonus": 0,
+            "total": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_404_p4_classic",
+    "seed": 404,
+    "playerCount": 4,
+    "roundsSchema": [1, 2, 3],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:3"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "black:8"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:11"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:3"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:3"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "green:4"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:4"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:14"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 3
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:1"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "green:8"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "escape:4"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:3"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:6"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "yellow:9"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:11"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:2"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "pirate:harry"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:2"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:11"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [60, -30, 30, 20],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 3,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 2,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 3,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 30,
+            "bonus": 0,
+            "total": 30
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 2,
+            "main": 40,
+            "bonus": 0,
+            "total": 40
+          },
+          {
+            "playerIndex": 3,
+            "bid": 3,
+            "won": 1,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_505_p4_rascal",
+    "seed": 505,
+    "playerCount": 4,
+    "roundsSchema": [1, 2, 3],
+    "scoringSystem": "rascal",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "escape:0"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:9"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:7"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:1"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "yellow:4"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "green:1"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:7"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:9"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:2"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "yellow:1"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "black:11"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 3
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "mermaid:alyra"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "escape:4"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "yellow:5"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:11"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:14"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:8"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "yellow:10"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "mermaid:sirena"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:3"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:13"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:3"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:6"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [15, 45, 10, 15],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": 5,
+            "bonus": 0,
+            "total": 5
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": 5,
+            "bonus": 0,
+            "total": 5
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 3,
+            "bid": 1,
+            "won": 0,
+            "main": 5,
+            "bonus": 0,
+            "total": 5
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": 0,
+            "bonus": 0,
+            "total": 0
+          },
+          {
+            "playerIndex": 3,
+            "bid": 0,
+            "won": 1,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 2,
+            "main": 0,
+            "bonus": 0,
+            "total": 0
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 30,
+            "bonus": 0,
+            "total": 30
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": 0,
+            "bonus": 0,
+            "total": 0
+          },
+          {
+            "playerIndex": 3,
+            "bid": 3,
+            "won": 0,
+            "main": 0,
+            "bonus": 0,
+            "total": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_606_p5_classic",
+    "seed": 606,
+    "playerCount": 5,
+    "roundsSchema": [1, 2],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 4,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:rosie"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:4"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:2"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "yellow:10"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 4,
+        "cardId": "black:5"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 4,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:8"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:5"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:10"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "green:4"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 4,
+        "cardId": "black:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:2"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "pirate:juanita"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 4,
+        "cardId": "tigress",
+        "tigressMode": "escape"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:2"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:14"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [10, -20, 0, -30, 0],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 3,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 4,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 1,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 3,
+            "bid": 0,
+            "won": 1,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 4,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_707_p6_classic",
+    "seed": 707,
+    "playerCount": 6,
+    "roundsSchema": [1, 2],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 4,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 5,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:10"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:4"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 4,
+        "cardId": "pirate:juanita"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 5,
+        "cardId": "black:1"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:9"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "escape:1"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 4,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 5,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:12"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "pirate:rascal"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 4,
+        "cardId": "escape:3"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 5,
+        "cardId": "green:4"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:5"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:10"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 4,
+        "cardId": "pirate:rosie"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 5,
+        "cardId": "green:5"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:11"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:8"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:8"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [30, -20, -10, -30, 10, -30],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 3,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 4,
+            "bid": 0,
+            "won": 1,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 5,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 3,
+            "bid": 0,
+            "won": 1,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 4,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 5,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_808_p2_classic",
+    "seed": 808,
+    "playerCount": 2,
+    "roundsSchema": [1, 2, 3, 4, 5],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:rascal"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "pirate:bendt"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "escape:3"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:8"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:11"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:4"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "pirate:bendt"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "escape:3"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:9"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:8"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:7"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:12"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:1"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:11"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:6"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "pirate:rosie"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:5"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:11"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:4"
+      },
+      {
+        "roundIndex": 3,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 4,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 4,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:11"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:3"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "skull_king"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:5"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "escape:3"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:harry"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:12"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:10"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:7"
+      },
+      {
+        "roundIndex": 4,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:6"
+      },
+      {
+        "roundIndex": 4,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [-30, -40],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 1,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 2,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 2,
+            "main": -30,
+            "bonus": 0,
+            "total": -30
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          }
+        ]
+      },
+      {
+        "roundIndex": 3,
+        "handSize": 4,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 40,
+            "bonus": 0,
+            "total": 40
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 4,
+            "main": -30,
+            "bonus": 0,
+            "total": -30
+          }
+        ]
+      },
+      {
+        "roundIndex": 4,
+        "handSize": 5,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 3,
+            "main": -50,
+            "bonus": 0,
+            "total": -50
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 2,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_909_p3_classic",
+    "seed": 909,
+    "playerCount": 3,
+    "roundsSchema": [1, 2, 3],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "mermaid:alyra"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:5"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:7"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:1"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:9"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "escape:3"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:3"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:6"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:5"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:12"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:8"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:4"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "yellow:4"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:3"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:1"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [0, 0, -30],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 2,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 3,
+            "main": -30,
+            "bonus": 0,
+            "total": -30
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "matchId": "match_seed_1001_p4_classic",
+    "seed": 1001,
+    "playerCount": 4,
+    "roundsSchema": [1, 2, 3, 4],
+    "scoringSystem": "classic",
+    "artifacts": {
+      "pirateAbilities": false,
+      "characterCapture": true,
+      "whale": false,
+      "kraken": false,
+      "loot": false,
+      "fourteenBonus": true
+    },
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "actions": [
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 0
+      },
+      {
+        "roundIndex": 0,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 1
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:7"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "yellow:3"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "escape:2"
+      },
+      {
+        "roundIndex": 0,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:5"
+      },
+      {
+        "roundIndex": 0,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 1,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 0
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:14"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:harry"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "yellow:6"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:5"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:1"
+      },
+      {
+        "roundIndex": 1,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:9"
+      },
+      {
+        "roundIndex": 1,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 2,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 3
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:11"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:1"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "black:1"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:2"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "purple:1"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:9"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:10"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "tigress",
+        "tigressMode": "escape"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "green:14"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:12"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "escape:1"
+      },
+      {
+        "roundIndex": 2,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "yellow:2"
+      },
+      {
+        "roundIndex": 2,
+        "type": "confirm"
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 0,
+        "bid": 0
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 1,
+        "bid": 1
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 2,
+        "bid": 2
+      },
+      {
+        "roundIndex": 3,
+        "type": "bid",
+        "playerIndex": 3,
+        "bid": 3
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:5"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "yellow:11"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "black:4"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "black:1"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "purple:6"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "purple:5"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "yellow:1"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "purple:14"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "green:8"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "black:8"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "green:13"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "green:4"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 3,
+        "cardId": "pirate:rosie"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 0,
+        "cardId": "pirate:rascal"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 1,
+        "cardId": "black:11"
+      },
+      {
+        "roundIndex": 3,
+        "type": "play",
+        "playerIndex": 2,
+        "cardId": "black:9"
+      },
+      {
+        "roundIndex": 3,
+        "type": "confirm"
+      }
+    ],
+    "finalScores": [60, 20, -40, 60],
+    "roundSummaries": [
+      {
+        "roundIndex": 0,
+        "handSize": 1,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 2,
+            "bid": 0,
+            "won": 0,
+            "main": 10,
+            "bonus": 0,
+            "total": 10
+          },
+          {
+            "playerIndex": 3,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      },
+      {
+        "roundIndex": 1,
+        "handSize": 2,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 2,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 3,
+            "bid": 0,
+            "won": 0,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          }
+        ]
+      },
+      {
+        "roundIndex": 2,
+        "handSize": 3,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 30,
+            "bonus": 0,
+            "total": 30
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 1,
+            "main": 20,
+            "bonus": 0,
+            "total": 20
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 0,
+            "main": -20,
+            "bonus": 0,
+            "total": -20
+          },
+          {
+            "playerIndex": 3,
+            "bid": 3,
+            "won": 2,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          }
+        ]
+      },
+      {
+        "roundIndex": 3,
+        "handSize": 4,
+        "scores": [
+          {
+            "playerIndex": 0,
+            "bid": 0,
+            "won": 0,
+            "main": 40,
+            "bonus": 0,
+            "total": 40
+          },
+          {
+            "playerIndex": 1,
+            "bid": 1,
+            "won": 0,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 2,
+            "bid": 2,
+            "won": 1,
+            "main": -10,
+            "bonus": 0,
+            "total": -10
+          },
+          {
+            "playerIndex": 3,
+            "bid": 3,
+            "won": 3,
+            "main": 60,
+            "bonus": 0,
+            "total": 60
+          }
+        ]
+      }
+    ]
+  }
+]
