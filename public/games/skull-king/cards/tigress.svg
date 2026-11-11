@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+<title>Tigress</title>
+<desc>Card: Tigress</desc>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#fdfaf3" stroke="#1b1b1b" stroke-width="2"/>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#e07b13"/>
+<rect x="12" y="12" width="226" height="326" rx="12" ry="12" fill="none" stroke="#111111" stroke-width="2"/>
+<path d="M80 130 L92 92 L120 120 Z M170 130 L158 92 L130 120 Z" fill="#111111"/>
+<circle cx="125" cy="150" r="48" fill="#111111"/>
+<ellipse cx="104" cy="146" rx="7" ry="5" fill="#e07b13"/>
+<ellipse cx="146" cy="146" rx="7" ry="5" fill="#e07b13"/>
+<path d="M125 110 V124 M110 112 L114 124 M140 112 L136 124" stroke="#e07b13" stroke-width="5" stroke-linecap="round"/>
+<path d="M120 166 H130 L125 172 Z" fill="#e07b13"/>
+<text x="125" y="292" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="700" fill="#111111">Tigress</text>
+</svg>

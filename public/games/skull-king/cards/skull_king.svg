@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+<title>Skull King</title>
+<desc>Card: Skull King</desc>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#fdfaf3" stroke="#1b1b1b" stroke-width="2"/>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#f7f3e8"/>
+<rect x="12" y="12" width="226" height="326" rx="12" ry="12" fill="none" stroke="#1b1b1b" stroke-width="2"/>
+<path d="M84 190 L84 128 L106 156 L125 110 L144 156 L166 128 L166 190 Z" fill="#1b1b1b" stroke="#f7f3e8" stroke-width="4" stroke-linejoin="round"/>
+<rect x="84" y="180" width="82" height="16" fill="#1b1b1b"/>
+<circle cx="125" cy="170" r="6" fill="#f7f3e8"/>
+<circle cx="104" cy="170" r="4" fill="#f7f3e8"/>
+<circle cx="146" cy="170" r="4" fill="#f7f3e8"/>
+<text x="125" y="292" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="700" fill="#1b1b1b">Skull King</text>
+</svg>

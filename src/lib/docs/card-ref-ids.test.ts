@@ -38,10 +38,10 @@ describe("card-ref-ids", () => {
 
   it("maps ids to card image paths", () => {
     expect(resolveCardRefImagePath("kraken")).toBe(
-      "/games/skull-king/cards/kraken.png",
+      "/games/skull-king/cards/kraken.svg",
     );
     expect(resolveCardRefImagePath("pirate")).toBe(
-      "/games/skull-king/cards/pirate_rosie_d_laney.png",
+      "/games/skull-king/cards/pirate_rosie_d_laney.svg",
     );
   });
 

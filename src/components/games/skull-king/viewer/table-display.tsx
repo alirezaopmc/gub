@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import * as React from "react";
+import { CardImage } from "@/components/games/skull-king/shared/card-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { joinGameRoom, loadGameSession } from "@/lib/games/common/game-client";
 import { useGameSocket } from "@/lib/games/common/use-game-socket";
-import { cardImagePath, createCard } from "@/lib/games/skull-king/engine/cards";
+import { createCard } from "@/lib/games/skull-king/engine/cards";
 import type { Card as SkCard } from "@/lib/games/skull-king/engine/types";
 
 function parseCardId(id: string): SkCard {
@@ -277,13 +277,11 @@ export function TableDisplayViewer({ code }: { code: string }) {
                         Player {p.playerIndex + 1}
                       </span>
                       <div className="relative overflow-hidden rounded-xl shadow-2xl transition-transform hover:scale-105">
-                        <Image
-                          src={cardImagePath(parseCardId(p.card.id))}
-                          alt={p.card.id}
+                        <CardImage
+                          card={parseCardId(p.card.id)}
                           width={140}
                           height={196}
                           className="h-48 w-auto rounded-xl object-contain sm:h-56"
-                          unoptimized
                         />
                       </div>
                       {p.tigressMode && (
