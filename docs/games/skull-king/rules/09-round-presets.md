@@ -16,7 +16,7 @@ A **round schema** is the sequence of hand sizes dealt each round (comma-separat
 
 Full voyage: **1, 2, 3, 4, 5, 6, 7, 8, 9, 10** (10 rounds).
 
-## Rulebook presets (page 14)
+## Rulebook presets (page 27)
 
 | Preset | Hand sizes | Character |
 |--------|------------|-----------|

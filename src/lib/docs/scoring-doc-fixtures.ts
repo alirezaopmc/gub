@@ -182,9 +182,9 @@ export const ROUND_BREAKDOWN_FIXTURES: readonly RoundBreakdownFixture[] = [
     player: rascalMissPlayer,
     roundPlayers: [rascalMissPlayer],
     expectedMain: -10,
-    expectedBonus: 0,
-    expectedTotal: -10,
-    docSnippets: ["bonuses **forfeited** → **−10**"],
+    expectedBonus: -20,
+    expectedTotal: -30,
+    docSnippets: ["Rascal wager **−20** → **−30**"],
   },
 ];
 

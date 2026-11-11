@@ -1,6 +1,12 @@
 import { isEscapeLike, isSpecial } from "./cards";
 import { leadContextForNextPlay, mustFollowSuit } from "./lead-suit";
-import type { Card, PlayedCard, StandardSuit, TigressMode } from "./types";
+import type {
+  Card,
+  PlayedCard,
+  RuleFlags,
+  StandardSuit,
+  TigressMode,
+} from "./types";
 
 export function handHasSuit(
   hand: readonly Card[],
@@ -16,8 +22,9 @@ export function handHasSuit(
 export function getLegalCards(
   hand: readonly Card[],
   currentTrick: readonly PlayedCard[],
+  flags?: RuleFlags,
 ): Card[] {
-  const ctx = leadContextForNextPlay(currentTrick);
+  const ctx = leadContextForNextPlay(currentTrick, flags);
 
   if (!mustFollowSuit(ctx)) {
     return [...hand];
@@ -40,41 +47,29 @@ export function isLegalPlay(
   currentTrick: readonly PlayedCard[],
   cardId: string,
   tigressMode?: TigressMode,
+  flags?: RuleFlags,
 ): boolean {
   const card = hand.find((c) => c.id === cardId);
   if (!card) return false;
 
   if (card.def.kind === "tigress" && !tigressMode) return false;
 
-  const legal = getLegalCards(hand, currentTrick);
+  const legal = getLegalCards(hand, currentTrick, flags);
   if (!legal.some((c) => c.id === cardId)) return false;
 
   return true;
 }
 
-/** After Kraken/Whale mid-trick, following plays need not follow suit. */
-export function getLegalCardsAfterMidTrickSpecial(
-  hand: readonly Card[],
-): Card[] {
-  return [...hand];
-}
-
-export function isMidTrickSpecialUnlocked(
-  plays: readonly PlayedCard[],
-): boolean {
-  return plays.some(
-    (p) => p.card.def.kind === "kraken" || p.card.def.kind === "whale",
-  );
-}
-
+/**
+ * Legal moves for a player during trick play.
+ * Mid-trick Kraken/Whale does NOT lift follow-suit obligations for subsequent players.
+ */
 export function getLegalCardsForPlayer(
   hand: readonly Card[],
   currentTrick: readonly PlayedCard[],
+  flags?: RuleFlags,
 ): Card[] {
-  if (isMidTrickSpecialUnlocked(currentTrick)) {
-    return getLegalCardsAfterMidTrickSpecial(hand);
-  }
-  return getLegalCards(hand, currentTrick);
+  return getLegalCards(hand, currentTrick, flags);
 }
 
 export function trickHasOnlyEscapeLike(plays: readonly PlayedCard[]): boolean {

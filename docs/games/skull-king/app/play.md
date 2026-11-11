@@ -11,7 +11,7 @@ order: 1
 
 Route: `/games/skull-king/play`
 
-Live **3–8 player** Skull King matches. Each player uses their own device.
+Live **2–8 player** Skull King matches. Each player uses their own device (2-player uses Graybeard's ghost variant, see [Two-player Graybeard](../rules/11-two-player.md)).
 
 ## Before you start
 

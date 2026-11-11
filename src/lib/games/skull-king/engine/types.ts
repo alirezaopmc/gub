@@ -42,10 +42,16 @@ export type CaptureBonus =
   | { type: "pirate_by_king"; trickWinnerIndex: number }
   | { type: "king_by_mermaid"; trickWinnerIndex: number };
 
+export type LootAlliance = {
+  lootPlayerIndex: number;
+  trickWinnerIndex: number;
+};
+
 export type TrickResult = {
   outcome: TrickOutcome;
   captures: CaptureBonus[];
-  lootAlliance?: { lootPlayerIndex: number; trickWinnerIndex: number };
+  lootAlliance?: LootAlliance;
+  lootAlliances?: LootAlliance[];
 };
 
 export type RoundPhase = "bidding" | "playing" | "ability" | "scoring";
@@ -60,6 +66,7 @@ export type PendingAbility = {
 export type PlayerBid = {
   bid: number | null;
   harryGiantDelta: 1 | -1 | null;
+  ammoChoice?: "grapeshot" | "cannonball";
 };
 
 export type RoundState = {
@@ -85,12 +92,22 @@ export type RoundState = {
   roundScores: number[] | null;
 };
 
+export type RuleFlags = {
+  /**
+   * If true, an Escape lead followed by a character card (Pirate, Mermaid, SK, etc.)
+   * still defers suit selection until the first suited card.
+   * If false (default), a character played after an Escape does not defer — no suit is established.
+   */
+  escapeLeadDefersThroughCharacters?: boolean;
+};
+
 export type MatchPhase = "lobby" | "in_progress" | "game_over";
 
 export type MatchConfig = {
   playerCount: number;
   playerNames: string[];
   roundsSchema: number[];
+  scoringSystem?: "classic" | "rascal";
   artifacts: {
     pirateAbilities: boolean;
     characterCapture: boolean;
@@ -99,6 +116,7 @@ export type MatchConfig = {
     loot: boolean;
     fourteenBonus: boolean;
   };
+  ruleFlags?: RuleFlags;
 };
 
 export type PlayerRoundResult = {
@@ -144,6 +162,7 @@ export type MatchAction =
       playerIndex: number;
       bid: number;
       harryGiantDelta?: 1 | -1 | null;
+      ammoChoice?: "grapeshot" | "cannonball";
     }
   | {
       type: "play_card";

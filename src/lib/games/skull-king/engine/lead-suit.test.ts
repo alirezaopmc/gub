@@ -50,4 +50,37 @@ describe("lead-suit", () => {
     ]);
     expect(ctx.leadSuit).toBe("purple");
   });
+
+  describe("escapeLeadDefersThroughCharacters rule flag", () => {
+    it("default (false): character played after escape ends suit selection (no suit established)", () => {
+      const plays = [
+        createPlayedCard(escape, 0, 0),
+        createPlayedCard(pirate, 1, 1),
+        createPlayedCard(green7, 2, 2),
+      ];
+      // Default / false
+      const ctxDefault = resolveLeadContext(plays);
+      expect(ctxDefault.leadSuit).toBeNull();
+      expect(ctxDefault.awaitingSuit).toBe(false);
+
+      const ctxExplicitFalse = resolveLeadContext(plays, {
+        escapeLeadDefersThroughCharacters: false,
+      });
+      expect(ctxExplicitFalse.leadSuit).toBeNull();
+      expect(ctxExplicitFalse.awaitingSuit).toBe(false);
+    });
+
+    it("true: character played after escape defers suit selection to subsequent suited card", () => {
+      const plays = [
+        createPlayedCard(escape, 0, 0),
+        createPlayedCard(pirate, 1, 1),
+        createPlayedCard(green7, 2, 2),
+      ];
+      const ctxTrue = resolveLeadContext(plays, {
+        escapeLeadDefersThroughCharacters: true,
+      });
+      expect(ctxTrue.leadSuit).toBe("green");
+      expect(ctxTrue.awaitingSuit).toBe(false);
+    });
+  });
 });

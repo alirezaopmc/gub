@@ -33,7 +33,7 @@ When specials compete (no Whale effect):
 ## Escape
 
 - Escape **always loses** to any other card.
-- If **all** cards played are Escape (or Tigress-as-Escape), **first Escape played** wins.
+- If **all** cards played are Escape-like (Escape, Tigress-as-Escape, or Loot), the **first card played** wins.
 
 ## Tigress
 

@@ -74,6 +74,37 @@ describe("trick-resolution specials", () => {
       expect(result.outcome.winnerIndex).toBe(1);
   });
 
+  it("skull king captures multiple pirates (each pirate counts)", () => {
+    const p1 = createCard({ kind: "pirate", pirate: "rosie" });
+    const p2 = createCard({ kind: "pirate", pirate: "bendt" });
+    const p3 = createCard({ kind: "pirate", pirate: "rascal" });
+    const result = resolveTrick(
+      [play(p1, 0, 0), play(p2, 1, 1), play(p3, 2, 2), play(king, 3, 3)],
+      4,
+    );
+    if (result.outcome.type === "won") {
+      expect(result.outcome.winnerIndex).toBe(3);
+    }
+    const kingCaps = result.captures.filter((c) => c.type === "pirate_by_king");
+    expect(kingCaps).toHaveLength(3);
+  });
+
+  it("pirate captures multiple mermaids (each mermaid counts)", () => {
+    const m1 = createCard({ kind: "mermaid", mermaid: "sirena" });
+    const m2 = createCard({ kind: "mermaid", mermaid: "alyra" });
+    const result = resolveTrick(
+      [play(m1, 0, 0), play(m2, 1, 1), play(pirate, 2, 2)],
+      3,
+    );
+    if (result.outcome.type === "won") {
+      expect(result.outcome.winnerIndex).toBe(2);
+    }
+    const pirateCaps = result.captures.filter(
+      (c) => c.type === "mermaid_by_pirate",
+    );
+    expect(pirateCaps).toHaveLength(2);
+  });
+
   it("mermaid beats skull king", () => {
     const result = resolveTrick([play(king, 0, 0), play(mermaid, 1, 1)], 2);
     if (result.outcome.type === "won")
@@ -169,6 +200,46 @@ describe("trick-resolution advanced", () => {
       lootPlayerIndex: 0,
       trickWinnerIndex: 1,
     });
+  });
+
+  it("two loots with different winner gives 2 alliances", () => {
+    const loot1 = createCard({ kind: "loot", index: 0 });
+    const loot2 = createCard({ kind: "loot", index: 1 });
+    const pirate = createCard({ kind: "pirate", pirate: "rosie" });
+    const result = resolveTrick(
+      [play(loot1, 0, 0), play(loot2, 1, 1), play(pirate, 2, 2)],
+      3,
+    );
+    expect(result.outcome.type).toBe("won");
+    if (result.outcome.type === "won") {
+      expect(result.outcome.winnerIndex).toBe(2);
+    }
+    expect(result.lootAlliances).toHaveLength(2);
+    expect(result.lootAlliances).toEqual([
+      { lootPlayerIndex: 0, trickWinnerIndex: 2 },
+      { lootPlayerIndex: 1, trickWinnerIndex: 2 },
+    ]);
+  });
+
+  it("two loots where winner played one gives only 1 alliance (none for winner)", () => {
+    const loot1 = createCard({ kind: "loot", index: 0 });
+    const loot2 = createCard({ kind: "loot", index: 1 });
+    const e1 = createCard({ kind: "escape", index: 0 });
+    // Player 0 leads Loot1, Player 1 plays Loot2, Player 2 plays Escape
+    // Loot leads + all others escape-like: player 0 wins!
+    const result = resolveTrick(
+      [play(loot1, 0, 0), play(loot2, 1, 1), play(e1, 2, 2)],
+      3,
+    );
+    expect(result.outcome.type).toBe("won");
+    if (result.outcome.type === "won") {
+      expect(result.outcome.winnerIndex).toBe(0);
+    }
+    // Only player 1 forms an alliance with player 0; player 0 does not form alliance with themselves
+    expect(result.lootAlliances).toHaveLength(1);
+    expect(result.lootAlliances).toEqual([
+      { lootPlayerIndex: 1, trickWinnerIndex: 0 },
+    ]);
   });
 });
 

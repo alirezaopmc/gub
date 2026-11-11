@@ -5,6 +5,7 @@ import type {
   CaptureBonus,
   Card,
   PlayedCard,
+  RuleFlags,
   StandardSuit,
   TrickOutcome,
   TrickResult,
@@ -127,7 +128,10 @@ function resolveWhaleWinner(plays: PlayedCard[]): PlayedCard | null {
   return best;
 }
 
-function resolveNormalWinner(plays: PlayedCard[]): PlayedCard {
+function resolveNormalWinner(
+  plays: PlayedCard[],
+  flags?: RuleFlags,
+): PlayedCard {
   const triple = tripleMermaidWins(plays);
   if (triple) return triple;
 
@@ -135,7 +139,7 @@ function resolveNormalWinner(plays: PlayedCard[]): PlayedCard {
     return plays.reduce((a, b) => (a.playOrder < b.playOrder ? a : b));
   }
 
-  const ctx = resolveLeadContext(plays);
+  const ctx = resolveLeadContext(plays, flags);
   const leadSuit = ctx.leadSuit;
 
   const competing: PlayedCard[] = [];
@@ -214,46 +218,70 @@ function detectCaptures(
     }
   }
 
-  const hasPirate = plays.some((p) => cardRole(p).role === "pirate");
-  const hasKing = plays.some((p) => cardRole(p).role === "skull_king");
-  const hasMermaid = plays.some((p) => cardRole(p).role === "mermaid");
-
-  if (winnerRole === "mermaid" && hasKing) {
-    captures.push({
-      type: "king_by_mermaid",
-      trickWinnerIndex: winner.playerIndex,
-    });
-  } else if (winnerRole === "skull_king" && hasPirate) {
-    captures.push({
-      type: "pirate_by_king",
-      trickWinnerIndex: winner.playerIndex,
-    });
-  } else if (winnerRole === "pirate" && hasMermaid) {
-    captures.push({
-      type: "mermaid_by_pirate",
-      trickWinnerIndex: winner.playerIndex,
-    });
+  if (winnerRole === "mermaid") {
+    for (const p of plays) {
+      if (
+        cardRole(p).role === "skull_king" &&
+        p.playerIndex !== winner.playerIndex
+      ) {
+        captures.push({
+          type: "king_by_mermaid",
+          trickWinnerIndex: winner.playerIndex,
+        });
+      }
+    }
+  } else if (winnerRole === "skull_king") {
+    for (const p of plays) {
+      if (
+        cardRole(p).role === "pirate" &&
+        p.playerIndex !== winner.playerIndex
+      ) {
+        captures.push({
+          type: "pirate_by_king",
+          trickWinnerIndex: winner.playerIndex,
+        });
+      }
+    }
+  } else if (winnerRole === "pirate") {
+    for (const p of plays) {
+      if (
+        cardRole(p).role === "mermaid" &&
+        p.playerIndex !== winner.playerIndex
+      ) {
+        captures.push({
+          type: "mermaid_by_pirate",
+          trickWinnerIndex: winner.playerIndex,
+        });
+      }
+    }
   }
 
   return captures;
 }
 
-function lootAlliance(
+function lootAlliances(
   plays: PlayedCard[],
   winner: PlayedCard,
-): { lootPlayerIndex: number; trickWinnerIndex: number } | undefined {
-  const lootPlay = plays.find((p) => p.card.def.kind === "loot");
-  if (!lootPlay) return undefined;
-  if (winner.playerIndex === lootPlay.playerIndex) return undefined;
-  return {
-    lootPlayerIndex: lootPlay.playerIndex,
-    trickWinnerIndex: winner.playerIndex,
-  };
+): Array<{ lootPlayerIndex: number; trickWinnerIndex: number }> {
+  const alliances: Array<{
+    lootPlayerIndex: number;
+    trickWinnerIndex: number;
+  }> = [];
+  for (const p of plays) {
+    if (p.card.def.kind === "loot" && p.playerIndex !== winner.playerIndex) {
+      alliances.push({
+        lootPlayerIndex: p.playerIndex,
+        trickWinnerIndex: winner.playerIndex,
+      });
+    }
+  }
+  return alliances;
 }
 
 export function resolveTrick(
   plays: PlayedCard[],
   playerCount: number,
+  flags?: RuleFlags,
 ): TrickResult {
   const sorted = [...plays].sort((a, b) => a.playOrder - b.playOrder);
   const { kraken, whale } = krakenWhaleOrder(sorted);
@@ -268,6 +296,7 @@ export function resolveTrick(
         sorted.filter(
           (p) => p.card.def.kind !== "kraken" && p.card.def.kind !== "whale",
         ),
+        flags,
       );
       outcome = {
         type: "destroyed",
@@ -277,10 +306,9 @@ export function resolveTrick(
     } else {
       winner = resolveWhaleWinner(sorted);
       if (!winner) {
-        const wouldBe = resolveNormalWinner(sorted);
         outcome = {
           type: "discarded",
-          wouldBeWinnerIndex: wouldBe.playerIndex,
+          wouldBeWinnerIndex: whale.playerIndex,
           plays: sorted,
         };
       } else {
@@ -294,6 +322,7 @@ export function resolveTrick(
   } else if (kraken) {
     const wouldBe = resolveNormalWinner(
       sorted.filter((p) => p.card.def.kind !== "kraken"),
+      flags,
     );
     outcome = {
       type: "destroyed",
@@ -303,29 +332,33 @@ export function resolveTrick(
   } else if (whale) {
     winner = resolveWhaleWinner(sorted);
     if (!winner) {
-      const wouldBe = resolveNormalWinner(sorted);
       outcome = {
         type: "discarded",
-        wouldBeWinnerIndex: wouldBe.playerIndex,
+        wouldBeWinnerIndex: whale.playerIndex,
         plays: sorted,
       };
     } else {
       outcome = { type: "won", winnerIndex: winner.playerIndex, plays: sorted };
     }
   } else {
-    winner = resolveNormalWinner(sorted);
+    winner = resolveNormalWinner(sorted, flags);
     outcome = { type: "won", winnerIndex: winner.playerIndex, plays: sorted };
   }
 
   const captures =
     outcome.type === "won" && winner ? detectCaptures(sorted, winner) : [];
 
-  const alliance =
-    outcome.type === "won" && winner ? lootAlliance(sorted, winner) : undefined;
+  const alliances =
+    outcome.type === "won" && winner ? lootAlliances(sorted, winner) : [];
 
   void playerCount;
 
-  return { outcome, captures, lootAlliance: alliance };
+  return {
+    outcome,
+    captures,
+    lootAlliance: alliances[0],
+    lootAlliances: alliances,
+  };
 }
 
 /** Loot leads + all others escape-like → loot player wins, no alliance. */

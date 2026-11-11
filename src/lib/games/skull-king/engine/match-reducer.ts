@@ -231,10 +231,11 @@ export function applyBid(
   state: MatchState,
   playerIndex: number,
   bid: number,
+  ammoChoice?: "grapeshot" | "cannonball",
 ): MatchState | { error: string } {
   const round = state.currentRound;
   if (!round) return { error: "no_round" };
-  const result = submitBidOnRound(round, playerIndex, bid);
+  const result = submitBidOnRound(round, playerIndex, bid, ammoChoice);
   if ("error" in result) return result;
   return { ...state, currentRound: result, version: state.version + 1 };
 }

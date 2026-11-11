@@ -5,9 +5,9 @@ import { buildGameDocSearchIndex } from "@/lib/docs/build-game-doc-search-index"
 describe("buildGameDocSearchIndex", () => {
   const index = buildGameDocSearchIndex("skull-king");
 
-  it("includes all 17 pages", () => {
+  it("includes all 18 pages", () => {
     const pages = index.filter((e) => e.kind === "page");
-    expect(pages).toHaveLength(17);
+    expect(pages).toHaveLength(18);
   });
 
   it("includes heading entries with hash anchors", () => {
