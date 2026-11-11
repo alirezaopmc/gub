@@ -179,48 +179,97 @@ export function PlayHubClient() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Host new match</CardTitle>
+          <CardTitle className="text-base" id="host-heading">
+            Host new match
+          </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <input
-            className="rounded-md border border-border bg-background px-3 py-2 text-sm"
-            placeholder="Your name"
-            value={hostName}
-            onChange={(e) => setHostName(e.target.value)}
-          />
-          <Button variant="branded" disabled={loading} onClick={createMatch}>
-            Create match
-          </Button>
+        <CardContent>
+          <form
+            aria-labelledby="host-heading"
+            className="flex flex-col gap-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!loading) void createMatch();
+            }}
+          >
+            <label className="flex flex-col gap-1 text-sm" htmlFor="host-name">
+              Your name
+              <input
+                id="host-name"
+                name="displayName"
+                type="text"
+                required
+                maxLength={24}
+                autoComplete="nickname"
+                enterKeyHint="go"
+                className="rounded-md border border-border bg-background px-3 py-2 text-base"
+                value={hostName}
+                onChange={(e) => setHostName(e.target.value)}
+              />
+            </label>
+            <Button variant="branded" disabled={loading} type="submit">
+              Create match
+            </Button>
+          </form>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Join match</CardTitle>
+          <CardTitle className="text-base" id="join-heading">
+            Join match
+          </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <input
-            className="rounded-md border border-border bg-background px-3 py-2 text-sm uppercase"
-            placeholder="Code (e.g. AB)"
-            maxLength={2}
-            value={joinCode}
-            onChange={(e) =>
-              setJoinCode(e.target.value.replace(/[^a-zA-Z]/g, ""))
-            }
-          />
-          <input
-            className="rounded-md border border-border bg-background px-3 py-2 text-sm"
-            placeholder="Your name"
-            value={joinName}
-            onChange={(e) => setJoinName(e.target.value)}
-          />
-          <Button
-            variant="outline"
-            disabled={loading || joinCode.length !== 2}
-            onClick={joinMatch}
+        <CardContent>
+          <form
+            aria-labelledby="join-heading"
+            className="flex flex-col gap-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!loading && joinCode.length === 2) void joinMatch();
+            }}
           >
-            Join
-          </Button>
+            <label className="flex flex-col gap-1 text-sm" htmlFor="join-code">
+              Match code (2 letters)
+              <input
+                id="join-code"
+                name="code"
+                type="text"
+                required
+                minLength={2}
+                maxLength={2}
+                pattern="[A-Za-z]{2}"
+                autoComplete="off"
+                autoCapitalize="characters"
+                autoCorrect="off"
+                spellCheck={false}
+                enterKeyHint="next"
+                className="rounded-md border border-border bg-background px-3 py-2 text-base uppercase"
+                value={joinCode}
+                onChange={(e) =>
+                  setJoinCode(e.target.value.replace(/[^a-zA-Z]/g, ""))
+                }
+              />
+            </label>
+            <label className="flex flex-col gap-1 text-sm" htmlFor="join-name">
+              Your name
+              <input
+                id="join-name"
+                name="displayName"
+                type="text"
+                required
+                maxLength={24}
+                autoComplete="nickname"
+                enterKeyHint="go"
+                className="rounded-md border border-border bg-background px-3 py-2 text-base"
+                value={joinName}
+                onChange={(e) => setJoinName(e.target.value)}
+              />
+            </label>
+            <Button variant="outline" disabled={loading} type="submit">
+              Join match
+            </Button>
+          </form>
         </CardContent>
       </Card>
     </div>
