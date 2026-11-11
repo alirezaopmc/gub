@@ -5,16 +5,26 @@ import (
 	"sync"
 )
 
+// MemStore is an in-memory Store. It implements FencedStore with a weaker check
+// than PostgresStore: it has no lease table, so it refuses any epoch older than
+// the newest epoch it has accepted for the room.
 type MemStore struct {
 	mu        sync.RWMutex
 	events    map[string][]StoredEvent
 	snapshots map[string]Snapshot
+	fence     map[string]int64
 }
+
+var (
+	_ Store       = (*MemStore)(nil)
+	_ FencedStore = (*MemStore)(nil)
+)
 
 func NewMemStore() *MemStore {
 	return &MemStore{
 		events:    make(map[string][]StoredEvent),
 		snapshots: make(map[string]Snapshot),
+		fence:     make(map[string]int64),
 	}
 }
 
@@ -22,6 +32,28 @@ func (m *MemStore) AppendEvents(_ context.Context, roomID string, expectedSeq in
 	m.mu.Lock()
 	defer m.mu.Unlock()
 
+	return m.appendLocked(roomID, expectedSeq, events)
+}
+
+// AppendEventsFenced appends like AppendEvents, but refuses an epoch older than
+// the newest accepted epoch for the room with ErrFenced. The epoch is recorded
+// only when the append succeeds.
+func (m *MemStore) AppendEventsFenced(_ context.Context, roomID string, epoch int64, expectedSeq int64, events []StoredEvent) error {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	if epoch < m.fence[roomID] {
+		return ErrFenced
+	}
+	if err := m.appendLocked(roomID, expectedSeq, events); err != nil {
+		return err
+	}
+	m.fence[roomID] = epoch
+	return nil
+}
+
+// appendLocked checks the sequence and appends. The caller holds m.mu.
+func (m *MemStore) appendLocked(roomID string, expectedSeq int64, events []StoredEvent) error {
 	current := m.events[roomID]
 	var currentSeq int64 = 0
 	if len(current) > 0 {

@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/manovaspace/gub/server/core/event"
 )
@@ -20,7 +21,25 @@ func NewPostgresStore(pool *pgxpool.Pool) *PostgresStore {
 	return &PostgresStore{pool: pool}
 }
 
+var (
+	_ event.Store       = (*PostgresStore)(nil)
+	_ event.FencedStore = (*PostgresStore)(nil)
+)
+
 func (p *PostgresStore) AppendEvents(ctx context.Context, roomID string, expectedSeq int64, events []event.StoredEvent) error {
+	return p.appendEvents(ctx, roomID, nil, expectedSeq, events)
+}
+
+// AppendEventsFenced appends like AppendEvents, but only while the room lease
+// still has the given epoch and has not expired by the database clock. The lease
+// row is locked FOR SHARE in the same transaction, so a takeover waits until this
+// append commits. Otherwise it returns event.ErrFenced.
+func (p *PostgresStore) AppendEventsFenced(ctx context.Context, roomID string, epoch int64, expectedSeq int64, events []event.StoredEvent) error {
+	return p.appendEvents(ctx, roomID, &epoch, expectedSeq, events)
+}
+
+// appendEvents is the shared append path. A nil epoch skips the lease check.
+func (p *PostgresStore) appendEvents(ctx context.Context, roomID string, epoch *int64, expectedSeq int64, events []event.StoredEvent) error {
 	if len(events) == 0 {
 		return nil
 	}
@@ -30,6 +49,35 @@ func (p *PostgresStore) AppendEvents(ctx context.Context, roomID string, expecte
 		return fmt.Errorf("failed to begin tx: %w", err)
 	}
 	defer tx.Rollback(ctx)
+
+	// Lock the room row so concurrent appends to one room are serialized. The
+	// sequence check and the inserts below then see one consistent sequence.
+	var lockedID string
+	if err := tx.QueryRow(ctx, "SELECT id FROM rooms WHERE id = $1 FOR UPDATE", roomID).Scan(&lockedID); err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return event.ErrRoomNotFound
+		}
+		return fmt.Errorf("failed to lock room: %w", err)
+	}
+
+	// Fencing check: the writer's epoch must be the lease's current epoch, and the
+	// lease must not have expired by the database clock.
+	if epoch != nil {
+		var leaseEpoch int64
+		var live bool
+		err := tx.QueryRow(ctx,
+			"SELECT epoch, lease_expiry > now() FROM room_leases WHERE room_id = $1 FOR SHARE",
+			roomID).Scan(&leaseEpoch, &live)
+		if errors.Is(err, pgx.ErrNoRows) {
+			return event.ErrFenced
+		}
+		if err != nil {
+			return fmt.Errorf("failed to check lease: %w", err)
+		}
+		if leaseEpoch != *epoch || !live {
+			return event.ErrFenced
+		}
+	}
 
 	// Optimistic concurrency check
 	var currentSeq *int64
@@ -62,6 +110,11 @@ func (p *PostgresStore) AppendEvents(ctx context.Context, roomID string, expecte
 		_, err := br.Exec()
 		if err != nil {
 			br.Close()
+			var pgErr *pgconn.PgError
+			if errors.As(err, &pgErr) && pgErr.Code == "23505" {
+				// A row with this (room_id, seq) exists: another writer appended first.
+				return event.ErrConcurrencyConflict
+			}
 			return fmt.Errorf("failed to insert event in batch: %w", err)
 		}
 	}
@@ -105,6 +158,9 @@ func (p *PostgresStore) GetEvents(ctx context.Context, roomID string, afterSeq i
 		ev.Payload = payloadBytes
 		ev.Timestamp = ts
 		out = append(out, ev)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("failed to read event rows: %w", err)
 	}
 
 	return out, nil

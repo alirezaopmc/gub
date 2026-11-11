@@ -73,6 +73,15 @@ func (g *ConnectFourGame) Setup(rawConfig json.RawMessage, seed int64, playerSea
 	return state, nil
 }
 
+// UnmarshalState restores a State from a snapshot blob.
+func (g *ConnectFourGame) UnmarshalState(data []byte) (game.State, error) {
+	var st State
+	if err := json.Unmarshal(data, &st); err != nil {
+		return nil, err
+	}
+	return &st, nil
+}
+
 type DropDiscPayload struct {
 	Column int `json:"column"`
 }

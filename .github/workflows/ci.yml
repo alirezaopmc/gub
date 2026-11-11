@@ -21,8 +21,11 @@ jobs:
 
       - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
         with:
-          go-version: "1.24"
+          go-version: "1.25"
           cache-dependency-path: server/go.sum
+
+      - name: Go build
+        run: go -C server build ./...
 
       - name: Go vet
         run: go -C server vet ./...
@@ -41,6 +44,11 @@ jobs:
           bun-version: "1.4.4"
 
       - run: bun install --frozen-lockfile
+      # Golden vectors are committed after export and biome formatting. The export
+      # itself writes raw JSON, so the formatter runs before the diff check.
+      - run: bun run export:golden-vectors
+      - run: bunx biome format --write testdata
+      - run: git diff --exit-code -- testdata
       # ponytail: full-repo lint still has legacy debt; lint only the docs path until follow-up
       - run: bunx biome check src/lib/docs
       - run: bun run test:run

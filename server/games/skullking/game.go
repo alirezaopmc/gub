@@ -65,7 +65,7 @@ type PendingAbility struct {
 type MatchState struct {
 	Config           MatchConfig          `json:"config"`
 	Seed             int64                `json:"seed"`
-	RNG              func() float64       `json:"-"`
+	RNG              *Mulberry32          `json:"rng"`
 	Phase            string               `json:"phase"` // "bidding", "playing", "ability", "scoring", "game_over"
 	RoundIndex       int                  `json:"roundIndex"`
 	HandSize         int                  `json:"handSize"`
@@ -120,7 +120,7 @@ func (s *SkullKingGame) Setup(rawConfig json.RawMessage, seed int64, playerSeats
 	}
 
 	rng := NewMulberry32(seed)
-	initialDealer := int(rng() * float64(pCount))
+	initialDealer := int(rng.Next() * float64(pCount))
 
 	st := &MatchState{
 		Config:           cfg,
@@ -153,7 +153,7 @@ func startNewRound(st *MatchState, roundIdx int) {
 		dealCount = 3 // Graybeard gets a hand
 	}
 
-	res := DealRound(deckCfg, dealCount, schemaSize, st.RNG)
+	res := DealRound(deckCfg, dealCount, schemaSize, st.RNG.Next)
 	st.HandSize = res.HandSize
 	st.Hands = res.Hands[:pCount]
 	st.Undealt = res.Undealt
@@ -204,11 +204,7 @@ func (s *SkullKingGame) Validate(state game.State, actor game.Actor, cmd game.Co
 		if st.Phase != "playing" {
 			return errors.New("not in playing phase")
 		}
-		expectedTurn := st.TrickLeaderIndex
-		if len(st.CurrentTrick) > 0 {
-			lastPlayer := st.CurrentTrick[len(st.CurrentTrick)-1].PlayerIndex
-			expectedTurn = (lastPlayer + 1) % st.Config.PlayerCount
-		}
+		expectedTurn := nextSeat(st)
 		if actor.Seat != expectedTurn {
 			return game.ErrNotYourTurn
 		}
@@ -301,6 +297,7 @@ func (s *SkullKingGame) Apply(state game.State, actor game.Actor, cmd game.Comma
 					"bids":  st.Bids,
 				},
 			})
+			evs = append(evs, autoPlayGhost(st)...)
 		}
 		return evs, nil
 
@@ -337,27 +334,12 @@ func (s *SkullKingGame) Apply(state game.State, actor game.Actor, cmd game.Comma
 			Payload: play,
 		}}
 
-		// If 2-player with ghost, and both humans have played, ghost automatically plays top card
-		if st.Config.TwoPlayerGhost && len(st.CurrentTrick) == 2 && len(st.GhostHand) > 0 {
-			ghostCard := st.GhostHand[0]
-			st.GhostHand = st.GhostHand[1:]
-			ghostPlay := PlayedCard{
-				Card:        ghostCard,
-				PlayerIndex: 2, // Seat 2 is Graybeard ghost
-				PlayOrder:   2,
-				TigressMode: TigressModeEscape, // Graybeard plays Tigress as Escape
-			}
-			st.CurrentTrick = append(st.CurrentTrick, ghostPlay)
-			evs = append(evs, game.Event{
-				Type:    "card_played",
-				Actor:   game.Actor{Seat: 2, Role: game.RoleBot, ID: "graybeard"},
-				Payload: ghostPlay,
-			})
-		}
+		// Graybeard plays whenever the rotation reaches seat 2.
+		evs = append(evs, autoPlayGhost(st)...)
 
 		targetTrickLen := st.Config.PlayerCount
 		if st.Config.TwoPlayerGhost {
-			targetTrickLen = 3
+			targetTrickLen = ghostTableSize
 		}
 
 		// If trick complete, resolve it
@@ -432,6 +414,9 @@ func (s *SkullKingGame) Apply(state game.State, actor game.Actor, cmd game.Comma
 					"nextLeader": nextLeader,
 				},
 			})
+
+			// If the ghost won, it leads the next trick and plays its top card at once.
+			evs = append(evs, autoPlayGhost(st)...)
 
 			// Check if round is over
 			if len(st.CompletedTricks) >= st.HandSize {
@@ -536,6 +521,19 @@ func (s *SkullKingGame) Apply(state game.State, actor game.Actor, cmd game.Comma
 	return nil, nil
 }
 
+// UnmarshalState restores a MatchState from a snapshot blob. The RNG state is
+// part of the blob, so the restored match deals the same cards as the original.
+func (s *SkullKingGame) UnmarshalState(data []byte) (game.State, error) {
+	var st MatchState
+	if err := json.Unmarshal(data, &st); err != nil {
+		return nil, err
+	}
+	if st.RNG == nil {
+		return nil, errors.New("skull king snapshot has no rng state")
+	}
+	return &st, nil
+}
+
 func (s *SkullKingGame) Tick(_ game.State, _ time.Duration) ([]game.Event, error) {
 	return nil, nil
 }
@@ -607,4 +605,73 @@ func (s *SkullKingGame) Phase(state game.State) string {
 
 func (s *SkullKingGame) IsOver(state game.State) bool {
 	return state.(*MatchState).Phase == "game_over"
+}
+
+// ghostSeat is the seat of Graybeard in two-player games. It never bids and
+// never acts: it plays automatically when the rotation reaches it.
+const ghostSeat = 2
+
+// ghostTableSize is the number of seats in the trick rotation in two-player
+// Graybeard games. A trick completes after this many cards.
+const ghostTableSize = 3
+
+// nextSeat returns the seat due to play next in the current trick.
+//
+// Normal games rotate over the player seats. In two-player Graybeard games the
+// order is derived from the trick so far:
+//   - an empty trick is led by TrickLeaderIndex;
+//   - when a human leads, Graybeard plays second, right after the lead card;
+//   - otherwise the lowest-seat human who has not played in this trick plays.
+//     This covers Graybeard leading (Graybeard, seat 0, seat 1) and the
+//     remaining human after Graybeard's second-place card.
+func nextSeat(st *MatchState) int {
+	if len(st.CurrentTrick) == 0 {
+		return st.TrickLeaderIndex
+	}
+	if !st.Config.TwoPlayerGhost {
+		last := st.CurrentTrick[len(st.CurrentTrick)-1].PlayerIndex
+		return (last + 1) % st.Config.PlayerCount
+	}
+
+	leader := st.CurrentTrick[0].PlayerIndex
+	played := make(map[int]bool, len(st.CurrentTrick))
+	for _, p := range st.CurrentTrick {
+		played[p.PlayerIndex] = true
+	}
+	if len(st.CurrentTrick) == 1 && leader != ghostSeat && !played[ghostSeat] {
+		return ghostSeat
+	}
+	for seat := 0; seat < st.Config.PlayerCount; seat++ {
+		if !played[seat] {
+			return seat
+		}
+	}
+	return -1
+}
+
+// autoPlayGhost plays Graybeard's top card while the trick is open and the
+// rotation has reached the ghost. Tigress is played as Escape. It returns the
+// card_played events for the ghost plays.
+func autoPlayGhost(st *MatchState) []game.Event {
+	if !st.Config.TwoPlayerGhost {
+		return nil
+	}
+	var evs []game.Event
+	for len(st.CurrentTrick) < ghostTableSize && len(st.GhostHand) > 0 && nextSeat(st) == ghostSeat {
+		ghostCard := st.GhostHand[0]
+		st.GhostHand = st.GhostHand[1:]
+		ghostPlay := PlayedCard{
+			Card:        ghostCard,
+			PlayerIndex: ghostSeat,
+			PlayOrder:   len(st.CurrentTrick),
+			TigressMode: TigressModeEscape,
+		}
+		st.CurrentTrick = append(st.CurrentTrick, ghostPlay)
+		evs = append(evs, game.Event{
+			Type:    "card_played",
+			Actor:   game.Actor{Seat: ghostSeat, Role: game.RoleBot, ID: "graybeard"},
+			Payload: ghostPlay,
+		})
+	}
+	return evs
 }

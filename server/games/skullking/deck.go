@@ -60,16 +60,23 @@ func BuildDeck(cfg DeckConfig) []Card {
 }
 
 // Mulberry32 matches the TS engine's Mulberry32 PRNG for deterministic dealing.
-func NewMulberry32(seed int64) func() float64 {
-	s := uint32(seed)
-	return func() float64 {
-		s += 0x6d2b79f5
-		t := s ^ (s >> 15)
-		t = t * (1 | s)
-		t ^= t + (t^(t>>7))*(61|t)
-		res := (t ^ (t >> 14))
-		return float64(res) / 4294967296.0
-	}
+// Its entire state is S, so it serializes into snapshots. Use Next as a
+// func() float64 wherever a random source is needed.
+type Mulberry32 struct {
+	S uint32 `json:"s"`
+}
+
+func NewMulberry32(seed int64) *Mulberry32 {
+	return &Mulberry32{S: uint32(seed)}
+}
+
+func (m *Mulberry32) Next() float64 {
+	m.S += 0x6d2b79f5
+	t := m.S ^ (m.S >> 15)
+	t = t * (1 | m.S)
+	t ^= t + (t^(t>>7))*(61|t)
+	res := (t ^ (t >> 14))
+	return float64(res) / 4294967296.0
 }
 
 func ShuffleDeck(deck []Card, rng func() float64) []Card {

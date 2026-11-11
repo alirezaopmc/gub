@@ -1,5 +1,5 @@
 # Multi-stage Dockerfile for GUB Go Game Server
-FROM golang:1.24-alpine AS builder
+FROM golang:1.25-alpine AS builder
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ USER gub
 WORKDIR /app
 
 COPY --from=builder /gub-server /app/gub-server
-COPY --from=builder /app/migrations /app/migrations
+# Migrations are embedded in the binary (migrations/embed.go) and run on startup.
 
 ENV PORT=8080
 EXPOSE 8080

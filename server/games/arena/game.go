@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"math"
-	"math/rand"
 	"time"
 
 	"github.com/manovaspace/gub/server/core/game"
@@ -61,7 +60,27 @@ type State struct {
 	PlayerSeats []int           `json:"playerSeats"`
 	Config      Config          `json:"config"`
 	NextCoinID  int             `json:"nextCoinId"`
-	RNG         *rand.Rand      `json:"-"`
+	RNG         *SplitMix       `json:"rng"`
+}
+
+// SplitMix is a serializable PRNG (splitmix64). Its whole state is S, so it
+// survives snapshots, which a math/rand source cannot do.
+type SplitMix struct {
+	S uint64 `json:"s"`
+}
+
+func NewSplitMix(seed int64) *SplitMix {
+	return &SplitMix{S: uint64(seed)}
+}
+
+// Float64 returns a value in [0, 1).
+func (m *SplitMix) Float64() float64 {
+	m.S += 0x9e3779b97f4a7c15
+	z := m.S
+	z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9
+	z = (z ^ (z >> 27)) * 0x94d049bb133111eb
+	z ^= z >> 31
+	return float64(z>>11) / (1 << 53)
 }
 
 type ArenaGame struct{}
@@ -97,7 +116,7 @@ func (g *ArenaGame) Setup(rawConfig json.RawMessage, seed int64, playerSeats []i
 		_ = json.Unmarshal(rawConfig, &cfg)
 	}
 
-	rng := rand.New(rand.NewSource(seed))
+	rng := NewSplitMix(seed)
 
 	// Spawn initial positions at corners
 	spawnPositions := [][2]float64{
@@ -225,6 +244,18 @@ func (g *ArenaGame) Apply(st game.State, actor game.Actor, cmd game.Command) ([]
 			},
 		},
 	}, nil
+}
+
+// UnmarshalState restores a State from a snapshot blob, including the RNG state.
+func (g *ArenaGame) UnmarshalState(data []byte) (game.State, error) {
+	var st State
+	if err := json.Unmarshal(data, &st); err != nil {
+		return nil, err
+	}
+	if st.RNG == nil {
+		return nil, errors.New("arena snapshot has no rng state")
+	}
+	return &st, nil
 }
 
 func (g *ArenaGame) Tick(st game.State, dt time.Duration) ([]game.Event, error) {
