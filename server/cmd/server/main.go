@@ -19,6 +19,9 @@ import (
 	"github.com/manovaspace/gub/server/core/registry"
 	"github.com/manovaspace/gub/server/core/session"
 	"github.com/manovaspace/gub/server/core/store"
+	_ "github.com/manovaspace/gub/server/games/arena"
+	_ "github.com/manovaspace/gub/server/games/connectfour"
+	_ "github.com/manovaspace/gub/server/games/skullking"
 )
 
 func main() {
