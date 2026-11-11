@@ -21,7 +21,9 @@ cd gub
 npm install
 ```
 
-## Development server
+## Development servers
+
+### Frontend (Next.js)
 
 ```bash
 npm run dev
@@ -29,13 +31,30 @@ npm run dev
 
 Open [http://localhost:11003](http://localhost:11003) (Manova ADR-006 port for GUB).
 
+### Backend (Go Game Server)
+
+The authoritative game server runs on port 8080:
+
+```bash
+cd server
+go run ./cmd/server
+```
+
+Run tests across all engine packages and games:
+
+```bash
+cd server
+go test -race ./...
+```
+
 | Route | Purpose |
 |-------|---------|
 | `/` | Game hub |
 | `/games/skull-king` | Skull King entry |
 | `/games/skull-king/play` | Live play lobby |
+| `/games/skull-king/viewer` | Table Display TV viewer |
 | `/games/skull-king/calculator` | Score calculator |
-| `/games/skull-king/docs` | In-app rules (JSX until M4) |
+| `/games/skull-king/docs` | In-app rules and reference |
 
 ## Scripts
 
