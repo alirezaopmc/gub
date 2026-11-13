@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+<title>Parrot (green) 13</title>
+<desc>Card: Parrot (green) 13</desc>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#fdfaf3" stroke="#1b1b1b" stroke-width="2"/>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#2e7d32"/>
+<rect x="12" y="12" width="226" height="326" rx="12" ry="12" fill="none" stroke="#ffffff" stroke-width="2"/>
+<text x="22" y="52" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff">13</text>
+<g transform="rotate(180 125 175)"><text x="22" y="52" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff">13</text></g>
+<g data-icon="parrot">
+<ellipse cx="128" cy="184" rx="34" ry="46" fill="#ffffff"/>
+<circle cx="132" cy="128" r="24" fill="#ffffff"/>
+<path d="M152 122 L180 134 L152 142 Z" fill="#ffffff"/>
+<circle cx="140" cy="121" r="5" fill="#2e7d32"/>
+<path d="M100 150 Q78 190 104 228 Q118 200 110 170 Z" fill="#2e7d32"/>
+<path d="M118 224 L106 266 L126 254 L134 268 L142 226 Z" fill="#ffffff"/>
+</g>
+</svg>

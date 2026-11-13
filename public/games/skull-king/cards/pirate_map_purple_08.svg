@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+<title>Pirate map (purple) 8</title>
+<desc>Card: Pirate map (purple) 8</desc>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#fdfaf3" stroke="#1b1b1b" stroke-width="2"/>
+<rect x="2" y="2" width="246" height="346" rx="18" ry="18" fill="#6a3d9a"/>
+<rect x="12" y="12" width="226" height="326" rx="12" ry="12" fill="none" stroke="#ffffff" stroke-width="2"/>
+<text x="22" y="52" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff">8</text>
+<g transform="rotate(180 125 175)"><text x="22" y="52" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff">8</text></g>
+<g data-icon="map">
+<path d="M68 110 L100 122 L132 110 L164 122 L182 112 L182 240 L164 250 L132 238 L100 250 L68 238 Z" fill="#ffffff"/>
+<path d="M112 158 L138 184 M138 158 L112 184" stroke="#6a3d9a" stroke-width="7" stroke-linecap="round"/>
+<path d="M80 230 Q100 200 118 214 T150 196" fill="none" stroke="#6a3d9a" stroke-width="3" stroke-dasharray="5 5"/>
+</g>
+</svg>

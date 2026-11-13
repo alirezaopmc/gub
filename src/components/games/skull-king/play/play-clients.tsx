@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { PlayRoundHistory } from "@/components/games/skull-king/play/play-round-history";
@@ -8,6 +7,10 @@ import { PlayScoringPhase } from "@/components/games/skull-king/play/play-scorin
 import { PlayVoyageStatsDialog } from "@/components/games/skull-king/play/play-voyage-stats-dialog";
 import styles from "@/components/games/skull-king/play/styles/play.module.css";
 import { RoundScoreBodyMotion } from "@/components/games/skull-king/round-score/round-body-motion";
+import {
+  CardImage,
+  cardImageLabel,
+} from "@/components/games/skull-king/shared/card-image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,11 +19,7 @@ import {
   loadGameSession,
 } from "@/lib/games/common/game-client";
 import { useGameSocket } from "@/lib/games/common/use-game-socket";
-import {
-  CARD_BACK_IMAGE,
-  cardImagePath,
-  createCard,
-} from "@/lib/games/skull-king/engine/cards";
+import { createCard } from "@/lib/games/skull-king/engine/cards";
 import type { Card as SkCard } from "@/lib/games/skull-king/engine/types";
 import { playCardSound } from "@/lib/games/skull-king/play/sounds";
 import type { PublicMatchView } from "@/lib/games/skull-king/session/match-store";
@@ -100,22 +99,22 @@ export function PlayingCard({
   small?: boolean;
   playable?: boolean;
 }) {
-  const src =
-    faceDown || !cardId ? CARD_BACK_IMAGE : cardImagePath(parseCardId(cardId));
+  const card = faceDown || !cardId ? undefined : parseCardId(cardId);
+  const label = cardImageLabel(card, faceDown);
   return (
     <button
       type="button"
+      aria-label={onClick ? `Play ${label}` : label}
       className={`${styles.card} ${small ? styles.cardSmall : ""} ${onClick ? styles.cardClickable : ""} ${playable ? styles.cardPlayable : ""}`}
       onClick={onClick}
       disabled={!onClick}
     >
-      <Image
-        src={src}
-        alt=""
+      <CardImage
+        card={card}
+        faceDown={faceDown}
+        className={styles.cardImage}
         width={120}
         height={168}
-        className={styles.cardImage}
-        unoptimized
       />
     </button>
   );
