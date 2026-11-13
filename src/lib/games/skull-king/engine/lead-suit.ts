@@ -1,5 +1,5 @@
 import { isCharacterLead, isEscapeLike } from "./cards";
-import type { PlayedCard, StandardSuit } from "./types";
+import type { PlayedCard, RuleFlags, StandardSuit } from "./types";
 
 export type LeadContext = {
   /** Null when no follow suit required (character/advanced lead). */
@@ -13,7 +13,10 @@ export function initialLeadContext(): LeadContext {
 }
 
 /** Update lead context as cards are played in order. */
-export function resolveLeadContext(plays: readonly PlayedCard[]): LeadContext {
+export function resolveLeadContext(
+  plays: readonly PlayedCard[],
+  flags?: RuleFlags,
+): LeadContext {
   if (plays.length === 0) return initialLeadContext();
 
   const first = plays[0]!;
@@ -24,9 +27,21 @@ export function resolveLeadContext(plays: readonly PlayedCard[]): LeadContext {
   }
 
   if (firstEscape) {
-    for (const play of plays) {
+    const deferThroughCharacters =
+      flags?.escapeLeadDefersThroughCharacters ?? false;
+    for (let i = 1; i < plays.length; i++) {
+      const play = plays[i]!;
       if (play.card.def.kind === "suited") {
         return { leadSuit: play.card.def.suit, awaitingSuit: false };
+      }
+      if (
+        isEscapeLike(play.card, play.tigressMode) ||
+        play.card.def.kind === "loot"
+      ) {
+        continue;
+      }
+      if (!deferThroughCharacters) {
+        return { leadSuit: null, awaitingSuit: false };
       }
     }
     return { leadSuit: null, awaitingSuit: true };
@@ -42,8 +57,9 @@ export function resolveLeadContext(plays: readonly PlayedCard[]): LeadContext {
 /** Lead context for the next player to act (partial trick). */
 export function leadContextForNextPlay(
   plays: readonly PlayedCard[],
+  flags?: RuleFlags,
 ): LeadContext {
-  return resolveLeadContext(plays);
+  return resolveLeadContext(plays, flags);
 }
 
 export function mustFollowSuit(ctx: LeadContext): boolean {

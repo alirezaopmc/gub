@@ -215,6 +215,7 @@ export function finalizeRoundScoring(
     fourteenBonus: config.artifacts.fourteenBonus,
     characterCapture: config.artifacts.characterCapture,
     loot: config.artifacts.loot,
+    scoringSystem: config.scoringSystem,
   });
   return { ...round, roundScores: scores, phase: "scoring" };
 }
@@ -228,11 +229,14 @@ export function submitBidOnRound(
   round: RoundState,
   playerIndex: number,
   bid: number,
+  ammoChoice?: "grapeshot" | "cannonball",
 ): RoundState | { error: string } {
   if (round.phase !== "bidding") return { error: "not_bidding" };
   if (bid < 0 || bid > round.handSize) return { error: "invalid_bid" };
   const bids = round.bids.map((b, i) =>
-    i === playerIndex ? { ...b, bid } : b,
+    i === playerIndex
+      ? { ...b, bid, ...(ammoChoice ? { ammoChoice } : {}) }
+      : b,
   );
   const next = { ...round, bids };
   if (allBidsSubmitted(next)) {

@@ -1,0 +1,3976 @@
+[
+  {
+    "id": "score_0001",
+    "name": "Round 1 bid 1 won 1",
+    "handSize": 1,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0002",
+    "name": "Round 1 bid 3 won 1",
+    "handSize": 1,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0003",
+    "name": "Round 1 bid 1 won 3",
+    "handSize": 1,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0004",
+    "name": "Round 1 zero bid made",
+    "handSize": 1,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 10,
+      "bonus": 0,
+      "total": 10
+    }
+  },
+  {
+    "id": "score_0005",
+    "name": "Round 1 zero bid missed (won 1)",
+    "handSize": 1,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -10,
+      "bonus": 0,
+      "total": -10
+    }
+  },
+  {
+    "id": "score_0006",
+    "name": "Round 1 zero bid missed (won 1)",
+    "handSize": 1,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -10,
+      "bonus": 0,
+      "total": -10
+    }
+  },
+  {
+    "id": "score_0007",
+    "name": "Round 2 bid 1 won 1",
+    "handSize": 2,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0008",
+    "name": "Round 2 bid 2 won 2",
+    "handSize": 2,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0009",
+    "name": "Round 2 bid 3 won 1",
+    "handSize": 2,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -10,
+      "bonus": 0,
+      "total": -10
+    }
+  },
+  {
+    "id": "score_0010",
+    "name": "Round 2 bid 1 won 3",
+    "handSize": 2,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0011",
+    "name": "Round 2 zero bid made",
+    "handSize": 2,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0012",
+    "name": "Round 2 zero bid missed (won 1)",
+    "handSize": 2,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0013",
+    "name": "Round 2 zero bid missed (won 2)",
+    "handSize": 2,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0014",
+    "name": "Round 3 bid 1 won 1",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0015",
+    "name": "Round 3 bid 2 won 2",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0016",
+    "name": "Round 3 bid 3 won 3",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0017",
+    "name": "Round 3 bid 3 won 1",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0018",
+    "name": "Round 3 bid 1 won 3",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0019",
+    "name": "Round 3 zero bid made",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 30,
+      "bonus": 0,
+      "total": 30
+    }
+  },
+  {
+    "id": "score_0020",
+    "name": "Round 3 zero bid missed (won 1)",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -30,
+      "bonus": 0,
+      "total": -30
+    }
+  },
+  {
+    "id": "score_0021",
+    "name": "Round 3 zero bid missed (won 3)",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -30,
+      "bonus": 0,
+      "total": -30
+    }
+  },
+  {
+    "id": "score_0022",
+    "name": "Round 4 bid 1 won 1",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0023",
+    "name": "Round 4 bid 2 won 2",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0024",
+    "name": "Round 4 bid 3 won 3",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0025",
+    "name": "Round 4 bid 4 won 4",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 4,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 4,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0026",
+    "name": "Round 4 bid 3 won 1",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0027",
+    "name": "Round 4 bid 1 won 3",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0028",
+    "name": "Round 4 zero bid made",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0029",
+    "name": "Round 4 zero bid missed (won 1)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -40,
+      "bonus": 0,
+      "total": -40
+    }
+  },
+  {
+    "id": "score_0030",
+    "name": "Round 4 zero bid missed (won 4)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -40,
+      "bonus": 0,
+      "total": -40
+    }
+  },
+  {
+    "id": "score_0031",
+    "name": "Round 5 bid 1 won 1",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0032",
+    "name": "Round 5 bid 2 won 2",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0033",
+    "name": "Round 5 bid 3 won 3",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0034",
+    "name": "Round 5 bid 4 won 4",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 4,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 4,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0035",
+    "name": "Round 5 bid 5 won 5",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 5,
+      "won": 5,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 5,
+        "won": 5,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 100,
+      "bonus": 0,
+      "total": 100
+    }
+  },
+  {
+    "id": "score_0036",
+    "name": "Round 5 bid 3 won 1",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0037",
+    "name": "Round 5 bid 1 won 3",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0038",
+    "name": "Round 5 zero bid made",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 50,
+      "bonus": 0,
+      "total": 50
+    }
+  },
+  {
+    "id": "score_0039",
+    "name": "Round 5 zero bid missed (won 1)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -50,
+      "bonus": 0,
+      "total": -50
+    }
+  },
+  {
+    "id": "score_0040",
+    "name": "Round 5 zero bid missed (won 5)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 5,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 5,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -50,
+      "bonus": 0,
+      "total": -50
+    }
+  },
+  {
+    "id": "score_0041",
+    "name": "Round 6 bid 1 won 1",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0042",
+    "name": "Round 6 bid 2 won 2",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0043",
+    "name": "Round 6 bid 3 won 3",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0044",
+    "name": "Round 6 bid 4 won 4",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 4,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 4,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0045",
+    "name": "Round 6 bid 5 won 5",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 5,
+      "won": 5,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 5,
+        "won": 5,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 100,
+      "bonus": 0,
+      "total": 100
+    }
+  },
+  {
+    "id": "score_0046",
+    "name": "Round 6 bid 6 won 6",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 6,
+      "won": 6,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 6,
+        "won": 6,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 120,
+      "bonus": 0,
+      "total": 120
+    }
+  },
+  {
+    "id": "score_0047",
+    "name": "Round 6 bid 3 won 1",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0048",
+    "name": "Round 6 bid 1 won 3",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0049",
+    "name": "Round 6 zero bid made",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0050",
+    "name": "Round 6 zero bid missed (won 1)",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -60,
+      "bonus": 0,
+      "total": -60
+    }
+  },
+  {
+    "id": "score_0051",
+    "name": "Round 6 zero bid missed (won 6)",
+    "handSize": 6,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 6,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 6,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -60,
+      "bonus": 0,
+      "total": -60
+    }
+  },
+  {
+    "id": "score_0052",
+    "name": "Round 7 bid 1 won 1",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0053",
+    "name": "Round 7 bid 2 won 2",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0054",
+    "name": "Round 7 bid 3 won 3",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0055",
+    "name": "Round 7 bid 4 won 4",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 4,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 4,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0056",
+    "name": "Round 7 bid 5 won 5",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 5,
+      "won": 5,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 5,
+        "won": 5,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 100,
+      "bonus": 0,
+      "total": 100
+    }
+  },
+  {
+    "id": "score_0057",
+    "name": "Round 7 bid 6 won 6",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 6,
+      "won": 6,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 6,
+        "won": 6,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 120,
+      "bonus": 0,
+      "total": 120
+    }
+  },
+  {
+    "id": "score_0058",
+    "name": "Round 7 bid 7 won 7",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 7,
+      "won": 7,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 7,
+        "won": 7,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 140,
+      "bonus": 0,
+      "total": 140
+    }
+  },
+  {
+    "id": "score_0059",
+    "name": "Round 7 bid 3 won 1",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0060",
+    "name": "Round 7 bid 1 won 3",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0061",
+    "name": "Round 7 zero bid made",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 70,
+      "bonus": 0,
+      "total": 70
+    }
+  },
+  {
+    "id": "score_0062",
+    "name": "Round 7 zero bid missed (won 1)",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -70,
+      "bonus": 0,
+      "total": -70
+    }
+  },
+  {
+    "id": "score_0063",
+    "name": "Round 7 zero bid missed (won 7)",
+    "handSize": 7,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 7,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 7,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -70,
+      "bonus": 0,
+      "total": -70
+    }
+  },
+  {
+    "id": "score_0064",
+    "name": "Round 8 bid 1 won 1",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0065",
+    "name": "Round 8 bid 2 won 2",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0066",
+    "name": "Round 8 bid 3 won 3",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0067",
+    "name": "Round 8 bid 4 won 4",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 4,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 4,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0068",
+    "name": "Round 8 bid 5 won 5",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 5,
+      "won": 5,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 5,
+        "won": 5,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 100,
+      "bonus": 0,
+      "total": 100
+    }
+  },
+  {
+    "id": "score_0069",
+    "name": "Round 8 bid 6 won 6",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 6,
+      "won": 6,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 6,
+        "won": 6,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 120,
+      "bonus": 0,
+      "total": 120
+    }
+  },
+  {
+    "id": "score_0070",
+    "name": "Round 8 bid 7 won 7",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 7,
+      "won": 7,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 7,
+        "won": 7,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 140,
+      "bonus": 0,
+      "total": 140
+    }
+  },
+  {
+    "id": "score_0071",
+    "name": "Round 8 bid 8 won 8",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 8,
+      "won": 8,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 8,
+        "won": 8,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 160,
+      "bonus": 0,
+      "total": 160
+    }
+  },
+  {
+    "id": "score_0072",
+    "name": "Round 8 bid 3 won 1",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0073",
+    "name": "Round 8 bid 1 won 3",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0074",
+    "name": "Round 8 zero bid made",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0075",
+    "name": "Round 8 zero bid missed (won 1)",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -80,
+      "bonus": 0,
+      "total": -80
+    }
+  },
+  {
+    "id": "score_0076",
+    "name": "Round 8 zero bid missed (won 8)",
+    "handSize": 8,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 8,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 8,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -80,
+      "bonus": 0,
+      "total": -80
+    }
+  },
+  {
+    "id": "score_0077",
+    "name": "Round 9 bid 1 won 1",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0078",
+    "name": "Round 9 bid 2 won 2",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0079",
+    "name": "Round 9 bid 3 won 3",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0080",
+    "name": "Round 9 bid 4 won 4",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 4,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 4,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0081",
+    "name": "Round 9 bid 5 won 5",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 5,
+      "won": 5,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 5,
+        "won": 5,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 100,
+      "bonus": 0,
+      "total": 100
+    }
+  },
+  {
+    "id": "score_0082",
+    "name": "Round 9 bid 6 won 6",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 6,
+      "won": 6,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 6,
+        "won": 6,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 120,
+      "bonus": 0,
+      "total": 120
+    }
+  },
+  {
+    "id": "score_0083",
+    "name": "Round 9 bid 7 won 7",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 7,
+      "won": 7,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 7,
+        "won": 7,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 140,
+      "bonus": 0,
+      "total": 140
+    }
+  },
+  {
+    "id": "score_0084",
+    "name": "Round 9 bid 8 won 8",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 8,
+      "won": 8,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 8,
+        "won": 8,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 160,
+      "bonus": 0,
+      "total": 160
+    }
+  },
+  {
+    "id": "score_0085",
+    "name": "Round 9 bid 9 won 9",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 9,
+      "won": 9,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 9,
+        "won": 9,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 180,
+      "bonus": 0,
+      "total": 180
+    }
+  },
+  {
+    "id": "score_0086",
+    "name": "Round 9 bid 3 won 1",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0087",
+    "name": "Round 9 bid 1 won 3",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0088",
+    "name": "Round 9 zero bid made",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 90,
+      "bonus": 0,
+      "total": 90
+    }
+  },
+  {
+    "id": "score_0089",
+    "name": "Round 9 zero bid missed (won 1)",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -90,
+      "bonus": 0,
+      "total": -90
+    }
+  },
+  {
+    "id": "score_0090",
+    "name": "Round 9 zero bid missed (won 9)",
+    "handSize": 9,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 9,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 9,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -90,
+      "bonus": 0,
+      "total": -90
+    }
+  },
+  {
+    "id": "score_0091",
+    "name": "Round 10 bid 1 won 1",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0092",
+    "name": "Round 10 bid 2 won 2",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0093",
+    "name": "Round 10 bid 3 won 3",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0094",
+    "name": "Round 10 bid 4 won 4",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 4,
+      "won": 4,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 4,
+        "won": 4,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 80,
+      "bonus": 0,
+      "total": 80
+    }
+  },
+  {
+    "id": "score_0095",
+    "name": "Round 10 bid 5 won 5",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 5,
+      "won": 5,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 5,
+        "won": 5,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 100,
+      "bonus": 0,
+      "total": 100
+    }
+  },
+  {
+    "id": "score_0096",
+    "name": "Round 10 bid 6 won 6",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 6,
+      "won": 6,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 6,
+        "won": 6,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 120,
+      "bonus": 0,
+      "total": 120
+    }
+  },
+  {
+    "id": "score_0097",
+    "name": "Round 10 bid 7 won 7",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 7,
+      "won": 7,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 7,
+        "won": 7,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 140,
+      "bonus": 0,
+      "total": 140
+    }
+  },
+  {
+    "id": "score_0098",
+    "name": "Round 10 bid 8 won 8",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 8,
+      "won": 8,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 8,
+        "won": 8,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 160,
+      "bonus": 0,
+      "total": 160
+    }
+  },
+  {
+    "id": "score_0099",
+    "name": "Round 10 bid 9 won 9",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 9,
+      "won": 9,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 9,
+        "won": 9,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 180,
+      "bonus": 0,
+      "total": 180
+    }
+  },
+  {
+    "id": "score_0100",
+    "name": "Round 10 bid 10 won 10",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 10,
+      "won": 10,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 10,
+        "won": 10,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 200,
+      "bonus": 0,
+      "total": 200
+    }
+  },
+  {
+    "id": "score_0101",
+    "name": "Round 10 bid 3 won 1",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0102",
+    "name": "Round 10 bid 1 won 3",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -20,
+      "bonus": 0,
+      "total": -20
+    }
+  },
+  {
+    "id": "score_0103",
+    "name": "Round 10 zero bid made",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 0,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 0,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 100,
+      "bonus": 0,
+      "total": 100
+    }
+  },
+  {
+    "id": "score_0104",
+    "name": "Round 10 zero bid missed (won 1)",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -100,
+      "bonus": 0,
+      "total": -100
+    }
+  },
+  {
+    "id": "score_0105",
+    "name": "Round 10 zero bid missed (won 10)",
+    "handSize": 10,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 0,
+      "won": 10,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 0,
+        "won": 10,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": -100,
+      "bonus": 0,
+      "total": -100
+    }
+  },
+  {
+    "id": "score_0106",
+    "name": "Bid made with green 14 bonus (+10)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "green"
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "green"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 10,
+      "total": 50
+    }
+  },
+  {
+    "id": "score_0107",
+    "name": "Bid made with black 14 bonus (+20)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "black"
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "black"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 20,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0108",
+    "name": "Bid made with black and yellow 14s (+30)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "black"
+        },
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "yellow"
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "black"
+          },
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "yellow"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 30,
+      "total": 70
+    }
+  },
+  {
+    "id": "score_0109",
+    "name": "Bid missed with black 14: bonus forfeited",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 3,
+      "events": [
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "black"
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 3,
+        "events": [
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "black"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": -10,
+      "bonus": 0,
+      "total": -10
+    }
+  },
+  {
+    "id": "score_0110",
+    "name": "Pirate captures 1 Mermaid (+20)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": [
+        {
+          "type": "characterCapture",
+          "capturerIndex": 0,
+          "capturingCard": "pirate",
+          "count": 1
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": [
+          {
+            "type": "characterCapture",
+            "capturerIndex": 0,
+            "capturingCard": "pirate",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 20,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0111",
+    "name": "Pirate captures 2 Mermaids (+40)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": [
+        {
+          "type": "characterCapture",
+          "capturerIndex": 0,
+          "capturingCard": "pirate",
+          "count": 2
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": [
+          {
+            "type": "characterCapture",
+            "capturerIndex": 0,
+            "capturingCard": "pirate",
+            "count": 2
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 40,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0112",
+    "name": "Skull King captures 1 Pirate (+30)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": [
+        {
+          "type": "characterCapture",
+          "capturerIndex": 0,
+          "capturingCard": "king",
+          "count": 1
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": [
+          {
+            "type": "characterCapture",
+            "capturerIndex": 0,
+            "capturingCard": "king",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 30,
+      "total": 50
+    }
+  },
+  {
+    "id": "score_0113",
+    "name": "Skull King captures 3 Pirates (+90)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": [
+        {
+          "type": "characterCapture",
+          "capturerIndex": 0,
+          "capturingCard": "king",
+          "count": 3
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": [
+          {
+            "type": "characterCapture",
+            "capturerIndex": 0,
+            "capturingCard": "king",
+            "count": 3
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 90,
+      "total": 110
+    }
+  },
+  {
+    "id": "score_0114",
+    "name": "Mermaid captures Skull King (+40)",
+    "handSize": 5,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": [
+        {
+          "type": "characterCapture",
+          "capturerIndex": 0,
+          "capturingCard": "mermaid",
+          "count": 1
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": [
+          {
+            "type": "characterCapture",
+            "capturerIndex": 0,
+            "capturingCard": "mermaid",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 40,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0115",
+    "name": "Alliance: both hit bids (+20 each)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "alliance",
+          "lootPlayerIndex": 0,
+          "trickWinnerIndex": 1
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "alliance",
+            "lootPlayerIndex": 0,
+            "trickWinnerIndex": 1
+          }
+        ]
+      },
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 20,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0116",
+    "name": "Alliance: partner missed bid (0 bonus)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "alliance",
+          "lootPlayerIndex": 0,
+          "trickWinnerIndex": 1
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "alliance",
+            "lootPlayerIndex": 0,
+            "trickWinnerIndex": 1
+          }
+        ]
+      },
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0117",
+    "name": "Rascal wager made (+20)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "pirateAbility",
+          "pirate": "rascal",
+          "ownerIndex": 0,
+          "wager": 20
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "pirateAbility",
+            "pirate": "rascal",
+            "ownerIndex": 0,
+            "wager": 20
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 20,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0118",
+    "name": "Rascal wager missed (-20 penalty!)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 3,
+      "events": [
+        {
+          "type": "pirateAbility",
+          "pirate": "rascal",
+          "ownerIndex": 0,
+          "wager": 20
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 3,
+        "events": [
+          {
+            "type": "pirateAbility",
+            "pirate": "rascal",
+            "ownerIndex": 0,
+            "wager": 20
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": -10,
+      "bonus": -20,
+      "total": -30
+    }
+  },
+  {
+    "id": "score_0119",
+    "name": "Harry the Giant adjusts bid 2 to 3 (won 3) -> hit",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "classic",
+    "player": {
+      "harryGiantBidDelta": 1,
+      "score": 0,
+      "bid": 2,
+      "won": 3,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": 1,
+        "score": 0,
+        "bid": 2,
+        "won": 3,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0120",
+    "name": "Rascal Scoring Ex A: Round 3 Direct Hit",
+    "handSize": 3,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 30,
+      "bonus": 0,
+      "total": 30
+    }
+  },
+  {
+    "id": "score_0121",
+    "name": "Rascal Scoring Ex B: Direct Hit (40)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 1,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 1,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 0,
+      "total": 40
+    }
+  },
+  {
+    "id": "score_0122",
+    "name": "Rascal Scoring Ex B: Glancing Blow off by 1 (20)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 0,
+      "total": 20
+    }
+  },
+  {
+    "id": "score_0123",
+    "name": "Rascal Scoring Ex B: Complete Miss off by 2 (0)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 3,
+      "won": 1,
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 3,
+        "won": 1,
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 0,
+      "bonus": 0,
+      "total": 0
+    }
+  },
+  {
+    "id": "score_0124",
+    "name": "Cannonball Direct Hit (15 * 4 = 60)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "ammoChoice": "cannonball",
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "ammoChoice": "cannonball",
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 60,
+      "bonus": 0,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0125",
+    "name": "Cannonball Miss off by 1 (0 pts, all-or-nothing)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 3,
+      "ammoChoice": "cannonball",
+      "events": []
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 3,
+        "ammoChoice": "cannonball",
+        "events": []
+      }
+    ],
+    "expected": {
+      "main": 0,
+      "bonus": 0,
+      "total": 0
+    }
+  },
+  {
+    "id": "score_0126",
+    "name": "Rascal Scoring: Direct Hit with 30 bonus (100% = 30)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "black"
+        },
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "green"
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "black"
+          },
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "green"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 30,
+      "total": 70
+    }
+  },
+  {
+    "id": "score_0127",
+    "name": "Rascal Scoring: Glancing Blow with 30 bonus (50% = 15)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 3,
+      "events": [
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "black"
+        },
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "green"
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 3,
+        "events": [
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "black"
+          },
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "green"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": 15,
+      "total": 35
+    }
+  },
+  {
+    "id": "score_0128",
+    "name": "Rascal Scoring: Complete Miss with 30 bonus (0% = 0)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 0,
+      "events": [
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "black"
+        },
+        {
+          "type": "fourteenBonus",
+          "playerIndex": 0,
+          "suit": "green"
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 0,
+        "events": [
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "black"
+          },
+          {
+            "type": "fourteenBonus",
+            "playerIndex": 0,
+            "suit": "green"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 0,
+      "bonus": 0,
+      "total": 0
+    }
+  },
+  {
+    "id": "score_0129",
+    "name": "Rascal Scoring: Rascal wager made (+20)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 2,
+      "events": [
+        {
+          "type": "pirateAbility",
+          "pirate": "rascal",
+          "ownerIndex": 0,
+          "wager": 20
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 2,
+        "events": [
+          {
+            "type": "pirateAbility",
+            "pirate": "rascal",
+            "ownerIndex": 0,
+            "wager": 20
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 40,
+      "bonus": 20,
+      "total": 60
+    }
+  },
+  {
+    "id": "score_0130",
+    "name": "Rascal Scoring: Rascal wager glancing blow (-20 penalty)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 3,
+      "events": [
+        {
+          "type": "pirateAbility",
+          "pirate": "rascal",
+          "ownerIndex": 0,
+          "wager": 20
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 3,
+        "events": [
+          {
+            "type": "pirateAbility",
+            "pirate": "rascal",
+            "ownerIndex": 0,
+            "wager": 20
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 20,
+      "bonus": -20,
+      "total": 0
+    }
+  },
+  {
+    "id": "score_0131",
+    "name": "Rascal Scoring: Rascal wager complete miss (-20 penalty)",
+    "handSize": 4,
+    "playerIndex": 0,
+    "scoringSystem": "rascal",
+    "player": {
+      "harryGiantBidDelta": null,
+      "score": 0,
+      "bid": 2,
+      "won": 0,
+      "events": [
+        {
+          "type": "pirateAbility",
+          "pirate": "rascal",
+          "ownerIndex": 0,
+          "wager": 20
+        }
+      ]
+    },
+    "roundPlayers": [
+      {
+        "harryGiantBidDelta": null,
+        "score": 0,
+        "bid": 2,
+        "won": 0,
+        "events": [
+          {
+            "type": "pirateAbility",
+            "pirate": "rascal",
+            "ownerIndex": 0,
+            "wager": 20
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "main": 0,
+      "bonus": -20,
+      "total": -20
+    }
+  }
+]

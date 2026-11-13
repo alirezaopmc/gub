@@ -7,8 +7,10 @@
 
 import { effectiveTricksBid } from "@/lib/games/skull-king/round-score/bid-won-validation";
 import type {
+  AmmoChoice,
   PlayerRoundData,
   RoundEvent,
+  ScoringSystem,
 } from "@/lib/games/skull-king/round-score/types";
 import {
   MAX_MERMAIDS_IN_GAME,
@@ -28,6 +30,7 @@ export type ScoreBreakdownContext = {
   playerIndex: number;
   player: PlayerRoundData;
   roundPlayers: readonly PlayerRoundData[];
+  scoringSystem?: ScoringSystem;
 };
 
 /** Clamp stored capture count to deck limits; mermaid→SK is always one trick. */
@@ -92,6 +95,7 @@ export function scoreAlliance(
   player: PlayerRoundData,
   roundPlayers: readonly PlayerRoundData[],
   handSize: number,
+  scoringSystem: ScoringSystem = "classic",
 ): number {
   let total = 0;
   for (const e of player.events) {
@@ -106,9 +110,53 @@ export function scoreAlliance(
     const bidB = effectiveTricksBid(handSize, pb.bid, pb.harryGiantBidDelta);
     if (bidA === null || pa.won === null || bidB === null || pb.won === null)
       continue;
-    if (bidA === pa.won && bidB === pb.won) total += 20;
+    const hitA =
+      scoringSystem === "rascal"
+        ? Math.abs(bidA - pa.won) <= 1
+        : bidA === pa.won;
+    const hitB =
+      scoringSystem === "rascal"
+        ? Math.abs(bidB - pb.won) <= 1
+        : bidB === pb.won;
+    if (hitA && hitB) total += 20;
   }
   return total;
+}
+
+/**
+ * Rascal's Scoring — Part 1: Bid vs Won with Grapeshot or Cannonball.
+ * Grapeshot:
+ *   - Direct Hit (exact bid): 10 x cards dealt, 100% bonuses
+ *   - Glancing Blow (off by 1): 5 x cards dealt, 50% bonuses
+ *   - Complete Miss (off by 2+): 0 points, 0% bonuses
+ * Cannonball:
+ *   - Direct Hit (exact bid): 15 x cards dealt, 100% bonuses
+ *   - Off by 1+: 0 points, 0% bonuses
+ */
+export function scoreRascalBidWon(
+  handSize: number,
+  effectiveBid: number | null,
+  won: number | null,
+  ammo: AmmoChoice = "grapeshot",
+): { main: number; multiplier: number } {
+  if (effectiveBid === null || won === null) return { main: 0, multiplier: 0 };
+  const n = Math.max(0, Math.floor(handSize));
+  const diff = Math.abs(effectiveBid - won);
+
+  if (ammo === "cannonball") {
+    if (diff === 0) {
+      return { main: 15 * n, multiplier: 1 };
+    }
+    return { main: 0, multiplier: 0 };
+  }
+
+  if (diff === 0) {
+    return { main: 10 * n, multiplier: 1 };
+  }
+  if (diff === 1) {
+    return { main: 5 * n, multiplier: 0.5 };
+  }
+  return { main: 0, multiplier: 0 };
 }
 
 /**
@@ -142,19 +190,60 @@ function madeBid(handSize: number, player: PlayerRoundData): boolean {
 export function computeRoundScoreBreakdown(
   ctx: ScoreBreakdownContext,
 ): RoundScoreBreakdown {
-  const { handSize, playerIndex, player, roundPlayers } = ctx;
+  const {
+    handSize,
+    playerIndex,
+    player,
+    roundPlayers,
+    scoringSystem = "classic",
+  } = ctx;
   const eff = effectiveTricksBid(
     handSize,
     player.bid,
     player.harryGiantBidDelta,
   );
+
+  if (scoringSystem === "rascal") {
+    const { main, multiplier } = scoreRascalBidWon(
+      handSize,
+      eff,
+      player.won,
+      player.ammoChoice ?? "grapeshot",
+    );
+    const rascalPenalty =
+      eff !== null && player.won !== null && eff !== player.won
+        ? scoreRascal(player.events, playerIndex, eff, player.won)
+        : 0;
+
+    if (multiplier === 0) {
+      return { main, bonus: rascalPenalty, total: main + rascalPenalty };
+    }
+    const rawFourteen = scoreFourteenBonus(player.events);
+    const rawCaptures = scoreHeroCaptures(player.events);
+    const rawAlliance = scoreAlliance(
+      playerIndex,
+      player,
+      roundPlayers,
+      handSize,
+      scoringSystem,
+    );
+    const rawRascal =
+      multiplier === 1
+        ? Math.max(0, scoreRascal(player.events, playerIndex, eff, player.won))
+        : 0;
+    const rawBonus = rawFourteen + rawCaptures + rawAlliance + rawRascal;
+    const bonus = Math.floor(rawBonus * multiplier) + rascalPenalty;
+    return { main, bonus, total: main + bonus };
+  }
+
   const main = scoreBidWon(handSize, eff, player.won);
-  const bonus = madeBid(handSize, player)
+  const positiveBonus = madeBid(handSize, player)
     ? scoreFourteenBonus(player.events) +
       scoreHeroCaptures(player.events) +
-      scoreAlliance(playerIndex, player, roundPlayers, handSize) +
-      scoreRascal(player.events, playerIndex, eff, player.won)
+      scoreAlliance(playerIndex, player, roundPlayers, handSize)
     : 0;
+  const rascal = scoreRascal(player.events, playerIndex, eff, player.won);
+  const bonus = positiveBonus + rascal;
   return { main, bonus, total: main + bonus };
 }
 

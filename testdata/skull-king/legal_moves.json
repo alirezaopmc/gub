@@ -1,0 +1,1793 @@
+[
+  {
+    "id": "legal_0001",
+    "name": "Trick leader can play any card in hand",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "yellow:8",
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0002",
+    "name": "Green led: player must follow green or play special",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "green:7",
+          "def": {
+            "kind": "suited",
+            "suit": "green",
+            "rank": 7
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0003",
+    "name": "Purple led: player has no purple, can play anything",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "purple:10",
+          "def": {
+            "kind": "suited",
+            "suit": "purple",
+            "rank": 10
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "yellow:8",
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0004",
+    "name": "Black led: player has black in hand, must follow black or special",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "black:6",
+          "def": {
+            "kind": "suited",
+            "suit": "black",
+            "rank": 6
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0005",
+    "name": "Escape led: suit not set, can play anything",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "escape:1",
+          "def": {
+            "kind": "escape",
+            "index": 1
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "yellow:8",
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0006",
+    "name": "Escape led then yellow 10: must follow yellow or special",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "escape:1",
+          "def": {
+            "kind": "escape",
+            "index": 1
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      },
+      {
+        "card": {
+          "id": "yellow:10",
+          "def": {
+            "kind": "suited",
+            "suit": "yellow",
+            "rank": 10
+          }
+        },
+        "playerIndex": 1,
+        "playOrder": 1
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "yellow:8",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0007",
+    "name": "Green led then Kraken played: player holding green must STILL follow green or special",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "green:4",
+          "def": {
+            "kind": "suited",
+            "suit": "green",
+            "rank": 4
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      },
+      {
+        "card": {
+          "id": "kraken",
+          "def": {
+            "kind": "kraken"
+          }
+        },
+        "playerIndex": 1,
+        "playOrder": 1
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0008",
+    "name": "Green led then Whale played: player holding green must STILL follow green or special",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "green:4",
+          "def": {
+            "kind": "suited",
+            "suit": "green",
+            "rank": 4
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      },
+      {
+        "card": {
+          "id": "whale",
+          "def": {
+            "kind": "whale"
+          }
+        },
+        "playerIndex": 1,
+        "playOrder": 1
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0009",
+    "name": "Pirate led: no suit set, can play anything",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "pirate:bendt",
+          "def": {
+            "kind": "pirate",
+            "pirate": "bendt"
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "yellow:8",
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0010",
+    "name": "Escape led then Pirate: flag=false -> no suit set",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "escape:0",
+          "def": {
+            "kind": "escape",
+            "index": 0
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      },
+      {
+        "card": {
+          "id": "pirate:bendt",
+          "def": {
+            "kind": "pirate",
+            "pirate": "bendt"
+          }
+        },
+        "playerIndex": 1,
+        "playOrder": 1
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "yellow:8",
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0011",
+    "name": "Escape led then Pirate: flag=true -> no suit set yet",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "escape:0",
+          "def": {
+            "kind": "escape",
+            "index": 0
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      },
+      {
+        "card": {
+          "id": "pirate:bendt",
+          "def": {
+            "kind": "pirate",
+            "pirate": "bendt"
+          }
+        },
+        "playerIndex": 1,
+        "playOrder": 1
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": true
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "yellow:8",
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0012",
+    "name": "Escape led then Pirate then Green 10: flag=true -> must follow green",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "escape:0",
+          "def": {
+            "kind": "escape",
+            "index": 0
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      },
+      {
+        "card": {
+          "id": "pirate:bendt",
+          "def": {
+            "kind": "pirate",
+            "pirate": "bendt"
+          }
+        },
+        "playerIndex": 1,
+        "playOrder": 1
+      },
+      {
+        "card": {
+          "id": "green:10",
+          "def": {
+            "kind": "suited",
+            "suit": "green",
+            "rank": 10
+          }
+        },
+        "playerIndex": 2,
+        "playOrder": 2
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": true
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0013",
+    "name": "Escape led then Pirate then Green 10: flag=false -> green did not set suit (pirate ended it)",
+    "hand": [
+      {
+        "id": "green:5",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 5
+        }
+      },
+      {
+        "id": "green:12",
+        "def": {
+          "kind": "suited",
+          "suit": "green",
+          "rank": 12
+        }
+      },
+      {
+        "id": "yellow:8",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 8
+        }
+      },
+      {
+        "id": "black:14",
+        "def": {
+          "kind": "suited",
+          "suit": "black",
+          "rank": 14
+        }
+      },
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:rosie",
+        "def": {
+          "kind": "pirate",
+          "pirate": "rosie"
+        }
+      },
+      {
+        "id": "tigress",
+        "def": {
+          "kind": "tigress"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:alyra",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "alyra"
+        }
+      },
+      {
+        "id": "loot:0",
+        "def": {
+          "kind": "loot",
+          "index": 0
+        }
+      },
+      {
+        "id": "kraken",
+        "def": {
+          "kind": "kraken"
+        }
+      },
+      {
+        "id": "whale",
+        "def": {
+          "kind": "whale"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "escape:0",
+          "def": {
+            "kind": "escape",
+            "index": 0
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      },
+      {
+        "card": {
+          "id": "pirate:bendt",
+          "def": {
+            "kind": "pirate",
+            "pirate": "bendt"
+          }
+        },
+        "playerIndex": 1,
+        "playOrder": 1
+      },
+      {
+        "card": {
+          "id": "green:10",
+          "def": {
+            "kind": "suited",
+            "suit": "green",
+            "rank": 10
+          }
+        },
+        "playerIndex": 2,
+        "playOrder": 2
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "green:5",
+      "green:12",
+      "yellow:8",
+      "black:14",
+      "escape:0",
+      "pirate:rosie",
+      "tigress",
+      "skull_king",
+      "mermaid:alyra",
+      "loot:0",
+      "kraken",
+      "whale"
+    ]
+  },
+  {
+    "id": "legal_0014",
+    "name": "Only yellow cards in hand, green led: can play any yellow",
+    "hand": [
+      {
+        "id": "yellow:1",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 1
+        }
+      },
+      {
+        "id": "yellow:7",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 7
+        }
+      },
+      {
+        "id": "yellow:14",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 14
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "green:10",
+          "def": {
+            "kind": "suited",
+            "suit": "green",
+            "rank": 10
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": ["yellow:1", "yellow:7", "yellow:14"]
+  },
+  {
+    "id": "legal_0015",
+    "name": "Only yellow cards in hand, yellow led: must play yellow",
+    "hand": [
+      {
+        "id": "yellow:1",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 1
+        }
+      },
+      {
+        "id": "yellow:7",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 7
+        }
+      },
+      {
+        "id": "yellow:14",
+        "def": {
+          "kind": "suited",
+          "suit": "yellow",
+          "rank": 14
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "yellow:10",
+          "def": {
+            "kind": "suited",
+            "suit": "yellow",
+            "rank": 10
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": ["yellow:1", "yellow:7", "yellow:14"]
+  },
+  {
+    "id": "legal_0016",
+    "name": "Only specials in hand, green led: all specials legal",
+    "hand": [
+      {
+        "id": "escape:0",
+        "def": {
+          "kind": "escape",
+          "index": 0
+        }
+      },
+      {
+        "id": "pirate:harry",
+        "def": {
+          "kind": "pirate",
+          "pirate": "harry"
+        }
+      },
+      {
+        "id": "skull_king",
+        "def": {
+          "kind": "skull_king"
+        }
+      },
+      {
+        "id": "mermaid:sirena",
+        "def": {
+          "kind": "mermaid",
+          "mermaid": "sirena"
+        }
+      }
+    ],
+    "trick": [
+      {
+        "card": {
+          "id": "green:10",
+          "def": {
+            "kind": "suited",
+            "suit": "green",
+            "rank": 10
+          }
+        },
+        "playerIndex": 0,
+        "playOrder": 0
+      }
+    ],
+    "ruleFlags": {
+      "escapeLeadDefersThroughCharacters": false
+    },
+    "expectedLegalCardIds": [
+      "escape:0",
+      "pirate:harry",
+      "skull_king",
+      "mermaid:sirena"
+    ]
+  }
+]

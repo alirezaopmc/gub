@@ -39,7 +39,9 @@ src/components/games/<slug>/
 
 One subfolder per major route. CSS modules under each flow's `styles/`. See [source-organization.md](../source-organization.md).
 
-## 4. Logic
+## 4. Logic & Go Game Plugin
+
+### Pure TypeScript Engine (Client/Offline)
 
 ```
 src/lib/games/<slug>/
@@ -50,7 +52,45 @@ src/lib/games/<slug>/
 
 **No React imports** in `lib/` — keeps logic testable from Vitest and API routes.
 
-## 5. API (optional)
+### Go Game Server Plugin (Authoritative Multiplayer)
+
+To run authoritative real-time rooms, implement the `game.Game` interface:
+
+```
+server/games/<slug>/
+├── game.go               # Implements game.Game interface
+└── game_test.go          # Deterministic lifecycle and race tests
+```
+
+1. Implement `game.Game` (`Def()`, `Setup()`, `Validate()`, `Apply()`, `Tick()`, `View()`, `Phase()`, `IsOver()`).
+2. Self-register in `init()`:
+   ```go
+   func init() {
+       _ = registry.Register(&YourGame{})
+   }
+   ```
+3. Blanket-import in `server/cmd/server/main.go`:
+   ```go
+   _ "github.com/manovaspace/gub/server/games/<slug>"
+   ```
+4. Verify with `go test -race ./games/<slug>/...`.
+
+## 5. Client Real-Time Connection
+
+Connect your client UI to the Go server using the common WebSocket hook:
+
+```typescript
+import { useGameSocket } from "@/lib/games/common/use-game-socket";
+
+const { status, view, dispatch } = useGameSocket<YourGameView>({
+  token: sessionToken,
+  roomCode: code,
+});
+```
+
+Create a Table Display viewer at `/games/<slug>/viewer/[code]` for TV/tablet public views using `navigator.wakeLock`.
+
+## 6. API (optional)
 
 ```
 src/app/api/games/<slug>/...
@@ -58,7 +98,7 @@ src/app/api/games/<slug>/...
 
 Follow Skull King match routes if you need multiplayer state.
 
-## 6. Documentation
+## 7. Documentation
 
 ```
 docs/games/<slug>/
@@ -72,7 +112,7 @@ Copy scaffolds from [docs/shared/templates/](../shared/templates/). Register pag
 
 Future in-app docs: shared shell in `src/components/docs/` (M4).
 
-## 7. Design
+## 8. Design
 
 Use semantic tokens from [design-system.md](../design-system.md). Game-specific accents can extend `theme-base.css` (see Skull King suit colors).
 

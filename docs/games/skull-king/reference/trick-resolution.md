@@ -58,7 +58,21 @@ Same special type → **first played** wins.
 
 ## Loot alliance
 
-When Loot is played and another player wins the suited portion, record **lootPlayerIndex** + **trickWinnerIndex** for scoring. See [Scoring](../rules/06-scoring.md).
+When Loot is played and another player wins the trick, an automatic alliance is formed between the Loot player and the trick winner (+20 each if both make bid). If two Loots are played in one trick, each forms an independent alliance with the winner. If the trick winner played a Loot, no alliance is formed for that card. See [Scoring](../rules/06-scoring.md).
+
+## Rulings & House Rules
+
+These rulings document engine decisions on edge cases with formal citations:
+
+1. **Character played after Escape lead (Audit Item 3):**
+   - *Sources:* Official Rulebook p.12 (S1), Publisher FAQ. S1 states the next player chooses suit "unless they play one of these" (Escape, Tigress-as-Escape, Loot).
+   - *GUB ruling:* Characters (Pirate, Mermaid, Skull King, Tigress-as-Pirate, Kraken, Whale) do not set a suit; playing a character ends suit selection (trick has no lead suit). Configurable via `escapeLeadDefersThroughCharacters` flag (default `false`).
+2. **Multiple Loot cards in one trick (Audit Item 4):**
+   - *Sources:* S1 p.25.
+   - *GUB ruling:* Each Loot card forms its own alliance with the trick winner; a Loot played by the winner forms none.
+3. **Mid-trick Kraken or Whale (Audit Item 5):**
+   - *Sources:* S1 p.23–24. S1 specifies leading a creature requires no follow-suit.
+   - *GUB ruling:* A mid-trick Kraken or Whale does *not* lift the follow-suit obligation for subsequent players. If a suited card led, remaining players holding that suit must follow it.
 
 ## Related
 

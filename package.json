@@ -11,7 +11,8 @@
     "format": "biome format --write .",
     "test": "vitest",
     "test:run": "vitest run",
-    "generate:docs-search": "vitest run src/lib/docs/generate-search-index.test.ts"
+    "generate:docs-search": "vitest run src/lib/docs/generate-search-index.test.ts",
+    "export:golden-vectors": "bun scripts/export-golden-vectors.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

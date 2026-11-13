@@ -12,8 +12,8 @@ source: src/lib/games/skull-king/engine/deck.ts
 
 ## Player count
 
-- **3–8 players** in GUB Play mode.
-- Calculator supports the same range for tableside scoring.
+- **2–8 players** (2-player uses Graybeard's ghost variant, see [Two-player Graybeard](./11-two-player.md)).
+- Calculator and Play modes support the full 2–8 player range.
 
 ## Deck contents
 

@@ -50,6 +50,9 @@ export type RoundEvent =
       loggedAt?: number;
     };
 
+export type AmmoChoice = "grapeshot" | "cannonball";
+export type ScoringSystem = "classic" | "rascal";
+
 export type PlayerRoundData = {
   /** Base tricks bid in the cell (0…hand). */
   bid: number | null;
@@ -60,6 +63,8 @@ export type PlayerRoundData = {
    * Effective commitment for the round is `clamp(hand, bid ± 1)` — see `effectiveTricksBid`.
    */
   harryGiantBidDelta: 1 | -1 | null;
+  /** Ammo choice under Rascal's Scoring: grapeshot (default, off-by-1 half points) or cannonball (15x, all-or-nothing). */
+  ammoChoice?: AmmoChoice;
   /** Points recorded for this player in this round (running tally layer uses this per round). */
   score: number;
 };

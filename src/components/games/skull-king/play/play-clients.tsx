@@ -11,6 +11,12 @@ import { RoundScoreBodyMotion } from "@/components/games/skull-king/round-score/
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
+  createGameRoom,
+  joinGameRoom,
+  loadGameSession,
+} from "@/lib/games/common/game-client";
+import { useGameSocket } from "@/lib/games/common/use-game-socket";
+import {
   CARD_BACK_IMAGE,
   cardImagePath,
   createCard,
@@ -118,8 +124,13 @@ export function PlayingCard({
 export function PlayHubClient() {
   const router = useRouter();
   const [hostName, setHostName] = React.useState("");
+  const [playerCount, setPlayerCount] = React.useState(3);
+  const [scoringSystem, setScoringSystem] = React.useState<
+    "classic" | "rascal"
+  >("classic");
   const [joinCode, setJoinCode] = React.useState("");
   const [joinName, setJoinName] = React.useState("");
+  const [joinRole, setJoinRole] = React.useState<"player" | "viewer">("player");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
@@ -127,15 +138,35 @@ export function PlayHubClient() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/games/skull-king/matches", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ hostName: hostName || "Host", playerCount: 3 }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "failed");
-      savePlaySession({ code: data.code, playerId: data.playerId });
-      router.push(`/games/skull-king/play/m/${data.code}`);
+      // First try Go backend
+      try {
+        const data = await createGameRoom(
+          "skull-king",
+          hostName || "Host",
+          playerCount,
+          {
+            scoringSystem,
+            twoPlayerGhost: playerCount === 2,
+          },
+        );
+        router.push(`/games/skull-king/play/m/${data.room.code}`);
+        return;
+      } catch {
+        // Fallback to Next.js API
+        const res = await fetch("/api/games/skull-king/matches", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            hostName: hostName || "Host",
+            playerCount,
+            scoringSystem,
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error ?? "failed to create match");
+        savePlaySession({ code: data.code, playerId: data.playerId });
+        router.push(`/games/skull-king/play/m/${data.code}`);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "failed");
     } finally {
@@ -146,17 +177,30 @@ export function PlayHubClient() {
   const joinMatch = async () => {
     setLoading(true);
     setError(null);
+    const code = joinCode.trim().toUpperCase();
+
+    if (joinRole === "viewer") {
+      router.push(`/games/skull-king/viewer/${code}`);
+      setLoading(false);
+      return;
+    }
+
     try {
-      const code = joinCode.trim().toUpperCase();
-      const res = await fetch(`/api/games/skull-king/matches/${code}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ displayName: joinName || "Sailor" }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "failed");
-      savePlaySession({ code, playerId: data.playerId });
-      router.push(`/games/skull-king/play/m/${code}`);
+      try {
+        const data = await joinGameRoom(code, joinName || "Sailor", "player");
+        router.push(`/games/skull-king/play/m/${data.room.code}`);
+        return;
+      } catch {
+        const res = await fetch(`/api/games/skull-king/matches/${code}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ displayName: joinName || "Sailor" }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error ?? "failed to join match");
+        savePlaySession({ code, playerId: data.playerId });
+        router.push(`/games/skull-king/play/m/${code}`);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "failed");
     } finally {
@@ -171,7 +215,7 @@ export function PlayHubClient() {
           Play live
         </h2>
         <p className="mt-2 text-muted-foreground">
-          Create a match or join with a 2-letter code.
+          Create a match, join a table, or launch the Table Display viewer.
         </p>
       </header>
 
@@ -179,48 +223,172 @@ export function PlayHubClient() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Host new match</CardTitle>
+          <CardTitle className="text-base" id="host-heading">
+            Host new match
+          </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <input
-            className="rounded-md border border-border bg-background px-3 py-2 text-sm"
-            placeholder="Your name"
-            value={hostName}
-            onChange={(e) => setHostName(e.target.value)}
-          />
-          <Button variant="branded" disabled={loading} onClick={createMatch}>
-            Create match
-          </Button>
+        <CardContent>
+          <form
+            aria-labelledby="host-heading"
+            className="flex flex-col gap-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!loading) void createMatch();
+            }}
+          >
+            <label className="flex flex-col gap-1 text-sm" htmlFor="host-name">
+              Your name
+              <input
+                id="host-name"
+                name="displayName"
+                type="text"
+                required
+                maxLength={24}
+                autoComplete="nickname"
+                enterKeyHint="next"
+                className="rounded-md border border-border bg-background px-3 py-2 text-base"
+                value={hostName}
+                onChange={(e) => setHostName(e.target.value)}
+              />
+            </label>
+
+            <div className="grid grid-cols-2 gap-3">
+              <label
+                className="flex flex-col gap-1 text-sm"
+                htmlFor="player-count"
+              >
+                Players
+                <select
+                  id="player-count"
+                  className="rounded-md border border-border bg-background px-3 py-2 text-base"
+                  value={playerCount}
+                  onChange={(e) => setPlayerCount(Number(e.target.value))}
+                >
+                  <option value={2}>2 players (Graybeard Ghost)</option>
+                  <option value={3}>3 players</option>
+                  <option value={4}>4 players</option>
+                  <option value={5}>5 players</option>
+                  <option value={6}>6 players</option>
+                  <option value={7}>7 players</option>
+                  <option value={8}>8 players</option>
+                </select>
+              </label>
+
+              <label
+                className="flex flex-col gap-1 text-sm"
+                htmlFor="scoring-system"
+              >
+                Scoring system
+                <select
+                  id="scoring-system"
+                  className="rounded-md border border-border bg-background px-3 py-2 text-base"
+                  value={scoringSystem}
+                  onChange={(e) =>
+                    setScoringSystem(e.target.value as "classic" | "rascal")
+                  }
+                >
+                  <option value="classic">Classic Scoring</option>
+                  <option value="rascal">Rascal&apos;s Scoring</option>
+                </select>
+              </label>
+            </div>
+
+            <Button variant="branded" disabled={loading} type="submit">
+              Create match
+            </Button>
+          </form>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Join match</CardTitle>
+          <CardTitle className="text-base" id="join-heading">
+            Join or spectate match
+          </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <input
-            className="rounded-md border border-border bg-background px-3 py-2 text-sm uppercase"
-            placeholder="Code (e.g. AB)"
-            maxLength={2}
-            value={joinCode}
-            onChange={(e) =>
-              setJoinCode(e.target.value.replace(/[^a-zA-Z]/g, ""))
-            }
-          />
-          <input
-            className="rounded-md border border-border bg-background px-3 py-2 text-sm"
-            placeholder="Your name"
-            value={joinName}
-            onChange={(e) => setJoinName(e.target.value)}
-          />
-          <Button
-            variant="outline"
-            disabled={loading || joinCode.length !== 2}
-            onClick={joinMatch}
+        <CardContent>
+          <form
+            aria-labelledby="join-heading"
+            className="flex flex-col gap-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!loading && joinCode.length >= 2) void joinMatch();
+            }}
           >
-            Join
-          </Button>
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                size="sm"
+                variant={joinRole === "player" ? "branded" : "outline"}
+                onClick={() => setJoinRole("player")}
+                className="flex-1"
+              >
+                Join as Player
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant={joinRole === "viewer" ? "branded" : "outline"}
+                onClick={() => setJoinRole("viewer")}
+                className="flex-1"
+              >
+                Table Display Viewer
+              </Button>
+            </div>
+
+            <label className="flex flex-col gap-1 text-sm" htmlFor="join-code">
+              Match code
+              <input
+                id="join-code"
+                name="code"
+                type="text"
+                required
+                minLength={2}
+                maxLength={6}
+                pattern="[A-Za-z0-9]{2,6}"
+                autoComplete="off"
+                autoCapitalize="characters"
+                autoCorrect="off"
+                spellCheck={false}
+                enterKeyHint={joinRole === "player" ? "next" : "go"}
+                placeholder="e.g. ABCDE"
+                className="rounded-md border border-border bg-background px-3 py-2 text-base uppercase font-mono tracking-wider"
+                value={joinCode}
+                onChange={(e) =>
+                  setJoinCode(e.target.value.replace(/[^a-zA-Z0-9]/g, ""))
+                }
+              />
+            </label>
+
+            {joinRole === "player" && (
+              <label
+                className="flex flex-col gap-1 text-sm"
+                htmlFor="join-name"
+              >
+                Your name
+                <input
+                  id="join-name"
+                  name="displayName"
+                  type="text"
+                  required
+                  maxLength={24}
+                  autoComplete="nickname"
+                  enterKeyHint="go"
+                  className="rounded-md border border-border bg-background px-3 py-2 text-base"
+                  value={joinName}
+                  onChange={(e) => setJoinName(e.target.value)}
+                />
+              </label>
+            )}
+
+            <Button
+              variant="outline"
+              disabled={loading || joinCode.length < 2}
+              type="submit"
+            >
+              {joinRole === "player" ? "Join match" : "Open Table Display"}
+            </Button>
+          </form>
         </CardContent>
       </Card>
     </div>
@@ -230,38 +398,70 @@ export function PlayHubClient() {
 export function MatchTableClient({ code }: { code: string }) {
   const [view, setView] = React.useState<PublicMatchView | null>(null);
   const [playerId, setPlayerId] = React.useState<string | null>(null);
+  const [token, setToken] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    const session = loadPlaySession();
-    if (!session || session.code.toUpperCase() !== code.toUpperCase()) {
-      setError("Session missing — rejoin from Play hub.");
-      return;
+    const gameSession = loadGameSession(code);
+    if (gameSession?.token) {
+      setToken(gameSession.token);
     }
-    setPlayerId(session.playerId);
+    const legacySession = loadPlaySession();
+    if (
+      legacySession &&
+      legacySession.code.toUpperCase() === code.toUpperCase()
+    ) {
+      setPlayerId(legacySession.playerId);
+    } else if (!gameSession?.token) {
+      setError("Session missing — rejoin from Play hub.");
+    }
   }, [code]);
 
-  const fetchView = React.useCallback(async () => {
-    if (!playerId) return;
-    const res = await fetch(
-      `/api/games/skull-king/matches/${code}?playerId=${playerId}`,
-    );
-    const data = await res.json();
-    if (res.ok) setView(data.view);
-  }, [code, playerId]);
+  // Real-time WebSocket connection to Go backend
+  const socket = useGameSocket<PublicMatchView>({
+    token,
+    roomCode: code,
+  });
 
   React.useEffect(() => {
-    if (!playerId) return;
+    if (socket.view) {
+      setView(socket.view);
+    }
+  }, [socket.view]);
+
+  // Fallback HTTP polling for legacy sessions
+  const fetchView = React.useCallback(async () => {
+    if (!playerId || socket.status === "connected") return;
+    try {
+      const res = await fetch(
+        `/api/games/skull-king/matches/${code}?playerId=${playerId}`,
+      );
+      const data = await res.json();
+      if (res.ok) setView(data.view);
+    } catch {
+      // Ignore
+    }
+  }, [code, playerId, socket.status]);
+
+  React.useEffect(() => {
+    if (!playerId || socket.status === "connected") return;
     void fetchView();
     const id = window.setInterval(() => void fetchView(), 1500);
     return () => window.clearInterval(id);
-  }, [playerId, fetchView]);
+  }, [playerId, fetchView, socket.status]);
 
   const [actionError, setActionError] = React.useState<string | null>(null);
 
   const dispatch = async (action: Record<string, unknown>) => {
-    if (!playerId) return;
     setActionError(null);
+
+    // Try WebSocket first
+    if (socket.status === "connected") {
+      const ok = socket.dispatch(action.type as string, action);
+      if (ok) return;
+    }
+
+    if (!playerId) return;
     const res = await fetch(`/api/games/skull-king/matches/${code}/actions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -272,16 +472,16 @@ export function MatchTableClient({ code }: { code: string }) {
     else setActionError(formatActionError(data.error));
   };
 
-  if (error && !view) {
+  if (error && !view && !token) {
     return <p className="text-destructive">{error}</p>;
   }
-  if (!view || !playerId) {
+  if (!view && !socket.view) {
     return <p className="text-muted-foreground">Loading match…</p>;
   }
 
   return (
     <MatchTableInner
-      view={view}
+      view={view || (socket.view as PublicMatchView)}
       dispatch={dispatch}
       actionError={actionError}
     />

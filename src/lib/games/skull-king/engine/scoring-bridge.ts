@@ -6,6 +6,7 @@ import {
 import type {
   PlayerRoundData,
   RoundEvent,
+  ScoringSystem,
 } from "@/lib/games/skull-king/round-score/types";
 import type {
   CaptureBonus,
@@ -78,15 +79,19 @@ export function buildRoundEventsFromTricks(
       }
     }
 
-    if (options.loot && trick.lootAlliance) {
-      const { lootPlayerIndex, trickWinnerIndex } = trick.lootAlliance;
-      const e: RoundEvent = {
-        type: "alliance",
-        lootPlayerIndex,
-        trickWinnerIndex,
-      };
-      events[lootPlayerIndex]!.push(e);
-      events[trickWinnerIndex]!.push(e);
+    if (options.loot) {
+      const alliances =
+        trick.lootAlliances ?? (trick.lootAlliance ? [trick.lootAlliance] : []);
+      for (const alliance of alliances) {
+        const { lootPlayerIndex, trickWinnerIndex } = alliance;
+        const e: RoundEvent = {
+          type: "alliance",
+          lootPlayerIndex,
+          trickWinnerIndex,
+        };
+        events[lootPlayerIndex]!.push(e);
+        events[trickWinnerIndex]!.push(e);
+      }
     }
   }
 
@@ -101,6 +106,7 @@ export function roundStateToPlayerRoundData(
     bid: b.bid,
     won: round.tricksWon[i] ?? null,
     harryGiantBidDelta: b.harryGiantDelta,
+    ammoChoice: b.ammoChoice,
     events: [
       ...(trickEvents[i] ?? []),
       ...(round.rascalWager?.playerIndex === i
@@ -126,9 +132,11 @@ export function computeRoundScores(
   trickEvents: RoundEvent[][],
   fourteenBonus: boolean,
   characterCapture: boolean,
+  scoringSystem: ScoringSystem = "classic",
 ): number[] {
   const players = roundStateToPlayerRoundData(round, trickEvents);
   const handSize = round.handSize;
+  const isRascal = scoringSystem === "rascal";
 
   return players.map((player, playerIndex) => {
     const eff = effectiveTricksBid(
@@ -139,7 +147,9 @@ export function computeRoundScores(
     const madeBid = eff !== null && player.won !== null && eff === player.won;
 
     const filteredEvents = player.events.filter((e) => {
-      if (!madeBid) return false;
+      if (!isRascal && !madeBid) {
+        return e.type === "pirateAbility" && e.pirate === "rascal";
+      }
       if (e.type === "fourteenBonus" && !fourteenBonus) return false;
       if (e.type === "characterCapture" && !characterCapture) return false;
       return true;
@@ -152,15 +162,12 @@ export function computeRoundScores(
       roundPlayers: players.map((p, i) =>
         i === playerIndex
           ? { ...p, events: filteredEvents }
-          : { ...p, events: madeBid ? p.events : [] },
+          : { ...p, events: isRascal || madeBid ? p.events : [] },
       ),
+      scoringSystem,
     };
 
-    const breakdown = computeRoundScoreBreakdown({
-      ...ctx,
-      player: { ...ctx.player, events: filteredEvents },
-    });
-
+    const breakdown = computeRoundScoreBreakdown(ctx);
     return breakdown.total;
   });
 }
@@ -171,6 +178,7 @@ export function scoreRoundFromState(
     fourteenBonus: boolean;
     characterCapture: boolean;
     loot: boolean;
+    scoringSystem?: ScoringSystem;
   },
 ): number[] {
   const trickEvents = buildRoundEventsFromTricks(
@@ -183,6 +191,7 @@ export function scoreRoundFromState(
     trickEvents,
     config.fourteenBonus,
     config.characterCapture,
+    config.scoringSystem ?? "classic",
   );
 }
 
@@ -198,6 +207,8 @@ export function buildPlayerRoundResults(
   const players = roundStateToPlayerRoundData(round, trickEvents);
   const handSize = round.handSize;
   const { fourteenBonus, characterCapture } = config.artifacts;
+  const scoringSystem = config.scoringSystem ?? "classic";
+  const isRascal = scoringSystem === "rascal";
 
   return players.map((player, playerIndex) => {
     const eff = effectiveTricksBid(
@@ -208,7 +219,9 @@ export function buildPlayerRoundResults(
     const madeBid = eff !== null && player.won !== null && eff === player.won;
 
     const filteredEvents = player.events.filter((e) => {
-      if (!madeBid) return false;
+      if (!isRascal && !madeBid) {
+        return e.type === "pirateAbility" && e.pirate === "rascal";
+      }
       if (e.type === "fourteenBonus" && !fourteenBonus) return false;
       if (e.type === "characterCapture" && !characterCapture) return false;
       return true;
@@ -217,7 +230,7 @@ export function buildPlayerRoundResults(
     const roundPlayers = players.map((p, i) =>
       i === playerIndex
         ? { ...p, events: filteredEvents }
-        : { ...p, events: madeBid ? p.events : [] },
+        : { ...p, events: isRascal || madeBid ? p.events : [] },
     );
 
     const breakdown = computeRoundScoreBreakdown({
@@ -225,6 +238,7 @@ export function buildPlayerRoundResults(
       playerIndex,
       player: { ...player, events: filteredEvents },
       roundPlayers,
+      scoringSystem,
     });
 
     return {
@@ -234,7 +248,9 @@ export function buildPlayerRoundResults(
       main: breakdown.main,
       bonus: breakdown.bonus,
       total: breakdown.total,
-      madeBid,
+      madeBid: isRascal
+        ? eff !== null && player.won !== null && Math.abs(eff - player.won) <= 1
+        : madeBid,
     };
   });
 }

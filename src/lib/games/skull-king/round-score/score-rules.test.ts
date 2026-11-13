@@ -10,6 +10,7 @@ import {
   scoreFourteenBonus,
   scoreHeroCaptures,
   scoreRascal,
+  scoreRascalBidWon,
 } from "@/lib/games/skull-king/round-score/score-rules";
 import {
   MAX_MERMAIDS_IN_GAME,
@@ -784,8 +785,9 @@ describe("computeRoundScoreBreakdown", () => {
     });
 
     expect(breakdown.main).toBe(-10); // -10 * |2 - 3|
-    expect(breakdown.bonus).toBe(0);
-    expect(breakdown.total).toBe(-10);
+    // 14 bonus, captures, and alliance are forfeited, but Rascal wager is penalized (-20)
+    expect(breakdown.bonus).toBe(-20);
+    expect(breakdown.total).toBe(-30);
   });
 
   it("integrates Harry the Giant delta into effective bid scoring", () => {
@@ -849,5 +851,349 @@ describe("computeRoundScoreBreakdown", () => {
     expect(breakdown.main).toBe(0);
     expect(breakdown.bonus).toBe(0);
     expect(breakdown.total).toBe(0);
+  });
+
+  it("applies -wager penalty on missed bid in computeRoundScoreBreakdown", () => {
+    const player: PlayerRoundData = {
+      bid: 3,
+      won: 4,
+      harryGiantBidDelta: null,
+      events: [
+        {
+          type: "pirateAbility",
+          ownerIndex: 0,
+          pirate: "rascal",
+          wager: 20,
+        },
+      ],
+      score: 0,
+    };
+
+    const breakdown = computeRoundScoreBreakdown({
+      handSize: 5,
+      playerIndex: 0,
+      player,
+      roundPlayers: [player],
+    });
+
+    expect(breakdown.main).toBe(-10);
+    expect(breakdown.bonus).toBe(-20);
+    expect(breakdown.total).toBe(-30);
+  });
+});
+
+describe("Rascal's Scoring (rulebook pp. 18-20)", () => {
+  it("scoreRascalBidWon: computes exact and glancing points for grapeshot and cannonball", () => {
+    expect(scoreRascalBidWon(5, 3, 3, "grapeshot")).toEqual({
+      main: 50,
+      multiplier: 1,
+    });
+    expect(scoreRascalBidWon(5, 3, 4, "grapeshot")).toEqual({
+      main: 25,
+      multiplier: 0.5,
+    });
+    expect(scoreRascalBidWon(5, 3, 5, "grapeshot")).toEqual({
+      main: 0,
+      multiplier: 0,
+    });
+
+    expect(scoreRascalBidWon(5, 3, 3, "cannonball")).toEqual({
+      main: 75,
+      multiplier: 1,
+    });
+    expect(scoreRascalBidWon(5, 3, 4, "cannonball")).toEqual({
+      main: 0,
+      multiplier: 0,
+    });
+  });
+
+  it("Rulebook Example A: 3 players in round 3 (30 pts potential) all hit bids (Direct Hit) -> 30 pts each", () => {
+    const handSize = 3;
+    const harry: PlayerRoundData = {
+      bid: 0,
+      won: 0,
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+    const shirley: PlayerRoundData = {
+      bid: 1,
+      won: 1,
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+    const poe: PlayerRoundData = {
+      bid: 2,
+      won: 2,
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+    const roundPlayers = [harry, shirley, poe];
+
+    const scoreHarry = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: harry,
+      roundPlayers,
+      scoringSystem: "rascal",
+    });
+    const scoreShirley = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 1,
+      player: shirley,
+      roundPlayers,
+      scoringSystem: "rascal",
+    });
+    const scorePoe = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 2,
+      player: poe,
+      roundPlayers,
+      scoringSystem: "rascal",
+    });
+
+    expect(scoreHarry.main).toBe(30);
+    expect(scoreHarry.bonus).toBe(0);
+    expect(scoreHarry.total).toBe(30);
+
+    expect(scoreShirley.main).toBe(30);
+    expect(scoreShirley.bonus).toBe(0);
+    expect(scoreShirley.total).toBe(30);
+
+    expect(scorePoe.main).toBe(30);
+    expect(scorePoe.bonus).toBe(0);
+    expect(scorePoe.total).toBe(30);
+  });
+
+  it("Rulebook Example B: Harry/Shirley/Poe round 4 (40 pts potential): Direct Hit (40), Glancing Blow (20), Complete Miss (0)", () => {
+    const handSize = 4;
+    // Harry bids 1, wins 1 -> Direct Hit -> 40 pts
+    const harry: PlayerRoundData = {
+      bid: 1,
+      won: 1,
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+    // Shirley bids 0, wins 1 -> Glancing Blow (off by 1) -> 20 pts
+    const shirley: PlayerRoundData = {
+      bid: 0,
+      won: 1,
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+    // Poe bids 4, wins 2 -> Complete Miss (off by 2) -> 0 pts
+    const poe: PlayerRoundData = {
+      bid: 4,
+      won: 2,
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+    const roundPlayers = [harry, shirley, poe];
+
+    const scoreHarry = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: harry,
+      roundPlayers,
+      scoringSystem: "rascal",
+    });
+    const scoreShirley = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 1,
+      player: shirley,
+      roundPlayers,
+      scoringSystem: "rascal",
+    });
+    const scorePoe = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 2,
+      player: poe,
+      roundPlayers,
+      scoringSystem: "rascal",
+    });
+
+    expect(scoreHarry.main).toBe(40);
+    expect(scoreHarry.total).toBe(40);
+
+    expect(scoreShirley.main).toBe(20);
+    expect(scoreShirley.total).toBe(20);
+
+    expect(scorePoe.main).toBe(0);
+    expect(scorePoe.total).toBe(0);
+  });
+
+  it("Cannonball: 15 x cards dealt on exact hit, 0 on miss (all-or-nothing)", () => {
+    const handSize = 4; // 15 * 4 = 60 pts
+    const directHitPlayer: PlayerRoundData = {
+      bid: 2,
+      won: 2,
+      ammoChoice: "cannonball",
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+    const missPlayer: PlayerRoundData = {
+      bid: 2,
+      won: 3, // off by 1: grapeshot would give half, but cannonball gives 0
+      ammoChoice: "cannonball",
+      harryGiantBidDelta: null,
+      events: [],
+      score: 0,
+    };
+
+    const directScore = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: directHitPlayer,
+      roundPlayers: [directHitPlayer, missPlayer],
+      scoringSystem: "rascal",
+    });
+    const missScore = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 1,
+      player: missPlayer,
+      roundPlayers: [directHitPlayer, missPlayer],
+      scoringSystem: "rascal",
+    });
+
+    expect(directScore.main).toBe(60);
+    expect(directScore.total).toBe(60);
+
+    expect(missScore.main).toBe(0);
+    expect(missScore.total).toBe(0);
+  });
+
+  it("Bonuses scale under Rascal's Scoring: 100% on Direct Hit, 50% on Glancing Blow, 0% on Miss", () => {
+    const handSize = 4;
+    // Player collects 14 black (20 pts) + 14 green (10 pts) = 30 pts raw bonus
+    const events: RoundEvent[] = [
+      { type: "fourteenBonus", playerIndex: 0, suit: "black" },
+      { type: "fourteenBonus", playerIndex: 0, suit: "green" },
+    ];
+
+    const directPlayer: PlayerRoundData = {
+      bid: 2,
+      won: 2,
+      harryGiantBidDelta: null,
+      events,
+      score: 0,
+    };
+    const glancingPlayer: PlayerRoundData = {
+      bid: 2,
+      won: 3,
+      harryGiantBidDelta: null,
+      events,
+      score: 0,
+    };
+    const missPlayer: PlayerRoundData = {
+      bid: 2,
+      won: 0,
+      harryGiantBidDelta: null,
+      events,
+      score: 0,
+    };
+
+    const directScore = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: directPlayer,
+      roundPlayers: [directPlayer],
+      scoringSystem: "rascal",
+    });
+    const glancingScore = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: glancingPlayer,
+      roundPlayers: [glancingPlayer],
+      scoringSystem: "rascal",
+    });
+    const missScore = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: missPlayer,
+      roundPlayers: [missPlayer],
+      scoringSystem: "rascal",
+    });
+
+    // Direct Hit: 40 main + 30 bonus = 70
+    expect(directScore.main).toBe(40);
+    expect(directScore.bonus).toBe(30);
+    expect(directScore.total).toBe(70);
+
+    // Glancing Blow: 20 main + 15 bonus (half of 30) = 35
+    expect(glancingScore.main).toBe(20);
+    expect(glancingScore.bonus).toBe(15);
+    expect(glancingScore.total).toBe(35);
+
+    // Complete Miss: 0 main + 0 bonus = 0
+    expect(missScore.main).toBe(0);
+    expect(missScore.bonus).toBe(0);
+    expect(missScore.total).toBe(0);
+  });
+
+  it("penalises rascal wager on missed bid in rascal scoring", () => {
+    const handSize = 4;
+    const rascalEvent = {
+      type: "pirateAbility" as const,
+      pirate: "rascal" as const,
+      ownerIndex: 0,
+      wager: 20 as const,
+    };
+
+    const direct = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: {
+        bid: 2,
+        won: 2,
+        harryGiantBidDelta: null,
+        score: 0,
+        events: [rascalEvent],
+      },
+      roundPlayers: [],
+      scoringSystem: "rascal",
+    });
+    expect(direct.main).toBe(40);
+    expect(direct.bonus).toBe(20);
+    expect(direct.total).toBe(60);
+
+    const glancing = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: {
+        bid: 2,
+        won: 3,
+        harryGiantBidDelta: null,
+        score: 0,
+        events: [rascalEvent],
+      },
+      roundPlayers: [],
+      scoringSystem: "rascal",
+    });
+    expect(glancing.main).toBe(20);
+    expect(glancing.bonus).toBe(-20);
+    expect(glancing.total).toBe(0);
+
+    const miss = computeRoundScoreBreakdown({
+      handSize,
+      playerIndex: 0,
+      player: {
+        bid: 2,
+        won: 0,
+        harryGiantBidDelta: null,
+        score: 0,
+        events: [rascalEvent],
+      },
+      roundPlayers: [],
+      scoringSystem: "rascal",
+    });
+    expect(miss.main).toBe(0);
+    expect(miss.bonus).toBe(-20);
+    expect(miss.total).toBe(-20);
   });
 });

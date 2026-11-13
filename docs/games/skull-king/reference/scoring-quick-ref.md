@@ -30,7 +30,7 @@ source: src/lib/games/skull-king/round-score/score-rules.ts
 | Mermaid captures Skull King | +40 | CharacterCapture |
 | Loot alliance (each ally) | +20 | Loot |
 | Rascal wager (made bid) | +wager | PirateAbilities |
-| Rascal wager (missed) | forfeited | PirateAbilities |
+| Rascal wager (missed) | −wager | PirateAbilities |
 
 ## Worked examples
 
@@ -72,7 +72,19 @@ source: src/lib/games/skull-king/round-score/score-rules.ts
 ### Example F — Rascal wager
 
 - Bid: 3, Won: 3, wager 20 → **Main: +60**, Rascal **+20** → **+80**  
-- Bid: 3, Won: 4, wager 20 → **Main: −10**, bonuses **forfeited** → **−10**
+- Bid: 3, Won: 4, wager 20 → **Main: −10**, Rascal wager **−20** → **−30**
+
+## Rascal's Scoring quick reference
+
+Round potential = **10 × cards dealt** (Grapeshot) or **15 × cards dealt** (Cannonball). No negative scores.
+
+| Ammunition | Accuracy | Main Points | Bonus Points |
+|------------|----------|-------------|--------------|
+| **Grapeshot** | Direct Hit (diff 0) | 10 × cards | 100% |
+| **Grapeshot** | Glancing Blow (diff 1) | 5 × cards | 50% |
+| **Grapeshot** | Complete Miss (diff 2+) | 0 | 0 |
+| **Cannonball** | Direct Hit (diff 0) | 15 × cards | 100% |
+| **Cannonball** | Miss (diff ≥1) | 0 | 0 |
 
 ## Voyage total
 

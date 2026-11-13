@@ -28,12 +28,12 @@ describe("buildGameDocNav", () => {
       "/games/skull-king/docs/rules/00-overview",
     );
     expect(rules?.items[rules.items.length - 1].href).toBe(
-      "/games/skull-king/docs/rules/10-faq",
+      "/games/skull-king/docs/rules/11-two-player",
     );
   });
 
   it("lists slugs per section for static params", () => {
-    expect(listGameDocSlugs("skull-king", "rules").length).toBe(11);
+    expect(listGameDocSlugs("skull-king", "rules").length).toBe(12);
     expect(listGameDocSlugs("skull-king", "reference").length).toBe(3);
     expect(listGameDocSlugs("skull-king", "app")).toContain("play");
     expect(listGameDocSlugs("skull-king", "app")).toContain("hub");
