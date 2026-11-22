@@ -23,7 +23,7 @@ func TestParseOriginPatterns(t *testing.T) {
 		{name: "blank entries mean wildcard", raw: " , ,", want: []string{"*"}},
 		{name: "single host", raw: "gub.manova.space", want: []string{"gub.manova.space"}},
 		{name: "comma list trimmed", raw: " a.test , b.test,c.test ", want: []string{"a.test", "b.test", "c.test"}},
-		{name: "scheme and slash stripped", raw: "https://gub.manova.space/, http://localhost:11003", want: []string{"gub.manova.space", "localhost:11003"}},
+		{name: "scheme and slash stripped", raw: "https://gub.manova.space/, http://localhost:10052", want: []string{"gub.manova.space", "localhost:10052"}},
 		{name: "wildcard subdomain", raw: "*.manova.space", want: []string{"*.manova.space"}},
 	}
 	for _, tt := range tests {
@@ -45,7 +45,7 @@ func TestDefaultOriginPatternsFromEnv(t *testing.T) {
 	}{
 		{name: "unset", set: false, want: []string{"*"}},
 		{name: "set empty", env: "", set: true, want: []string{"*"}},
-		{name: "set list", env: "gub.manova.space,localhost:11003", set: true, want: []string{"gub.manova.space", "localhost:11003"}},
+		{name: "set list", env: "gub.manova.space,localhost:10052", set: true, want: []string{"gub.manova.space", "localhost:10052"}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

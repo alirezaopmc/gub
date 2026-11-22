@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun run generate:docs-search && next dev --port 11003",
+    "dev": "bun run generate:docs-search && next dev --port 10052",
     "build": "bun run generate:docs-search && next build",
-    "start": "next start --port 11003",
+    "start": "next start --port 10052",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome format --write .",

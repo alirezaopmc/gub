@@ -18,10 +18,10 @@
 git clone git@github.com:alirezaopmc/gub.git ~/Dev/Manova/clients/manova/gub
 cd ~/Dev/Manova/clients/manova/gub
 npm install
-npm run dev   # http://localhost:11003
+npm run dev   # http://localhost:10052
 ```
 
-Open [http://localhost:11003](http://localhost:11003). Production: [gub.manova.space](https://gub.manova.space).
+Open [http://localhost:10052](http://localhost:10052). Production: [gub.manova.space](https://gub.manova.space).
 
 ## Documentation
 
