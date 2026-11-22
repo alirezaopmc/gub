@@ -40,7 +40,7 @@ export function getWsBaseUrl(): string {
     return process.env.NEXT_PUBLIC_GAME_WS_URL;
   }
   const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-  // If running Next dev on port 11003, default backend is port 8080
+  // If running Next dev on port 10052, default backend is port 8080
   const host = window.location.hostname;
   return `${protocol}//${host}:8080/ws`;
 }

@@ -25,14 +25,14 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ```bash
 npm install
-npm run dev       # http://localhost:11003
+npm run dev       # http://localhost:10052
 npm run build
 npm run start
 npm run lint
 npm run test:run
 ```
 
-Dev server runs on **port 11003** (see Manova [ports](../../../handbook/docs/clients/manova/ports.md)).
+Dev server runs on **port 10052** (see Manova [ports](../../../handbook/docs/clients/manova/ports.md)).
 
 ## Stack
 

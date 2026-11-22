@@ -29,7 +29,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:11003](http://localhost:11003) (Manova ADR-006 port for GUB).
+Open [http://localhost:10052](http://localhost:10052) (Manova ADR-006 port for GUB).
 
 ### Backend (Go Game Server)
 
