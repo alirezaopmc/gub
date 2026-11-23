@@ -1,13 +1,13 @@
 name: CI
 
-# Dev stage (ADR-076): CI runs only on release and Renovate pull requests and manual runs.
 on:
-  pull_request:
+  push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 concurrency:
-  group: ci-${{ github.head_ref || github.run_id }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -16,7 +16,6 @@ permissions:
 jobs:
   server:
     name: Go Server
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.head_ref, 'release-please--') || startsWith(github.head_ref, 'changeset-release/') || startsWith(github.head_ref, 'renovate/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -37,7 +36,6 @@ jobs:
 
   frontend:
     name: Frontend
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.head_ref, 'release-please--') || startsWith(github.head_ref, 'changeset-release/') || startsWith(github.head_ref, 'renovate/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
